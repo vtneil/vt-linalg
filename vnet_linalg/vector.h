@@ -12,6 +12,9 @@ class Matrix;
 template<typename T>
 class Vector {
 private:
+    friend class Matrix<T>;
+
+private:
     T *arr_;
     size_t size_;
 
@@ -46,7 +49,15 @@ public:
 
     T &operator[](size_t index) { return *(arr_ + index); }
 
+    const T &operator[](size_t index) const { return *(arr_ + index); }
+
     T &at(size_t index) { return operator[](index); };
+
+    const T &at(size_t index) const { return operator[](index); };
+
+    T &operator()(size_t index) { return at(index); }
+
+    const T &operator()(size_t index) const { return at(index); }
 
     Vector &operator=(const Vector &other) {
         *this = Vector(other);
@@ -79,21 +90,35 @@ public:
 
     Vector subtract(const Vector &other) const { return operator-(other); }
 
-    T operator*(const Vector &other) const {
-        T result = 0;
-        for (size_t i = 0; i < size_; ++i) result += arr_[i] * other.arr_[i];
+    Vector &operator*=(T rhs) {
+        for (size_t i = 0; i < size_; ++i) arr_[i] *= rhs;
+        return *this;
+    }
+
+    Vector operator*(T rhs) const {
+        Vector tmp(*this);
+        tmp.operator*=(rhs);
+        return tmp;
+    }
+
+    T dot(const Vector &other) const {
+        T acc = 0;
+        for (size_t i = 0; i < size_; ++i) acc += arr_[i] * other.arr_[i];
+        return acc;
+    }
+
+    T inner(const Vector &other) const { return dot(other); }
+
+    Matrix<T> outer(const Vector &other) const {
+        Matrix<T> result(size_, other.size_);
+        for (size_t i = 0; i < size_; ++i)
+            for (size_t j = 0; j < other.size_; ++j)
+                result[i][j] = arr_[i] * other.arr_[j];
         return result;
     }
 
-    T dot(const Vector &other) const { return operator*(other); }
-
-    T inner(const Vector &other) const { return operator*(other); }
-
-    Matrix<T> outer(const Vector &other) const {
-
-    }
-
     bool operator==(const Vector &other) const {
+        if (this == &other) return true;
         if (size_ != other.size_) return false;
         for (size_t i = 0; i < size_; ++i) if (arr_[i] != other.arr_[i]) return false;
         return true;
@@ -105,7 +130,11 @@ public:
 
     Iterator<T> begin() { return Iterator<T>(arr_); }
 
+    Iterator<T> begin() const { return Iterator<T>(arr_); }
+
     Iterator<T> end() { return Iterator<T>(arr_ + size_); }
+
+    Iterator<T> end() const { return Iterator<T>(arr_ + size_); }
 
     T &front() { return operator[](0); }
 
@@ -125,6 +154,8 @@ private:
     }
 
 public:
+    static Vector zero(size_t n) { return Vector(n); }
+
     template<typename... Ts>
     static Vector from(Ts... values) {
         Vector tmp = Vector(sizeof...(values));
@@ -132,6 +163,13 @@ public:
         return tmp;
     }
 };
+
+template<typename T>
+Vector<T> operator*(T lhs, const Vector<T> &rhs) {
+    Vector<T> tmp(rhs);
+    tmp.operator*=(lhs);
+    return tmp;
+}
 
 template<typename T>
 class Iterator {
