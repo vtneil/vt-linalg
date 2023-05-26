@@ -17,21 +17,19 @@ private:
 public:
     Matrix() = delete;
 
-    explicit Matrix(size_t n) : r_(n), c_(n) {
-        allocate_zero();
-    }
+    explicit Matrix(size_t n) : r_(n), c_(n) { allocate_zero(); }
 
-    Matrix(size_t rows, size_t cols) : r_(rows), c_(cols) {
-        allocate_zero();
-    }
+    Matrix(size_t rows, size_t cols) : r_(rows), c_(cols) { allocate_zero(); }
 
-    Matrix(size_t rows, size_t cols, T fill) : r_(rows), c_(cols) {
-        allocate_fill(fill);
-    }
+    Matrix(size_t rows, size_t cols, T fill) : r_(rows), c_(cols) { allocate_fill(fill); }
 
-    Matrix(const Matrix &other) : r_(other.r_), c_(other.c_) {
-        allocate_from(other);
-    }
+    Matrix(const Matrix &other) : r_(other.r_), c_(other.c_) { allocate_from(other); }
+
+    template<size_t R, size_t C>
+    explicit Matrix(const T (&array)[R][C]) : r_(R), c_(C) { allocate_from(array); }
+
+    template<size_t R>
+    explicit Matrix(const Vector<T> (&array)[R]) : r_(R), c_(array[0].size_) { allocate_from(array); }
 
     ~Matrix() {
         deallocate();
@@ -54,6 +52,20 @@ public:
             deallocate();
             allocate_from(other);
         }
+        return *this;
+    }
+
+    template<size_t R, size_t C>
+    Matrix &operator=(const T (&array)[R][C]) {
+        deallocate();
+        allocate_from(array);
+        return *this;
+    }
+
+    template<size_t R>
+    Matrix &operator=(const Vector<T> (&array)[R]) {
+        deallocate();
+        allocate_from(array);
         return *this;
     }
 
@@ -161,9 +173,7 @@ public:
 
     bool can_multiply_with(const Vector<T> &other) const { return c_ == other.size_; }
 
-    Vector<T> row(size_t r_index) const {
-        return Vector<T>(operator[](r_index));
-    }
+    Vector<T> row(size_t r_index) const { return Vector<T>(operator[](r_index)); }
 
     Vector<T> col(size_t c_index) const {
         Vector<T> tmp(r_);
@@ -190,17 +200,14 @@ public:
 
     T det() const {
         Pair<Matrix<T>, Matrix<T>> lu = LU();
-
         T det = 1;
         size_t r_swaps = 0;
         size_t n = min_val(r_, c_);
-
         for (size_t i = 0; i < n; ++i) {
             det *= lu.upper()[i][i];
             if (lu.upper()[i][i] == 0) return 0;
             if (lu.lower()[i][i] != 1) ++r_swaps;
         }
-
         return r_swaps % 2 == 0 ? det : -det;
     }
 
@@ -211,29 +218,45 @@ public:
         return acc;
     }
 
-    Matrix<T> inv() const {
-        size_t n = min_val(r_, c_);
+    Matrix inv() const {
         Pair<Matrix, Matrix> lu = LU();
-        Matrix inverse(n);
-        for (size_t i = 0; i < n; ++i) {
-            Vector<T> b(n);
-            b[i] = 1;
-            Vector<T> y = lu_forward_sub(lu.lower(), b);
-            Vector<T> x = lu_backward_sub(lu.upper(), y);
-            for (size_t j = 0; j < n; ++j) inverse[j][i] = x[j];
-        }
-        return inverse;
+        return inv_ut(lu.upper()) * inv_lt(lu.lower());
     }
 
-    Matrix<T> RRE() const {
-
+    Matrix RRE() const {
+        Matrix m(*this);
+        size_t lead = 0;
+        for (size_t r = 0; r < r_; ++r) {
+            if (lead >= c_) return m;
+            size_t i;
+            for (i = r; m[i][lead] == 0;) {
+                ++i;
+                if (i == r_) {
+                    i = r;
+                    ++lead;
+                    if (lead == c_) return m;
+                }
+            }
+            m[i].swap(m[r]);
+            T val = m[r][lead];
+            for (size_t j = 0; j < c_; ++j) m[r][j] /= val;
+            for (i = 0; i < r_; ++i) {
+                if (i != r) {
+                    val = m[i][lead];
+                    for (size_t j = 0; j < c_; ++j)
+                        m[i][j] -= val * m[r][j];
+                }
+            }
+            ++lead;
+        }
+        m.fix_zero();
+        return m;
     }
 
     Pair<Matrix, Matrix> LU() const {
         size_t n = min_val(r_, c_);
         Matrix lower(n, n);
         Matrix upper(n, n);
-
         for (size_t i = 0; i < n; ++i) {
             for (size_t k = 0; k < n; ++k) {
                 T sum_ = 0;
@@ -252,14 +275,6 @@ public:
         return {lower, upper};
     }
 
-    void append_row() {
-
-    }
-
-    void append_col() {
-
-    }
-
     Iterator<Vector<T> *> begin() { return vector_->begin(); }
 
     Iterator<Vector<T> *> begin() const { return vector_->begin(); }
@@ -275,28 +290,22 @@ public:
     size_t n() const { return r_ * c_; }
 
 private:
-    static Vector<T> lu_forward_sub(const Matrix<double> &L, const Vector<double> &b) {
+    static Matrix inv_lt(const Matrix &L) {
         size_t n = min_val(L.r_, L.c_);
-        Vector<T> y(n);
-        for (size_t i = 0; i < n; ++i) {
-            y[i] = b[i];
-            for (size_t j = 0; j < i; ++j) y[i] -= L[i][j] * y[j];
-            y[i] /= L[i][i];
+        Matrix X(n);
+        for (size_t k = 0; k < n; ++k) {
+            X[k][k] = 1 / L[k][k];
+            for (size_t i = k + 1; i < n; ++i) {
+                T acc = 0;
+                for (size_t j = k; j < i; ++j)
+                    acc -= L[i][j] * X[j][k];
+                X[i][k] = acc / L[i][i];
+            }
         }
-        return y;
+        return X;
     }
 
-    static Vector<T> lu_backward_sub(const Matrix<double> &U, const Vector<double> &y) {
-        size_t n = min_val(U.r_, U.c_);
-        Vector<T> x(n);
-        for (size_t i = n - 1;; --i) {
-            x[i] = y[i];
-            for (size_t j = i + 1; j < i; ++j) x[i] -= U[i][j] * x[j];
-            x[i] /= U[i][i];
-            if (i == 0) break;
-        }
-        return x;
-    }
+    static Matrix inv_ut(const Matrix &U) { return inv_lt(U.transpose()).transpose(); }
 
     static Matrix mm_naive(const Matrix &A, const Matrix &B) {
         Matrix C(A.r_, B.c_);
@@ -309,6 +318,13 @@ private:
 
     static Matrix mm_strassen(const Matrix &A, const Matrix &B) {
         return mm_naive(A, B);
+    }
+
+    void fix_zero() {
+        for (size_t i = 0; i < r_; ++i)
+            for (size_t j = 0; j < c_; ++j)
+                if (vector_->operator[](i)->operator[](j) == 0.0)
+                    vector_->operator[](i)->operator[](j) = 0.0;
     }
 
     void put_array(size_t index, Vector<T> &vector) {
@@ -341,11 +357,23 @@ private:
         r_ = other.r_;
         c_ = other.c_;
         vector_ = new Vector<Vector<T> *>(r_);
-        for (size_t i = 0; i < r_; ++i) {
-            vector_->operator[](i) = new Vector<T>(c_);
-            for (size_t j = 0; j < c_; ++j)
-                vector_->operator[](i)->operator[](j) = other.vector_->operator[](i)->operator[](j);
-        }
+        for (size_t i = 0; i < r_; ++i) vector_->operator[](i) = new Vector<T>(other[i]);
+    }
+
+    template<size_t R, size_t C>
+    void allocate_from(const T (&array)[R][C]) {
+        r_ = R;
+        c_ = C;
+        vector_ = new Vector<Vector<T> *>(r_);
+        for (size_t i = 0; i < r_; ++i) vector_->operator[](i) = new Vector<T>(array[i]);
+    }
+
+    template<size_t R>
+    void allocate_from(const Vector<T> (&array)[R]) {
+        r_ = R;
+        c_ = array[0].size_;
+        vector_ = new Vector<Vector<T> *>(r_);
+        for (size_t i = 0; i < r_; ++i) vector_->operator[](i) = new Vector<T>(array[i]);
     }
 
     void deallocate() {
@@ -358,7 +386,9 @@ public:
 
     static Matrix zero(size_t n) { return Matrix(n); }
 
-    static Matrix identity(size_t n) { return Matrix::diagonal(n, 1); }
+    static Matrix identity(size_t n) { return diagonal(n, 1); }
+
+    static Matrix id(size_t n) { return identity(n); }
 
     static Matrix I1() { return identity(1); }
 
@@ -400,8 +430,15 @@ Matrix<T> operator*(T lhs, const Matrix<T> &rhs) {
 }
 
 template<typename T>
-T det(const Matrix<T> &A) {
-    return A.det();
-}
+T det(const Matrix<T> &A) { return A.det(); }
+
+template<typename T>
+T tr(const Matrix<T> &A) { return A.tr(); }
+
+template<typename T>
+Matrix<T> inv(const Matrix<T> &A) { return A.inv(); }
+
+template<typename T>
+Matrix<T> RRE(const Matrix<T> &A) { return A.RRE(); }
 
 #endif //VNET_MATRIX_H

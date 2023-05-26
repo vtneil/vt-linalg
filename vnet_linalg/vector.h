@@ -2,6 +2,7 @@
 #define VNET_VECTOR_H
 
 #include "utils.h"
+//#include <InitializerList>
 
 template<typename T>
 class Iterator;
@@ -21,19 +22,14 @@ private:
 public:
     Vector() = delete;
 
-    explicit Vector(size_t size) : size_(size) {
-        arr_ = new T[size_]();
-    }
+    explicit Vector(size_t size) : size_(size) { allocate_zero(); }
 
-    Vector(size_t size, T fill) : size_(size) {
-        arr_ = new T[size_];
-        for (size_t i = 0; i < size_; ++i) arr_[i] = fill;
-    }
+    Vector(size_t size, T fill) : size_(size) { allocate_fill(fill); }
 
-    Vector(const Vector &other) : size_(other.size_) {
-        arr_ = new T[size_];
-        memcpy(arr_, other.arr_, other.size_ * sizeof(T));
-    }
+    Vector(const Vector &other) : size_(other.size_) { allocate_from(other); }
+
+    template<size_t N>
+    explicit Vector(const T (&array)[N]) : size_(N) { allocate_from(array); }
 
     Vector(const Iterator<T> &begin, const Iterator<T> &end) : size_(end - begin) {
         arr_ = new T[size_];
@@ -45,7 +41,7 @@ public:
         memcpy(arr_, begin, size_ * sizeof(T));
     }
 
-    ~Vector() { delete[] arr_; }
+    ~Vector() { deallocate(); }
 
     T &operator[](size_t index) { return *(arr_ + index); }
 
@@ -60,7 +56,17 @@ public:
     const T &operator()(size_t index) const { return at(index); }
 
     Vector &operator=(const Vector &other) {
-        *this = Vector(other);
+        if (this != &other) {
+            deallocate();
+            allocate_from(other);
+        }
+        return *this;
+    }
+
+    template<size_t N>
+    Vector &operator=(const T (&array)[N]) {
+        deallocate();
+        allocate_from(array);
         return *this;
     }
 
@@ -128,6 +134,11 @@ public:
         return !operator==(other);
     }
 
+    void swap(Vector &other) {
+        swap_val(arr_, other.arr_);
+        swap_val(size_, other.size_);
+    }
+
     Iterator<T> begin() { return Iterator<T>(arr_); }
 
     Iterator<T> begin() const { return Iterator<T>(arr_); }
@@ -152,6 +163,28 @@ private:
         arr_[index] = value;
         put_array(index + 1, values...);
     }
+
+    void allocate_zero() { arr_ = new T[size_](); }
+
+    void allocate_fill(T fill) {
+        arr_ = new T[size_];
+        for (size_t i = 0; i < size_; ++i) arr_[i] = fill;
+    }
+
+    void allocate_from(const Vector &other) {
+        size_ = other.size_;
+        arr_ = new T[size_];
+        memcpy(arr_, other.arr_, other.size_ * sizeof(T));
+    }
+
+    template<size_t N>
+    void allocate_from(const T (&array)[N]) {
+        size_ = N;
+        arr_ = new T[size_];
+        memcpy(arr_, array, size_ * sizeof(T));
+    }
+
+    void deallocate() { delete[] arr_; }
 
 public:
     static Vector zero(size_t n) { return Vector(n); }

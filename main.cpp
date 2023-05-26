@@ -21,18 +21,27 @@ void print_vector(const Vector<T> &v) {
 }
 
 int main() {
-    Vector<double> v1 = Vector<double>::from(7, 2, 3, 1);
-    Vector<double> v2 = Vector<double>::from(3, 2, 1);
+    Vector<double> v1 = Vector<double>({7, 2, 3, 1});
+    Vector<double> v2 = Vector<double>({1, 2, 3, 4});
 
-    Matrix<double> A = Matrix<double>::from(
-            Vector<double>::from(4, 3),
-            Vector<double>::from(6, 3)
-    );
+    Matrix<double> A = Matrix<double>({{1, 2, 3},
+                                       {4, 5, 6},
+                                       {7, 8, 10}});
 
-    Matrix<double> C = Matrix<double>::from_col(Vector<double>::from(1, 2, 3, 4));
+    print_matrix(A);
+    std::cout << "-----\n";
 
-    print_matrix(Matrix<double>::I3());
-    print_matrix((3.0 * Matrix<double>::I3()).inv());
+    print_matrix(RRE(A));
+    std::cout << "-----\n";
+
+    print_matrix(inv(A));
+    std::cout << "-----\n";
+
+    std::cout << tr(A) << '\n';
+    std::cout << "-----\n";
+
+    std::cout << det(A) << '\n';
+    std::cout << "-----\n";
 
     return 0;
 }
