@@ -31,7 +31,8 @@ int main() {
 
     Matrix<double> C = Matrix<double>::from_col(Vector<double>::from(1, 2, 3, 4));
 
-    print_matrix((A ^ 2) + (2.0 * A) + Matrix<double>::identity(2));
+    print_matrix(Matrix<double>::I3());
+    print_matrix((3.0 * Matrix<double>::I3()).inv());
 
     return 0;
 }

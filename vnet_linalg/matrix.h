@@ -211,8 +211,18 @@ public:
         return acc;
     }
 
-    T inv() const {
-
+    Matrix<T> inv() const {
+        size_t n = min_val(r_, c_);
+        Pair<Matrix, Matrix> lu = LU();
+        Matrix inverse(n);
+        for (size_t i = 0; i < n; ++i) {
+            Vector<T> b(n);
+            b[i] = 1;
+            Vector<T> y = lu_forward_sub(lu.lower(), b);
+            Vector<T> x = lu_backward_sub(lu.upper(), y);
+            for (size_t j = 0; j < n; ++j) inverse[j][i] = x[j];
+        }
+        return inverse;
     }
 
     Matrix<T> RRE() const {
@@ -247,7 +257,7 @@ public:
     }
 
     void append_col() {
-        
+
     }
 
     Iterator<Vector<T> *> begin() { return vector_->begin(); }
@@ -265,6 +275,29 @@ public:
     size_t n() const { return r_ * c_; }
 
 private:
+    static Vector<T> lu_forward_sub(const Matrix<double> &L, const Vector<double> &b) {
+        size_t n = min_val(L.r_, L.c_);
+        Vector<T> y(n);
+        for (size_t i = 0; i < n; ++i) {
+            y[i] = b[i];
+            for (size_t j = 0; j < i; ++j) y[i] -= L[i][j] * y[j];
+            y[i] /= L[i][i];
+        }
+        return y;
+    }
+
+    static Vector<T> lu_backward_sub(const Matrix<double> &U, const Vector<double> &y) {
+        size_t n = min_val(U.r_, U.c_);
+        Vector<T> x(n);
+        for (size_t i = n - 1;; --i) {
+            x[i] = y[i];
+            for (size_t j = i + 1; j < i; ++j) x[i] -= U[i][j] * x[j];
+            x[i] /= U[i][i];
+            if (i == 0) break;
+        }
+        return x;
+    }
+
     static Matrix mm_naive(const Matrix &A, const Matrix &B) {
         Matrix C(A.r_, B.c_);
         for (int i = 0; i < A.r_; i++)
@@ -323,14 +356,22 @@ private:
 public:
     static Matrix zero(size_t r, size_t c) { return Matrix(r, c); }
 
-    static Matrix zero(size_t n) { return Matrix(n, n); }
+    static Matrix zero(size_t n) { return Matrix(n); }
 
-    static Matrix identity(size_t n) {
-        return Matrix::diagonal(n, 1);
-    }
+    static Matrix identity(size_t n) { return Matrix::diagonal(n, 1); }
+
+    static Matrix I1() { return identity(1); }
+
+    static Matrix I2() { return identity(2); }
+
+    static Matrix I3() { return identity(3); }
+
+    static Matrix I4() { return identity(4); }
+
+    static Matrix I5() { return identity(5); }
 
     static Matrix diagonal(size_t n, T value) {
-        Matrix tmp(n, n);
+        Matrix tmp(n);
         for (size_t i = 0; i < n; ++i) tmp[i][i] = value;
         return tmp;
     }
