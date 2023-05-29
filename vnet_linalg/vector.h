@@ -20,7 +20,7 @@ private:
     size_t size_;
 
 public:
-    Vector() = delete;
+    Vector() : size_(0), arr_(nullptr) {}
 
     explicit Vector(size_t size) : size_(size) { allocate_zero(); }
 
@@ -246,13 +246,19 @@ public:
         return tmp;
     }
 
-    bool operator==(const Iterator &other) { return ptr_ == other.ptr_; }
+    bool operator==(const Iterator &other) const { return ptr_ == other.ptr_; }
 
-    bool operator!=(const Iterator &other) { return !operator==(other); }
+    bool operator!=(const Iterator &other) const { return !operator==(other); }
 
-    bool operator==(T *ptr) { return ptr_ == ptr; }
+    bool operator==(T *ptr) const { return ptr_ == ptr; }
 
-    bool operator!=(T *ptr) { return !operator==(ptr); }
+    bool operator!=(T *ptr) const { return !operator==(ptr); }
 };
+
+template<typename T>
+bool operator==(T *ptr, const Iterator<T> &iterator) { return iterator.operator==(ptr); }
+
+template<typename T>
+bool operator!=(T *ptr, const Iterator<T> &iterator) { return !operator==(ptr, iterator); }
 
 #endif //VNET_VECTOR_H

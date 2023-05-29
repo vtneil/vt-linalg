@@ -46,10 +46,6 @@ public:
         *this = Pair(other);
         return *this;
     }
-
-    T1 &lower() { return first; }
-
-    T1 &upper() { return second; }
 };
 
 template<typename T>

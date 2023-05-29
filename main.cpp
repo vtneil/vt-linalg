@@ -1,47 +1,76 @@
+#include <iostream>
+//#include <random>
 #include "vnet_linalg/vector.h"
 #include "vnet_linalg/matrix.h"
-#include <iostream>
+
+#define NEWLINE() std::cout<<'\n'
+
+using matrix = Matrix<double>;
+using vector = Vector<double>;
 
 template<typename T>
-void print_matrix(const Matrix<T> &A) {
+void print(const T &x) {
+    std::cout << x << '\n';
+}
+
+template<typename T>
+void print(const Matrix<T> &A) {
     for (auto &x: A) {
         for (auto &y: *x) {
             std::cout << y << ' ';
         }
-        std::cout << '\n';
+        NEWLINE();
     }
 }
 
 template<typename T>
-void print_vector(const Vector<T> &v) {
+void printb(const Matrix<T> &A) {
+    std::cout << '{';
+    for (auto &x: A) {
+        std::cout << '{';
+        for (auto &y: *x) {
+            std::cout << y;
+            if (&y != (x->end() - 1)) std::cout << ',';
+        }
+        std::cout << '}';
+        if (&x != (A.end() - 1)) std::cout << ',';
+    }
+    std::cout << '}';
+    NEWLINE();
+}
+
+template<typename T>
+void print(const Vector<T> &v) {
     for (auto &y: v) {
         std::cout << y << ' ';
     }
-    std::cout << '\n';
+    if (v.size()) NEWLINE();
 }
 
-int main() {
-    Vector<double> v1 = Vector<double>({7, 2, 3, 1});
-    Vector<double> v2 = Vector<double>({1, 2, 3, 4});
+void test(size_t n) {
+    size_t N = n;
 
-    Matrix<double> A = Matrix<double>({{1, 2, 3},
-                                       {4, 5, 6},
-                                       {7, 8, 10}});
+    matrix A(N, N);
+    matrix B(N, N);
+    matrix C(N, N);
 
-    print_matrix(A);
-    std::cout << "-----\n";
+    for (size_t i = 0; i < N; ++i) {
+        for (size_t j = 0; j < N; ++j) {
+            A[i][j] = (double) (i * N + j) / 762;
+            B[i][j] = (double) (i * N + j) / 1983;
+        }
+    }
 
-    print_matrix(RRE(A));
-    std::cout << "-----\n";
+    for (size_t i = 0; i < 1; ++i) {
+        static_cast<void>(C.RRE());
+    }
+}
 
-    print_matrix(inv(A));
-    std::cout << "-----\n";
+int main(int argc, char **argv) {
+    if (argc < 2) return -1;
+    size_t n = strtoul(argv[1], nullptr, 0);
 
-    std::cout << tr(A) << '\n';
-    std::cout << "-----\n";
-
-    std::cout << det(A) << '\n';
-    std::cout << "-----\n";
+    test(n);
 
     return 0;
 }
