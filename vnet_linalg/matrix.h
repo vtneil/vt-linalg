@@ -15,7 +15,6 @@ private:
 private:
     static constexpr size_t STRASSEN_DIMENSION = 32;
     static constexpr size_t STRASSEN_THRESHOLD = STRASSEN_DIMENSION * STRASSEN_DIMENSION;
-//    static constexpr size_t STRASSEN_THRESHOLD = 2 * 2;
     Vector<Vector<T_> *> *vector_;
     size_t r_;
     size_t c_;
