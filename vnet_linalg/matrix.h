@@ -406,10 +406,15 @@ private:
     static Matrix inv_ut(const Matrix &U) { return inv_lt(U.transpose()).transpose(); }
 
     static Matrix &mm_naive(Matrix &C, const Matrix &A, const Matrix &B) {
-        for (int i = 0; i < A.r_; ++i)
-            for (int k = 0; k < A.c_; ++k)
-                for (int j = 0; j < B.c_; ++j)
-                    C[i][j] += A[i][k] * B[k][j];
+        for (size_t i = 0; i < A.r_; ++i) {
+            Vector<T_> &row_C = C[i];
+            for (size_t k = 0; k < A.c_; ++k) {
+                const T_ &val_A = A[i][k];
+                for (size_t j = 0; j < B.c_; ++j) {
+                    row_C[j] += val_A * B[k][j];
+                }
+            }
+        }
         return C;
     }
 
@@ -443,6 +448,7 @@ private:
             B12 = Bp.slice(0, cB / 2, rB / 2, cB);
             B21 = Bp.slice(rB / 2, 0, rB, cB / 2);
             B22 = Bp.slice(rB / 2, cB / 2, rB, cB);
+            C = Matrix(rA, cB);
         }
 
         Matrix M1 = (A11 + A22) * (B11 + B22);
