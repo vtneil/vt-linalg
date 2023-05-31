@@ -2,7 +2,7 @@
 #define VNET_VECTOR_H
 
 #include "utils.h"
-//#include <InitializerList>
+//#include <initializer_list>
 
 template<typename T>
 class Iterator;
@@ -28,17 +28,22 @@ public:
 
     Vector(const Vector &other) : size_(other.size_) { allocate_from(other); }
 
+    Vector(Vector &&other) noexcept: size_(other.size_), arr_(other.arr_) {
+        other.size_ = 0;
+        other.arr_ = nullptr;
+    }
+
     template<size_t N>
     explicit Vector(const T (&array)[N]) : size_(N) { allocate_from(array); }
 
     Vector(const Iterator<T> &begin, const Iterator<T> &end) : size_(end - begin) {
         arr_ = new T[size_];
-        memcpy(arr_, &*begin, size_ * sizeof(T));
+        for (Iterator<T> it = begin; it != end; ++it) arr_[it - begin] = *it;
     }
 
     Vector(T *begin, T *end) : size_(end - begin) {
         arr_ = new T[size_];
-        memcpy(arr_, begin, size_ * sizeof(T));
+        for (size_t i = 0; i < size_; ++i) arr_[i] = *(begin + i);
     }
 
     ~Vector() { deallocate(); }
@@ -63,6 +68,17 @@ public:
         return *this;
     }
 
+    Vector &operator=(Vector &&other) noexcept {
+        if (this != &other) {
+            deallocate();
+            size_ = other.size_;
+            arr_ = other.arr_;
+            other.size_ = 0;
+            other.arr_ = nullptr;
+        }
+        return *this;
+    }
+
     template<size_t N>
     Vector &operator=(const T (&array)[N]) {
         deallocate();
@@ -75,16 +91,38 @@ public:
         return *this;
     }
 
+    template<size_t N>
+    Vector &operator+=(const T (&array)[N]) {
+        for (size_t i = 0; i < size_; ++i) arr_[i] += array[i];
+        return *this;
+    }
+
     Vector operator+(const Vector &other) const {
         Vector tmp(*this);
         tmp.operator+=(other);
         return tmp;
     }
 
+    template<size_t N>
+    Vector operator+(const T (&array)[N]) const {
+        Vector tmp(*this);
+        tmp.operator+=(array);
+        return tmp;
+    }
+
     Vector add(const Vector &other) const { return operator+(other); }
+
+    template<size_t N>
+    Vector add(const T (&array)[N]) const { return operator+(array); }
 
     Vector &operator-=(const Vector &other) {
         for (size_t i = 0; i < size_; ++i) arr_[i] -= other.arr_[i];
+        return *this;
+    }
+
+    template<size_t N>
+    Vector &operator-=(const T (&array)[N]) {
+        for (size_t i = 0; i < size_; ++i) arr_[i] -= array[i];
         return *this;
     }
 
@@ -94,7 +132,17 @@ public:
         return tmp;
     }
 
+    template<size_t N>
+    Vector operator-(const T (&array)[N]) const {
+        Vector tmp(*this);
+        tmp.operator-=(array);
+        return tmp;
+    }
+
     Vector subtract(const Vector &other) const { return operator-(other); }
+
+    template<size_t N>
+    Vector subtract(const T (&array)[N]) const { return operator-(array); }
 
     Vector &operator*=(T rhs) {
         for (size_t i = 0; i < size_; ++i) arr_[i] *= rhs;
@@ -107,13 +155,34 @@ public:
         return tmp;
     }
 
+    Vector &operator/=(T rhs) {
+        for (size_t i = 0; i < size_; ++i) arr_[i] /= rhs;
+        return *this;
+    }
+
+    Vector operator/(T rhs) const {
+        Vector tmp(*this);
+        tmp.operator/=(rhs);
+        return tmp;
+    }
+
     T dot(const Vector &other) const {
         T acc = 0;
         for (size_t i = 0; i < size_; ++i) acc += arr_[i] * other.arr_[i];
         return acc;
     }
 
+    template<size_t N>
+    T dot(const T (&array)[N]) const {
+        T acc = 0;
+        for (size_t i = 0; i < size_; ++i) acc += arr_[i] * array[i];
+        return acc;
+    }
+
     T inner(const Vector &other) const { return dot(other); }
+
+    template<size_t N>
+    T inner(const T (&array)[N]) const { return dot(array); }
 
     Matrix<T> outer(const Vector &other) const {
         Matrix<T> result(size_, other.size_);
@@ -123,6 +192,19 @@ public:
         return result;
     }
 
+    template<size_t N>
+    Matrix<T> outer(const T (&array)[N]) const {
+        Matrix<T> result(size_, N);
+        for (size_t i = 0; i < size_; ++i)
+            for (size_t j = 0; j < N; ++j)
+                result[i][j] = arr_[i] * array[j];
+        return result;
+    }
+
+    T norm() const { return pow(dot(*this), 0.5); }
+
+    Vector normalize() const { return Vector(*this) / norm(); }
+
     bool operator==(const Vector &other) const {
         if (this == &other) return true;
         if (size_ != other.size_) return false;
@@ -130,9 +212,22 @@ public:
         return true;
     }
 
-    bool operator!=(const Vector &other) const {
-        return !operator==(other);
+    template<size_t N>
+    bool operator==(const T (&array)[N]) const {
+        if (size_ != N) return false;
+        for (size_t i = 0; i < size_; ++i) if (arr_[i] != array[i]) return false;
+        return true;
     }
+
+    bool operator!=(const Vector &other) const { return !operator==(other); }
+
+    template<size_t N>
+    bool operator!=(const T (&array)[N]) const { return !operator==(array); }
+
+    bool equals(const Vector &other) const { return operator==(other); }
+
+    template<size_t N>
+    bool equals(const T (&array)[N]) const { return operator==(array); }
 
     void swap(Vector &other) {
         swap_val(arr_, other.arr_);
@@ -154,9 +249,7 @@ public:
     size_t size() const { return size_; }
 
 private:
-    void put_array(size_t index, T value) {
-        arr_[index] = value;
-    }
+    void put_array(size_t index, T value) { arr_[index] = value; }
 
     template<typename... Ts>
     void put_array(size_t index, T value, Ts ...values) {
@@ -174,14 +267,14 @@ private:
     void allocate_from(const Vector &other) {
         size_ = other.size_;
         arr_ = new T[size_];
-        memcpy(arr_, other.arr_, other.size_ * sizeof(T));
+        for (size_t i = 0; i < size_; ++i) arr_[i] = other.arr_[i];
     }
 
     template<size_t N>
     void allocate_from(const T (&array)[N]) {
         size_ = N;
         arr_ = new T[size_];
-        memcpy(arr_, array, size_ * sizeof(T));
+        for (size_t i = 0; i < size_; ++i) arr_[i] = array[i];
     }
 
     void deallocate() { delete[] arr_; }
@@ -201,6 +294,20 @@ template<typename T>
 Vector<T> operator*(T lhs, const Vector<T> &rhs) {
     Vector<T> tmp(rhs);
     tmp.operator*=(lhs);
+    return tmp;
+}
+
+template<typename T, size_t N>
+Vector<T> operator+(const T (&lhs)[N], const Vector<T> &rhs) {
+    Vector<T> tmp(rhs);
+    tmp.operator+=(lhs);
+    return tmp;
+}
+
+template<typename T, size_t N>
+Vector<T> operator-(const T (&lhs)[N], const Vector<T> &rhs) {
+    Vector<T> tmp(rhs);
+    tmp.operator-=(lhs);
     return tmp;
 }
 
@@ -260,5 +367,7 @@ bool operator==(T *ptr, const Iterator<T> &iterator) { return iterator.operator=
 
 template<typename T>
 bool operator!=(T *ptr, const Iterator<T> &iterator) { return !operator==(ptr, iterator); }
+
+using numeric_vector = Vector<double>;
 
 #endif //VNET_VECTOR_H

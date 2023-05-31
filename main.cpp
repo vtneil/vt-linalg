@@ -1,13 +1,10 @@
 #include <iostream>
 //#include <random>
-#include "vnet_linalg/vector.h"
-#include "vnet_linalg/matrix.h"
+#include "vnet_linalg/numeric_vector.h"
+#include "vnet_linalg/numeric_matrix.h"
 
-//#define TEST
+#define TEST
 #define NEWLINE() std::cout<<'\n'
-
-using matrix = Matrix<double>;
-using vector = Vector<double>;
 
 template<typename T>
 void print(const T &x) {
@@ -16,11 +13,15 @@ void print(const T &x) {
 
 template<typename T>
 void print(const Matrix<T> &A) {
-    for (auto &x: A) {
-        for (auto &y: *x) {
-            std::cout << y << ' ';
+    if (A.r() > 0) {
+        for (auto &x: A) {
+            if (x.size() > 0) {
+                for (auto &y: x) {
+                    std::cout << y << ' ';
+                }
+                NEWLINE();
+            }
         }
-        NEWLINE();
     }
 }
 
@@ -29,7 +30,7 @@ void printb(const Matrix<T> &A) {
     std::cout << '{';
     for (auto &x: A) {
         std::cout << '{';
-        for (auto &y: *x) {
+        for (auto &y: x) {
             std::cout << y;
             if (&y != (x->end() - 1)) std::cout << ',';
         }
@@ -51,9 +52,9 @@ void print(const Vector<T> &v) {
 void test(size_t n) {
     size_t N = n;
 
-    matrix A(N, N);
-    matrix B(N, N);
-    matrix C(N, N);
+    numeric_matrix A(N, N);
+    numeric_matrix B(N, N);
+    numeric_matrix C(N, N);
 
     for (size_t i = 0; i < N; ++i) {
         for (size_t j = 0; j < N; ++j) {
@@ -63,26 +64,11 @@ void test(size_t n) {
     }
 
     for (size_t i = 0; i < 1; ++i) {
-        static_cast<void>(matrix::imatmul(C, A, B));
+        static_cast<void>(numeric_matrix::imatmul(C, A, B));
     }
 }
 
 int main(int argc, char **argv) {
-    matrix A({{1, 2, 3, 4},
-              {4, 5, 6, 1},
-              {7, 8, 9, 0}});
-    matrix B({{3, 4},
-              {1, -1},
-              {6, 1},
-              {4, 5}});
-
-//    A = {{1, 2, 3, 4}, {4, 5, 6, 1}, {7, 8, 9, 0}, {1, 4, -1, 9}};
-//    B = {{1, 2, 3, 4}, {4, 5, 6, 1}, {7, 8, 9, 0}, {1, 4, -1, 9}};
-
-    matrix C(A * B);
-
-    print(C);
-
 #ifdef TEST
     if (argc < 2) return -1;
     size_t n = strtoul(argv[1], nullptr, 0);

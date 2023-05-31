@@ -2,7 +2,7 @@
 #define VNET_MATRIX_H
 
 #include "utils.h"
-#include "vector.h"
+#include "numeric_vector.h"
 
 template<typename T_>
 class MatrixLU;
@@ -13,14 +13,14 @@ private:
     friend class Vector<T_>;
 
 private:
-    static constexpr size_t STRASSEN_DIMENSION = 32;
+    static constexpr size_t STRASSEN_DIMENSION = 1024;
     static constexpr size_t STRASSEN_THRESHOLD = STRASSEN_DIMENSION * STRASSEN_DIMENSION;
-    Vector<Vector<T_> *> *vector_;
+    Vector<Vector<T_>> vector_;
     size_t r_;
     size_t c_;
 
 public:
-    Matrix() : r_(0), c_(0), vector_(new Vector<Vector<T_> *>()) {}
+    Matrix() : r_(0), c_(0), vector_(move(Vector<Vector<T_>>())) {}
 
     explicit Matrix(size_t n) : r_(n), c_(n) { allocate_zero(); }
 
@@ -29,6 +29,12 @@ public:
     Matrix(size_t rows, size_t cols, T_ fill) : r_(rows), c_(cols) { allocate_fill(fill); }
 
     Matrix(const Matrix &other) : r_(other.r_), c_(other.c_) { allocate_from(other); }
+
+    Matrix(Matrix &&other) noexcept: r_(other.r_), c_(other.c_) {
+        steal(move(other));
+        other.r_ = 0;
+        other.c_ = 0;
+    }
 
     template<size_t R, size_t C>
     explicit Matrix(const T_ (&array)[R][C]) : r_(R), c_(C) { allocate_from(array); }
@@ -52,15 +58,13 @@ public:
         }
     }
 
-    ~Matrix() { deallocate(); }
+    Vector<T_> &operator[](size_t index) { return vector_[index]; }
 
-    Vector<T_> &operator[](size_t index) { return *(vector_->operator[](index)); }
+    const Vector<T_> &operator[](size_t index) const { return vector_[index]; }
 
-    const Vector<T_> &operator[](size_t index) const { return *(vector_->operator[](index)); }
+    T_ &at(size_t r_index, size_t c_index) { return vector_[r_index][c_index]; };
 
-    T_ &at(size_t r_index, size_t c_index) { return operator[](r_index).operator[](c_index); };
-
-    const T_ &at(size_t r_index, size_t c_index) const { return operator[](r_index).operator[](c_index); };
+    const T_ &at(size_t r_index, size_t c_index) const { return vector_[r_index][c_index]; };
 
     T_ &operator()(size_t r_index, size_t c_index) { return at(r_index, c_index); }
 
@@ -71,9 +75,17 @@ public:
             if (r_ == other.r_ && c_ == other.c_) {
                 insert(other);
             } else {
-                deallocate();
                 allocate_from(other);
             }
+        }
+        return *this;
+    }
+
+    Matrix &operator=(Matrix &&other) noexcept {
+        if (this != &other) {
+            steal(move(other));
+            other.r_ = 0;
+            other.c_ = 0;
         }
         return *this;
     }
@@ -83,16 +95,14 @@ public:
         if (r_ == R && c_ == C) {
             insert(array);
         } else {
-            deallocate();
             allocate_from(array);
         }
         return *this;
     }
 
     template<size_t R>
-    Matrix &operator=(const Vector<T_> (&array)[R]) {
-        deallocate();
-        allocate_from(array);
+    Matrix &operator=(const Vector<T_> (&vectors)[R]) {
+        allocate_from(vectors);
         return *this;
     }
 
@@ -131,9 +141,7 @@ public:
     }
 
     Matrix &operator*=(const Matrix &other) {
-        Matrix tmp = operator*(other);
-        deallocate();
-        allocate_from(tmp);
+        steal(move(operator*(other)));
         return *this;
     }
 
@@ -143,7 +151,7 @@ public:
     }
 
     Matrix &operator*=(T_ rhs) {
-        for (auto &x: *vector_) *x *= rhs;
+        for (auto &x: vector_) x *= rhs;
         return *this;
     }
 
@@ -155,7 +163,7 @@ public:
 
     Vector<T_> operator*(const Vector<T_> &other) const {
         Vector<T_> tmp(r_);
-        for (size_t i = 0; i < r_; ++i) tmp[i] = *(vector_->operator[](i)) * other;
+        for (size_t i = 0; i < r_; ++i) tmp[i] = vector_[i] * other;
         return tmp;
     }
 
@@ -166,7 +174,7 @@ public:
             B.r() != 1 &&
             A.c() != 1 &&
             B.c() != 1 &&
-            max_val(A.r() * A.c(), B.r() * B.c()) > STRASSEN_THRESHOLD)
+            max_val(A.r() * A.c(), B.r() * B.c()) >= STRASSEN_THRESHOLD)
             return mm_strassen(C, A, B);
         return mm_naive(C, A, B);
     }
@@ -179,9 +187,7 @@ public:
     Vector<T_> transform(const Vector<T_> &other) const { return operator*(other); }
 
     Matrix &operator^=(size_t n) {
-        Matrix tmp = operator^(n);
-        deallocate();
-        allocate_from(tmp);
+        steal(move(operator^(n)));
         return *this;
     }
 
@@ -189,7 +195,7 @@ public:
         Matrix product(*this);
         if (n == 0) return id(min_val(r_, c_));
         if (n == 1) return product;
-        product = product.operator^(n / 2);
+        product = move(product.operator^(n / 2));
         if (n % 2 == 0) return product.operator*(product);
         else return product.operator*(product).operator*(*this);
     }
@@ -197,7 +203,7 @@ public:
     Matrix matpow(size_t n) { return operator^(n); }
 
     Matrix matpow_naive(size_t n) {
-        Matrix product = id(r_);
+        Matrix product = move(id(r_));
         for (size_t i = 0; i < n; ++i) product *= *this;
         return product;
     }
@@ -206,13 +212,29 @@ public:
         if (this == &other) return true;
         if (r_ != other.r_ || c_ != other.c_) return false;
         for (size_t i = 0; i < r_; ++i)
-            for (size_t j = 0; j < c_; ++j)
-                if (vector_->operator[](i)->operator[](j) != other.vector_->operator[](i)->operator[](j))
-                    return false;
+            if (vector_[i] != other.vector_[i])
+                return false;
+        return true;
+    }
+
+    template<size_t R, size_t C>
+    bool operator==(const T_ (&array)[R][C]) const {
+        if (r_ != R || c_ != C) return false;
+        for (size_t i = 0; i < r_; ++i)
+            if (vector_[i] != array[i])
+                return false;
         return true;
     }
 
     bool operator!=(const Matrix &other) const { return !operator==(other); }
+
+    template<size_t R, size_t C>
+    bool operator!=(const T_ (&array)[R][C]) const { return !operator==(array); }
+
+    bool equals(const Matrix &other) const { return operator==(other); }
+
+    template<size_t R, size_t C>
+    bool equals(const T_ (&array)[R][C]) const { return operator==(array); }
 
     bool is_square() const { return r_ == c_; }
 
@@ -239,16 +261,14 @@ public:
 
     Matrix transpose() const {
         Matrix tmp(c_, r_);
-        for (size_t i = 0; i < r_; ++i) {
-            for (size_t j = 0; j < c_; ++j) {
-                tmp.vector_->operator[](j)->operator[](i) = vector_->operator[](i)->operator[](j);
-            }
-        }
+        for (size_t i = 0; i < r_; ++i)
+            for (size_t j = 0; j < c_; ++j)
+                tmp.vector_[j][i] = vector_[i][j];
         return tmp;
     }
 
     T_ det() const {
-        MatrixLU<T_> lu = LU();
+        MatrixLU<T_> lu = move(LU());
         T_ det = 1;
         size_t r_swaps = 0;
         size_t n = min_val(r_, c_);
@@ -263,12 +283,12 @@ public:
     T_ tr() const {
         T_ acc = 0;
         size_t n = min_val(r_, c_);
-        for (size_t i = 0; i < n; ++i) acc += vector_->operator[](i)->operator[](i);
+        for (size_t i = 0; i < n; ++i) acc += vector_[i][i];
         return acc;
     }
 
     Matrix inv() const {
-        MatrixLU<T_> lu = LU();
+        MatrixLU<T_> lu = move(LU());
         return inv_ut(lu.u()) * inv_lt(lu.l());
     }
 
@@ -310,14 +330,14 @@ public:
             for (size_t k = 0; k < n; ++k) {
                 T_ sum_ = 0;
                 for (size_t j = 0; j < i; ++j) sum_ += lower[i][j] * upper[j][k];
-                upper[i][k] = vector_->operator[](i)->operator[](k) - sum_;
+                upper[i][k] = vector_[i][k] - sum_;
             }
             for (size_t k = i; k < n; ++k) {
                 if (i == k) lower[i][i] = 1;
                 else {
                     T_ sum_ = 0;
                     for (size_t j = 0; j < i; ++j) sum_ += lower[k][j] * upper[j][i];
-                    lower[k][i] = (vector_->operator[](k)->operator[](i) - sum_) / upper[i][i];
+                    lower[k][i] = (vector_[k][i] - sum_) / upper[i][i];
                 }
             }
         }
@@ -333,7 +353,7 @@ public:
         if (pos_row >= r_ || pos_col >= c_ || pos_row + M.r_ > r_ || pos_col + M.c_ > c_) return;
         for (size_t i = 0; i < M.r_; ++i)
             for (size_t j = 0; j < M.c_; ++j)
-                vector_->operator[](i + pos_row)->operator[](j + pos_col) = M[i][j];
+                vector_[i + pos_row][j + pos_col] = M[i][j];
     }
 
     template<size_t R, size_t C>
@@ -341,7 +361,7 @@ public:
         if (pos_row >= r_ || pos_col >= c_ || pos_row + R > r_ || pos_col + C > c_) return;
         for (size_t i = 0; i < R; ++i)
             for (size_t j = 0; j < C; ++j)
-                vector_->operator[](i + pos_row)->operator[](j + pos_col) = array[i][j];
+                vector_[i + pos_row][j + pos_col] = array[i][j];
     }
 
     Matrix slice(size_t r1, size_t c1, size_t r2, size_t c2) const {
@@ -355,17 +375,17 @@ public:
         if (r == 0 || c == 0 || r1 >= r_ || c1 >= c_) return result;
         for (size_t i = 0; i < r; ++i)
             for (size_t j = 0; j < c; ++j)
-                result[i][j] = vector_->operator[](r1 + i)->operator[](c1 + j);
+                result[i][j] = vector_[r1 + i][c1 + j];
         return result;
     }
 
-    Iterator<Vector<T_> *> begin() { return vector_->begin(); }
+    Iterator<Vector<T_>> begin() { return vector_.begin(); }
 
-    Iterator<Vector<T_> *> begin() const { return vector_->begin(); }
+    Iterator<Vector<T_>> begin() const { return vector_.begin(); }
 
-    Iterator<Vector<T_> *> end() { return vector_->end(); }
+    Iterator<Vector<T_>> end() { return vector_.end(); }
 
-    Iterator<Vector<T_> *> end() const { return vector_->end(); }
+    Iterator<Vector<T_>> end() const { return vector_.end(); }
 
     size_t r() const { return r_; }
 
@@ -387,7 +407,7 @@ public:
     }
 
 private:
-    static Matrix inv_lt(const Matrix &L) {
+    static Matrix &inv_lt(Matrix &L) {
         size_t n = min_val(L.r_, L.c_);
         Matrix X(n);
         for (size_t k = 0; k < n; ++k) {
@@ -399,10 +419,14 @@ private:
                 X[i][k] = acc / L[i][i];
             }
         }
-        return X;
+        L = move(X);
+        return L;
     }
 
-    static Matrix inv_ut(const Matrix &U) { return inv_lt(U.transpose()).transpose(); }
+    static Matrix inv_ut(const Matrix &U) {
+        Matrix tmp = move(U.transpose());
+        return inv_lt(tmp).transpose();
+    }
 
     static Matrix &mm_naive(Matrix &C, const Matrix &A, const Matrix &B) {
         for (size_t i = 0; i < A.r_; ++i) {
@@ -426,37 +450,37 @@ private:
         Matrix A11, A12, A21, A22, B11, B12, B21, B22;
 
         if (rA == A.r_ && cA == A.c_ && rB == B.r_ && cB == B.c_) {
-            A11 = A.slice(0, 0, rA / 2, cA / 2);
-            A12 = A.slice(0, cA / 2, rA / 2, cA);
-            A21 = A.slice(rA / 2, 0, rA, cA / 2);
-            A22 = A.slice(rA / 2, cA / 2, rA, cA);
-            B11 = B.slice(0, 0, rB / 2, cB / 2);
-            B12 = B.slice(0, cB / 2, rB / 2, cB);
-            B21 = B.slice(rB / 2, 0, rB, cB / 2);
-            B22 = B.slice(rB / 2, cB / 2, rB, cB);
+            A11 = move(A.slice(0, 0, rA / 2, cA / 2));
+            A12 = move(A.slice(0, cA / 2, rA / 2, cA));
+            A21 = move(A.slice(rA / 2, 0, rA, cA / 2));
+            A22 = move(A.slice(rA / 2, cA / 2, rA, cA));
+            B11 = move(B.slice(0, 0, rB / 2, cB / 2));
+            B12 = move(B.slice(0, cB / 2, rB / 2, cB));
+            B21 = move(B.slice(rB / 2, 0, rB, cB / 2));
+            B22 = move(B.slice(rB / 2, cB / 2, rB, cB));
         } else {
             Matrix Ap(rA, cA);
             Ap.insert(A);
             Matrix Bp(rB, cB);
             Bp.insert(B);
-            A11 = Ap.slice(0, 0, rA / 2, cA / 2);
-            A12 = Ap.slice(0, cA / 2, rA / 2, cA);
-            A21 = Ap.slice(rA / 2, 0, rA, cA / 2);
-            A22 = Ap.slice(rA / 2, cA / 2, rA, cA);
-            B11 = Bp.slice(0, 0, rB / 2, cB / 2);
-            B12 = Bp.slice(0, cB / 2, rB / 2, cB);
-            B21 = Bp.slice(rB / 2, 0, rB, cB / 2);
-            B22 = Bp.slice(rB / 2, cB / 2, rB, cB);
-            C = Matrix(rA, cB);
+            A11 = move(Ap.slice(0, 0, rA / 2, cA / 2));
+            A12 = move(Ap.slice(0, cA / 2, rA / 2, cA));
+            A21 = move(Ap.slice(rA / 2, 0, rA, cA / 2));
+            A22 = move(Ap.slice(rA / 2, cA / 2, rA, cA));
+            B11 = move(Bp.slice(0, 0, rB / 2, cB / 2));
+            B12 = move(Bp.slice(0, cB / 2, rB / 2, cB));
+            B21 = move(Bp.slice(rB / 2, 0, rB, cB / 2));
+            B22 = move(Bp.slice(rB / 2, cB / 2, rB, cB));
+            C = move(Matrix(rA, cB));
         }
 
-        Matrix M1 = (A11 + A22) * (B11 + B22);
-        Matrix M2 = (A21 + A22) * B11;
-        Matrix M3 = A11 * (B12 - B22);
-        Matrix M4 = A22 * (B21 - B11);
-        Matrix M5 = (A11 + A12) * B22;
-        Matrix M6 = (A21 - A11) * (B11 + B12);
-        Matrix M7 = (A12 - A22) * (B21 + B22);
+        Matrix M1 = move((A11 + A22) * (B11 + B22));
+        Matrix M2 = move((A21 + A22) * B11);
+        Matrix M3 = move(A11 * (B12 - B22));
+        Matrix M4 = move(A22 * (B21 - B11));
+        Matrix M5 = move((A11 + A12) * B22);
+        Matrix M6 = move((A21 - A11) * (B11 + B12));
+        Matrix M7 = move((A12 - A22) * (B21 + B22));
         C.insert(0, 0, M1 + M4 - M5 + M7);
         C.insert(0, C.c_ / 2, M3 + M5);
         C.insert(C.r_ / 2, 0, M2 + M4);
@@ -470,96 +494,83 @@ private:
     void fix_zero() {
         for (size_t i = 0; i < r_; ++i)
             for (size_t j = 0; j < c_; ++j)
-                if (vector_->operator[](i)->operator[](j) == 0.0)
-                    vector_->operator[](i)->operator[](j) = 0.0;
+                if (vector_[i][j] == 0.0)
+                    vector_[i][j] = 0.0;
     }
 
     void put_array(size_t index, const Vector<T_> &vector) {
-        delete vector_->operator[](index);
-        vector_->operator[](index) = new Vector<T_>(vector);
+        vector_[index] = vector;
         c_ = vector.size();
     }
 
     template<size_t N>
     void put_array(size_t index, const T_ (&array)[N]) {
-        delete vector_->operator[](index);
-        vector_->operator[](index) = new Vector<T_>(array);
+        vector_[index] = array;
         c_ = N;
     }
 
     template<typename... Vectors>
     void put_array(size_t index, const Vector<T_> &vector, const Vectors &...vectors) {
-        delete vector_->operator[](index);
-        vector_->operator[](index) = new Vector<T_>(vector);
+        vector_[index] = vector;
         put_array(index + 1, vectors...);
     }
 
     template<size_t N, typename... Arrays>
     void put_array(size_t index, const T_ (&array)[N], const Arrays (&...arrays)[N]) {
-        delete vector_->operator[](index);
-        vector_->operator[](index) = new Vector<T_>(array);
+        vector_[index] = array;
         put_array(index + 1, arrays...);
     }
 
-    void allocate_zero() {
-        vector_ = new Vector<Vector<T_> *>(r_);
-        for (size_t i = 0; i < r_; ++i) vector_->operator[](i) = new Vector<T_>(c_);
-    }
+    void allocate_zero() { vector_ = move(Vector<Vector<T_>>(r_, Vector<T_>(c_))); }
 
-    void allocate_fill(T_ fill) {
-        vector_ = new Vector<Vector<T_> *>(r_);
-        for (size_t i = 0; i < r_; ++i) {
-            vector_->operator[](i) = new Vector<T_>(c_);
-            for (size_t j = 0; j < c_; ++j) vector_->operator[](i)->operator[](j) = fill;
-        }
+    void allocate_fill(T_ fill) { vector_ = move(Vector<Vector<T_>>(r_, Vector<T_>(c_, fill))); }
+
+    void steal(Matrix &&other) {
+        r_ = other.r_;
+        c_ = other.c_;
+        vector_ = move(other.vector_);
     }
 
     void allocate_from(const Matrix &other) {
         r_ = other.r_;
         c_ = other.c_;
-        vector_ = new Vector<Vector<T_> *>(r_);
-        for (size_t i = 0; i < r_; ++i) vector_->operator[](i) = new Vector<T_>(other[i]);
+        vector_ = other.vector_;
     }
 
     template<size_t R, size_t C>
     void allocate_from(const T_ (&array)[R][C]) {
         r_ = R;
         c_ = C;
-        vector_ = new Vector<Vector<T_> *>(r_);
-        for (size_t i = 0; i < r_; ++i) vector_->operator[](i) = new Vector<T_>(array[i]);
+        allocate_zero();
+        for (size_t i = 0; i < r_; ++i)
+            for (size_t j = 0; j < c_; ++j)
+                vector_[i][j] = array[i][j];
     }
 
     template<size_t R>
-    void allocate_from(const Vector<T_> (&array)[R]) {
+    void allocate_from(const Vector<T_> (&vectors)[R]) {
         r_ = R;
-        c_ = array[0].size_;
-        vector_ = new Vector<Vector<T_> *>(r_);
-        for (size_t i = 0; i < r_; ++i) vector_->operator[](i) = new Vector<T_>(array[i]);
+        c_ = vectors[0].size_;
+        allocate_zero();
+        for (size_t i = 0; i < r_; ++i)
+            for (size_t j = 0; j < c_; ++j)
+                vector_[i][j] = vectors[i][j];
     }
 
-    void deallocate() {
-        for (size_t i = 0; i < r_; ++i) delete vector_->operator[](i);
-        delete vector_;
-    }
+//    void deallocate() {}
 
 public:
-    static Matrix zero(size_t r, size_t c) { return Matrix(r, c); }
+    static Matrix zeros(size_t r, size_t c) { return Matrix(r, c); }
 
-    static Matrix zero(size_t n) { return Matrix(n); }
+    static Matrix zeros(size_t n) { return Matrix(n); }
+
+    static Matrix ones(size_t r, size_t c) { return Matrix(r, c, 1); }
+
+    static Matrix ones(size_t n) { return Matrix(n, n, 1); }
 
     static Matrix identity(size_t n) { return diagonal(n, 1); }
 
     static Matrix id(size_t n) { return identity(n); }
-
-    static Matrix I1() { return identity(1); }
-
-    static Matrix I2() { return identity(2); }
-
-    static Matrix I3() { return identity(3); }
-
-    static Matrix I4() { return identity(4); }
-
-    static Matrix I5() { return identity(5); }
 
     static Matrix diagonal(size_t n, T_ value) {
         Matrix tmp(n);
@@ -614,18 +625,28 @@ Matrix<T_> RRE(const Matrix<T_> &A) { return A.RRE(); }
 template<typename T_>
 class MatrixLU {
 private:
-    using PM = Pair<Matrix<T_>, Matrix<T_>>;
+    using PM = pair<Matrix<T_>, Matrix<T_>>;
     Matrix<T_> l_;
     Matrix<T_> u_;
 
 public:
+    MatrixLU(const MatrixLU &other) : l_(other.l_), u_(other.u_) {}
+
+    MatrixLU(MatrixLU &&other) noexcept: l_(move(other.l_)), u_(move(other.u_)) {}
+
     explicit MatrixLU(const PM &lu) : l_(lu.first), u_(lu.second) {}
 
     MatrixLU(const Matrix<T_> &l, const Matrix<T_> &u) : l_(l), u_(u) {}
 
+    Matrix<T_> &l() { return l_; }
+
     constexpr const Matrix<T_> &l() const { return l_; }
+
+    Matrix<T_> &u() { return u_; }
 
     constexpr const Matrix<T_> &u() const { return u_; }
 };
+
+using numeric_matrix = Matrix<double>;
 
 #endif //VNET_MATRIX_H
