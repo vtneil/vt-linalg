@@ -1,3 +1,10 @@
+/**
+ * @file numeric_matrix.h
+ * @author Vivatsathorn Thitasirivit
+ * @date 31 May 2023
+ * @brief Numeric matrix library
+ */
+
 #ifndef VNET_MATRIX_H
 #define VNET_MATRIX_H
 
@@ -163,7 +170,7 @@ public:
 
     Vector<T> operator*(const Vector<T> &other) const {
         Vector<T> tmp(r_);
-        for (size_t i = 0; i < r_; ++i) tmp[i] = vector_[i] * other;
+        for (size_t i = 0; i < r_; ++i) tmp[i] = vector_[i].dot(other);
         return tmp;
     }
 
@@ -298,6 +305,8 @@ public:
         MatrixLU<T> lu = move(LU());
         return inv_ut(lu.u()) * inv_lt(lu.l());
     }
+
+    constexpr Matrix inverse() const { return inv(); }
 
     Matrix RRE() const {
         Matrix m(*this);

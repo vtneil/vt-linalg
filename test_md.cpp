@@ -151,6 +151,7 @@ int main() {
                                            {-1, 0,  1},
                                            {2,  1,  -2}}));
     assert(RRE(C) == numeric_matrix::id(3));
+    assert(B * v == numeric_vector({7, 0, 7, 9}));
     assert(Z1.float_equals(Z2));
     return 0;
 }

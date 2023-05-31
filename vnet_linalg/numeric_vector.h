@@ -1,8 +1,14 @@
+/**
+ * @file numeric_vector.h
+ * @author Vivatsathorn Thitasirivit
+ * @date 31 May 2023
+ * @brief Numeric vector library
+ */
+
 #ifndef VNET_VECTOR_H
 #define VNET_VECTOR_H
 
 #include "utils.h"
-//#include <initializer_list>
 
 template<typename T>
 class Iterator;
