@@ -179,10 +179,10 @@ public:
         return acc;
     }
 
-    T inner(const Vector &other) const { return dot(other); }
+    constexpr T inner(const Vector &other) const { return dot(other); }
 
     template<size_t N>
-    T inner(const T (&array)[N]) const { return dot(array); }
+    constexpr T inner(const T (&array)[N]) const { return dot(array); }
 
     Matrix<T> outer(const Vector &other) const {
         Matrix<T> result(size_, other.size_);
@@ -225,6 +225,13 @@ public:
     bool operator!=(const T (&array)[N]) const { return !operator==(array); }
 
     bool equals(const Vector &other) const { return operator==(other); }
+
+    bool float_equals(const Vector &other) const {
+        if (this == &other) return true;
+        if (size_ != other.size_) return false;
+        for (size_t i = 0; i < size_; ++i) if (abs(arr_[i] - other.arr_[i]) > 0.001) return false;
+        return true;
+    }
 
     template<size_t N>
     bool equals(const T (&array)[N]) const { return operator==(array); }
