@@ -11,6 +11,9 @@
 #include "utils.h"
 #include "static_numeric_vector.h"
 
+template<typename T, size_t OSize>
+class MatrixStaticLU;
+
 template<typename T, size_t Row, size_t Col>
 class MatrixStatic {
 public:
@@ -97,8 +100,8 @@ public:
     MatrixStatic add(const MatrixStatic &other) const { return operator+(other); }
 
     static MatrixStatic &iadd(MatrixStatic &C, const MatrixStatic &A, const MatrixStatic &B) {
-        for (int i = 0; i < C.r_; ++i)
-            for (int j = 0; j < C.c_; ++j)
+        for (int i = 0; i < Row; ++i)
+            for (int j = 0; j < Col; ++j)
                 C[i][j] = A[i][j] + B[i][j];
         return C;
     }
@@ -114,8 +117,8 @@ public:
     MatrixStatic sub(const MatrixStatic &other) const { return operator-(other); }
 
     static MatrixStatic &isub(MatrixStatic &C, const MatrixStatic &A, const MatrixStatic &B) {
-        for (int i = 0; i < C.r_; ++i)
-            for (int j = 0; j < C.c_; ++j)
+        for (int i = 0; i < Row; ++i)
+            for (int j = 0; j < Col; ++j)
                 C[i][j] = A[i][j] - B[i][j];
         return C;
     }
@@ -244,8 +247,88 @@ public:
         MatrixStatic<T, Col, Row> result;
         for (size_t i = 0; i < Row; ++i)
             for (size_t j = 0; j < Col; ++j)
-                result.vector_[j][i] = vector_[i][j];
+                result[j][i] = vector_[i][j];
         return result;
+    }
+
+    T det() const {
+        static_assert(is_square_(), "Can only find determinant of a square matrix.");
+        MatrixStaticLU<T, Order> lu = move(LU());
+        T det = 1;
+        size_t r_swaps = 0;
+        for (size_t i = 0; i < Order; ++i) {
+            det *= lu.u()[i][i];
+            if (lu.u()[i][i] == 0) return 0;
+            if (lu.l()[i][i] != 1) r_swaps++;
+        }
+        return r_swaps % 2 == 0 ? det : -det;
+    }
+
+    T tr() const {
+        static_assert(is_square_(), "Can only find trace of a square matrix.");
+        T acc = 0;
+        for (size_t i = 0; i < Order; ++i) acc += vector_[i][i];
+        return acc;
+    }
+
+    MatrixStatic inv() const {
+        static_assert(is_square_(), "Can only find inverse of a square matrix.");
+        MatrixStaticLU<T, Order> lu = move(LU());
+        return inv_ut(lu.u()) * inv_lt(lu.l());
+    }
+
+    constexpr MatrixStatic inverse() const { return inv(); }
+
+    MatrixStaticLU<T, Order> LU() const {
+        static_assert(is_square_(), "Can only find LU decomposition of a square matrix.");
+        MatrixStatic<T, Order, Order> lower;
+        MatrixStatic<T, Order, Order> upper;
+        for (size_t i = 0; i < Order; ++i) {
+            for (size_t k = 0; k < Order; ++k) {
+                T sum_ = 0;
+                for (size_t j = 0; j < i; ++j) sum_ += lower[i][j] * upper[j][k];
+                upper[i][k] = vector_[i][k] - sum_;
+            }
+            for (size_t k = i; k < Order; ++k) {
+                if (i == k) lower[i][i] = 1;
+                else {
+                    T sum_ = 0;
+                    for (size_t j = 0; j < i; ++j) sum_ += lower[k][j] * upper[j][i];
+                    lower[k][i] = (vector_[k][i] - sum_) / upper[i][i];
+                }
+            }
+        }
+        return {lower, upper};
+    }
+
+    MatrixStatic RRE() const {
+        MatrixStatic m(*this);
+        size_t lead = 0;
+        for (size_t r = 0; r < Row; ++r) {
+            if (lead >= Col) return m;
+            size_t i;
+            for (i = r; m[i][lead] == 0;) {
+                ++i;
+                if (i == Row) {
+                    i = r;
+                    ++lead;
+                    if (lead == Col) return m;
+                }
+            }
+            m[i].swap(m[r]);
+            T val = m[r][lead];
+            for (size_t j = 0; j < Col; ++j) m[r][j] /= val;
+            for (i = 0; i < Row; ++i) {
+                if (i != r) {
+                    val = m[i][lead];
+                    for (size_t j = 0; j < Col; ++j)
+                        m[i][j] -= val * m[r][j];
+                }
+            }
+            ++lead;
+        }
+        m.fix_zero();
+        return m;
     }
 
     template<size_t ORow, size_t OCol>
@@ -302,6 +385,13 @@ public:
     constexpr bool is_square() const { return Row == Col; }
 
 private:
+    void fix_zero() {
+        for (size_t i = 0; i < Row; ++i)
+            for (size_t j = 0; j < Col; ++j)
+                if (vector_[i][j] == 0.0)
+                    vector_[i][j] = 0.0;
+    }
+
     void put_array(size_t index, const VectorStatic<T, Col> &vector) { vector_[index] = vector; }
 
     void put_array(size_t index, const T (&array)[Col]) { vector_[index] = array; }
@@ -337,6 +427,8 @@ private:
     }
 
     void steal(MatrixStatic &&other) { vector_ = move(other.vector_); }
+
+    static constexpr bool is_square_() { return Row == Col; }
 
     constexpr static bool is_multiple_of_2(size_t x) { return x != 0 && !(x & (x - 1)); }
 
@@ -375,7 +467,29 @@ private:
         return mm_naive(C, A, B);
     }
 
-    static constexpr bool is_square_() { return Row == Col; }
+    template<size_t OSize>
+    static MatrixStatic<T, OSize, OSize> inv_lt(MatrixStatic<T, OSize, OSize> &L) {
+        static_assert(is_square_(), "Can only inverse a square matrix.");
+        MatrixStatic<T, OSize, OSize> X;
+        for (size_t k = 0; k < OSize; ++k) {
+            X[k][k] = 1 / L[k][k];
+            for (size_t i = k + 1; i < OSize; ++i) {
+                T acc = 0;
+                for (size_t j = k; j < i; ++j)
+                    acc -= L[i][j] * X[j][k];
+                X[i][k] = acc / L[i][i];
+            }
+        }
+        L = move(X);
+        return L;
+    }
+
+    template<size_t OSize>
+    static MatrixStatic<T, OSize, OSize> inv_ut(MatrixStatic<T, OSize, OSize> &U) {
+        static_assert(is_square_(), "Can only inverse a square matrix.");
+        MatrixStatic<T, OSize, OSize> tmp = move(U.transpose());
+        return inv_lt(tmp).transpose();
+    }
 
 public:
     static MatrixStatic zeros() { return MatrixStatic(); }
@@ -398,5 +512,53 @@ public:
     template<size_t ORow, size_t OCol>
     static MatrixStatic quad(const MatrixStatic<T, ORow, OCol> M) { return MatrixStatic(M, M, M, M); }
 };
+
+template<typename T, size_t Row, size_t Col>
+MatrixStatic<T, Row, Col> operator*(T lhs, const MatrixStatic<T, Row, Col> &rhs) {
+    MatrixStatic<T, Row, Col> tmp(rhs);
+    tmp.operator*=(lhs);
+    return tmp;
+}
+
+template<typename T, size_t Row, size_t Col>
+T det(const MatrixStatic<T, Row, Col> &A) { return A.det(); }
+
+template<typename T, size_t Row, size_t Col>
+T tr(const MatrixStatic<T, Row, Col> &A) { return A.tr(); }
+
+template<typename T, size_t Row, size_t Col>
+MatrixStatic<T, Row, Col> inv(const MatrixStatic<T, Row, Col> &A) { return A.inv(); }
+
+template<typename T, size_t Row, size_t Col>
+MatrixStatic<T, Row, Col> RRE(const MatrixStatic<T, Row, Col> &A) { return A.RRE(); }
+
+template<typename T, size_t OSize>
+class MatrixStaticLU {
+private:
+    using Matrix_t = MatrixStatic<T, OSize, OSize>;
+    using Pair_t = pair<MatrixStatic<T, OSize, OSize>, MatrixStatic<T, OSize, OSize>>;
+    MatrixStatic<T, OSize, OSize> l_;
+    MatrixStatic<T, OSize, OSize> u_;
+
+public:
+    MatrixStaticLU(const MatrixStaticLU &other) : l_(other.l_), u_(other.u_) {}
+
+    MatrixStaticLU(MatrixStaticLU &&other) noexcept: l_(move(other.l_)), u_(move(other.u_)) {}
+
+    explicit MatrixStaticLU(const Pair_t &lu) : l_(lu.first), u_(lu.second) {}
+
+    MatrixStaticLU(const Matrix_t &l, const Matrix_t &u) : l_(l), u_(u) {}
+
+    Matrix_t &l() { return l_; }
+
+    constexpr const Matrix_t &l() const { return l_; }
+
+    Matrix_t &u() { return u_; }
+
+    constexpr const Matrix_t &u() const { return u_; }
+};
+
+template<size_t Row, size_t Col = Row>
+using numeric_matrix = MatrixStatic<double, Row, Col>;
 
 #endif //VNET_LINALG_STATIC_NUMERIC_MATRIX_H

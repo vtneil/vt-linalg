@@ -1,65 +1,11 @@
 #include <iostream>
-#include "vnet_linalg/numeric_vector.h"
-#include "vnet_linalg/numeric_matrix.h"
+#include "src/numeric_vector.h"
+#include "src/numeric_matrix.h"
 
 #define NEWLINE() std::cout<<'\n'
 
-template<typename T>
-void print(const T &x) {
-    std::cout << x << '\n';
-}
-
-template<typename T>
-void print(const Matrix<T> &A) {
-    if (A.r() > 0) {
-        for (auto &x: A) {
-            if (x.size() > 0) {
-                for (auto &y: x) {
-                    std::cout << y << ' ';
-                }
-                NEWLINE();
-            }
-        }
-    }
-}
-
-template<typename T>
-void printb(const Matrix<T> &A) {
-    std::cout << '{';
-    for (auto &x: A) {
-        std::cout << '{';
-        for (auto &y: x) {
-            std::cout << y;
-            if (&y != (x->end() - 1)) std::cout << ',';
-        }
-        std::cout << '}';
-        if (&x != (A.end() - 1)) std::cout << ',';
-    }
-    std::cout << '}';
-    NEWLINE();
-}
-
-template<typename T>
-void print(const Vector<T> &v) {
-    for (auto &y: v) {
-        std::cout << y << ' ';
-    }
-    if (v.size()) NEWLINE();
-}
-
-template<typename T>
-void print(const Vector<Vector<T>> &v) {
-    for (auto &x: v) {
-        for (auto &y: x) {
-            std::cout << y << ' ';
-        }
-        if (x.size()) NEWLINE();
-    }
-    if (v.size()) NEWLINE();
-}
-
 int main() {
-    constexpr size_t N = 1024;
+    constexpr size_t N = 32;
     numeric_vector v({1, 1});
     numeric_matrix A({{1, 2, 3, 4},
                       {4, 5, 6, 1},
@@ -110,6 +56,7 @@ int main() {
                      {4, 5, 6, 1},
                      {7, 8, 9, 0}}));
     assert(numeric_matrix(A) == A);
+    assert(A != B);
     assert(numeric_matrix(A).equals({{ 1, 2, 3, 4 },
            { 4, 5, 6, 1 },
            { 7, 8, 9, 0 }}));
@@ -153,5 +100,7 @@ int main() {
     assert(RRE(C) == numeric_matrix::id(3));
     assert(B * v == numeric_vector({7, 0, 7, 9}));
     assert(Z1.float_equals(Z2));
+
+    std::cout << "Test Passed!";
     return 0;
 }

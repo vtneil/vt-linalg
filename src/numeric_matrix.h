@@ -412,7 +412,7 @@ public:
 public:
     constexpr static bool is_multiple_of_2(size_t x) { return x != 0 && !(x & (x - 1)); }
 
-    static size_t closesT2(size_t x) {
+    static size_t closest_2(size_t x) {
         if (is_multiple_of_2(x)) return x;
         size_t result = 1;
         while (x != 0) {
@@ -458,10 +458,10 @@ private:
     }
 
     static Matrix &mm_strassen(Matrix &C, const Matrix &A, const Matrix &B) {
-        size_t rA = closesT2(A.r_);
-        size_t cA = closesT2(A.c_);
-        size_t rB = closesT2(B.r_);
-        size_t cB = closesT2(B.c_);
+        size_t rA = closest_2(A.r_);
+        size_t cA = closest_2(A.c_);
+        size_t rB = closest_2(B.r_);
+        size_t cB = closest_2(B.c_);
 
         Matrix A11, A12, A21, A22, B11, B12, B21, B22;
 

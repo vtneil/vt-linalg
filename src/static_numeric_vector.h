@@ -159,8 +159,26 @@ public:
 
     template<size_t OSize>
     MatrixStatic<T, Size, OSize> outer(const VectorStatic<T, OSize> &other) const {
-//        todo
         MatrixStatic<T, Size, OSize> result;
+        for (size_t i = 0; i < Size; ++i)
+            for (size_t j = 0; j < OSize; ++j)
+                result[i][j] = arr_[i] * other.arr_[j];
+        return result;
+    }
+
+    template<size_t OSize>
+    MatrixStatic<T, Size, OSize> outer(const T (&array)[OSize]) const {
+        MatrixStatic<T, Size, OSize> result;
+        for (size_t i = 0; i < Size; ++i)
+            for (size_t j = 0; j < OSize; ++j)
+                result[i][j] = arr_[i] * array[j];
+        return result;
+    }
+
+    T sum() const {
+        T acc = 0;
+        for (size_t i = 0; i < Size; ++i) acc += arr_[i];
+        return acc;
     }
 
     T norm() const { return pow(dot(*this), 0.5); }
@@ -201,6 +219,8 @@ public:
 
     template<size_t OSize>
     bool equals(const T (&array)[OSize]) const { return operator==(array); }
+
+    void swap(VectorStatic &other) { for (size_t i = 0; i < Size; ++i) swap_val(arr_[i], other.arr_[i]); }
 
     Iterator<T> begin() { return Iterator<T>(arr_); }
 
