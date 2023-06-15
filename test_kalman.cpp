@@ -1,8 +1,11 @@
-#include "vnet_linalg/kalman.h"
-
-
-int main() {
-
-
-    return 0;
-}
+//#include "vnet_linalg/kalman.h"
+//
+//numeric_matrix A({{}});
+//SimpleKalmanFilter kf;
+//
+//
+//int main() {
+//
+//
+//    return 0;
+//}

@@ -7,3 +7,4 @@ add_executable(vnet_linalg main.cpp)
 
 add_executable(test_md test_md.cpp)
 add_executable(test_kalman test_kalman.cpp)
+add_executable(test_static test_static.cpp)

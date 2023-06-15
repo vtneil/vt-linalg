@@ -11,9 +11,6 @@
 #include "utils.h"
 
 template<typename T>
-class Iterator;
-
-template<typename T>
 class Matrix;
 
 template<typename T>
@@ -323,63 +320,6 @@ Vector<T> operator-(const T (&lhs)[N], const Vector<T> &rhs) {
     tmp.operator-=(lhs);
     return tmp;
 }
-
-template<typename T>
-class Iterator {
-private:
-    T *ptr_;
-
-public:
-    explicit Iterator(T *ptr) : ptr_(ptr) {}
-
-    Iterator(const Iterator &other) : ptr_(other.ptr_) {}
-
-    T &operator*() { return *ptr_; }
-
-    T *operator->() { return ptr_; }
-
-    Iterator operator+(size_t n) { return Iterator(ptr_ + n); }
-
-    Iterator &operator++() {
-        ++ptr_;
-        return *this;
-    }
-
-    Iterator operator++(int) {
-        Iterator tmp(*this);
-        operator++();
-        return tmp;
-    }
-
-    Iterator operator-(size_t n) { return Iterator(ptr_ - n); }
-
-    size_t operator-(Iterator other) { return ptr_ - other.ptr_; }
-
-    Iterator &operator--() {
-        --ptr_;
-        return *this;
-    }
-
-    Iterator operator--(int) {
-        Iterator tmp(*this);
-        operator--();
-        return tmp;
-    }
-
-    bool operator==(const Iterator &other) const { return ptr_ == other.ptr_; }
-
-    bool operator!=(const Iterator &other) const { return !operator==(other); }
-
-    bool operator==(T *ptr) const { return ptr_ == ptr; }
-
-    bool operator!=(T *ptr) const { return !operator==(ptr); }
-};
-
-template<typename T>
-bool operator==(T *ptr, const Iterator<T> &iterator) { return iterator.operator==(ptr); }
-
-template<typename T>
-bool operator!=(T *ptr, const Iterator<T> &iterator) { return !operator==(ptr, iterator); }
 
 using numeric_vector = Vector<double>;
 

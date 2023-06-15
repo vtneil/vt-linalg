@@ -71,12 +71,12 @@ public:
 
     void update(const numeric_vector &y, const numeric_vector &u) {
         y_p = move(C_ * x_p + D_ * u);
-        y_ = y - y_p;
-        S_ = C_ * P_p * C_.transpose() + R_;
-        K_ = P_p * C_.transpose() * S_.inv();
-        x_ = x_p + K_ * y_;
+        y_ = move(y - y_p);
+        S_ = move(C_ * P_p * C_.transpose() + R_);
+        K_ = move(P_p * C_.transpose() * S_.inv());
+        x_ = move(x_p + K_ * y_);
         numeric_matrix KC = move(K_ * C_);
-        P_ = (numeric_matrix::id(min_val(KC.r(), KC.c())) - KC) * P_p;
+        P_ = move((numeric_matrix::id(min_val(KC.r(), KC.c())) - KC) * P_p);
     }
 };
 

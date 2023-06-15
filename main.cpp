@@ -3,7 +3,7 @@
 #include "vnet_linalg/numeric_vector.h"
 #include "vnet_linalg/numeric_matrix.h"
 
-#define TEST
+//#define TEST
 #define NEWLINE() std::cout<<'\n'
 
 template<typename T>
@@ -66,9 +66,14 @@ void test(size_t n) {
     for (size_t i = 0; i < 1; ++i) {
         static_cast<void>(numeric_matrix::imatmul(C, A, B));
     }
+
+    static_cast<void>(A.r());
 }
 
 int main(int argc, char **argv) {
+    std::cout << numeric_matrix(5, 8).r();
+
+
 #ifdef TEST
     if (argc < 2) return -1;
     size_t n = strtoul(argv[1], nullptr, 0);

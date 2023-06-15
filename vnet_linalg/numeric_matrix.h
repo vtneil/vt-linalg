@@ -47,7 +47,7 @@ public:
     explicit Matrix(const T (&array)[R][C]) : r_(R), c_(C) { allocate_from(array); }
 
     template<size_t R>
-    explicit Matrix(const Vector<T> (&array)[R]) : r_(R), c_(array[0].size_) { allocate_from(array); }
+    explicit Matrix(const Vector<T> (&vectors)[R]) : r_(R), c_(vectors[0].size_) { allocate_from(vectors); }
 
     Matrix(const Matrix &M11, const Matrix &M12, const Matrix &M21, const Matrix &M22) {
         if (M11.r_ == M12.r_ && M21.r_ == M22.r_ && M11.c_ == M21.c_ && M12.c_ == M22.c_) {
@@ -55,9 +55,9 @@ public:
             c_ = M11.c_ + M12.c_;
             allocate_zero();
             insert(0, 0, M11);
-            insert(0, c_ / 2, M12);
-            insert(r_ / 2, 0, M21);
-            insert(r_ / 2, c_ / 2, M22);
+            insert(0, M11.c_, M12);
+            insert(M11.r_, 0, M21);
+            insert(M11.r_ / 2, M11.c_ / 2, M22);
         } else {
             r_ = max_val(M11.r_ + M21.r_, M12.r_ + M22.r_);
             c_ = max_val(M11.c_ + M12.c_, M21.c_ + M22.c_);
@@ -403,11 +403,11 @@ public:
 
     Iterator<Vector<T>> end() const { return vector_.end(); }
 
-    size_t r() const { return r_; }
+    constexpr size_t r() const { return r_; }
 
-    size_t c() const { return c_; }
+    constexpr size_t c() const { return c_; }
 
-    size_t n() const { return r_ * c_; }
+    constexpr size_t n() const { return r_ * c_; }
 
 public:
     constexpr static bool is_multiple_of_2(size_t x) { return x != 0 && !(x & (x - 1)); }
@@ -514,27 +514,27 @@ private:
                     vector_[i][j] = 0.0;
     }
 
-    void puTarray(size_t index, const Vector<T> &vector) {
+    void put_array(size_t index, const Vector<T> &vector) {
         vector_[index] = vector;
         c_ = vector.size();
     }
 
     template<size_t N>
-    void puTarray(size_t index, const T (&array)[N]) {
+    void put_array(size_t index, const T (&array)[N]) {
         vector_[index] = array;
         c_ = N;
     }
 
     template<typename... Vectors>
-    void puTarray(size_t index, const Vector<T> &vector, const Vectors &...vectors) {
+    void put_array(size_t index, const Vector<T> &vector, const Vectors &...vectors) {
         vector_[index] = vector;
-        puTarray(index + 1, vectors...);
+        put_array(index + 1, vectors...);
     }
 
     template<size_t N, typename... Arrays>
-    void puTarray(size_t index, const T (&array)[N], const Arrays (&...arrays)[N]) {
+    void put_array(size_t index, const T (&array)[N], const Arrays (&...arrays)[N]) {
         vector_[index] = array;
-        puTarray(index + 1, arrays...);
+        put_array(index + 1, arrays...);
     }
 
     void allocate_zero() { vector_ = move(Vector<Vector<T>>(r_, Vector<T>(c_))); }
@@ -597,14 +597,14 @@ public:
     template<typename... Vectors>
     static Matrix from(const Vectors &...vectors) {
         Matrix tmp(sizeof...(vectors), 0);
-        tmp.puTarray(0, vectors...);
+        tmp.put_array(0, vectors...);
         return tmp;
     }
 
     template<size_t N, typename... Arrays>
     static Matrix from(const Arrays (&...arrays)[N]) {
         Matrix tmp(N, 0);
-        tmp.puTarray(0, arrays...);
+        tmp.put_array(0, arrays...);
         return tmp;
     }
 
