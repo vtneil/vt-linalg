@@ -102,6 +102,7 @@ int main() {
     assert(RRE(C) == numeric_matrix<3>::id());
     assert(B * v == numeric_vector<4>({7, 0, 7, 9}));
     assert(Z1.float_equals(Z2));
+    assert(v.end() - v.begin() == 2);
 
     std::cout << "Test Passed!";
     return 0;

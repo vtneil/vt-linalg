@@ -56,11 +56,11 @@ namespace vt {
 
         T &front() { return arr_[start_index_]; }
 
-        T &front() const { return arr_[start_index_]; }
+        constexpr T &front() const { return arr_[start_index_]; }
 
         T &back() { return arr_[cyclic<Capacity>(start_index_ + size_ - 1)]; }
 
-        T &back() const { return arr_[cyclic<Capacity>(start_index_ + size_ - 1)]; }
+        constexpr T &back() const { return arr_[cyclic<Capacity>(start_index_ + size_ - 1)]; }
 
         constexpr bool empty() const { return (size_ == 0); }
 
@@ -72,9 +72,9 @@ namespace vt {
 
         constexpr size_t capacity() const { return Capacity; }
 
-        T *arr() { return arr_; }
+        constexpr const T *arr() const { return arr_; }
 
-        circular_buffer_static_t copy() const { return circular_buffer_static_t(*this); }
+        constexpr circular_buffer_static_t copy() const { return circular_buffer_static_t(*this); }
     };
 
     class circular_buffer_dynamic_t {
@@ -86,9 +86,7 @@ namespace vt {
     using buffer_t = circular_buffer_static_t<T, Capacity>;
 
     template<typename T, size_t Capacity>
-    constexpr buffer_t<T, Capacity> make_buffer() {
-        return buffer_t<T, Capacity>();
-    }
+    constexpr buffer_t<T, Capacity> make_buffer() { return buffer_t<T, Capacity>(); }
 }
 
 #endif //VT_LINALG_BUFFER_H

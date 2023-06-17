@@ -29,6 +29,16 @@ namespace vt {
             return *this;
         }
     };
+
+    template<typename T1, typename T2>
+    constexpr pair<T1, T2> make_pair(const T1 &t1, const T2 &t2) {
+        return pair<T1, T2>(t1, t2);
+    }
+
+    template<typename T1, typename T2>
+    constexpr pair<T1, T2> make_pair(T1 &&t1, T2 &&t2) {
+        return pair<T1, T2>(t1, t2);
+    }
 }
 
 #endif //VNET_LINALG_PAIR_H

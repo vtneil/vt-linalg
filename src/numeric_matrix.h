@@ -29,8 +29,6 @@ namespace vt {
         class numeric_vector_static_t;
 
     private:
-        static constexpr size_t STRASSEN_DIMENSION = 1024;
-        static constexpr size_t STRASSEN_THRESHOLD = STRASSEN_DIMENSION * STRASSEN_DIMENSION;
         static constexpr size_t Order = (Row < Col) ? Row : Col;
         numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row> vector_ = {};
 
@@ -64,15 +62,15 @@ namespace vt {
 
         numeric_vector_static_t<T, Col> &operator[](size_t index) { return vector_[index]; }
 
-        const numeric_vector_static_t<T, Col> &operator[](size_t index) const { return vector_[index]; }
+        constexpr const numeric_vector_static_t<T, Col> &operator[](size_t index) const { return vector_[index]; }
 
         T &at(size_t r_index, size_t c_index) { return vector_[r_index][c_index]; };
 
-        const T &at(size_t r_index, size_t c_index) const { return vector_[r_index][c_index]; };
+        constexpr const T &at(size_t r_index, size_t c_index) const { return vector_[r_index][c_index]; };
 
         T &operator()(size_t r_index, size_t c_index) { return at(r_index, c_index); }
 
-        const T &operator()(size_t r_index, size_t c_index) const { return at(r_index, c_index); }
+        constexpr const T &operator()(size_t r_index, size_t c_index) const { return at(r_index, c_index); }
 
         numeric_matrix_static_t &operator=(const numeric_matrix_static_t &other) {
             if (this != &other) allocate_from(other);
@@ -102,7 +100,7 @@ namespace vt {
             return tmp;
         }
 
-        numeric_matrix_static_t add(const numeric_matrix_static_t &other) const { return operator+(other); }
+        constexpr numeric_matrix_static_t add(const numeric_matrix_static_t &other) const { return operator+(other); }
 
         static numeric_matrix_static_t &
         iadd(numeric_matrix_static_t &C, const numeric_matrix_static_t &A, const numeric_matrix_static_t &B) {
@@ -120,7 +118,7 @@ namespace vt {
             return tmp;
         }
 
-        numeric_matrix_static_t sub(const numeric_matrix_static_t &other) const { return operator-(other); }
+        constexpr numeric_matrix_static_t sub(const numeric_matrix_static_t &other) const { return operator-(other); }
 
         static numeric_matrix_static_t &
         isub(numeric_matrix_static_t &C, const numeric_matrix_static_t &A, const numeric_matrix_static_t &B) {
@@ -159,9 +157,9 @@ namespace vt {
         }
 
         template<size_t ORow, size_t X, size_t OCol>
-        static numeric_matrix_static_t<T, ORow, OCol> imatmul(numeric_matrix_static_t<T, ORow, OCol> &C,
-                                                              const numeric_matrix_static_t<T, ORow, X> &A,
-                                                              const numeric_matrix_static_t<T, X, OCol> &B) {
+        static constexpr numeric_matrix_static_t<T, ORow, OCol> imatmul(numeric_matrix_static_t<T, ORow, OCol> &C,
+                                                                        const numeric_matrix_static_t<T, ORow, X> &A,
+                                                                        const numeric_matrix_static_t<T, X, OCol> &B) {
             return mm_naive(C, A, B);
         }
 
@@ -171,17 +169,18 @@ namespace vt {
             return mm_naive(C, *this, other);
         }
 
-        numeric_vector_static_t<T, Row>
-        transform(const numeric_vector_static_t<T, Col> &other) const { return operator*(other); }
+        constexpr numeric_vector_static_t<T, Row> transform(const numeric_vector_static_t<T, Col> &other) const {
+            return operator*(other);
+        }
 
         numeric_matrix_static_t<T, Order, Order> &operator^=(size_t n) {
-            static_assert(is_square_(), "Non-square matrix can\'t use power operator.");
+            static_assert(static_is_a_square_matrix(), "Non-square matrix can\'t use power operator.");
             steal(vt::move(operator^(n)));
             return *this;
         }
 
         numeric_matrix_static_t<T, Order, Order> operator^(size_t n) {
-            static_assert(is_square_(), "Non-square matrix can\'t use power operator.");
+            static_assert(static_is_a_square_matrix(), "Non-square matrix can\'t use power operator.");
             numeric_matrix_static_t<T, Order, Order> product(*this);
             if (n == 0) return id();
             if (n == 1) return product;
@@ -191,12 +190,12 @@ namespace vt {
         }
 
         numeric_matrix_static_t<T, Order, Order> matpow(size_t n) {
-            static_assert(is_square_(), "Non-square matrix can\'t use power operator.");
+            static_assert(static_is_a_square_matrix(), "Non-square matrix can\'t use power operator.");
             return operator^(n);
         }
 
         numeric_matrix_static_t<T, Order, Order> matpow_naive(size_t n) {
-            static_assert(is_square_(), "Non-square matrix can\'t use power operator.");
+            static_assert(static_is_a_square_matrix(), "Non-square matrix can\'t use power operator.");
             numeric_matrix_static_t<T, Order, Order> product = vt::move(id());
             for (size_t i = 0; i < n; ++i) product *= *this;
             return product;
@@ -237,7 +236,7 @@ namespace vt {
             return result;
         }
 
-        numeric_vector_static_t<T, Col> row(size_t r_index) const {
+        constexpr numeric_vector_static_t<T, Col> row(size_t r_index) const {
             return numeric_vector_static_t<T, Col>(operator[](r_index));
         }
 
@@ -262,7 +261,7 @@ namespace vt {
         }
 
         T det() const {
-            static_assert(is_square_(), "Can only find determinant of a square matrix.");
+            static_assert(static_is_a_square_matrix(), "Can only find determinant of a square matrix.");
             numeric_matrix_static_lu_t<T, Order> lu = vt::move(LU());
             T det = 1;
             size_t r_swaps = 0;
@@ -275,14 +274,14 @@ namespace vt {
         }
 
         T tr() const {
-            static_assert(is_square_(), "Can only find trace of a square matrix.");
+            static_assert(static_is_a_square_matrix(), "Can only find trace of a square matrix.");
             T acc = 0;
             for (size_t i = 0; i < Order; ++i) acc += vector_[i][i];
             return acc;
         }
 
         numeric_matrix_static_t inv() const {
-            static_assert(is_square_(), "Can only find inverse of a square matrix.");
+            static_assert(static_is_a_square_matrix(), "Can only find inverse of a square matrix.");
             numeric_matrix_static_lu_t<T, Order> lu = vt::move(LU());
             return inv_ut(lu.u()) * inv_lt(lu.l());
         }
@@ -290,7 +289,7 @@ namespace vt {
         constexpr numeric_matrix_static_t inverse() const { return inv(); }
 
         numeric_matrix_static_lu_t<T, Order> LU() const {
-            static_assert(is_square_(), "Can only find LU decomposition of a square matrix.");
+            static_assert(static_is_a_square_matrix(), "Can only find LU decomposition of a square matrix.");
             numeric_matrix_static_t<T, Order, Order> lower;
             numeric_matrix_static_t<T, Order, Order> upper;
             for (size_t i = 0; i < Order; ++i) {
@@ -357,13 +356,15 @@ namespace vt {
         }
 
         template<size_t ORow, size_t OCol>
-        bool operator!=(const numeric_matrix_static_t<T, ORow, OCol> &other) const { return !operator==(other); }
+        constexpr bool operator!=(const numeric_matrix_static_t<T, ORow, OCol> &other) const {
+            return !operator==(other);
+        }
 
         template<size_t ORow, size_t OCol>
-        bool operator!=(const T (&array)[ORow][OCol]) const { return !operator==(array); }
+        constexpr bool operator!=(const T (&array)[ORow][OCol]) const { return !operator==(array); }
 
         template<size_t ORow, size_t OCol>
-        bool equals(const numeric_matrix_static_t<T, ORow, OCol> &other) const { return operator==(other); }
+        constexpr bool equals(const numeric_matrix_static_t<T, ORow, OCol> &other) const { return operator==(other); }
 
         template<size_t ORow, size_t OCol>
         bool float_equals(const numeric_matrix_static_t<T, ORow, OCol> &other) const {
@@ -374,15 +375,15 @@ namespace vt {
         }
 
         template<size_t ORow, size_t OCol>
-        bool equals(const T (&array)[ORow][OCol]) const { return operator==(array); }
+        constexpr bool equals(const T (&array)[ORow][OCol]) const { return operator==(array); }
 
         iterator<numeric_vector_static_t<T, Col>> begin() { return vector_.begin(); }
 
-        iterator<numeric_vector_static_t<T, Col>> begin() const { return vector_.begin(); }
+        constexpr iterator<numeric_vector_static_t<T, Col>> begin() const { return vector_.begin(); }
 
         iterator<numeric_vector_static_t<T, Col>> end() { return vector_.end(); }
 
-        iterator<numeric_vector_static_t<T, Col>> end() const { return vector_.end(); }
+        constexpr iterator<numeric_vector_static_t<T, Col>> end() const { return vector_.end(); }
 
         constexpr size_t r() const { return Row; }
 
@@ -398,7 +399,7 @@ namespace vt {
             for (size_t i = 0; i < Row; ++i) vector_[i].swap(other.vector_[i]);
         }
 
-        numeric_matrix_static_t copy() const { return numeric_matrix_static_t(*this); }
+        constexpr numeric_matrix_static_t copy() const { return numeric_matrix_static_t(*this); }
 
     private:
         void fix_zero() {
@@ -448,7 +449,7 @@ namespace vt {
 
         void steal(numeric_matrix_static_t &&other) { vector_ = vt::move(other.vector_); }
 
-        static constexpr bool is_square_() { return Row == Col; }
+        static constexpr bool static_is_a_square_matrix() { return Row == Col; }
 
         constexpr static bool is_multiple_of_2(size_t x) { return x != 0 && !(x & (x - 1)); }
 
@@ -479,9 +480,9 @@ namespace vt {
         }
 
         template<size_t ORow, size_t X, size_t OCol>
-        static numeric_matrix_static_t<T, ORow, OCol> &mm_strassen(numeric_matrix_static_t<T, ORow, OCol> &C,
-                                                                   const numeric_matrix_static_t<T, ORow, X> &A,
-                                                                   const numeric_matrix_static_t<T, X, OCol> &B) {
+        static constexpr numeric_matrix_static_t<T, ORow, OCol> &mm_strassen(numeric_matrix_static_t<T, ORow, OCol> &C,
+                                                                             const numeric_matrix_static_t<T, ORow, X> &A,
+                                                                             const numeric_matrix_static_t<T, X, OCol> &B) {
             // to be implemented later.
             // not suitable for embedded system.
             return mm_naive(C, A, B);
@@ -489,7 +490,7 @@ namespace vt {
 
         template<size_t OSize>
         static numeric_matrix_static_t<T, OSize, OSize> inv_lt(numeric_matrix_static_t<T, OSize, OSize> &L) {
-            static_assert(is_square_(), "Can only inverse a square matrix.");
+            static_assert(static_is_a_square_matrix(), "Can only inverse a square matrix.");
             numeric_matrix_static_t<T, OSize, OSize> X;
             for (size_t k = 0; k < OSize; ++k) {
                 X[k][k] = 1 / L[k][k];
@@ -506,22 +507,22 @@ namespace vt {
 
         template<size_t OSize>
         static numeric_matrix_static_t<T, OSize, OSize> inv_ut(numeric_matrix_static_t<T, OSize, OSize> &U) {
-            static_assert(is_square_(), "Can only inverse a square matrix.");
+            static_assert(static_is_a_square_matrix(), "Can only inverse a square matrix.");
             numeric_matrix_static_t<T, OSize, OSize> tmp = vt::move(U.transpose());
             return inv_lt(tmp).transpose();
         }
 
     public:
-        static numeric_matrix_static_t zeros() { return numeric_matrix_static_t(); }
+        static constexpr numeric_matrix_static_t zeros() { return numeric_matrix_static_t(); }
 
-        static numeric_matrix_static_t ones() { return numeric_matrix_static_t(1); }
+        static constexpr numeric_matrix_static_t ones() { return numeric_matrix_static_t(1); }
 
-        static numeric_matrix_static_t identity() {
-            static_assert(is_square_(), "Identity matrix must be a square matrix.");
+        static constexpr numeric_matrix_static_t identity() {
+            static_assert(static_is_a_square_matrix(), "Identity matrix must be a square matrix.");
             return diagonal(1);
         }
 
-        static numeric_matrix_static_t id() { return identity(); }
+        static constexpr numeric_matrix_static_t id() { return identity(); }
 
         static numeric_matrix_static_t diagonal(T value) {
             numeric_matrix_static_t tmp;
@@ -530,8 +531,9 @@ namespace vt {
         }
 
         template<size_t ORow, size_t OCol>
-        static numeric_matrix_static_t
-        quad(const numeric_matrix_static_t<T, ORow, OCol> M) { return numeric_matrix_static_t(M, M, M, M); }
+        static numeric_matrix_static_t constexpr quad(const numeric_matrix_static_t<T, ORow, OCol> M) {
+            return numeric_matrix_static_t(M, M, M, M);
+        }
     };
 
     template<typename T, size_t Row, size_t Col>
@@ -542,16 +544,20 @@ namespace vt {
     }
 
     template<typename T, size_t Row, size_t Col>
-    T det(const numeric_matrix_static_t<T, Row, Col> &A) { return A.det(); }
+    constexpr T det(const numeric_matrix_static_t<T, Row, Col> &A) { return A.det(); }
 
     template<typename T, size_t Row, size_t Col>
-    T tr(const numeric_matrix_static_t<T, Row, Col> &A) { return A.tr(); }
+    constexpr T tr(const numeric_matrix_static_t<T, Row, Col> &A) { return A.tr(); }
 
     template<typename T, size_t Row, size_t Col>
-    numeric_matrix_static_t<T, Row, Col> inv(const numeric_matrix_static_t<T, Row, Col> &A) { return A.inv(); }
+    constexpr numeric_matrix_static_t<T, Row, Col> inv(const numeric_matrix_static_t<T, Row, Col> &A) {
+        return A.inv();
+    }
 
     template<typename T, size_t Row, size_t Col>
-    numeric_matrix_static_t<T, Row, Col> RRE(const numeric_matrix_static_t<T, Row, Col> &A) { return A.RRE(); }
+    constexpr numeric_matrix_static_t<T, Row, Col> RRE(const numeric_matrix_static_t<T, Row, Col> &A) {
+        return A.RRE();
+    }
 
     template<typename T, size_t OSize>
     class numeric_matrix_static_lu_t {

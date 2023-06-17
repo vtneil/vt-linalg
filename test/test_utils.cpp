@@ -15,6 +15,7 @@ void print_buffer(buffer_t<T, N> buffer) {
 }
 
 int main() {
+    std::cout << vt::max(1, 2, 3, 4, 5, 6) << '\n';
     buffer_t<int, 8> buffer = make_buffer<int, 8>();
     int x = 1;
 

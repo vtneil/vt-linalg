@@ -12,8 +12,14 @@ namespace vt {
     template<typename T>
     constexpr const T &min(const T &a, const T &b) { return (a < b) ? a : b; }
 
+    template<typename T, typename... Ts>
+    constexpr const T &min(const T &a, const T &b, const Ts &... args) { return min(min(a, b), args...); }
+
     template<typename T>
     constexpr const T &max(const T &a, const T &b) { return (a > b) ? a : b; }
+
+    template<typename T, typename... Ts>
+    constexpr const T &max(const T &a, const T &b, const Ts &... args) { return max(max(a, b), args...); }
 
     template<typename T>
     struct remove_reference {
@@ -41,9 +47,7 @@ namespace vt {
      * @return
      */
     template<typename T>
-    constexpr remove_reference_t<T> &&move(T &&t) noexcept {
-        return static_cast<remove_reference_t<T> &&>(t);
-    }
+    constexpr remove_reference_t<T> &&move(T &&t) noexcept { return static_cast<remove_reference_t<T> &&>(t); }
 
     /**
      * Mimic std::swap

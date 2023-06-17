@@ -36,23 +36,22 @@ namespace vt {
         numeric_vector_static_t(const numeric_vector_static_t &other) { allocate_from(other); }
 
         numeric_vector_static_t(numeric_vector_static_t &&other) noexcept {
-            for (size_t i = 0; i < Size; ++i)
-                arr_[i] = vt::move(other.arr_[i]);
+            for (size_t i = 0; i < Size; ++i) arr_[i] = vt::move(other.arr_[i]);
         }
 
         explicit numeric_vector_static_t(const T (&array)[Size]) { allocate_from(array); }
 
         T &operator[](size_t index) { return *(arr_ + index); }
 
-        const T &operator[](size_t index) const { return *(arr_ + index); }
+        constexpr const T &operator[](size_t index) const { return *(arr_ + index); }
 
         T &at(size_t index) { return operator[](index); };
 
-        const T &at(size_t index) const { return operator[](index); };
+        constexpr const T &at(size_t index) const { return operator[](index); };
 
         T &operator()(size_t index) { return at(index); }
 
-        const T &operator()(size_t index) const { return at(index); }
+        constexpr const T &operator()(size_t index) const { return at(index); }
 
         numeric_vector_static_t &operator=(const numeric_vector_static_t &other) {
             if (this != &other) allocate_from(other);
@@ -91,9 +90,9 @@ namespace vt {
             return tmp;
         }
 
-        numeric_vector_static_t add(const numeric_vector_static_t &other) const { return operator+(other); }
+        constexpr numeric_vector_static_t add(const numeric_vector_static_t &other) const { return operator+(other); }
 
-        numeric_vector_static_t add(const T (&array)[Size]) const { return operator+(array); }
+        constexpr numeric_vector_static_t add(const T (&array)[Size]) const { return operator+(array); }
 
         numeric_vector_static_t &operator-=(const numeric_vector_static_t &other) {
             for (size_t i = 0; i < Size; ++i) arr_[i] -= other.arr_[i];
@@ -117,9 +116,11 @@ namespace vt {
             return tmp;
         }
 
-        numeric_vector_static_t subtract(const numeric_vector_static_t &other) const { return operator-(other); }
+        constexpr numeric_vector_static_t subtract(const numeric_vector_static_t &other) const {
+            return operator-(other);
+        }
 
-        numeric_vector_static_t subtract(const T (&array)[Size]) const { return operator-(array); }
+        constexpr numeric_vector_static_t subtract(const T (&array)[Size]) const { return operator-(array); }
 
         numeric_vector_static_t &operator*=(T rhs) {
             for (size_t i = 0; i < Size; ++i) arr_[i] *= rhs;
@@ -155,9 +156,9 @@ namespace vt {
             return acc;
         }
 
-        T inner(const numeric_vector_static_t &other) const { return dot(other); }
+        constexpr T inner(const numeric_vector_static_t &other) const { return dot(other); }
 
-        T inner(const T (&array)[Size]) const { return dot(array); }
+        constexpr T inner(const T (&array)[Size]) const { return dot(array); }
 
         template<size_t OSize>
         numeric_matrix_static_t<T, Size, OSize> outer(const numeric_vector_static_t<T, OSize> &other) const {
@@ -183,9 +184,9 @@ namespace vt {
             return acc;
         }
 
-        T norm() const { return pow(dot(*this), 0.5); }
+        constexpr T norm() const { return pow(dot(*this), 0.5); }
 
-        numeric_vector_static_t normalize() const { return numeric_vector_static_t(*this) / norm(); }
+        constexpr numeric_vector_static_t normalize() const { return numeric_vector_static_t(*this) / norm(); }
 
         template<size_t OSize>
         bool operator==(const numeric_vector_static_t<T, OSize> &other) const {
@@ -203,13 +204,13 @@ namespace vt {
         }
 
         template<size_t OSize>
-        bool operator!=(const numeric_vector_static_t<T, OSize> &other) const { return !operator==(other); }
+        constexpr bool operator!=(const numeric_vector_static_t<T, OSize> &other) const { return !operator==(other); }
 
         template<size_t OSize>
-        bool operator!=(const T (&array)[OSize]) const { return !operator==(array); }
+        constexpr bool operator!=(const T (&array)[OSize]) const { return !operator==(array); }
 
         template<size_t OSize>
-        bool equals(const numeric_vector_static_t<T, OSize> &other) const { return operator==(other); }
+        constexpr bool equals(const numeric_vector_static_t<T, OSize> &other) const { return operator==(other); }
 
         template<size_t OSize>
         bool float_equals(const numeric_vector_static_t<T, OSize> &other) const {
@@ -220,15 +221,15 @@ namespace vt {
         }
 
         template<size_t OSize>
-        bool equals(const T (&array)[OSize]) const { return operator==(array); }
+        constexpr bool equals(const T (&array)[OSize]) const { return operator==(array); }
 
         iterator<T> begin() { return iterator<T>(arr_); }
 
-        iterator<T> begin() const { return iterator<T>(arr_); }
+        constexpr iterator<T> begin() const { return iterator<T>(arr_); }
 
         iterator<T> end() { return iterator<T>(arr_ + Size); }
 
-        iterator<T> end() const { return iterator<T>(arr_ + Size); }
+        constexpr iterator<T> end() const { return iterator<T>(arr_ + Size); }
 
         T &front() { return operator[](0); }
 
@@ -237,11 +238,10 @@ namespace vt {
         constexpr size_t size() const { return Size; }
 
         void swap(numeric_vector_static_t &other) {
-            for (size_t i = 0; i < Size; ++i)
-                vt::swap(arr_[i], other.arr_[i]);
+            for (size_t i = 0; i < Size; ++i) vt::swap(arr_[i], other.arr_[i]);
         }
 
-        numeric_vector_static_t copy() const { numeric_vector_static_t(*this); }
+        constexpr numeric_vector_static_t copy() const { return numeric_vector_static_t(*this); }
 
     private:
         void put_array(size_t index, T value) { arr_[index] = value; }
@@ -265,14 +265,9 @@ namespace vt {
         }
 
     public:
-        static numeric_vector_static_t zero() { return numeric_vector_static_t(); }
+        static constexpr numeric_vector_static_t zeros() { return numeric_vector_static_t(); }
 
-        template<typename... Ts>
-        static numeric_vector_static_t from(Ts... values) {
-            numeric_vector_static_t tmp = numeric_vector_static_t(sizeof...(values));
-            tmp.put_array(0, values...);
-            return tmp;
-        }
+        static constexpr numeric_vector_static_t ones() { return numeric_vector_static_t(1); }
     };
 
     template<typename T, size_t Size>
