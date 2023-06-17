@@ -27,10 +27,13 @@ int main() {
     numeric_matrix<N> Z1 = vt::move(X * Y);
     numeric_matrix<N> Z2 = vt::move(X.matmul_naive(Y));
 
+    auto v1 = vt::make_numeric_vector({1, 2, 3, 4});
+    auto M1 = vt::make_numeric_matrix({{1, 2, 3}, {4, 5, 6}});
+
     for (size_t i = 0; i < N; ++i) {
         for (size_t j = 0; j < N; ++j) {
-            X[i][j] = static_cast<double>(i * N + j) / 762.;
-            Y[i][j] = static_cast<double>(i * N + j) / 1983.;
+            X[i][j] = static_cast<vt::real_t>(i * N + j) / 762.;
+            Y[i][j] = static_cast<vt::real_t>(i * N + j) / 1983.;
         }
     }
 

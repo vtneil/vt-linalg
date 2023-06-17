@@ -15,44 +15,44 @@
 
 namespace vt {
     template<typename T>
-    class MatrixLU;
+    class numeric_matrix_dynamic_lu_t;
 
     template<typename T>
-    class Matrix {
+    class numeric_matrix_dynamic_t {
     private:
-        friend class Vector<T>;
+        friend class numeric_vector_dynamic_t<T>;
 
     private:
         static constexpr size_t STRASSEN_DIMENSION = 1024;
         static constexpr size_t STRASSEN_THRESHOLD = STRASSEN_DIMENSION * STRASSEN_DIMENSION;
         size_t r_;
         size_t c_;
-        Vector<Vector<T>> vector_;
+        numeric_vector_dynamic_t<numeric_vector_dynamic_t<T>> vector_;
 
     public:
-        Matrix() : r_(0), c_(0), vector_(vt::move(Vector<Vector<T>>())) {}
+        numeric_matrix_dynamic_t() : r_(0), c_(0), vector_(vt::move(numeric_vector_dynamic_t<numeric_vector_dynamic_t<T>>())) {}
 
-        explicit Matrix(size_t n) : r_(n), c_(n) { allocate_zero(); }
+        explicit numeric_matrix_dynamic_t(size_t n) : r_(n), c_(n) { allocate_zero(); }
 
-        Matrix(size_t rows, size_t cols) : r_(rows), c_(cols) { allocate_zero(); }
+        numeric_matrix_dynamic_t(size_t rows, size_t cols) : r_(rows), c_(cols) { allocate_zero(); }
 
-        Matrix(size_t rows, size_t cols, T fill) : r_(rows), c_(cols) { allocate_fill(fill); }
+        numeric_matrix_dynamic_t(size_t rows, size_t cols, T fill) : r_(rows), c_(cols) { allocate_fill(fill); }
 
-        Matrix(const Matrix &other) : r_(other.r_), c_(other.c_) { allocate_from(other); }
+        numeric_matrix_dynamic_t(const numeric_matrix_dynamic_t &other) : r_(other.r_), c_(other.c_) { allocate_from(other); }
 
-        Matrix(Matrix &&other) noexcept: r_(other.r_), c_(other.c_) {
+        numeric_matrix_dynamic_t(numeric_matrix_dynamic_t &&other) noexcept: r_(other.r_), c_(other.c_) {
             steal(vt::move(other));
             other.r_ = 0;
             other.c_ = 0;
         }
 
         template<size_t R, size_t C>
-        explicit Matrix(const T (&array)[R][C]) : r_(R), c_(C) { allocate_from(array); }
+        explicit numeric_matrix_dynamic_t(const T (&array)[R][C]) : r_(R), c_(C) { allocate_from(array); }
 
         template<size_t R>
-        explicit Matrix(const Vector<T> (&vectors)[R]) : r_(R), c_(vectors[0].size_) { allocate_from(vectors); }
+        explicit numeric_matrix_dynamic_t(const numeric_vector_dynamic_t<T> (&vectors)[R]) : r_(R), c_(vectors[0].size_) { allocate_from(vectors); }
 
-        Matrix(const Matrix &M11, const Matrix &M12, const Matrix &M21, const Matrix &M22) {
+        numeric_matrix_dynamic_t(const numeric_matrix_dynamic_t &M11, const numeric_matrix_dynamic_t &M12, const numeric_matrix_dynamic_t &M21, const numeric_matrix_dynamic_t &M22) {
             if (M11.r_ == M12.r_ && M21.r_ == M22.r_ && M11.c_ == M21.c_ && M12.c_ == M22.c_) {
                 r_ = M11.r_ + M21.r_;
                 c_ = M11.c_ + M12.c_;
@@ -68,9 +68,9 @@ namespace vt {
             }
         }
 
-        Vector<T> &operator[](size_t index) { return vector_[index]; }
+        numeric_vector_dynamic_t<T> &operator[](size_t index) { return vector_[index]; }
 
-        const Vector<T> &operator[](size_t index) const { return vector_[index]; }
+        const numeric_vector_dynamic_t<T> &operator[](size_t index) const { return vector_[index]; }
 
         T &at(size_t r_index, size_t c_index) { return vector_[r_index][c_index]; };
 
@@ -80,7 +80,7 @@ namespace vt {
 
         const T &operator()(size_t r_index, size_t c_index) const { return at(r_index, c_index); }
 
-        Matrix &operator=(const Matrix &other) {
+        numeric_matrix_dynamic_t &operator=(const numeric_matrix_dynamic_t &other) {
             if (this != &other) {
                 if (r_ == other.r_ && c_ == other.c_) {
                     insert(other);
@@ -91,7 +91,7 @@ namespace vt {
             return *this;
         }
 
-        Matrix &operator=(Matrix &&other) noexcept {
+        numeric_matrix_dynamic_t &operator=(numeric_matrix_dynamic_t &&other) noexcept {
             if (this != &other) {
                 steal(vt::move(other));
                 other.r_ = 0;
@@ -101,7 +101,7 @@ namespace vt {
         }
 
         template<size_t R, size_t C>
-        Matrix &operator=(const T (&array)[R][C]) {
+        numeric_matrix_dynamic_t &operator=(const T (&array)[R][C]) {
             if (r_ == R && c_ == C) {
                 insert(array);
             } else {
@@ -111,75 +111,75 @@ namespace vt {
         }
 
         template<size_t R>
-        Matrix &operator=(const Vector<T> (&vectors)[R]) {
+        numeric_matrix_dynamic_t &operator=(const numeric_vector_dynamic_t<T> (&vectors)[R]) {
             allocate_from(vectors);
             return *this;
         }
 
-        Matrix &operator+=(const Matrix &other) { return iadd(*this, *this, other); }
+        numeric_matrix_dynamic_t &operator+=(const numeric_matrix_dynamic_t &other) { return iadd(*this, *this, other); }
 
-        Matrix operator+(const Matrix &other) const {
-            Matrix tmp(*this);
+        numeric_matrix_dynamic_t operator+(const numeric_matrix_dynamic_t &other) const {
+            numeric_matrix_dynamic_t tmp(*this);
             tmp.operator+=(other);
             return tmp;
         }
 
-        Matrix add(const Matrix &other) const { return operator+(other); }
+        numeric_matrix_dynamic_t add(const numeric_matrix_dynamic_t &other) const { return operator+(other); }
 
-        static Matrix &iadd(Matrix &C, const Matrix &A, const Matrix &B) {
+        static numeric_matrix_dynamic_t &iadd(numeric_matrix_dynamic_t &C, const numeric_matrix_dynamic_t &A, const numeric_matrix_dynamic_t &B) {
             for (size_t i = 0; i < C.r_; ++i)
                 for (size_t j = 0; j < C.c_; ++j)
                     C[i][j] = A[i][j] + B[i][j];
             return C;
         }
 
-        Matrix &operator-=(const Matrix &other) { return isub(*this, *this, other); }
+        numeric_matrix_dynamic_t &operator-=(const numeric_matrix_dynamic_t &other) { return isub(*this, *this, other); }
 
-        Matrix operator-(const Matrix &other) const {
-            Matrix tmp(*this);
+        numeric_matrix_dynamic_t operator-(const numeric_matrix_dynamic_t &other) const {
+            numeric_matrix_dynamic_t tmp(*this);
             tmp.operator-=(other);
             return tmp;
         }
 
-        Matrix sub(const Matrix &other) const { return operator-(other); }
+        numeric_matrix_dynamic_t sub(const numeric_matrix_dynamic_t &other) const { return operator-(other); }
 
-        static Matrix &isub(Matrix &C, const Matrix &A, const Matrix &B) {
+        static numeric_matrix_dynamic_t &isub(numeric_matrix_dynamic_t &C, const numeric_matrix_dynamic_t &A, const numeric_matrix_dynamic_t &B) {
             for (size_t i = 0; i < C.r_; ++i)
                 for (size_t j = 0; j < C.c_; ++j)
                     C[i][j] = A[i][j] - B[i][j];
             return C;
         }
 
-        Matrix &operator*=(const Matrix &other) {
+        numeric_matrix_dynamic_t &operator*=(const numeric_matrix_dynamic_t &other) {
             steal(vt::move(operator*(other)));
             return *this;
         }
 
-        Matrix operator*(const Matrix &other) const {
-            Matrix C(r_, other.c_);
+        numeric_matrix_dynamic_t operator*(const numeric_matrix_dynamic_t &other) const {
+            numeric_matrix_dynamic_t C(r_, other.c_);
             return imatmul(C, *this, other);
         }
 
-        Matrix &operator*=(T rhs) {
+        numeric_matrix_dynamic_t &operator*=(T rhs) {
             for (auto &x: vector_) x *= rhs;
             return *this;
         }
 
-        Matrix operator*(T rhs) const {
-            Matrix tmp(*this);
+        numeric_matrix_dynamic_t operator*(T rhs) const {
+            numeric_matrix_dynamic_t tmp(*this);
             tmp.operator*=(rhs);
             return tmp;
         }
 
-        Vector<T> operator*(const Vector<T> &other) const {
-            Vector<T> tmp(r_);
+        numeric_vector_dynamic_t<T> operator*(const numeric_vector_dynamic_t<T> &other) const {
+            numeric_vector_dynamic_t<T> tmp(r_);
             for (size_t i = 0; i < r_; ++i) tmp[i] = vector_[i].dot(other);
             return tmp;
         }
 
-        Matrix matmul(const Matrix &other) const { return operator*(other); }
+        numeric_matrix_dynamic_t matmul(const numeric_matrix_dynamic_t &other) const { return operator*(other); }
 
-        static Matrix &imatmul(Matrix &C, const Matrix &A, const Matrix &B) {
+        static numeric_matrix_dynamic_t &imatmul(numeric_matrix_dynamic_t &C, const numeric_matrix_dynamic_t &A, const numeric_matrix_dynamic_t &B) {
             if (A.r() != 1 &&
                 B.r() != 1 &&
                 A.c() != 1 &&
@@ -189,20 +189,20 @@ namespace vt {
             return mm_naive(C, A, B);
         }
 
-        Matrix matmul_naive(const Matrix &other) const {
-            Matrix C(r_, other.c_);
+        numeric_matrix_dynamic_t matmul_naive(const numeric_matrix_dynamic_t &other) const {
+            numeric_matrix_dynamic_t C(r_, other.c_);
             return mm_naive(C, *this, other);
         }
 
-        Vector<T> transform(const Vector<T> &other) const { return operator*(other); }
+        numeric_vector_dynamic_t<T> transform(const numeric_vector_dynamic_t<T> &other) const { return operator*(other); }
 
-        Matrix &operator^=(size_t n) {
+        numeric_matrix_dynamic_t &operator^=(size_t n) {
             steal(vt::move(operator^(n)));
             return *this;
         }
 
-        Matrix operator^(size_t n) {
-            Matrix product(*this);
+        numeric_matrix_dynamic_t operator^(size_t n) {
+            numeric_matrix_dynamic_t product(*this);
             if (n == 0) return id(vt::min(r_, c_));
             if (n == 1) return product;
             product = vt::move(product.operator^(n / 2));
@@ -210,15 +210,15 @@ namespace vt {
             else return product.operator*(product).operator*(*this);
         }
 
-        Matrix matpow(size_t n) { return operator^(n); }
+        numeric_matrix_dynamic_t matpow(size_t n) { return operator^(n); }
 
-        Matrix matpow_naive(size_t n) {
-            Matrix product = vt::move(id(r_));
+        numeric_matrix_dynamic_t matpow_naive(size_t n) {
+            numeric_matrix_dynamic_t product = vt::move(id(r_));
             for (size_t i = 0; i < n; ++i) product *= *this;
             return product;
         }
 
-        bool operator==(const Matrix &other) const {
+        bool operator==(const numeric_matrix_dynamic_t &other) const {
             if (this == &other) return true;
             if (r_ != other.r_ || c_ != other.c_) return false;
             for (size_t i = 0; i < r_; ++i)
@@ -236,14 +236,14 @@ namespace vt {
             return true;
         }
 
-        bool operator!=(const Matrix &other) const { return !operator==(other); }
+        bool operator!=(const numeric_matrix_dynamic_t &other) const { return !operator==(other); }
 
         template<size_t R, size_t C>
         bool operator!=(const T (&array)[R][C]) const { return !operator==(array); }
 
-        bool equals(const Matrix &other) const { return operator==(other); }
+        bool equals(const numeric_matrix_dynamic_t &other) const { return operator==(other); }
 
-        bool float_equals(const Matrix &other) const {
+        bool float_equals(const numeric_matrix_dynamic_t &other) const {
             if (this == &other) return true;
             if (r_ != other.r_ || c_ != other.c_) return false;
             for (size_t i = 0; i < r_; ++i)
@@ -257,27 +257,27 @@ namespace vt {
 
         bool is_square() const { return r_ == c_; }
 
-        bool can_multiply_with(const Matrix &other) const { return c_ == other.r_; }
+        bool can_multiply_with(const numeric_matrix_dynamic_t &other) const { return c_ == other.r_; }
 
-        bool can_multiply_with(const Vector<T> &other) const { return c_ == other.size_; }
+        bool can_multiply_with(const numeric_vector_dynamic_t<T> &other) const { return c_ == other.size_; }
 
-        Vector<T> row(size_t r_index) const { return Vector<T>(operator[](r_index)); }
+        numeric_vector_dynamic_t<T> row(size_t r_index) const { return numeric_vector_dynamic_t<T>(operator[](r_index)); }
 
-        Vector<T> col(size_t c_index) const {
-            Vector<T> tmp(r_);
+        numeric_vector_dynamic_t<T> col(size_t c_index) const {
+            numeric_vector_dynamic_t<T> tmp(r_);
             for (size_t i = 0; i < r_; ++i) tmp[i] = vector_[i][c_index];
             return tmp;
         }
 
-        Vector<T> diag() {
+        numeric_vector_dynamic_t<T> diag() {
             size_t min_dim = vt::min(r_, c_);
-            Vector<T> tmp(min_dim);
+            numeric_vector_dynamic_t<T> tmp(min_dim);
             for (size_t i = 0; i < min_dim; ++i) tmp[i] = vector_[i][i];
             return tmp;
         }
 
-        Matrix transpose() const {
-            Matrix tmp(c_, r_);
+        numeric_matrix_dynamic_t transpose() const {
+            numeric_matrix_dynamic_t tmp(c_, r_);
             for (size_t i = 0; i < r_; ++i)
                 for (size_t j = 0; j < c_; ++j)
                     tmp.vector_[j][i] = vector_[i][j];
@@ -285,7 +285,7 @@ namespace vt {
         }
 
         T det() const {
-            MatrixLU<T> lu = vt::move(LU());
+            numeric_matrix_dynamic_lu_t<T> lu = vt::move(LU());
             T det = 1;
             size_t r_swaps = 0;
             size_t n = vt::min(r_, c_);
@@ -304,15 +304,15 @@ namespace vt {
             return acc;
         }
 
-        Matrix inv() const {
-            MatrixLU<T> lu = vt::move(LU());
+        numeric_matrix_dynamic_t inv() const {
+            numeric_matrix_dynamic_lu_t<T> lu = vt::move(LU());
             return inv_ut(lu.u()) * inv_lt(lu.l());
         }
 
-        constexpr Matrix inverse() const { return inv(); }
+        constexpr numeric_matrix_dynamic_t inverse() const { return inv(); }
 
-        Matrix RRE() const {
-            Matrix m(*this);
+        numeric_matrix_dynamic_t RRE() const {
+            numeric_matrix_dynamic_t m(*this);
             size_t lead = 0;
             for (size_t r = 0; r < r_; ++r) {
                 if (lead >= c_) return m;
@@ -341,10 +341,10 @@ namespace vt {
             return m;
         }
 
-        MatrixLU<T> LU() const {
+        numeric_matrix_dynamic_lu_t<T> LU() const {
             size_t n = vt::min(r_, c_);
-            Matrix lower(n, n);
-            Matrix upper(n, n);
+            numeric_matrix_dynamic_t lower(n, n);
+            numeric_matrix_dynamic_t upper(n, n);
             for (size_t i = 0; i < n; ++i) {
                 for (size_t k = 0; k < n; ++k) {
                     T sum_ = 0;
@@ -363,12 +363,12 @@ namespace vt {
             return {lower, upper};
         }
 
-        void insert(const Matrix &M) { insert(0, 0, M); }
+        void insert(const numeric_matrix_dynamic_t &M) { insert(0, 0, M); }
 
         template<size_t R, size_t C>
         void insert(const T (&array)[R][C]) { insert(0, 0, array); }
 
-        void insert(size_t pos_row, size_t pos_col, const Matrix &M) {
+        void insert(size_t pos_row, size_t pos_col, const numeric_matrix_dynamic_t &M) {
             if (pos_row >= r_ || pos_col >= c_ || pos_row + M.r_ > r_ || pos_col + M.c_ > c_) return;
             for (size_t i = 0; i < M.r_; ++i)
                 for (size_t j = 0; j < M.c_; ++j)
@@ -383,14 +383,14 @@ namespace vt {
                     vector_[i + pos_row][j + pos_col] = array[i][j];
         }
 
-        Matrix slice(size_t r1, size_t c1, size_t r2, size_t c2) const {
+        numeric_matrix_dynamic_t slice(size_t r1, size_t c1, size_t r2, size_t c2) const {
             if (r1 > r2) vt::swap(r1, r2);
             if (c1 > c2) vt::swap(c1, c2);
             r2 = vt::min(r2, r_);
             c2 = vt::min(c2, c_);
             size_t r = r2 - r1;
             size_t c = c2 - c1;
-            Matrix result(r, c);
+            numeric_matrix_dynamic_t result(r, c);
             if (r == 0 || c == 0 || r1 >= r_ || c1 >= c_) return result;
             for (size_t i = 0; i < r; ++i)
                 for (size_t j = 0; j < c; ++j)
@@ -398,19 +398,19 @@ namespace vt {
             return result;
         }
 
-        void swap(Matrix &other) {
+        void swap(numeric_matrix_dynamic_t &other) {
             vt::swap(vector_, other.vector_);
             vt::swap(r_, other.r_);
             vt::swap(c_, other.c_);
         }
 
-        Iterator<Vector<T>> begin() { return vector_.begin(); }
+        iterator<numeric_vector_dynamic_t<T>> begin() { return vector_.begin(); }
 
-        Iterator<Vector<T>> begin() const { return vector_.begin(); }
+        iterator<numeric_vector_dynamic_t<T>> begin() const { return vector_.begin(); }
 
-        Iterator<Vector<T>> end() { return vector_.end(); }
+        iterator<numeric_vector_dynamic_t<T>> end() { return vector_.end(); }
 
-        Iterator<Vector<T>> end() const { return vector_.end(); }
+        iterator<numeric_vector_dynamic_t<T>> end() const { return vector_.end(); }
 
         constexpr size_t r() const { return r_; }
 
@@ -432,9 +432,9 @@ namespace vt {
         }
 
     private:
-        static Matrix &inv_lt(Matrix &L) {
+        static numeric_matrix_dynamic_t &inv_lt(numeric_matrix_dynamic_t &L) {
             size_t n = vt::min(L.r_, L.c_);
-            Matrix X(n);
+            numeric_matrix_dynamic_t X(n);
             for (size_t k = 0; k < n; ++k) {
                 X[k][k] = 1 / L[k][k];
                 for (size_t i = k + 1; i < n; ++i) {
@@ -448,14 +448,14 @@ namespace vt {
             return L;
         }
 
-        static Matrix inv_ut(const Matrix &U) {
-            Matrix tmp = vt::move(U.transpose());
+        static numeric_matrix_dynamic_t inv_ut(const numeric_matrix_dynamic_t &U) {
+            numeric_matrix_dynamic_t tmp = vt::move(U.transpose());
             return inv_lt(tmp).transpose();
         }
 
-        static Matrix &mm_naive(Matrix &C, const Matrix &A, const Matrix &B) {
+        static numeric_matrix_dynamic_t &mm_naive(numeric_matrix_dynamic_t &C, const numeric_matrix_dynamic_t &A, const numeric_matrix_dynamic_t &B) {
             for (size_t i = 0; i < A.r_; ++i) {
-                Vector<T> &row_C = C[i];
+                numeric_vector_dynamic_t<T> &row_C = C[i];
                 for (size_t k = 0; k < A.c_; ++k) {
                     const T &val_A = A[i][k];
                     for (size_t j = 0; j < B.c_; ++j) {
@@ -466,13 +466,13 @@ namespace vt {
             return C;
         }
 
-        static Matrix &mm_strassen(Matrix &C, const Matrix &A, const Matrix &B) {
+        static numeric_matrix_dynamic_t &mm_strassen(numeric_matrix_dynamic_t &C, const numeric_matrix_dynamic_t &A, const numeric_matrix_dynamic_t &B) {
             size_t rA = closest_2(A.r_);
             size_t cA = closest_2(A.c_);
             size_t rB = closest_2(B.r_);
             size_t cB = closest_2(B.c_);
 
-            Matrix A11, A12, A21, A22, B11, B12, B21, B22;
+            numeric_matrix_dynamic_t A11, A12, A21, A22, B11, B12, B21, B22;
 
             if (rA == A.r_ && cA == A.c_ && rB == B.r_ && cB == B.c_) {
                 A11 = vt::move(A.slice(0, 0, rA / 2, cA / 2));
@@ -484,9 +484,9 @@ namespace vt {
                 B21 = vt::move(B.slice(rB / 2, 0, rB, cB / 2));
                 B22 = vt::move(B.slice(rB / 2, cB / 2, rB, cB));
             } else {
-                Matrix Ap(rA, cA);
+                numeric_matrix_dynamic_t Ap(rA, cA);
                 Ap.insert(A);
-                Matrix Bp(rB, cB);
+                numeric_matrix_dynamic_t Bp(rB, cB);
                 Bp.insert(B);
                 A11 = vt::move(Ap.slice(0, 0, rA / 2, cA / 2));
                 A12 = vt::move(Ap.slice(0, cA / 2, rA / 2, cA));
@@ -496,16 +496,16 @@ namespace vt {
                 B12 = vt::move(Bp.slice(0, cB / 2, rB / 2, cB));
                 B21 = vt::move(Bp.slice(rB / 2, 0, rB, cB / 2));
                 B22 = vt::move(Bp.slice(rB / 2, cB / 2, rB, cB));
-                C = vt::move(Matrix(rA, cB));
+                C = vt::move(numeric_matrix_dynamic_t(rA, cB));
             }
 
-            Matrix M1 = vt::move((A11 + A22) * (B11 + B22));
-            Matrix M2 = vt::move((A21 + A22) * B11);
-            Matrix M3 = vt::move(A11 * (B12 - B22));
-            Matrix M4 = vt::move(A22 * (B21 - B11));
-            Matrix M5 = vt::move((A11 + A12) * B22);
-            Matrix M6 = vt::move((A21 - A11) * (B11 + B12));
-            Matrix M7 = vt::move((A12 - A22) * (B21 + B22));
+            numeric_matrix_dynamic_t M1 = vt::move((A11 + A22) * (B11 + B22));
+            numeric_matrix_dynamic_t M2 = vt::move((A21 + A22) * B11);
+            numeric_matrix_dynamic_t M3 = vt::move(A11 * (B12 - B22));
+            numeric_matrix_dynamic_t M4 = vt::move(A22 * (B21 - B11));
+            numeric_matrix_dynamic_t M5 = vt::move((A11 + A12) * B22);
+            numeric_matrix_dynamic_t M6 = vt::move((A21 - A11) * (B11 + B12));
+            numeric_matrix_dynamic_t M7 = vt::move((A12 - A22) * (B21 + B22));
             C.insert(0, 0, M1 + M4 - M5 + M7);
             C.insert(0, C.c_ / 2, M3 + M5);
             C.insert(C.r_ / 2, 0, M2 + M4);
@@ -523,7 +523,7 @@ namespace vt {
                         vector_[i][j] = 0.0;
         }
 
-        void put_array(size_t index, const Vector<T> &vector) {
+        void put_array(size_t index, const numeric_vector_dynamic_t<T> &vector) {
             vector_[index] = vector;
             c_ = vector.size();
         }
@@ -535,7 +535,7 @@ namespace vt {
         }
 
         template<typename... Vectors>
-        void put_array(size_t index, const Vector<T> &vector, const Vectors &...vectors) {
+        void put_array(size_t index, const numeric_vector_dynamic_t<T> &vector, const Vectors &...vectors) {
             vector_[index] = vector;
             put_array(index + 1, vectors...);
         }
@@ -546,17 +546,17 @@ namespace vt {
             put_array(index + 1, arrays...);
         }
 
-        void allocate_zero() { vector_ = vt::move(Vector<Vector<T>>(r_, Vector<T>(c_))); }
+        void allocate_zero() { vector_ = vt::move(numeric_vector_dynamic_t<numeric_vector_dynamic_t<T>>(r_, numeric_vector_dynamic_t<T>(c_))); }
 
-        void allocate_fill(T fill) { vector_ = vt::move(Vector<Vector<T>>(r_, Vector<T>(c_, fill))); }
+        void allocate_fill(T fill) { vector_ = vt::move(numeric_vector_dynamic_t<numeric_vector_dynamic_t<T>>(r_, numeric_vector_dynamic_t<T>(c_, fill))); }
 
-        void steal(Matrix &&other) {
+        void steal(numeric_matrix_dynamic_t &&other) {
             r_ = other.r_;
             c_ = other.c_;
             vector_ = vt::move(other.vector_);
         }
 
-        void allocate_from(const Matrix &other) {
+        void allocate_from(const numeric_matrix_dynamic_t &other) {
             r_ = other.r_;
             c_ = other.c_;
             vector_ = other.vector_;
@@ -573,7 +573,7 @@ namespace vt {
         }
 
         template<size_t R>
-        void allocate_from(const Vector<T> (&vectors)[R]) {
+        void allocate_from(const numeric_vector_dynamic_t<T> (&vectors)[R]) {
             r_ = R;
             c_ = vectors[0].size_;
             allocate_zero();
@@ -585,94 +585,94 @@ namespace vt {
         //    void deallocate() {}
 
     public:
-        static Matrix zeros(size_t r, size_t c) { return Matrix(r, c); }
+        static numeric_matrix_dynamic_t zeros(size_t r, size_t c) { return numeric_matrix_dynamic_t(r, c); }
 
-        static Matrix zeros(size_t n) { return Matrix(n); }
+        static numeric_matrix_dynamic_t zeros(size_t n) { return numeric_matrix_dynamic_t(n); }
 
-        static Matrix ones(size_t r, size_t c) { return Matrix(r, c, 1); }
+        static numeric_matrix_dynamic_t ones(size_t r, size_t c) { return numeric_matrix_dynamic_t(r, c, 1); }
 
-        static Matrix ones(size_t n) { return Matrix(n, n, 1); }
+        static numeric_matrix_dynamic_t ones(size_t n) { return numeric_matrix_dynamic_t(n, n, 1); }
 
-        static Matrix identity(size_t n) { return diagonal(n, 1); }
+        static numeric_matrix_dynamic_t identity(size_t n) { return diagonal(n, 1); }
 
-        static Matrix id(size_t n) { return identity(n); }
+        static numeric_matrix_dynamic_t id(size_t n) { return identity(n); }
 
-        static Matrix diagonal(size_t n, T value) {
-            Matrix tmp(n);
+        static numeric_matrix_dynamic_t diagonal(size_t n, T value) {
+            numeric_matrix_dynamic_t tmp(n);
             for (size_t i = 0; i < n; ++i) tmp[i][i] = value;
             return tmp;
         }
 
         template<typename... Vectors>
-        static Matrix from(const Vectors &...vectors) {
-            Matrix tmp(sizeof...(vectors), 0);
+        static numeric_matrix_dynamic_t from(const Vectors &...vectors) {
+            numeric_matrix_dynamic_t tmp(sizeof...(vectors), 0);
             tmp.put_array(0, vectors...);
             return tmp;
         }
 
         template<size_t N, typename... Arrays>
-        static Matrix from(const Arrays (&...arrays)[N]) {
-            Matrix tmp(N, 0);
+        static numeric_matrix_dynamic_t from(const Arrays (&...arrays)[N]) {
+            numeric_matrix_dynamic_t tmp(N, 0);
             tmp.put_array(0, arrays...);
             return tmp;
         }
 
-        static Matrix from_row(const Vector<T> &vector) { return Matrix::from(vector); }
+        static numeric_matrix_dynamic_t from_row(const numeric_vector_dynamic_t<T> &vector) { return numeric_matrix_dynamic_t::from(vector); }
 
-        static Matrix from_col(const Vector<T> &vector) {
-            Matrix result(vector.size_, 1);
+        static numeric_matrix_dynamic_t from_col(const numeric_vector_dynamic_t<T> &vector) {
+            numeric_matrix_dynamic_t result(vector.size_, 1);
             for (size_t i = 0; i < vector.size_; ++i) result[i][0] = vector.arr_[i];
             return result;
         }
 
-        static Matrix quad(const Matrix M) { return Matrix(M, M, M, M); }
+        static numeric_matrix_dynamic_t quad(const numeric_matrix_dynamic_t M) { return numeric_matrix_dynamic_t(M, M, M, M); }
     };
 
     template<typename T>
-    Matrix<T> operator*(T lhs, const Matrix<T> &rhs) {
-        Matrix < T > tmp(rhs);
+    numeric_matrix_dynamic_t<T> operator*(T lhs, const numeric_matrix_dynamic_t<T> &rhs) {
+        numeric_matrix_dynamic_t < T > tmp(rhs);
         tmp.operator*=(lhs);
         return tmp;
     }
 
     template<typename T>
-    T det(const Matrix<T> &A) { return A.det(); }
+    T det(const numeric_matrix_dynamic_t<T> &A) { return A.det(); }
 
     template<typename T>
-    T tr(const Matrix<T> &A) { return A.tr(); }
+    T tr(const numeric_matrix_dynamic_t<T> &A) { return A.tr(); }
 
     template<typename T>
-    Matrix<T> inv(const Matrix<T> &A) { return A.inv(); }
+    numeric_matrix_dynamic_t<T> inv(const numeric_matrix_dynamic_t<T> &A) { return A.inv(); }
 
     template<typename T>
-    Matrix<T> RRE(const Matrix<T> &A) { return A.RRE(); }
+    numeric_matrix_dynamic_t<T> RRE(const numeric_matrix_dynamic_t<T> &A) { return A.RRE(); }
 
     template<typename T>
-    class MatrixLU {
+    class numeric_matrix_dynamic_lu_t {
     private:
-        using PM = vt::pair<Matrix<T>, Matrix<T>>;
-        Matrix<T> l_;
-        Matrix<T> u_;
+        using PM = vt::pair<numeric_matrix_dynamic_t<T>, numeric_matrix_dynamic_t<T>>;
+        numeric_matrix_dynamic_t<T> l_;
+        numeric_matrix_dynamic_t<T> u_;
 
     public:
-        MatrixLU(const MatrixLU &other) : l_(other.l_), u_(other.u_) {}
+        numeric_matrix_dynamic_lu_t(const numeric_matrix_dynamic_lu_t &other) : l_(other.l_), u_(other.u_) {}
 
-        MatrixLU(MatrixLU &&other) noexcept: l_(vt::move(other.l_)), u_(vt::move(other.u_)) {}
+        numeric_matrix_dynamic_lu_t(numeric_matrix_dynamic_lu_t &&other) noexcept: l_(vt::move(other.l_)), u_(vt::move(other.u_)) {}
 
-        explicit MatrixLU(const PM &lu) : l_(lu.first), u_(lu.second) {}
+        explicit numeric_matrix_dynamic_lu_t(const PM &lu) : l_(lu.first), u_(lu.second) {}
 
-        MatrixLU(const Matrix<T> &l, const Matrix<T> &u) : l_(l), u_(u) {}
+        numeric_matrix_dynamic_lu_t(const numeric_matrix_dynamic_t<T> &l, const numeric_matrix_dynamic_t<T> &u) : l_(l), u_(u) {}
 
-        Matrix<T> &l() { return l_; }
+        numeric_matrix_dynamic_t<T> &l() { return l_; }
 
-        constexpr const Matrix<T> &l() const { return l_; }
+        constexpr const numeric_matrix_dynamic_t<T> &l() const { return l_; }
 
-        Matrix<T> &u() { return u_; }
+        numeric_matrix_dynamic_t<T> &u() { return u_; }
 
-        constexpr const Matrix<T> &u() const { return u_; }
+        constexpr const numeric_matrix_dynamic_t<T> &u() const { return u_; }
     };
 
-    using numeric_matrix = vt::Matrix<double>;
+    using numeric_matrix = numeric_matrix_dynamic_t<double>;
 }
 
 #endif //VNET_LINALG_DYNAMIC_NUMERIC_MATRIX_H

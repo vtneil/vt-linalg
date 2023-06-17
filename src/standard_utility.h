@@ -7,6 +7,8 @@
 #include <math.h>
 
 namespace vt {
+    typedef double real_t;
+
     template<typename T>
     constexpr const T &min(const T &a, const T &b) { return (a < b) ? a : b; }
 
