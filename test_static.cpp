@@ -1,9 +1,12 @@
 #include <iostream>
 #include "vnet_linalg"
+#include "src/utils.h"
 
 #define NEWLINE() std::cout<<'\n'
 
 int main() {
+    std::cout << vt::min_val(1, 3);
+
     constexpr size_t N = 1;
     numeric_vector<2> v({1, 1});
     numeric_matrix<3, 4> A({{1, 2, 3, 4},
@@ -18,8 +21,8 @@ int main() {
                          {2, 2, 2}});
     numeric_matrix<N> X;
     numeric_matrix<N> Y;
-    numeric_matrix<N> Z1 = move(X * Y);
-    numeric_matrix<N> Z2 = move(X.matmul_naive(Y));
+    numeric_matrix<N> Z1 = vt::move(X * Y);
+    numeric_matrix<N> Z2 = vt::move(X.matmul_naive(Y));
 
     for (size_t i = 0; i < N; ++i) {
         for (size_t j = 0; j < N; ++j) {

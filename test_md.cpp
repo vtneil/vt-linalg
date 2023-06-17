@@ -1,6 +1,7 @@
 #include <iostream>
 #include "src/numeric_vector.h"
 #include "src/numeric_matrix.h"
+#include "src/utils.h"
 
 #define NEWLINE() std::cout<<'\n'
 
@@ -19,8 +20,8 @@ int main() {
                       {2, 2, 2}});
     numeric_matrix X(N, N);
     numeric_matrix Y(N, N);
-    numeric_matrix Z1 = move(X * Y);
-    numeric_matrix Z2 = move(X.matmul_naive(Y));
+    numeric_matrix Z1 = vt::move(X * Y);
+    numeric_matrix Z2 = vt::move(X.matmul_naive(Y));
 
     for (size_t i = 0; i < N; ++i) {
         for (size_t j = 0; j < N; ++j) {

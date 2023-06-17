@@ -36,7 +36,7 @@ public:
 
     VectorStatic(const VectorStatic &other) { allocate_from(other); }
 
-    VectorStatic(VectorStatic &&other) noexcept { for (size_t i = 0; i < Size; ++i) arr_[i] = move(other.arr_[i]); }
+    VectorStatic(VectorStatic &&other) noexcept { for (size_t i = 0; i < Size; ++i) arr_[i] = vt::move(other.arr_[i]); }
 
     explicit VectorStatic(const T (&array)[Size]) { allocate_from(array); }
 
@@ -58,7 +58,7 @@ public:
     }
 
     VectorStatic &operator=(VectorStatic &&other) noexcept {
-        if (this != &other) for (size_t i = 0; i < Size; ++i) arr_[i] = move(other.arr_[i]);
+        if (this != &other) for (size_t i = 0; i < Size; ++i) arr_[i] = vt::move(other.arr_[i]);
         return *this;
     }
 
@@ -220,15 +220,15 @@ public:
     template<size_t OSize>
     bool equals(const T (&array)[OSize]) const { return operator==(array); }
 
-    void swap(VectorStatic &other) { for (size_t i = 0; i < Size; ++i) swap_val(arr_[i], other.arr_[i]); }
+    void swap(VectorStatic &other) { for (size_t i = 0; i < Size; ++i) vt::swap_val(arr_[i], other.arr_[i]); }
 
-    Iterator<T> begin() { return Iterator<T>(arr_); }
+    vt::Iterator<T> begin() { return vt::Iterator<T>(arr_); }
 
-    Iterator<T> begin() const { return Iterator<T>(arr_); }
+    vt::Iterator<T> begin() const { return vt::Iterator<T>(arr_); }
 
-    Iterator<T> end() { return Iterator<T>(arr_ + Size); }
+    vt::Iterator<T> end() { return vt::Iterator<T>(arr_ + Size); }
 
-    Iterator<T> end() const { return Iterator<T>(arr_ + Size); }
+    vt::Iterator<T> end() const { return vt::Iterator<T>(arr_ + Size); }
 
     T &front() { return operator[](0); }
 

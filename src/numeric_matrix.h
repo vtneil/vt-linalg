@@ -22,12 +22,12 @@ private:
 private:
     static constexpr size_t STRASSEN_DIMENSION = 1024;
     static constexpr size_t STRASSEN_THRESHOLD = STRASSEN_DIMENSION * STRASSEN_DIMENSION;
-    Vector<Vector<T>> vector_;
     size_t r_;
     size_t c_;
+    Vector<Vector<T>> vector_;
 
 public:
-    Matrix() : r_(0), c_(0), vector_(move(Vector<Vector<T>>())) {}
+    Matrix() : r_(0), c_(0), vector_(vt::move(Vector<Vector<T>>())) {}
 
     explicit Matrix(size_t n) : r_(n), c_(n) { allocate_zero(); }
 
@@ -38,7 +38,7 @@ public:
     Matrix(const Matrix &other) : r_(other.r_), c_(other.c_) { allocate_from(other); }
 
     Matrix(Matrix &&other) noexcept: r_(other.r_), c_(other.c_) {
-        steal(move(other));
+        steal(vt::move(other));
         other.r_ = 0;
         other.c_ = 0;
     }
@@ -59,8 +59,8 @@ public:
             insert(M11.r_, 0, M21);
             insert(M11.r_ / 2, M11.c_ / 2, M22);
         } else {
-            r_ = max_val(M11.r_ + M21.r_, M12.r_ + M22.r_);
-            c_ = max_val(M11.c_ + M12.c_, M21.c_ + M22.c_);
+            r_ = vt::max_val(M11.r_ + M21.r_, M12.r_ + M22.r_);
+            c_ = vt::max_val(M11.c_ + M12.c_, M21.c_ + M22.c_);
             allocate_zero();
         }
     }
@@ -90,7 +90,7 @@ public:
 
     Matrix &operator=(Matrix &&other) noexcept {
         if (this != &other) {
-            steal(move(other));
+            steal(vt::move(other));
             other.r_ = 0;
             other.c_ = 0;
         }
@@ -124,8 +124,8 @@ public:
     Matrix add(const Matrix &other) const { return operator+(other); }
 
     static Matrix &iadd(Matrix &C, const Matrix &A, const Matrix &B) {
-        for (int i = 0; i < C.r_; ++i)
-            for (int j = 0; j < C.c_; ++j)
+        for (size_t i = 0; i < C.r_; ++i)
+            for (size_t j = 0; j < C.c_; ++j)
                 C[i][j] = A[i][j] + B[i][j];
         return C;
     }
@@ -141,14 +141,14 @@ public:
     Matrix sub(const Matrix &other) const { return operator-(other); }
 
     static Matrix &isub(Matrix &C, const Matrix &A, const Matrix &B) {
-        for (int i = 0; i < C.r_; ++i)
-            for (int j = 0; j < C.c_; ++j)
+        for (size_t i = 0; i < C.r_; ++i)
+            for (size_t j = 0; j < C.c_; ++j)
                 C[i][j] = A[i][j] - B[i][j];
         return C;
     }
 
     Matrix &operator*=(const Matrix &other) {
-        steal(move(operator*(other)));
+        steal(vt::move(operator*(other)));
         return *this;
     }
 
@@ -181,7 +181,7 @@ public:
             B.r() != 1 &&
             A.c() != 1 &&
             B.c() != 1 &&
-            max_val(A.r() * A.c(), B.r() * B.c()) >= STRASSEN_THRESHOLD)
+            vt::max_val(A.r() * A.c(), B.r() * B.c()) >= STRASSEN_THRESHOLD)
             return mm_strassen(C, A, B);
         return mm_naive(C, A, B);
     }
@@ -194,15 +194,15 @@ public:
     Vector<T> transform(const Vector<T> &other) const { return operator*(other); }
 
     Matrix &operator^=(size_t n) {
-        steal(move(operator^(n)));
+        steal(vt::move(operator^(n)));
         return *this;
     }
 
     Matrix operator^(size_t n) {
         Matrix product(*this);
-        if (n == 0) return id(min_val(r_, c_));
+        if (n == 0) return id(vt::min_val(r_, c_));
         if (n == 1) return product;
-        product = move(product.operator^(n / 2));
+        product = vt::move(product.operator^(n / 2));
         if (n % 2 == 0) return product.operator*(product);
         else return product.operator*(product).operator*(*this);
     }
@@ -210,7 +210,7 @@ public:
     Matrix matpow(size_t n) { return operator^(n); }
 
     Matrix matpow_naive(size_t n) {
-        Matrix product = move(id(r_));
+        Matrix product = vt::move(id(r_));
         for (size_t i = 0; i < n; ++i) product *= *this;
         return product;
     }
@@ -267,7 +267,7 @@ public:
     }
 
     Vector<T> diag() {
-        size_t min_dim = min_val(r_, c_);
+        size_t min_dim = vt::min_val(r_, c_);
         Vector<T> tmp(min_dim);
         for (size_t i = 0; i < min_dim; ++i) tmp[i] = vector_[i][i];
         return tmp;
@@ -282,27 +282,27 @@ public:
     }
 
     T det() const {
-        MatrixLU<T> lu = move(LU());
+        MatrixLU<T> lu = vt::move(LU());
         T det = 1;
         size_t r_swaps = 0;
-        size_t n = min_val(r_, c_);
+        size_t n = vt::min_val(r_, c_);
         for (size_t i = 0; i < n; ++i) {
             det *= lu.u()[i][i];
             if (lu.u()[i][i] == 0) return 0;
             if (lu.l()[i][i] != 1) ++r_swaps;
         }
-        return r_swaps % 2 == 0 ? det : -det;
+        return (r_swaps % 2 == 0) ? det : -det;
     }
 
     T tr() const {
         T acc = 0;
-        size_t n = min_val(r_, c_);
+        size_t n = vt::min_val(r_, c_);
         for (size_t i = 0; i < n; ++i) acc += vector_[i][i];
         return acc;
     }
 
     Matrix inv() const {
-        MatrixLU<T> lu = move(LU());
+        MatrixLU<T> lu = vt::move(LU());
         return inv_ut(lu.u()) * inv_lt(lu.l());
     }
 
@@ -339,7 +339,7 @@ public:
     }
 
     MatrixLU<T> LU() const {
-        size_t n = min_val(r_, c_);
+        size_t n = vt::min_val(r_, c_);
         Matrix lower(n, n);
         Matrix upper(n, n);
         for (size_t i = 0; i < n; ++i) {
@@ -381,10 +381,10 @@ public:
     }
 
     Matrix slice(size_t r1, size_t c1, size_t r2, size_t c2) const {
-        if (r1 > r2) swap_val(r1, r2);
-        if (c1 > c2) swap_val(c1, c2);
-        r2 = min_val(r2, r_);
-        c2 = min_val(c2, c_);
+        if (r1 > r2) vt::swap_val(r1, r2);
+        if (c1 > c2) vt::swap_val(c1, c2);
+        r2 = vt::min_val(r2, r_);
+        c2 = vt::min_val(c2, c_);
         size_t r = r2 - r1;
         size_t c = c2 - c1;
         Matrix result(r, c);
@@ -395,13 +395,13 @@ public:
         return result;
     }
 
-    Iterator<Vector<T>> begin() { return vector_.begin(); }
+    vt::Iterator<Vector<T>> begin() { return vector_.begin(); }
 
-    Iterator<Vector<T>> begin() const { return vector_.begin(); }
+    vt::Iterator<Vector<T>> begin() const { return vector_.begin(); }
 
-    Iterator<Vector<T>> end() { return vector_.end(); }
+    vt::Iterator<Vector<T>> end() { return vector_.end(); }
 
-    Iterator<Vector<T>> end() const { return vector_.end(); }
+    vt::Iterator<Vector<T>> end() const { return vector_.end(); }
 
     constexpr size_t r() const { return r_; }
 
@@ -424,7 +424,7 @@ public:
 
 private:
     static Matrix &inv_lt(Matrix &L) {
-        size_t n = min_val(L.r_, L.c_);
+        size_t n = vt::min_val(L.r_, L.c_);
         Matrix X(n);
         for (size_t k = 0; k < n; ++k) {
             X[k][k] = 1 / L[k][k];
@@ -435,12 +435,12 @@ private:
                 X[i][k] = acc / L[i][i];
             }
         }
-        L = move(X);
+        L = vt::move(X);
         return L;
     }
 
     static Matrix inv_ut(const Matrix &U) {
-        Matrix tmp = move(U.transpose());
+        Matrix tmp = vt::move(U.transpose());
         return inv_lt(tmp).transpose();
     }
 
@@ -466,37 +466,37 @@ private:
         Matrix A11, A12, A21, A22, B11, B12, B21, B22;
 
         if (rA == A.r_ && cA == A.c_ && rB == B.r_ && cB == B.c_) {
-            A11 = move(A.slice(0, 0, rA / 2, cA / 2));
-            A12 = move(A.slice(0, cA / 2, rA / 2, cA));
-            A21 = move(A.slice(rA / 2, 0, rA, cA / 2));
-            A22 = move(A.slice(rA / 2, cA / 2, rA, cA));
-            B11 = move(B.slice(0, 0, rB / 2, cB / 2));
-            B12 = move(B.slice(0, cB / 2, rB / 2, cB));
-            B21 = move(B.slice(rB / 2, 0, rB, cB / 2));
-            B22 = move(B.slice(rB / 2, cB / 2, rB, cB));
+            A11 = vt::move(A.slice(0, 0, rA / 2, cA / 2));
+            A12 = vt::move(A.slice(0, cA / 2, rA / 2, cA));
+            A21 = vt::move(A.slice(rA / 2, 0, rA, cA / 2));
+            A22 = vt::move(A.slice(rA / 2, cA / 2, rA, cA));
+            B11 = vt::move(B.slice(0, 0, rB / 2, cB / 2));
+            B12 = vt::move(B.slice(0, cB / 2, rB / 2, cB));
+            B21 = vt::move(B.slice(rB / 2, 0, rB, cB / 2));
+            B22 = vt::move(B.slice(rB / 2, cB / 2, rB, cB));
         } else {
             Matrix Ap(rA, cA);
             Ap.insert(A);
             Matrix Bp(rB, cB);
             Bp.insert(B);
-            A11 = move(Ap.slice(0, 0, rA / 2, cA / 2));
-            A12 = move(Ap.slice(0, cA / 2, rA / 2, cA));
-            A21 = move(Ap.slice(rA / 2, 0, rA, cA / 2));
-            A22 = move(Ap.slice(rA / 2, cA / 2, rA, cA));
-            B11 = move(Bp.slice(0, 0, rB / 2, cB / 2));
-            B12 = move(Bp.slice(0, cB / 2, rB / 2, cB));
-            B21 = move(Bp.slice(rB / 2, 0, rB, cB / 2));
-            B22 = move(Bp.slice(rB / 2, cB / 2, rB, cB));
-            C = move(Matrix(rA, cB));
+            A11 = vt::move(Ap.slice(0, 0, rA / 2, cA / 2));
+            A12 = vt::move(Ap.slice(0, cA / 2, rA / 2, cA));
+            A21 = vt::move(Ap.slice(rA / 2, 0, rA, cA / 2));
+            A22 = vt::move(Ap.slice(rA / 2, cA / 2, rA, cA));
+            B11 = vt::move(Bp.slice(0, 0, rB / 2, cB / 2));
+            B12 = vt::move(Bp.slice(0, cB / 2, rB / 2, cB));
+            B21 = vt::move(Bp.slice(rB / 2, 0, rB, cB / 2));
+            B22 = vt::move(Bp.slice(rB / 2, cB / 2, rB, cB));
+            C = vt::move(Matrix(rA, cB));
         }
 
-        Matrix M1 = move((A11 + A22) * (B11 + B22));
-        Matrix M2 = move((A21 + A22) * B11);
-        Matrix M3 = move(A11 * (B12 - B22));
-        Matrix M4 = move(A22 * (B21 - B11));
-        Matrix M5 = move((A11 + A12) * B22);
-        Matrix M6 = move((A21 - A11) * (B11 + B12));
-        Matrix M7 = move((A12 - A22) * (B21 + B22));
+        Matrix M1 = vt::move((A11 + A22) * (B11 + B22));
+        Matrix M2 = vt::move((A21 + A22) * B11);
+        Matrix M3 = vt::move(A11 * (B12 - B22));
+        Matrix M4 = vt::move(A22 * (B21 - B11));
+        Matrix M5 = vt::move((A11 + A12) * B22);
+        Matrix M6 = vt::move((A21 - A11) * (B11 + B12));
+        Matrix M7 = vt::move((A12 - A22) * (B21 + B22));
         C.insert(0, 0, M1 + M4 - M5 + M7);
         C.insert(0, C.c_ / 2, M3 + M5);
         C.insert(C.r_ / 2, 0, M2 + M4);
@@ -537,14 +537,14 @@ private:
         put_array(index + 1, arrays...);
     }
 
-    void allocate_zero() { vector_ = move(Vector<Vector<T>>(r_, Vector<T>(c_))); }
+    void allocate_zero() { vector_ = vt::move(Vector<Vector<T>>(r_, Vector<T>(c_))); }
 
-    void allocate_fill(T fill) { vector_ = move(Vector<Vector<T>>(r_, Vector<T>(c_, fill))); }
+    void allocate_fill(T fill) { vector_ = vt::move(Vector<Vector<T>>(r_, Vector<T>(c_, fill))); }
 
     void steal(Matrix &&other) {
         r_ = other.r_;
         c_ = other.c_;
-        vector_ = move(other.vector_);
+        vector_ = vt::move(other.vector_);
     }
 
     void allocate_from(const Matrix &other) {
@@ -641,14 +641,14 @@ Matrix<T> RRE(const Matrix<T> &A) { return A.RRE(); }
 template<typename T>
 class MatrixLU {
 private:
-    using PM = pair<Matrix<T>, Matrix<T>>;
+    using PM = vt::pair<Matrix<T>, Matrix<T>>;
     Matrix<T> l_;
     Matrix<T> u_;
 
 public:
     MatrixLU(const MatrixLU &other) : l_(other.l_), u_(other.u_) {}
 
-    MatrixLU(MatrixLU &&other) noexcept: l_(move(other.l_)), u_(move(other.u_)) {}
+    MatrixLU(MatrixLU &&other) noexcept: l_(vt::move(other.l_)), u_(vt::move(other.u_)) {}
 
     explicit MatrixLU(const PM &lu) : l_(lu.first), u_(lu.second) {}
 

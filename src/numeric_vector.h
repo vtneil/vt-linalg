@@ -19,8 +19,8 @@ private:
     friend class Matrix<T>;
 
 private:
-    T *arr_;
     size_t size_;
+    T *arr_;
 
 public:
     Vector() : size_(0), arr_(nullptr) {}
@@ -39,9 +39,9 @@ public:
     template<size_t N>
     explicit Vector(const T (&array)[N]) : size_(N) { allocate_from(array); }
 
-    Vector(const Iterator<T> &begin, const Iterator<T> &end) : size_(end - begin) {
+    Vector(const vt::Iterator<T> &begin, const vt::Iterator<T> &end) : size_(end - begin) {
         arr_ = new T[size_];
-        for (Iterator<T> it = begin; it != end; ++it) arr_[it - begin] = *it;
+        for (vt::Iterator<T> it = begin; it != end; ++it) arr_[it - begin] = *it;
     }
 
     Vector(T *begin, T *end) : size_(end - begin) {
@@ -240,17 +240,17 @@ public:
     bool equals(const T (&array)[N]) const { return operator==(array); }
 
     void swap(Vector &other) {
-        swap_val(arr_, other.arr_);
-        swap_val(size_, other.size_);
+        vt::swap_val(arr_, other.arr_);
+        vt::swap_val(size_, other.size_);
     }
 
-    Iterator<T> begin() { return Iterator<T>(arr_); }
+    vt::Iterator<T> begin() { return vt::Iterator<T>(arr_); }
 
-    Iterator<T> begin() const { return Iterator<T>(arr_); }
+    vt::Iterator<T> begin() const { return vt::Iterator<T>(arr_); }
 
-    Iterator<T> end() { return Iterator<T>(arr_ + size_); }
+    vt::Iterator<T> end() { return vt::Iterator<T>(arr_ + size_); }
 
-    Iterator<T> end() const { return Iterator<T>(arr_ + size_); }
+    vt::Iterator<T> end() const { return vt::Iterator<T>(arr_ + size_); }
 
     T &front() { return operator[](0); }
 

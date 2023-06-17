@@ -28,7 +28,7 @@ private:
 private:
     static constexpr size_t STRASSEN_DIMENSION = 1024;
     static constexpr size_t STRASSEN_THRESHOLD = STRASSEN_DIMENSION * STRASSEN_DIMENSION;
-    static constexpr size_t Order = Row < Col ? Row : Col;
+    static constexpr size_t Order = (Row < Col) ? Row : Col;
     VectorStatic<VectorStatic<T, Col>, Row> vector_ = {};
 
 public:
@@ -38,7 +38,7 @@ public:
 
     MatrixStatic(const MatrixStatic &other) { allocate_from(other); }
 
-    MatrixStatic(MatrixStatic &&other) noexcept { steal(move(other)); }
+    MatrixStatic(MatrixStatic &&other) noexcept { steal(vt::move(other)); }
 
     explicit MatrixStatic(const T (&array)[Row][Col]) { allocate_from(array); }
 
@@ -75,7 +75,7 @@ public:
     }
 
     MatrixStatic &operator=(MatrixStatic &&other) noexcept {
-        if (this != &other) steal(move(other));
+        if (this != &other) steal(vt::move(other));
         return *this;
     }
 
@@ -100,8 +100,8 @@ public:
     MatrixStatic add(const MatrixStatic &other) const { return operator+(other); }
 
     static MatrixStatic &iadd(MatrixStatic &C, const MatrixStatic &A, const MatrixStatic &B) {
-        for (int i = 0; i < Row; ++i)
-            for (int j = 0; j < Col; ++j)
+        for (size_t i = 0; i < Row; ++i)
+            for (size_t j = 0; j < Col; ++j)
                 C[i][j] = A[i][j] + B[i][j];
         return C;
     }
@@ -117,14 +117,14 @@ public:
     MatrixStatic sub(const MatrixStatic &other) const { return operator-(other); }
 
     static MatrixStatic &isub(MatrixStatic &C, const MatrixStatic &A, const MatrixStatic &B) {
-        for (int i = 0; i < Row; ++i)
-            for (int j = 0; j < Col; ++j)
+        for (size_t i = 0; i < Row; ++i)
+            for (size_t j = 0; j < Col; ++j)
                 C[i][j] = A[i][j] - B[i][j];
         return C;
     }
 
     MatrixStatic<T, Order, Order> &operator*=(const MatrixStatic<T, Order, Order> &other) {
-        steal(move(operator*(other)));
+        steal(vt::move(operator*(other)));
         return *this;
     }
 
@@ -168,7 +168,7 @@ public:
 
     MatrixStatic<T, Order, Order> &operator^=(size_t n) {
         static_assert(is_square_(), "Non-square matrix can\'t use power operator.");
-        steal(move(operator^(n)));
+        steal(vt::move(operator^(n)));
         return *this;
     }
 
@@ -177,7 +177,7 @@ public:
         MatrixStatic<T, Order, Order> product(*this);
         if (n == 0) return id();
         if (n == 1) return product;
-        product = move(product.operator^(n / 2));
+        product = vt::move(product.operator^(n / 2));
         if (n % 2 == 0) return product.operator*(product);
         else return product.operator*(product).operator*(*this);
     }
@@ -189,7 +189,7 @@ public:
 
     MatrixStatic<T, Order, Order> matpow_naive(size_t n) {
         static_assert(is_square_(), "Non-square matrix can\'t use power operator.");
-        MatrixStatic<T, Order, Order> product = move(id());
+        MatrixStatic<T, Order, Order> product = vt::move(id());
         for (size_t i = 0; i < n; ++i) product *= *this;
         return product;
     }
@@ -253,7 +253,7 @@ public:
 
     T det() const {
         static_assert(is_square_(), "Can only find determinant of a square matrix.");
-        MatrixStaticLU<T, Order> lu = move(LU());
+        MatrixStaticLU<T, Order> lu = vt::move(LU());
         T det = 1;
         size_t r_swaps = 0;
         for (size_t i = 0; i < Order; ++i) {
@@ -261,7 +261,7 @@ public:
             if (lu.u()[i][i] == 0) return 0;
             if (lu.l()[i][i] != 1) r_swaps++;
         }
-        return r_swaps % 2 == 0 ? det : -det;
+        return (r_swaps % 2 == 0) ? det : -det;
     }
 
     T tr() const {
@@ -273,7 +273,7 @@ public:
 
     MatrixStatic inv() const {
         static_assert(is_square_(), "Can only find inverse of a square matrix.");
-        MatrixStaticLU<T, Order> lu = move(LU());
+        MatrixStaticLU<T, Order> lu = vt::move(LU());
         return inv_ut(lu.u()) * inv_lt(lu.l());
     }
 
@@ -366,13 +366,13 @@ public:
     template<size_t ORow, size_t OCol>
     bool equals(const T (&array)[ORow][OCol]) const { return operator==(array); }
 
-    Iterator<VectorStatic<T, Col>> begin() { return vector_.begin(); }
+    vt::Iterator<VectorStatic<T, Col>> begin() { return vector_.begin(); }
 
-    Iterator<VectorStatic<T, Col>> begin() const { return vector_.begin(); }
+    vt::Iterator<VectorStatic<T, Col>> begin() const { return vector_.begin(); }
 
-    Iterator<VectorStatic<T, Col>> end() { return vector_.end(); }
+    vt::Iterator<VectorStatic<T, Col>> end() { return vector_.end(); }
 
-    Iterator<VectorStatic<T, Col>> end() const { return vector_.end(); }
+    vt::Iterator<VectorStatic<T, Col>> end() const { return vector_.end(); }
 
     constexpr size_t r() const { return Row; }
 
@@ -408,9 +408,9 @@ private:
         if (index < Row - 1) put_array(index + 1, arrays...);
     }
 
-    void allocate_zero() { vector_ = move(VectorStatic<VectorStatic<T, Col>, Row>()); }
+    void allocate_zero() { vector_ = vt::move(VectorStatic<VectorStatic<T, Col>, Row>()); }
 
-    void allocate_fill(T fill) { vector_ = move(VectorStatic<VectorStatic<T, Col>, Row>(VectorStatic<T, Col>(fill))); }
+    void allocate_fill(T fill) { vector_ = vt::move(VectorStatic<VectorStatic<T, Col>, Row>(VectorStatic<T, Col>(fill))); }
 
     void allocate_from(const MatrixStatic &other) { vector_ = other.vector_; }
 
@@ -426,7 +426,7 @@ private:
                 vector_[i][j] = vectors[i][j];
     }
 
-    void steal(MatrixStatic &&other) { vector_ = move(other.vector_); }
+    void steal(MatrixStatic &&other) { vector_ = vt::move(other.vector_); }
 
     static constexpr bool is_square_() { return Row == Col; }
 
@@ -480,14 +480,14 @@ private:
                 X[i][k] = acc / L[i][i];
             }
         }
-        L = move(X);
+        L = vt::move(X);
         return L;
     }
 
     template<size_t OSize>
     static MatrixStatic<T, OSize, OSize> inv_ut(MatrixStatic<T, OSize, OSize> &U) {
         static_assert(is_square_(), "Can only inverse a square matrix.");
-        MatrixStatic<T, OSize, OSize> tmp = move(U.transpose());
+        MatrixStatic<T, OSize, OSize> tmp = vt::move(U.transpose());
         return inv_lt(tmp).transpose();
     }
 
@@ -536,14 +536,14 @@ template<typename T, size_t OSize>
 class MatrixStaticLU {
 private:
     using Matrix_t = MatrixStatic<T, OSize, OSize>;
-    using Pair_t = pair<MatrixStatic<T, OSize, OSize>, MatrixStatic<T, OSize, OSize>>;
+    using Pair_t = vt::pair<MatrixStatic<T, OSize, OSize>, MatrixStatic<T, OSize, OSize>>;
     MatrixStatic<T, OSize, OSize> l_;
     MatrixStatic<T, OSize, OSize> u_;
 
 public:
     MatrixStaticLU(const MatrixStaticLU &other) : l_(other.l_), u_(other.u_) {}
 
-    MatrixStaticLU(MatrixStaticLU &&other) noexcept: l_(move(other.l_)), u_(move(other.u_)) {}
+    MatrixStaticLU(MatrixStaticLU &&other) noexcept: l_(vt::move(other.l_)), u_(vt::move(other.u_)) {}
 
     explicit MatrixStaticLU(const Pair_t &lu) : l_(lu.first), u_(lu.second) {}
 
