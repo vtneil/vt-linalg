@@ -5,8 +5,8 @@
  * @brief Numeric vector library
  */
 
-#ifndef VNET_VECTOR_H
-#define VNET_VECTOR_H
+#ifndef VNET_LINALG_DYNAMIC_NUMERIC_VECTOR_H
+#define VNET_LINALG_DYNAMIC_NUMERIC_VECTOR_H
 
 #include "standard_utility.h"
 #include "iterator.h"
@@ -326,4 +326,4 @@ namespace vt {
     using numeric_vector = vt::Vector<double>;
 }
 
-#endif //VNET_VECTOR_H
+#endif //VNET_LINALG_DYNAMIC_NUMERIC_VECTOR_H

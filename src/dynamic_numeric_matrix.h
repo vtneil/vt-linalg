@@ -5,8 +5,8 @@
  * @brief Numeric matrix library
  */
 
-#ifndef VNET_MATRIX_H
-#define VNET_MATRIX_H
+#ifndef VNET_LINALG_DYNAMIC_NUMERIC_MATRIX_H
+#define VNET_LINALG_DYNAMIC_NUMERIC_MATRIX_H
 
 #include "standard_utility.h"
 #include "pair.h"
@@ -675,4 +675,4 @@ namespace vt {
     using numeric_matrix = vt::Matrix<double>;
 }
 
-#endif //VNET_MATRIX_H
+#endif //VNET_LINALG_DYNAMIC_NUMERIC_MATRIX_H
