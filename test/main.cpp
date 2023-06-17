@@ -1,5 +1,5 @@
 #include <iostream>
-#include "vnet_linalg"
+#include "../vt_linalg"
 
 #define NEWLINE() std::cout<<'\n'
 

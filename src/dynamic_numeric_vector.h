@@ -8,7 +8,8 @@
 #ifndef VNET_VECTOR_H
 #define VNET_VECTOR_H
 
-#include "utils.h"
+#include "standard_utility.h"
+#include "iterator.h"
 
 namespace vt {
     template<typename T>

@@ -1,7 +1,7 @@
 #include <iostream>
-#include "src/utils.h"
-#include "src/dynamic_numeric_vector.h"
-#include "src/dynamic_numeric_matrix.h"
+#include "../src/standard_utility.h"
+#include "../src/dynamic_numeric_vector.h"
+#include "../src/dynamic_numeric_matrix.h"
 
 using vt::numeric_vector;
 using vt::numeric_matrix;

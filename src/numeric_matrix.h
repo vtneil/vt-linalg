@@ -8,7 +8,9 @@
 #ifndef VNET_LINALG_NUMERIC_MATRIX_H
 #define VNET_LINALG_NUMERIC_MATRIX_H
 
-#include "utils.h"
+#include "standard_utility.h"
+#include "pair.h"
+#include "iterator.h"
 #include "numeric_vector.h"
 
 namespace vt {
