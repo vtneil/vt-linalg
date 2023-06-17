@@ -1,13 +1,16 @@
 #include <iostream>
 #include "vnet_linalg"
-#include "src/utils.h"
+
+template<size_t Size>
+using numeric_vector = vt::numeric_vector<Size>;
+
+template<size_t Row, size_t Col = Row>
+using numeric_matrix = vt::numeric_matrix<Row, Col>;
 
 #define NEWLINE() std::cout<<'\n'
 
 int main() {
-    std::cout << vt::min_val(1, 3);
-
-    constexpr size_t N = 1;
+    constexpr size_t N = 128;
     numeric_vector<2> v({1, 1});
     numeric_matrix<3, 4> A({{1, 2, 3, 4},
                             {4, 5, 6, 1},
@@ -26,8 +29,8 @@ int main() {
 
     for (size_t i = 0; i < N; ++i) {
         for (size_t j = 0; j < N; ++j) {
-            X[i][j] = (double) (i * N + j) / 762;
-            Y[i][j] = (double) (i * N + j) / 1983;
+            X[i][j] = static_cast<double>(i * N + j) / 762.;
+            Y[i][j] = static_cast<double>(i * N + j) / 1983.;
         }
     }
 

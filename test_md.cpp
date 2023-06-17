@@ -1,13 +1,17 @@
 #include <iostream>
-#include "src/numeric_vector.h"
-#include "src/numeric_matrix.h"
 #include "src/utils.h"
+#include "src/dynamic_numeric_vector.h"
+#include "src/dynamic_numeric_matrix.h"
+
+using vt::numeric_vector;
+using vt::numeric_matrix;
 
 #define NEWLINE() std::cout<<'\n'
 
 int main() {
     constexpr size_t N = 32;
     numeric_vector v({1, 1});
+    numeric_vector w({9, 1, 5});
     numeric_matrix A({{1, 2, 3, 4},
                       {4, 5, 6, 1},
                       {7, 8, 9, 0}});
@@ -101,6 +105,10 @@ int main() {
     assert(RRE(C) == numeric_matrix::id(3));
     assert(B * v == numeric_vector({7, 0, 7, 9}));
     assert(Z1.float_equals(Z2));
+    v.swap(w);
+//    vt::swap(v, w);
+
+    std::cout << v[0] << ' ' << v.size();
 
     std::cout << "Test Passed!";
     return 0;

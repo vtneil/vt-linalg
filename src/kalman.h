@@ -25,8 +25,8 @@
 #define VNET_LINALG_KALMAN_H
 
 #include "utils.h"
-#include "numeric_vector.h"
-#include "numeric_matrix.h"
+#include "dynamic_numeric_vector.h"
+#include "dynamic_numeric_matrix.h"
 
 class SimpleKalmanFilter {
 protected:
