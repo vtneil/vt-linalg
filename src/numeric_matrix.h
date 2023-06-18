@@ -33,7 +33,7 @@ namespace vt {
         numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row> vector_ = {};
 
     public:
-        numeric_matrix_static_t() = default;
+        constexpr numeric_matrix_static_t() = default;
 
         explicit numeric_matrix_static_t(T fill) { allocate_fill(fill); }
 

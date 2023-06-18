@@ -29,7 +29,7 @@ namespace vt {
         T arr_[Size] = {};
 
     public:
-        numeric_vector_static_t() = default;
+        constexpr numeric_vector_static_t() = default;
 
         explicit numeric_vector_static_t(T fill) { allocate_fill(fill); }
 

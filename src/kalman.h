@@ -1,7 +1,7 @@
 /**
  * @file kalman.h
  * @author Vivatsathorn Thitasirivit
- * @date 31 May 2023
+ * @date 19 June 2023
  * @brief Kalman filter implementation library
  *
  * For Simple KF, using Discrete-time KF.\n
@@ -29,63 +29,45 @@
 #include "numeric_matrix.h"
 
 namespace vt {
-    class SimpleKalmanFilter {
-    protected:
-        double dt_;
-        numeric_matrix A_;
-        numeric_matrix B_;
-        numeric_matrix C_;
-        numeric_matrix D_;
-        numeric_matrix G_;
-        numeric_matrix Q_;
-        numeric_matrix R_;
+    template<size_t StateVectorDimension, size_t ObservationVectorDimension>
+    class simple_kalman_filter_t {
+    private:
+        // Note that numeric_matrix<N, M> maps from R^M to R^N
+        static constexpr size_t N = StateVectorDimension;       // ALias
+        static constexpr size_t M = ObservationVectorDimension; // Alias
 
     protected:
-        numeric_vector x_;
-        numeric_vector x_p;
-        numeric_vector y_;
-        numeric_vector y_p;
-        numeric_matrix P_;
-        numeric_matrix P_p;
-        numeric_matrix S_;
-        numeric_matrix K_;
+        numeric_matrix<N, N> F; // state-transition model
+        numeric_matrix<M, N> H; // observation model
+        numeric_matrix<N, N> Q; // covariance of the process noise
+        numeric_matrix<M, M> R; // covariance of the observation noise
+        numeric_vector<N> x;    // estimated state
+        numeric_matrix<N, N> P; // state covariance
 
     public:
-        SimpleKalmanFilter(double dt, numeric_matrix A, numeric_matrix B, numeric_matrix C,
-                           numeric_matrix D, numeric_matrix G, numeric_matrix Q, numeric_matrix R) :
-                dt_(dt), A_(move(A)), B_(move(B)), C_(move(C)),
-                D_(move(D)), G_(move(G)), Q_(move(Q)), R_(move(R)) {
+        simple_kalman_filter_t(
+                const numeric_matrix<N, N> &F,
+                const numeric_matrix<M, N> &H,
+                const numeric_matrix<N, N> &Q,
+                const numeric_matrix<M, M> &R,
+                const numeric_vector<N> &x0
+        ) : F(F), H(H), Q(Q), R(R), x(x0), P(Q) {}
 
+        void predict() {
+            x = F * x;
+            P = F * P * F.transpose() + Q;
         }
 
-        SimpleKalmanFilter(double dt, numeric_matrix &&A, numeric_matrix &&B, numeric_matrix &&C,
-                           numeric_matrix &&D, numeric_matrix &&G, numeric_matrix &&Q, numeric_matrix &&R) :
-                dt_(dt), A_(move(A)), B_(move(B)), C_(move(C)),
-                D_(move(D)), G_(move(G)), Q_(move(Q)), R_(move(R)) {
-
+        void update(const numeric_vector<M> &z) {
+            numeric_vector<M> y = z - H * x;
+            numeric_matrix<M, M> S = H * P * H.transpose() + R;
+            numeric_matrix<N, M> K = P * H.transpose() * S.inv();
+            x = x + K * y;
+            P = (numeric_matrix<N, N>::identity() - K * H) * P;
         }
 
-        void predict(const numeric_vector &u) {
-            x_p = move(A_ * x_ + B_ * u);
-            P_p = move(A_ * P_ * A_.transpose() + G_ * Q_ * G_.transpose());
-        }
-
-        void update(const numeric_vector &y, const numeric_vector &u) {
-            y_p = move(C_ * x_p + D_ * u);
-            y_ = move(y - y_p);
-            S_ = move(C_ * P_p * C_.transpose() + R_);
-            K_ = move(P_p * C_.transpose() * S_.inv());
-            x_ = move(x_p + K_ * y_);
-            numeric_matrix KC = move(K_ * C_);
-            P_ = move((numeric_matrix::id(min_val(KC.r(), KC.c())) - KC) * P_p);
-        }
+        numeric_vector<N> &state_vector() { return x; }
     };
-
-    /**
-     * Alias for Simple Kalman Filter
-     */
-    using KF = SimpleKalmanFilter;
-    using KalmanFilter = SimpleKalmanFilter;
 }
 
 #endif //VNET_LINALG_KALMAN_H
