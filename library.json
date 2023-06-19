@@ -16,6 +16,7 @@
         }
     ],
     "license": "MIT",
+    "homepage": "https://vt.in.th/docs/vt-linalg/index.html",
     "frameworks": "*",
     "platforms": "*"
 }
