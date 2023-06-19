@@ -334,7 +334,7 @@ namespace vt {
 
         /**
          * Checks equality of this vector and the other vector with float/double threshold using
-         * equation abs(x - y) < threshold for equality.
+         * equation abs(x_ - y) < threshold for equality.
          *
          * @tparam OSize Other vector's dimension
          * @param other Other vector to compare

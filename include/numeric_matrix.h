@@ -86,7 +86,7 @@ namespace vt {
         }
 
         /**
-         * Quad-matrix constructor, construct M from M11, M12, M21, M22
+         * Quad-matrix constructor, construct M_ from M11, M12, M21, M22
          *
          * @tparam R1
          * @tparam R2
@@ -157,7 +157,7 @@ namespace vt {
         constexpr numeric_matrix_static_t add(const numeric_matrix_static_t &other) const { return operator+(other); }
 
         /**
-         * In-place C = A + B tools
+         * In-place C = A + B_ tools
          *
          * @param C
          * @param A
@@ -184,7 +184,7 @@ namespace vt {
         constexpr numeric_matrix_static_t sub(const numeric_matrix_static_t &other) const { return operator-(other); }
 
         /**
-         * In-place C = A - B tools
+         * In-place C = A - B_ tools
          *
          * @param C
          * @param A
@@ -261,8 +261,8 @@ namespace vt {
         }
 
         /**
-         * Transform input vector to output vector by left-multiplication of this matrix B = Ax.\n
-         * Alias for writing A * x (which is more preferred than transform function.)
+         * Transform input vector to output vector by left-multiplication of this matrix B_ = Ax.\n
+         * Alias for writing A * x_ (which is more preferred than transform function.)
          *
          * @param other
          * @return Transformed vector

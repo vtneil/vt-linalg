@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(include/vt_linalg)
+project(vt_linalg)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     add_compile_options(-Wall -Wextra -Wpedantic)

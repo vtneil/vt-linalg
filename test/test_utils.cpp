@@ -5,7 +5,7 @@
 using namespace vt;
 
 template<typename T, size_t N>
-void print_buffer(buffer_t<T, N> buffer) {
+void print_buffer(buffer_t<T, N_> buffer) {
     std::cout << "Capacity = " << buffer.capacity() << '\n';
     std::cout << "Size = " << buffer.size() << '\n';
     std::cout << "Start Index = " << (&buffer.front() - buffer.arr()) << " has content = " << buffer.front() << '\n';

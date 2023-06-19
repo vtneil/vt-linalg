@@ -529,9 +529,9 @@ namespace vt {
         }
 
         template<size_t N>
-        void put_array(size_t index, const T (&array)[N]) {
+        void put_array(size_t index, const T (&array)[N_]) {
             vector_[index] = array;
-            c_ = N;
+            c_ = N_;
         }
 
         template<typename... Vectors>
@@ -541,7 +541,7 @@ namespace vt {
         }
 
         template<size_t N, typename... Arrays>
-        void put_array(size_t index, const T (&array)[N], const Arrays (&...arrays)[N]) {
+        void put_array(size_t index, const T (&array)[N_], const Arrays (&...arrays)[N_]) {
             vector_[index] = array;
             put_array(index + 1, arrays...);
         }
@@ -611,8 +611,8 @@ namespace vt {
         }
 
         template<size_t N, typename... Arrays>
-        static numeric_matrix_dynamic_t from(const Arrays (&...arrays)[N]) {
-            numeric_matrix_dynamic_t tmp(N, 0);
+        static numeric_matrix_dynamic_t from(const Arrays (&...arrays)[N_]) {
+            numeric_matrix_dynamic_t tmp(N_, 0);
             tmp.put_array(0, arrays...);
             return tmp;
         }

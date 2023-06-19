@@ -22,39 +22,39 @@ namespace vt {
             size_t ControlVectorDimension>
     class simple_kalman_filter_t {
     private:
-        // Note that numeric_matrix<N, M> maps from R^M to R^N
-        static constexpr size_t N = StateVectorDimension;       // ALias
-        static constexpr size_t M = MeasurementVectorDimension; // Alias
-        static constexpr size_t L = ControlVectorDimension;     // Alias
+        // Note that numeric_matrix<N_, M_> maps from R_^M_ to R_^N_
+        static constexpr size_t N_ = StateVectorDimension;       // ALias
+        static constexpr size_t M_ = MeasurementVectorDimension; // Alias
+        static constexpr size_t L_ = ControlVectorDimension;     // Alias
 
     protected:
-        numeric_matrix<N, N> &F; // state-transition model
-        numeric_matrix<N, L> &B; // control-input model
-        numeric_matrix<M, N> &H; // measurement model
-        numeric_matrix<N, N> &Q; // covariance of the process noise
-        numeric_matrix<M, M> &R; // covariance of the measurement noise
-        numeric_vector<N> &x;    // state vector
-        numeric_matrix<N, N> P; // state covariance, self-initialized as Q
+        numeric_matrix<N_, N_> &F_; // state-transition model
+        numeric_matrix<N_, L_> &B_; // control-input model
+        numeric_matrix<M_, N_> &H_; // measurement model
+        numeric_matrix<N_, N_> &Q_; // covariance of the process noise
+        numeric_matrix<M_, M_> &R_; // covariance of the measurement noise
+        numeric_vector<N_> &x_;    // state vector
+        numeric_matrix<N_, N_> P_; // state covariance, self-initialized as Q_
 
     public:
         /**
          * Simple Kalman filter array-copying constructor
          *
-         * @param F state-transition model
-         * @param B control-input model
-         * @param H measurement model
-         * @param Q covariance of the process noise
-         * @param R covariance of the measurement noise
+         * @param F_matrix state-transition model
+         * @param B_matrix control-input model
+         * @param H_matrix measurement model
+         * @param Q_matrix covariance of the process noise
+         * @param R_matrix covariance of the measurement noise
          * @param x_0 initial state vector
          */
         simple_kalman_filter_t(
-                numeric_matrix<N, N> &F,
-                numeric_matrix<N, L> &B,
-                numeric_matrix<M, N> &H,
-                numeric_matrix<N, N> &Q,
-                numeric_matrix<M, M> &R,
-                numeric_vector<N> &x_0
-        ) : F(F), B(B), H(H), Q(Q), R(R), x(x_0), P(Q) {}
+                numeric_matrix<N_, N_> &F_matrix,
+                numeric_matrix<N_, L_> &B_matrix,
+                numeric_matrix<M_, N_> &H_matrix,
+                numeric_matrix<N_, N_> &Q_matrix,
+                numeric_matrix<M_, M_> &R_matrix,
+                numeric_vector<N_> &x_0
+        ) : F_(F_matrix), B_(B_matrix), H_(H_matrix), Q_(Q_matrix), R_(R_matrix), x_(x_0), P_(Q_matrix) {}
 
         simple_kalman_filter_t(const simple_kalman_filter_t &other) = default;
 
@@ -65,9 +65,9 @@ namespace vt {
          *
          * @param u control input vector
          */
-        void predict(const numeric_vector<L> &u) {
-            x = F * x + B * u;
-            P = F * P * F.transpose() + Q;
+        void predict(const numeric_vector<L_> &u) {
+            x_ = F_ * x_ + B_ * u;
+            P_ = F_ * P_ * F_.transpose() + Q_;
         }
 
         /**
@@ -75,14 +75,14 @@ namespace vt {
          *
          * @param z Measurement vector
          */
-        void update(const numeric_vector<M> &z) {
-            numeric_vector<M> y = z - H * x;
-            numeric_matrix<N, M> K = P * H.transpose() * (H * P * H.transpose() + R).inverse();
-            x = x + K * y;
-            P = (numeric_matrix<N, N>::identity() - K * H) * P;
+        void update(const numeric_vector<M_> &z) {
+            numeric_vector<M_> y = z - H_ * x_;
+            numeric_matrix<N_, M_> K = P_ * H_.transpose() * (H_ * P_ * H_.transpose() + R_).inverse();
+            x_ = x_ + K * y;
+            P_ = (numeric_matrix<N_, N_>::identity() - K * H_) * P_;
         }
 
-        __VT_FORCE_INLINE numeric_vector<N> &state_vector() { return x; }
+        __VT_FORCE_INLINE numeric_vector<N_> &state_vector() { return x_; }
     };
 
     template<size_t StateVectorDimension,
