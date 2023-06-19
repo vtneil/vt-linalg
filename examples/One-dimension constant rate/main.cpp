@@ -3,27 +3,18 @@
 using namespace vt;
 
 real_t dt = 1.0;
-real_t hdts = 0.5 * dt * dt;
 real_t base_noise_value = 0.001;
 
-numeric_matrix<9, 9> F({{1, 0, 0, dt, 0,  0,  hdts, 0,    0},
-                        {0, 1, 0, 0,  dt, 0,  0,    hdts, 0},
-                        {0, 0, 1, 0,  0,  dt, 0,    0,    hdts},
-                        {0, 0, 0, 1,  0,  0,  dt,   0,    0},
-                        {0, 0, 0, 0,  1,  0,  0,    dt,   0},
-                        {0, 0, 0, 0,  0,  1,  0,    0,    dt},
-                        {0, 0, 0, 0,  0,  0,  1,    0,    0},
-                        {0, 0, 0, 0,  0,  0,  0,    1,    0},
-                        {0, 0, 0, 0,  0,  0,  0,    0,    1}});
-numeric_matrix<9, 1> B;
-numeric_matrix<3, 9> H({{1},
-                        {0, 1},
-                        {0, 0, 1}});
-numeric_matrix<9, 9> Q = numeric_matrix<9, 9>::diagonals(base_noise_value);
-numeric_matrix<3, 3> R = numeric_matrix<3, 3>::diagonals(base_noise_value);
-numeric_vector<9> x0; // {x, y, z, v_x, v_y, v_z, a_x, a_y, a_z}
+numeric_matrix<2, 2> F({{1, dt},
+                        {0, 1}});
+numeric_matrix<2, 1> B({{0},
+                        {0}});
+numeric_matrix<1, 2> H({{1, 0}});
+numeric_matrix<2, 2> Q = numeric_matrix<2, 2>::diagonals(base_noise_value);
+numeric_matrix<1, 1> R = numeric_matrix<1, 1>::diagonals(base_noise_value);
+numeric_vector<2> x0; // {x, v_x}
 
-kalman_filter_t<9, 3, 1> kf(F, B, H, Q, R, x0);
+kalman_filter_t<2, 1, 1> kf(F, B, H, Q, R, x0);
 
 int main() {
     return 0;
