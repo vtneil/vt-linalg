@@ -16,7 +16,7 @@ numeric_vector<2> x0({0, 0});
 kalman_filter_t<2, 1, 1> kf(F, B, H, Q, R, x0);
 
 int main() {
-    constexpr size_t SAMPLES = 1;
+    constexpr size_t SAMPLES = 16;
     numeric_vector<1> controls[SAMPLES] = {};
     numeric_vector<1> measurements[SAMPLES] = {};
 
