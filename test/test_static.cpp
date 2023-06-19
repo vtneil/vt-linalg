@@ -86,7 +86,10 @@ int main() {
                                                     {2561, 5791, 4631},
                                                     {2070, 4631, 3721}})));
     assert((C ^ 9).equals(C.matpow(9)));
+    assert((C ^ 8).equals(C.matpow_naive(8)));
     assert((C ^ 9).equals(C.matpow_naive(9)));
+    assert((C ^ 10).equals(C.matpow_naive(10)));
+    assert((C ^ 0).equals(C.matpow_naive(0)));
     assert(A.row(1).equals({4, 5, 6, 1}));
     assert(A.col(2).equals({3, 6, 9}));
     assert(A.diag().equals({1, 5, 9}));

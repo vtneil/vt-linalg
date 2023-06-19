@@ -6,20 +6,26 @@
 #include <string.h>
 #include <math.h>
 
+#define __VT_FORCE_INLINE __attribute__((always_inline))
+
 namespace vt {
     typedef double real_t;
 
     template<typename T>
-    constexpr const T &min(const T &a, const T &b) { return (a < b) ? a : b; }
+    __VT_FORCE_INLINE constexpr const T &min(const T &a, const T &b) { return (a < b) ? a : b; }
 
     template<typename T, typename... Ts>
-    constexpr const T &min(const T &a, const T &b, const Ts &... args) { return min(min(a, b), args...); }
+    __VT_FORCE_INLINE constexpr const T &min(const T &a, const T &b, const Ts &... args) {
+        return min(min(a, b), args...);
+    }
 
     template<typename T>
-    constexpr const T &max(const T &a, const T &b) { return (a > b) ? a : b; }
+    __VT_FORCE_INLINE constexpr const T &max(const T &a, const T &b) { return (a > b) ? a : b; }
 
     template<typename T, typename... Ts>
-    constexpr const T &max(const T &a, const T &b, const Ts &... args) { return max(max(a, b), args...); }
+    __VT_FORCE_INLINE constexpr const T &max(const T &a, const T &b, const Ts &... args) {
+        return max(max(a, b), args...);
+    }
 
     template<typename T>
     struct remove_reference {
@@ -47,7 +53,8 @@ namespace vt {
      * @return
      */
     template<typename T>
-    constexpr remove_reference_t<T> &&move(T &&t) noexcept { return static_cast<remove_reference_t<T> &&>(t); }
+    __VT_FORCE_INLINE constexpr
+    remove_reference_t<T> &&move(T &&t) noexcept { return static_cast<remove_reference_t<T> &&>(t); }
 
     /**
      * Mimic std::swap
