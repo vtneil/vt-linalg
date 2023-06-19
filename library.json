@@ -2,7 +2,7 @@
     "name": "vt-linalg",
     "version": "1.0.0",
     "description": "VT Linear Algebra and Kalman Filter",
-    "keywords": "linear algebra, kalman",
+    "keywords": "linear algebra, kalman, filter",
     "repository": {
         "type": "git",
         "url": "https://github.com/vtneil/vt-linalg.git"
