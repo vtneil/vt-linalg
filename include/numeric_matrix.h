@@ -86,7 +86,7 @@ namespace vt {
         }
 
         /**
-         * Quad-matrix constructor, construct M_ from M11, M12, M21, M22
+         * Quad-matrix constructor, construct M from M11, M12, M21, M22
          *
          * @tparam R1
          * @tparam R2
@@ -108,6 +108,22 @@ namespace vt {
             insert<0, C1>(M12);
             insert<R1, 0>(M21);
             insert<R1, C1>(M22);
+        }
+
+        /**
+         * B matrix constructor, construct M from [A | B]
+         *
+         * @tparam C1 Main column
+         * @tparam C2 Augment column
+         * @param A Main matrix
+         * @param B Augment part
+         */
+        template<size_t C1, size_t C2>
+        numeric_matrix_static_t(const numeric_matrix_static_t<T, Row, C1> &A,
+                                const numeric_matrix_static_t<T, Row, C2> &B) {
+            static_assert(C1 + C2 == Col, "Column must be the sum of C1 and C2.");
+            insert<0, 0>(A);
+            insert<0, C1>(B);
         }
 
         __VT_FORCE_INLINE numeric_vector_static_t<T, Col> &operator[](size_t index) { return vector_[index]; }
@@ -549,6 +565,14 @@ namespace vt {
             return m;
         }
 
+        /**
+         * Checks equality of this matrix and the other matrix.
+         *
+         * @tparam ORow
+         * @tparam OCol
+         * @param other Other matrix
+         * @return
+         */
         template<size_t ORow, size_t OCol>
         bool operator==(const numeric_matrix_static_t<T, ORow, OCol> &other) const {
             if (this == &other) return true;
@@ -557,6 +581,14 @@ namespace vt {
             return true;
         }
 
+        /**
+         * Checks equality of this matrix and the other matrix.
+         *
+         * @tparam ORow
+         * @tparam OCol
+         * @param array Other matrix as array
+         * @return
+         */
         template<size_t ORow, size_t OCol>
         bool operator==(const T (&array)[ORow][OCol]) const {
             if (Row != ORow || Col != OCol) return false;
@@ -564,17 +596,49 @@ namespace vt {
             return true;
         }
 
+        /**
+         * Checks inequality of this matrix and the other matrix.
+         *
+         * @tparam ORow
+         * @tparam OCol
+         * @param other Other matrix
+         * @return
+         */
         template<size_t ORow, size_t OCol>
         constexpr bool operator!=(const numeric_matrix_static_t<T, ORow, OCol> &other) const {
             return !operator==(other);
         }
 
+        /**
+         * Checks inequality of this matrix and the other matrix.
+         *
+         * @tparam ORow
+         * @tparam OCol
+         * @param array Other matrix as array
+         * @return
+         */
         template<size_t ORow, size_t OCol>
         constexpr bool operator!=(const T (&array)[ORow][OCol]) const { return !operator==(array); }
 
+        /**
+         * Checks equality of this matrix and the other matrix.
+         *
+         * @tparam ORow
+         * @tparam OCol
+         * @param other Other matrix
+         * @return
+         */
         template<size_t ORow, size_t OCol>
         constexpr bool equals(const numeric_matrix_static_t<T, ORow, OCol> &other) const { return operator==(other); }
 
+        /**
+         * Checks equality of this matrix and the other matrix with float/double threshold using
+         * equation abs(x_ - y) < threshold for equality.
+         * @tparam ORow
+         * @tparam OCol
+         * @param other Other matrix
+         * @return
+         */
         template<size_t ORow, size_t OCol>
         bool float_equals(const numeric_matrix_static_t<T, ORow, OCol> &other) const {
             if (this == &other) return true;
@@ -583,31 +647,94 @@ namespace vt {
             return true;
         }
 
+        /**
+         * Checks equality of this matrix and the other matrix.
+         *
+         * @tparam ORow
+         * @tparam OCol
+         * @param array Other matrix as array
+         * @return
+         */
         template<size_t ORow, size_t OCol>
         constexpr bool equals(const T (&array)[ORow][OCol]) const { return operator==(array); }
 
+        /**
+         * Returns an iterator to matrix's first row.
+         *
+         * @return An iterator to matrix's first row
+         */
         iterator<numeric_vector_static_t<T, Col>> begin() { return vector_.begin(); }
 
+        /**
+         * Returns an iterator to matrix's first row.
+         *
+         * @return An iterator to matrix's first row
+         */
         constexpr iterator<numeric_vector_static_t<T, Col>> begin() const { return vector_.begin(); }
 
+        /**
+         * Returns an iterator to matrix's last row.
+         *
+         * @return An iterator to matrix's last row
+         */
         iterator<numeric_vector_static_t<T, Col>> end() { return vector_.end(); }
 
+        /**
+         * Returns an iterator to matrix's last row.
+         *
+         * @return An iterator to matrix's last row
+         */
         constexpr iterator<numeric_vector_static_t<T, Col>> end() const { return vector_.end(); }
 
+        /**
+         * Returns number of rows.
+         *
+         * @return Number of rows
+         */
         constexpr size_t r() const { return Row; }
 
+        /**
+         * Returns number of columns.
+         *
+         * @return Number of columns
+         */
         constexpr size_t c() const { return Col; }
 
+        /**
+         * Returns number of entries.
+         *
+         * @return Number of entries
+         */
         constexpr size_t n() const { return Row * Col; }
 
+        /**
+         * Returns order of this matrix (min(Row, Col)).
+         *
+         * @return Order of this matrix
+         */
         constexpr size_t order() const { return Order; }
 
+        /**
+         * Returns whether the matrix is square.
+         *
+         * @return
+         */
         constexpr bool is_square() const { return Row == Col; }
 
+        /**
+         * Swaps entries with the other matrix.
+         *
+         * @param other
+         */
         void swap(numeric_matrix_static_t &other) {
             for (size_t i = 0; i < Row; ++i) vector_[i].swap(other.vector_[i]);
         }
 
+        /**
+         * Creates a copy of this matrix.
+         *
+         * @return A copy of this matrix
+         */
         constexpr numeric_matrix_static_t copy() const { return numeric_matrix_static_t(*this); }
 
     private:
@@ -706,23 +833,71 @@ namespace vt {
         }
 
     public:
+        /**
+         * Returns zero matrix.
+         *
+         * @return Zero matrix
+         */
         static constexpr numeric_matrix_static_t zeros() { return numeric_matrix_static_t(); }
 
+        /**
+         * Returns 1-filled matrix.
+         *
+         * @return 1-filled matrix
+         */
         static constexpr numeric_matrix_static_t ones() { return numeric_matrix_static_t(1); }
 
+        /**
+         * Returns an identity matrix of current dimension.\n
+         * If this matrix is not square, the compile-time error is thrown.
+         *
+         * @return Identity matrix
+         */
         static constexpr numeric_matrix_static_t identity() {
             static_assert(static_is_a_square_matrix(), "Identity matrix must be a square matrix.");
             return diagonals(1);
         }
 
+        /**
+         * Returns an identity matrix of current dimension.\n
+         * If this matrix is not square, the compile-time error is thrown.
+         *
+         * @return Identity matrix
+         */
         static constexpr numeric_matrix_static_t id() { return identity(); }
 
+        /**
+         * Returns a matrix where the main diagonal is filled with fill value.
+         *
+         * @param value Fill value
+         * @return Filled diagonal matrix
+         */
         static numeric_matrix_static_t diagonals(T value) {
             numeric_matrix_static_t tmp;
             for (size_t i = 0; i < Order; ++i) tmp[i][i] = value;
             return tmp;
         }
 
+        /**
+         * Returns a matrix where the main diagonal is filled with fill values from array.
+         *
+         * @param array Fill array
+         * @return Filled diagonal matrix
+         */
+        static numeric_matrix_static_t diagonals(const T (&array)[Order]) {
+            numeric_matrix_static_t tmp;
+            for (size_t i = 0; i < Order; ++i) tmp[i][i] = array[i];
+            return tmp;
+        }
+
+        /**
+         * Returns a quad-filled matrix where M11, M12, M21, and M22 are the same.
+         *
+         * @tparam ORow
+         * @tparam OCol
+         * @param M Fill matrix
+         * @return Quad-filled matrix
+         */
         template<size_t ORow, size_t OCol>
         static numeric_matrix_static_t constexpr quad(const numeric_matrix_static_t<T, ORow, OCol> M) {
             return numeric_matrix_static_t(M, M, M, M);
@@ -736,22 +911,67 @@ namespace vt {
         return tmp;
     }
 
+    /**
+     * Finds determinant of this matrix.\n
+     * If this matrix is not square, the compile-time error is thrown.
+     *
+     * @tparam T
+     * @tparam Row
+     * @tparam Col
+     * @param A
+     * @return Determinant
+     */
     template<typename T, size_t Row, size_t Col>
     constexpr T det(const numeric_matrix_static_t<T, Row, Col> &A) { return A.det(); }
 
+    /**
+     * Finds trace of this matrix.\n
+     * If this matrix is not square, the compile-time error is thrown.
+     *
+     * @tparam T
+     * @tparam Row
+     * @tparam Col
+     * @param A
+     * @return Trace
+     */
     template<typename T, size_t Row, size_t Col>
     constexpr T tr(const numeric_matrix_static_t<T, Row, Col> &A) { return A.tr(); }
 
+    /**
+     * Finds inverse of this matrix.\n
+     * If this matrix is not square, the compile-time error is thrown.
+     *
+     * @tparam T
+     * @tparam Row
+     * @tparam Col
+     * @param A
+     * @return Inverse
+     */
     template<typename T, size_t Row, size_t Col>
     constexpr numeric_matrix_static_t<T, Row, Col> inv(const numeric_matrix_static_t<T, Row, Col> &A) {
         return A.inv();
     }
 
+    /**
+     * Finds RRE form of this matrix.
+     *
+     * @tparam T
+     * @tparam Row
+     * @tparam Col
+     * @param A
+     * @return RRE form of this matrix
+     */
     template<typename T, size_t Row, size_t Col>
     constexpr numeric_matrix_static_t<T, Row, Col> RRE(const numeric_matrix_static_t<T, Row, Col> &A) {
         return A.RRE();
     }
 
+    /**
+     * Wrapper class for LU-decomposed matrix comprised of L and U square matrices.
+     *
+     * @tparam T
+     * @tparam OSize
+     */
     template<typename T, size_t OSize>
     class numeric_matrix_static_lu_t {
     private:

@@ -418,7 +418,7 @@ namespace vt {
         constexpr size_t dimension() const { return Size; }
 
         /**
-         * Swaps values of this vector with the other vector.
+         * Swaps entries with the other vector.
          *
          * @param other Other vector
          */
