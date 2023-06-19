@@ -106,6 +106,9 @@ int main() {
     assert(B * v == numeric_vector<4>({7, 0, 7, 9}));
     assert(Z1.float_equals(Z2));
     assert(v.end() - v.begin() == 2);
+    assert((v1.slice<0, 1>().equals({1})));
+    assert((v1.slice<0, 4>().equals({1, 2, 3, 4})));
+    assert((v1.slice<1, 2>().equals({2})));
 
     std::cout << "Test Passed!";
     return 0;

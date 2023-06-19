@@ -359,6 +359,15 @@ namespace vt {
         template<size_t OSize>
         constexpr bool equals(const T (&array)[OSize]) const { return operator==(array); }
 
+        template<size_t from, size_t to>
+        numeric_vector_static_t<T, to - from> slice() {
+            static_assert(from < to, "from must be less than to.");
+            static_assert(to <= Size, "Slice range is out of range.");
+            numeric_vector_static_t<T, to - from> result;
+            for (size_t i = 0; i < to - from; ++i) result[i] = arr_[from + i];
+            return result;
+        }
+
         /**
          * Returns an iterator to vector's first dimension entry.
          *
