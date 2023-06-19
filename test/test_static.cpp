@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../vt_linalg"
+#include <vt_linalg>
 
 template<size_t Size>
 using numeric_vector = vt::numeric_vector<Size>;

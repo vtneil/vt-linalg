@@ -18,13 +18,13 @@
 
 namespace vt {
     template<size_t StateVectorDimension,
-            size_t ObservationVectorDimension,
+            size_t MeasurementVectorDimension,
             size_t ControlVectorDimension>
     class simple_kalman_filter_t {
     private:
         // Note that numeric_matrix<N, M> maps from R^M to R^N
         static constexpr size_t N = StateVectorDimension;       // ALias
-        static constexpr size_t M = ObservationVectorDimension; // Alias
+        static constexpr size_t M = MeasurementVectorDimension; // Alias
         static constexpr size_t L = ControlVectorDimension;     // Alias
 
     protected:
@@ -86,10 +86,10 @@ namespace vt {
     };
 
     template<size_t StateVectorDimension,
-            size_t ObservationVectorDimension,
+            size_t MeasurementVectorDimension,
             size_t ControlVectorDimension>
     using kalman_filter_t =
-            simple_kalman_filter_t<StateVectorDimension, ObservationVectorDimension, ControlVectorDimension>;
+            simple_kalman_filter_t<StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension>;
 }
 
 #endif //VNET_LINALG_KALMAN_H

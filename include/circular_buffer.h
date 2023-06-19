@@ -1,5 +1,5 @@
-#ifndef VT_LINALG_BUFFER_H
-#define VT_LINALG_BUFFER_H
+#ifndef VT_LINALG_CIRCULAR_BUFFER_H
+#define VT_LINALG_CIRCULAR_BUFFER_H
 
 #include "standard_utility.h"
 
@@ -89,4 +89,4 @@ namespace vt {
     constexpr buffer_t<T, Capacity> make_buffer() { return buffer_t<T, Capacity>(); }
 }
 
-#endif //VT_LINALG_BUFFER_H
+#endif //VT_LINALG_CIRCULAR_BUFFER_H

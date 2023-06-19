@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../src/complex_number.h"
+#include "complex_number.h"
 
 using namespace vt;
 

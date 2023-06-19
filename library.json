@@ -1,0 +1,21 @@
+{
+    "name": "vt-linalg",
+    "version": "1.0.0",
+    "description": "VT Linear Algebra and Kalman Filter",
+    "keywords": "linear algebra, kalman",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vtneil/vt-linalg.git"
+    },
+    "authors": [
+        {
+            "name": "Vivatsathorn Thitasirivit",
+            "email": "vivatsathorn@outlook.co.th",
+            "url": "https://vt.in.th/contacts",
+            "maintainer": true
+        }
+    ],
+    "license": "MIT",
+    "frameworks": "*",
+    "platforms": "*"
+}

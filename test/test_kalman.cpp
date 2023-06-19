@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../src/kalman.h"
+#include "kalman.h"
 
 using namespace vt;
 

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../src/standard_utility.h"
-#include "../src/buffer.h"
+#include "standard_utility.h"
+#include "circular_buffer.h"
 
 using namespace vt;
 
