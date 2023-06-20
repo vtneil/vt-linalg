@@ -156,6 +156,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a95651b86fe470f83d68e15b33aca82b0"><td class="memTemplParams" colspan="2">template&lt;size_t R1, size_t R2, size_t C1, size_t C2&gt; </td></tr>
 <tr class="memitem:a95651b86fe470f83d68e15b33aca82b0"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R1+R2, C1+C2 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a95651b86fe470f83d68e15b33aca82b0">vt::make_quad_matrix</a> (const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R1, C1 &gt; &amp;M11, const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R1, C2 &gt; &amp;M12, const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R2, C1 &gt; &amp;M21, const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R2, C2 &gt; &amp;M22)</td></tr>
 <tr class="separator:a95651b86fe470f83d68e15b33aca82b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4ef758d9bcd5c3e3397cf2c93c88e52"><td class="memTemplParams" colspan="2">template&lt;size_t ORow, size_t OCol, size_t M, size_t N&gt; </td></tr>
+<tr class="memitem:ac4ef758d9bcd5c3e3397cf2c93c88e52"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt;(ORow *M),(OCol *N)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#ac4ef758d9bcd5c3e3397cf2c93c88e52">vt::make_block_matrix</a> (const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; ORow, OCol &gt;(&amp;blocks)[M][N])</td></tr>
+<tr class="separator:ac4ef758d9bcd5c3e3397cf2c93c88e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Numeric matrix library. </p>
@@ -169,7 +172,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="numeric__matrix_8h.html">numeric_matrix.h</a></li>
-    <li class="footer">Generated on Tue Jun 20 2023 17:05:04 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Wed Jun 21 2023 02:05:40 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

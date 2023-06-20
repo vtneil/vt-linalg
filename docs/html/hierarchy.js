@@ -4,6 +4,7 @@ var hierarchy =
     [ "vt::circular_buffer_dynamic_t", "classvt_1_1circular__buffer__dynamic__t.html", null ],
     [ "vt::circular_buffer_static_t< T, Capacity >", "classvt_1_1circular__buffer__static__t.html", null ],
     [ "vt::complex_t", "classvt_1_1complex__t.html", null ],
+    [ "vt::extended_kalman_filter_t< StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension >", "classvt_1_1extended__kalman__filter__t.html", null ],
     [ "vt::if_constexpr< ctime_condition >", "structvt_1_1if__constexpr.html", null ],
     [ "vt::if_constexpr< false >", "structvt_1_1if__constexpr_3_01false_01_4.html", null ],
     [ "vt::if_constexpr< true >", "structvt_1_1if__constexpr_3_01true_01_4.html", null ],

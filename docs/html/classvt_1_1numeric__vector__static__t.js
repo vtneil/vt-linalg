@@ -19,6 +19,8 @@ var classvt_1_1numeric__vector__static__t =
     [ "allocate_from", "classvt_1_1numeric__vector__static__t.html#a9f62ade4ae5cf2a4dc4af454d0b1569e", null ],
     [ "allocate_from", "classvt_1_1numeric__vector__static__t.html#ae64b7041701575970994d61401341ff1", null ],
     [ "allocate_zero", "classvt_1_1numeric__vector__static__t.html#a25b0082678770a210554d2ea26dca7b1", null ],
+    [ "as_matrix_col", "classvt_1_1numeric__vector__static__t.html#a78ff2dd0d66c87517bdbd603d6d03599", null ],
+    [ "as_matrix_row", "classvt_1_1numeric__vector__static__t.html#afd56c6cca234dfee175d8a6598be185c", null ],
     [ "begin", "classvt_1_1numeric__vector__static__t.html#a5bcd684b386f1983eca4c527b4f52140", null ],
     [ "begin", "classvt_1_1numeric__vector__static__t.html#a9e1e95d90aa10ef46589dc17432d4e93", null ],
     [ "copy", "classvt_1_1numeric__vector__static__t.html#a61eefb280228db24d86a183b9fa262f0", null ],

@@ -231,6 +231,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6d60e333c33037060c4b3500e2e7fec4"><td class="memTemplParams" colspan="2">template&lt;size_t from, size_t to&gt; </td></tr>
 <tr class="memitem:a6d60e333c33037060c4b3500e2e7fec4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, to - from &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__vector__static__t.html#a6d60e333c33037060c4b3500e2e7fec4">slice</a> ()</td></tr>
 <tr class="separator:a6d60e333c33037060c4b3500e2e7fec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78ff2dd0d66c87517bdbd603d6d03599"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Size, 1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__vector__static__t.html#a78ff2dd0d66c87517bdbd603d6d03599">as_matrix_col</a> ()</td></tr>
+<tr class="separator:a78ff2dd0d66c87517bdbd603d6d03599"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd56c6cca234dfee175d8a6598be185c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, 1, Size &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__vector__static__t.html#afd56c6cca234dfee175d8a6598be185c">as_matrix_row</a> ()</td></tr>
+<tr class="separator:afd56c6cca234dfee175d8a6598be185c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bcd684b386f1983eca4c527b4f52140"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1iterator.html">iterator</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__vector__static__t.html#a5bcd684b386f1983eca4c527b4f52140">begin</a> ()</td></tr>
 <tr class="separator:a5bcd684b386f1983eca4c527b4f52140"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e1e95d90aa10ef46589dc17432d4e93"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="classvt_1_1iterator.html">iterator</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__vector__static__t.html#a9e1e95d90aa10ef46589dc17432d4e93">begin</a> () const</td></tr>
@@ -318,7 +322,7 @@ template&lt;typename T , size_t Size&gt; </div>
 </div><div class="memdoc">
 <p>Default constructor, initializes to zero </p>
 
-<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00503">vt::numeric_vector_static_t&lt; T, Size &gt;::copy()</a>, <a class="el" href="numeric__vector_8h_source.html#l00304">vt::numeric_vector_static_t&lt; T, Size &gt;::normalize()</a>, <a class="el" href="numeric__vector_8h_source.html#l00531">vt::numeric_vector_static_t&lt; T, Size &gt;::ones()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00524">vt::numeric_vector_static_t&lt; T, Size &gt;::zeros()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00525">vt::numeric_vector_static_t&lt; T, Size &gt;::copy()</a>, <a class="el" href="numeric__vector_8h_source.html#l00304">vt::numeric_vector_static_t&lt; T, Size &gt;::normalize()</a>, <a class="el" href="numeric__vector_8h_source.html#l00553">vt::numeric_vector_static_t&lt; T, Size &gt;::ones()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00546">vt::numeric_vector_static_t&lt; T, Size &gt;::zeros()</a>.</p>
 
 </div>
 </div>
@@ -357,10 +361,10 @@ template&lt;typename T , size_t Size&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00051">51</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   51</span>{ <a class="code hl_function" href="classvt_1_1numeric__vector__static__t.html#aca744856009ffdac2de73e8d4f4e2343">allocate_fill</a>(<a class="code hl_function" href="namespacevt.html#ad848e88073c4da3aae708ccf5f9f5df5">fill</a>); }</div>
-<div class="ttc" id="aclassvt_1_1numeric__vector__static__t_html_aca744856009ffdac2de73e8d4f4e2343"><div class="ttname"><a href="classvt_1_1numeric__vector__static__t.html#aca744856009ffdac2de73e8d4f4e2343">vt::numeric_vector_static_t::allocate_fill</a></div><div class="ttdeci">void allocate_fill(T fill)</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00508">numeric_vector.h:508</a></div></div>
+<div class="ttc" id="aclassvt_1_1numeric__vector__static__t_html_aca744856009ffdac2de73e8d4f4e2343"><div class="ttname"><a href="classvt_1_1numeric__vector__static__t.html#aca744856009ffdac2de73e8d4f4e2343">vt::numeric_vector_static_t::allocate_fill</a></div><div class="ttdeci">void allocate_fill(T fill)</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00530">numeric_vector.h:530</a></div></div>
 <div class="ttc" id="anamespacevt_html_ad848e88073c4da3aae708ccf5f9f5df5"><div class="ttname"><a href="namespacevt.html#ad848e88073c4da3aae708ccf5f9f5df5">vt::fill</a></div><div class="ttdeci">void fill(ForwardIt first, ForwardIt last, const T &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00104">standard_utility.h:104</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00508">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_fill()</a>, and <a class="el" href="standard__utility_8h_source.html#l00104">vt::fill()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00530">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_fill()</a>, and <a class="el" href="standard__utility_8h_source.html#l00104">vt::fill()</a>.</p>
 
 </div>
 </div>
@@ -399,9 +403,9 @@ template&lt;typename T , size_t Size&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00058">58</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   58</span>{ <a class="code hl_function" href="classvt_1_1numeric__vector__static__t.html#a9f62ade4ae5cf2a4dc4af454d0b1569e">allocate_from</a>(other); }</div>
-<div class="ttc" id="aclassvt_1_1numeric__vector__static__t_html_a9f62ade4ae5cf2a4dc4af454d0b1569e"><div class="ttname"><a href="classvt_1_1numeric__vector__static__t.html#a9f62ade4ae5cf2a4dc4af454d0b1569e">vt::numeric_vector_static_t::allocate_from</a></div><div class="ttdeci">void allocate_from(const numeric_vector_static_t &amp;other)</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00510">numeric_vector.h:510</a></div></div>
+<div class="ttc" id="aclassvt_1_1numeric__vector__static__t_html_a9f62ade4ae5cf2a4dc4af454d0b1569e"><div class="ttname"><a href="classvt_1_1numeric__vector__static__t.html#a9f62ade4ae5cf2a4dc4af454d0b1569e">vt::numeric_vector_static_t::allocate_from</a></div><div class="ttdeci">void allocate_from(const numeric_vector_static_t &amp;other)</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00532">numeric_vector.h:532</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00510">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00532">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>.</p>
 
 </div>
 </div>
@@ -484,7 +488,7 @@ template&lt;typename T , size_t Size&gt; </div>
 <p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00074">74</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   74</span>{ <a class="code hl_function" href="classvt_1_1numeric__vector__static__t.html#a9f62ade4ae5cf2a4dc4af454d0b1569e">allocate_from</a>(array); }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00510">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00532">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>.</p>
 
 </div>
 </div>
@@ -894,12 +898,12 @@ template&lt;typename T , size_t Size&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00508">508</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  508</span>{ <a class="code hl_function" href="namespacevt.html#ad848e88073c4da3aae708ccf5f9f5df5">vt::fill</a>(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>, <a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a> + Size, <a class="code hl_function" href="namespacevt.html#ad848e88073c4da3aae708ccf5f9f5df5">fill</a>); }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00530">530</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  530</span>{ <a class="code hl_function" href="namespacevt.html#ad848e88073c4da3aae708ccf5f9f5df5">vt::fill</a>(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>, <a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a> + Size, <a class="code hl_function" href="namespacevt.html#ad848e88073c4da3aae708ccf5f9f5df5">fill</a>); }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00038">vt::numeric_vector_static_t&lt; T, Size &gt;::arr_</a>, and <a class="el" href="standard__utility_8h_source.html#l00104">vt::fill()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00506">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_zero()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00051">vt::numeric_vector_static_t&lt; T, Size &gt;::numeric_vector_static_t()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00528">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_zero()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00051">vt::numeric_vector_static_t&lt; T, Size &gt;::numeric_vector_static_t()</a>.</p>
 
 </div>
 </div>
@@ -929,10 +933,10 @@ template&lt;typename T , size_t Size&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00510">510</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  510</span>                                                                 {</div>
-<div class="line"><span class="lineno">  511</span>            <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(<a class="code hl_function" href="namespacevt.html#aeaf81bd3d3b480c3c93997da6e596dc5">vt::copy</a>(other.arr_, other.arr_ + Size, <a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>));</div>
-<div class="line"><span class="lineno">  512</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00532">532</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  532</span>                                                                 {</div>
+<div class="line"><span class="lineno">  533</span>            <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(<a class="code hl_function" href="namespacevt.html#aeaf81bd3d3b480c3c93997da6e596dc5">vt::copy</a>(other.arr_, other.arr_ + Size, <a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>));</div>
+<div class="line"><span class="lineno">  534</span>        }</div>
 <div class="ttc" id="anamespacevt_html_aeaf81bd3d3b480c3c93997da6e596dc5"><div class="ttname"><a href="namespacevt.html#aeaf81bd3d3b480c3c93997da6e596dc5">vt::copy</a></div><div class="ttdeci">OutputIt copy(InputIt first, InputIt last, OutputIt d_first)</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00119">standard_utility.h:119</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00038">vt::numeric_vector_static_t&lt; T, Size &gt;::arr_</a>, and <a class="el" href="standard__utility_8h_source.html#l00119">vt::copy()</a>.</p>
@@ -967,10 +971,10 @@ template&lt;typename T , size_t Size&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00514">514</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  514</span>                                                   {</div>
-<div class="line"><span class="lineno">  515</span>            <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(<a class="code hl_function" href="namespacevt.html#aeaf81bd3d3b480c3c93997da6e596dc5">vt::copy</a>(array, array + Size, <a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>));</div>
-<div class="line"><span class="lineno">  516</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00536">536</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  536</span>                                                   {</div>
+<div class="line"><span class="lineno">  537</span>            <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(<a class="code hl_function" href="namespacevt.html#aeaf81bd3d3b480c3c93997da6e596dc5">vt::copy</a>(array, array + Size, <a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>));</div>
+<div class="line"><span class="lineno">  538</span>        }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00038">vt::numeric_vector_static_t&lt; T, Size &gt;::arr_</a>, and <a class="el" href="standard__utility_8h_source.html#l00119">vt::copy()</a>.</p>
 
@@ -1001,10 +1005,86 @@ template&lt;typename T , size_t Size&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00506">506</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  506</span>{ <a class="code hl_function" href="classvt_1_1numeric__vector__static__t.html#aca744856009ffdac2de73e8d4f4e2343">allocate_fill</a>(T()); }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00528">528</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  528</span>{ <a class="code hl_function" href="classvt_1_1numeric__vector__static__t.html#aca744856009ffdac2de73e8d4f4e2343">allocate_fill</a>(T()); }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00508">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_fill()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00530">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_fill()</a>.</p>
+
+</div>
+</div>
+<a id="a78ff2dd0d66c87517bdbd603d6d03599" name="a78ff2dd0d66c87517bdbd603d6d03599"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78ff2dd0d66c87517bdbd603d6d03599">&#9670;&#160;</a></span>as_matrix_col()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , size_t Size&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Size, 1 &gt; <a class="el" href="classvt_1_1numeric__vector__static__t.html">vt::numeric_vector_static_t</a>&lt; T, Size &gt;::as_matrix_col </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Converts this vector to a matrix representation of column vector</p>
+<dl class="section return"><dt>Returns</dt><dd>Column vector as matrix </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00445">445</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  445</span>                                                            {</div>
+<div class="line"><span class="lineno">  446</span>            numeric_matrix_static_t&lt;T, Size, 1&gt; result;</div>
+<div class="line"><span class="lineno">  447</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; Size; ++i) result[i][0] = <a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>[i];</div>
+<div class="line"><span class="lineno">  448</span>            <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  449</span>        }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00038">vt::numeric_vector_static_t&lt; T, Size &gt;::arr_</a>.</p>
+
+</div>
+</div>
+<a id="afd56c6cca234dfee175d8a6598be185c" name="afd56c6cca234dfee175d8a6598be185c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd56c6cca234dfee175d8a6598be185c">&#9670;&#160;</a></span>as_matrix_row()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , size_t Size&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, 1, Size &gt; <a class="el" href="classvt_1_1numeric__vector__static__t.html">vt::numeric_vector_static_t</a>&lt; T, Size &gt;::as_matrix_row </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Converts this vector to a matrix representation of row vector</p>
+<dl class="section return"><dt>Returns</dt><dd>Row vector as matrix </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00456">456</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  456</span>                                                            {</div>
+<div class="line"><span class="lineno">  457</span>            numeric_matrix_static_t&lt;T, 1, Size&gt; result;</div>
+<div class="line"><span class="lineno">  458</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; Size; ++i) result[0][i] = <a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>[i];</div>
+<div class="line"><span class="lineno">  459</span>            <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  460</span>        }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00038">vt::numeric_vector_static_t&lt; T, Size &gt;::arr_</a>.</p>
 
 </div>
 </div>
@@ -1035,8 +1115,8 @@ template&lt;typename T , size_t Size&gt; </div>
 <p>Returns an iterator to vector's first dimension entry.</p>
 <dl class="section return"><dt>Returns</dt><dd>An iterator to vector's first dimension entry </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00445">445</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  445</span>{ <span class="keywordflow">return</span> iterator&lt;T&gt;(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>); }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00467">467</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  467</span>{ <span class="keywordflow">return</span> iterator&lt;T&gt;(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>); }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00038">vt::numeric_vector_static_t&lt; T, Size &gt;::arr_</a>.</p>
 
@@ -1069,8 +1149,8 @@ template&lt;typename T , size_t Size&gt; </div>
 <p>Returns an iterator to vector's first dimension entry.</p>
 <dl class="section return"><dt>Returns</dt><dd>An iterator to vector's first dimension entry </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00452">452</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  452</span>{ <span class="keywordflow">return</span> iterator&lt;T&gt;(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>); }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00474">474</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  474</span>{ <span class="keywordflow">return</span> iterator&lt;T&gt;(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>); }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00038">vt::numeric_vector_static_t&lt; T, Size &gt;::arr_</a>.</p>
 
@@ -1103,8 +1183,8 @@ template&lt;typename T , size_t Size&gt; </div>
 <p>Creates a copy of this vector.</p>
 <dl class="section return"><dt>Returns</dt><dd>A copy of this vector </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00503">503</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  503</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="classvt_1_1numeric__vector__static__t.html#a0b8bfe262e53fa2930992ce36c059780">numeric_vector_static_t</a>(*<span class="keyword">this</span>); }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00525">525</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  525</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="classvt_1_1numeric__vector__static__t.html#a0b8bfe262e53fa2930992ce36c059780">numeric_vector_static_t</a>(*<span class="keyword">this</span>); }</div>
 <div class="ttc" id="aclassvt_1_1numeric__vector__static__t_html_a0b8bfe262e53fa2930992ce36c059780"><div class="ttname"><a href="classvt_1_1numeric__vector__static__t.html#a0b8bfe262e53fa2930992ce36c059780">vt::numeric_vector_static_t::numeric_vector_static_t</a></div><div class="ttdeci">constexpr numeric_vector_static_t()=default</div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classvt_1_1numeric__vector__static__t.html#a0b8bfe262e53fa2930992ce36c059780">vt::numeric_vector_static_t&lt; T, Size &gt;::numeric_vector_static_t()</a>.</p>
@@ -1138,8 +1218,8 @@ template&lt;typename T , size_t Size&gt; </div>
 <p>Returns vector's dimension (size).</p>
 <dl class="section return"><dt>Returns</dt><dd>Vector's dimension (size) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00480">480</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  480</span>{ <span class="keywordflow">return</span> Size; }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00502">502</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  502</span>{ <span class="keywordflow">return</span> Size; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1170,8 +1250,8 @@ template&lt;typename T , size_t Size&gt; </div>
 <p>Returns vector's dimension (size).</p>
 <dl class="section return"><dt>Returns</dt><dd>Vector's dimension (size) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00487">487</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  487</span>{ <span class="keywordflow">return</span> Size; }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00509">509</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  509</span>{ <span class="keywordflow">return</span> Size; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1294,8 +1374,8 @@ template&lt;typename T , size_t Size&gt; </div>
 <p>Returns an iterator to vector's last dimension entry.</p>
 <dl class="section return"><dt>Returns</dt><dd>An iterator to vector's last dimension entry </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00459">459</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  459</span>{ <span class="keywordflow">return</span> iterator&lt;T&gt;(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a> + Size); }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00481">481</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  481</span>{ <span class="keywordflow">return</span> iterator&lt;T&gt;(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a> + Size); }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00038">vt::numeric_vector_static_t&lt; T, Size &gt;::arr_</a>.</p>
 
@@ -1328,8 +1408,8 @@ template&lt;typename T , size_t Size&gt; </div>
 <p>Returns an iterator to vector's last dimension entry.</p>
 <dl class="section return"><dt>Returns</dt><dd>An iterator to vector's last dimension entry </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00466">466</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  466</span>{ <span class="keywordflow">return</span> iterator&lt;T&gt;(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a> + Size); }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00488">488</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  488</span>{ <span class="keywordflow">return</span> iterator&lt;T&gt;(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a> + Size); }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00038">vt::numeric_vector_static_t&lt; T, Size &gt;::arr_</a>.</p>
 
@@ -1790,8 +1870,8 @@ template&lt;typename T , size_t Size&gt; </div>
 <p>Creates a 1-filled matrix.</p>
 <dl class="section return"><dt>Returns</dt><dd>1-filled matrix </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00531">531</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  531</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="classvt_1_1numeric__vector__static__t.html#a0b8bfe262e53fa2930992ce36c059780">numeric_vector_static_t</a>(1); }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00553">553</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  553</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="classvt_1_1numeric__vector__static__t.html#a0b8bfe262e53fa2930992ce36c059780">numeric_vector_static_t</a>(1); }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classvt_1_1numeric__vector__static__t.html#a0b8bfe262e53fa2930992ce36c059780">vt::numeric_vector_static_t&lt; T, Size &gt;::numeric_vector_static_t()</a>.</p>
 
@@ -2357,7 +2437,7 @@ template&lt;typename T , size_t Size&gt; </div>
 <div class="line"><span class="lineno">  120</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><span class="lineno">  121</span>        }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00510">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00532">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>.</p>
 
 </div>
 </div>
@@ -2393,7 +2473,7 @@ template&lt;typename T , size_t Size&gt; </div>
 <div class="line"><span class="lineno">  130</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><span class="lineno">  131</span>        }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00510">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00532">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>.</p>
 
 </div>
 </div>
@@ -2679,8 +2759,8 @@ template&lt;typename T , size_t Size&gt; </div>
 <p>Returns vector's dimension (size).</p>
 <dl class="section return"><dt>Returns</dt><dd>Vector's dimension (size) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00473">473</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  473</span>{ <span class="keywordflow">return</span> Size; }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00495">495</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  495</span>{ <span class="keywordflow">return</span> Size; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2873,10 +2953,10 @@ template&lt;typename T , size_t Size&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00494">494</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  494</span>                                                  {</div>
-<div class="line"><span class="lineno">  495</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; Size; ++i) <a class="code hl_function" href="namespacevt.html#a6a7ec841ca2f701599c29c4fd0d758d4">vt::swap</a>(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>[i], other.arr_[i]);</div>
-<div class="line"><span class="lineno">  496</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00516">516</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  516</span>                                                  {</div>
+<div class="line"><span class="lineno">  517</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; Size; ++i) <a class="code hl_function" href="namespacevt.html#a6a7ec841ca2f701599c29c4fd0d758d4">vt::swap</a>(<a class="code hl_variable" href="classvt_1_1numeric__vector__static__t.html#a1cff7918b3e6d948d677e019b154e585">arr_</a>[i], other.arr_[i]);</div>
+<div class="line"><span class="lineno">  518</span>        }</div>
 <div class="ttc" id="anamespacevt_html_a6a7ec841ca2f701599c29c4fd0d758d4"><div class="ttname"><a href="namespacevt.html#a6a7ec841ca2f701599c29c4fd0d758d4">vt::swap</a></div><div class="ttdeci">void swap(T &amp;a, T &amp;b)</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00067">standard_utility.h:67</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00038">vt::numeric_vector_static_t&lt; T, Size &gt;::arr_</a>, and <a class="el" href="standard__utility_8h_source.html#l00067">vt::swap()</a>.</p>
@@ -2910,8 +2990,8 @@ template&lt;typename T , size_t Size&gt; </div>
 <p>Creates a zero matrix.</p>
 <dl class="section return"><dt>Returns</dt><dd>Zero matrix </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00524">524</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  524</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="classvt_1_1numeric__vector__static__t.html#a0b8bfe262e53fa2930992ce36c059780">numeric_vector_static_t</a>(); }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00546">546</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  546</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="classvt_1_1numeric__vector__static__t.html#a0b8bfe262e53fa2930992ce36c059780">numeric_vector_static_t</a>(); }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="classvt_1_1numeric__vector__static__t.html#a0b8bfe262e53fa2930992ce36c059780">vt::numeric_vector_static_t&lt; T, Size &gt;::numeric_vector_static_t()</a>.</p>
 
@@ -2971,7 +3051,7 @@ template&lt;typename T , size_t Size&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00038">38</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00108">vt::numeric_vector_static_t&lt; T, Size &gt;::__attribute__()</a>, <a class="el" href="numeric__vector_8h_source.html#l00106">vt::numeric_vector_static_t&lt; T, Size &gt;::__attribute__()</a>, <a class="el" href="numeric__vector_8h_source.html#l00508">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_fill()</a>, <a class="el" href="numeric__vector_8h_source.html#l00510">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>, <a class="el" href="numeric__vector_8h_source.html#l00514">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>, <a class="el" href="numeric__vector_8h_source.html#l00445">vt::numeric_vector_static_t&lt; T, Size &gt;::begin()</a>, <a class="el" href="numeric__vector_8h_source.html#l00452">vt::numeric_vector_static_t&lt; T, Size &gt;::begin()</a>, <a class="el" href="numeric__vector_8h_source.html#l00215">vt::numeric_vector_static_t&lt; T, Size &gt;::dot()</a>, <a class="el" href="numeric__vector_8h_source.html#l00227">vt::numeric_vector_static_t&lt; T, Size &gt;::dot()</a>, <a class="el" href="numeric__vector_8h_source.html#l00459">vt::numeric_vector_static_t&lt; T, Size &gt;::end()</a>, <a class="el" href="numeric__vector_8h_source.html#l00466">vt::numeric_vector_static_t&lt; T, Size &gt;::end()</a>, <a class="el" href="numeric__vector_8h_source.html#l00375">vt::numeric_vector_static_t&lt; T, Size &gt;::float_equals()</a>, <a class="el" href="numeric__vector_8h_source.html#l00401">vt::numeric_vector_static_t&lt; T, Size &gt;::insert()</a>, <a class="el" href="numeric__vector_8h_source.html#l00417">vt::numeric_vector_static_t&lt; T, Size &gt;::insert()</a>, <a class="el" href="numeric__vector_8h_source.html#l00065">vt::numeric_vector_static_t&lt; T, Size &gt;::numeric_vector_static_t()</a>, <a class="el" href="numeric__vector_8h_source.html#l00187">vt::numeric_vector_static_t&lt; T, Size &gt;::operator*=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00133">vt::numeric_vector_static_t&lt; T, Size &gt;::operator+=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00138">vt::numeric_vector_static_t&lt; T, Size &gt;::operator+=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00159">vt::numeric_vector_static_t&lt; T, Size &gt;::operator-=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00164">vt::numeric_vector_static_t&lt; T, Size &gt;::operator-=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00198">vt::numeric_vector_static_t&lt; T, Size &gt;::operator/=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00123">vt::numeric_vector_static_t&lt; T, Size &gt;::operator=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00314">vt::numeric_vector_static_t&lt; T, Size &gt;::operator==()</a>, <a class="el" href="numeric__vector_8h_source.html#l00329">vt::numeric_vector_static_t&lt; T, Size &gt;::operator==()</a>, <a class="el" href="numeric__vector_8h_source.html#l00257">vt::numeric_vector_static_t&lt; T, Size &gt;::outer()</a>, <a class="el" href="numeric__vector_8h_source.html#l00273">vt::numeric_vector_static_t&lt; T, Size &gt;::outer()</a>, <a class="el" href="numeric__vector_8h_source.html#l00432">vt::numeric_vector_static_t&lt; T, Size &gt;::slice()</a>, <a class="el" href="numeric__vector_8h_source.html#l00286">vt::numeric_vector_static_t&lt; T, Size &gt;::sum()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00494">vt::numeric_vector_static_t&lt; T, Size &gt;::swap()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00108">vt::numeric_vector_static_t&lt; T, Size &gt;::__attribute__()</a>, <a class="el" href="numeric__vector_8h_source.html#l00106">vt::numeric_vector_static_t&lt; T, Size &gt;::__attribute__()</a>, <a class="el" href="numeric__vector_8h_source.html#l00530">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_fill()</a>, <a class="el" href="numeric__vector_8h_source.html#l00532">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>, <a class="el" href="numeric__vector_8h_source.html#l00536">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>, <a class="el" href="numeric__vector_8h_source.html#l00445">vt::numeric_vector_static_t&lt; T, Size &gt;::as_matrix_col()</a>, <a class="el" href="numeric__vector_8h_source.html#l00456">vt::numeric_vector_static_t&lt; T, Size &gt;::as_matrix_row()</a>, <a class="el" href="numeric__vector_8h_source.html#l00467">vt::numeric_vector_static_t&lt; T, Size &gt;::begin()</a>, <a class="el" href="numeric__vector_8h_source.html#l00474">vt::numeric_vector_static_t&lt; T, Size &gt;::begin()</a>, <a class="el" href="numeric__vector_8h_source.html#l00215">vt::numeric_vector_static_t&lt; T, Size &gt;::dot()</a>, <a class="el" href="numeric__vector_8h_source.html#l00227">vt::numeric_vector_static_t&lt; T, Size &gt;::dot()</a>, <a class="el" href="numeric__vector_8h_source.html#l00481">vt::numeric_vector_static_t&lt; T, Size &gt;::end()</a>, <a class="el" href="numeric__vector_8h_source.html#l00488">vt::numeric_vector_static_t&lt; T, Size &gt;::end()</a>, <a class="el" href="numeric__vector_8h_source.html#l00375">vt::numeric_vector_static_t&lt; T, Size &gt;::float_equals()</a>, <a class="el" href="numeric__vector_8h_source.html#l00401">vt::numeric_vector_static_t&lt; T, Size &gt;::insert()</a>, <a class="el" href="numeric__vector_8h_source.html#l00417">vt::numeric_vector_static_t&lt; T, Size &gt;::insert()</a>, <a class="el" href="numeric__vector_8h_source.html#l00065">vt::numeric_vector_static_t&lt; T, Size &gt;::numeric_vector_static_t()</a>, <a class="el" href="numeric__vector_8h_source.html#l00187">vt::numeric_vector_static_t&lt; T, Size &gt;::operator*=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00133">vt::numeric_vector_static_t&lt; T, Size &gt;::operator+=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00138">vt::numeric_vector_static_t&lt; T, Size &gt;::operator+=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00159">vt::numeric_vector_static_t&lt; T, Size &gt;::operator-=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00164">vt::numeric_vector_static_t&lt; T, Size &gt;::operator-=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00198">vt::numeric_vector_static_t&lt; T, Size &gt;::operator/=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00123">vt::numeric_vector_static_t&lt; T, Size &gt;::operator=()</a>, <a class="el" href="numeric__vector_8h_source.html#l00314">vt::numeric_vector_static_t&lt; T, Size &gt;::operator==()</a>, <a class="el" href="numeric__vector_8h_source.html#l00329">vt::numeric_vector_static_t&lt; T, Size &gt;::operator==()</a>, <a class="el" href="numeric__vector_8h_source.html#l00257">vt::numeric_vector_static_t&lt; T, Size &gt;::outer()</a>, <a class="el" href="numeric__vector_8h_source.html#l00273">vt::numeric_vector_static_t&lt; T, Size &gt;::outer()</a>, <a class="el" href="numeric__vector_8h_source.html#l00432">vt::numeric_vector_static_t&lt; T, Size &gt;::slice()</a>, <a class="el" href="numeric__vector_8h_source.html#l00286">vt::numeric_vector_static_t&lt; T, Size &gt;::sum()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00516">vt::numeric_vector_static_t&lt; T, Size &gt;::swap()</a>.</p>
 
 </div>
 </div>
@@ -2984,7 +3064,7 @@ template&lt;typename T , size_t Size&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevt.html">vt</a></li><li class="navelem"><a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a></li>
-    <li class="footer">Generated on Tue Jun 20 2023 17:05:05 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Wed Jun 21 2023 02:05:40 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>
