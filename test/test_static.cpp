@@ -9,6 +9,14 @@ using numeric_matrix = vt::numeric_matrix<Row, Col>;
 
 #define NEWLINE() std::cout<<'\n'
 
+void pass_msg() {
+    std::cout << "Test Passed!";
+}
+
+void hello() {
+    std::cout << "Hello!";
+}
+
 int main() {
     constexpr size_t N = 128;
     numeric_vector<2> v({1, 1});
@@ -29,6 +37,7 @@ int main() {
 
     auto v1 = vt::make_numeric_vector({1, 2, 3, 4});
     auto M1 = vt::make_numeric_matrix({{1, 2, 3}, {4, 5, 6}});
+    auto M2 = vt::make_quad_matrix(A, A, A, A);
 
     for (size_t i = 0; i < N; ++i) {
         for (size_t j = 0; j < N; ++j) {
@@ -110,6 +119,9 @@ int main() {
     assert((v1.slice<0, 4>().equals({1, 2, 3, 4})));
     assert((v1.slice<1, 2>().equals({2})));
 
-    std::cout << "Test Passed!";
+    constexpr bool con = true;
+    vt::if_constexpr<con>::run(pass_msg);
+    vt::if_constexpr<!con>::run(hello);
+
     return 0;
 }

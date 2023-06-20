@@ -15,7 +15,7 @@ namespace vt {
     __VT_FORCE_INLINE constexpr const T &min(const T &a, const T &b) { return (a < b) ? a : b; }
 
     template<typename T, typename... Ts>
-    __VT_FORCE_INLINE constexpr const T &min(const T &a, const T &b, const Ts &... args) {
+    __VT_FORCE_INLINE constexpr const T &min(const T &a, const T &b, const Ts &...args) {
         return min(min(a, b), args...);
     }
 
@@ -23,7 +23,7 @@ namespace vt {
     __VT_FORCE_INLINE constexpr const T &max(const T &a, const T &b) { return (a > b) ? a : b; }
 
     template<typename T, typename... Ts>
-    __VT_FORCE_INLINE constexpr const T &max(const T &a, const T &b, const Ts &... args) {
+    __VT_FORCE_INLINE constexpr const T &max(const T &a, const T &b, const Ts &...args) {
         return max(max(a, b), args...);
     }
 
@@ -120,6 +120,58 @@ namespace vt {
         for (; first != last; static_cast<void>(++first), static_cast<void>(++d_first)) *d_first = *first;
         return d_first;
     }
+
+    namespace detail {
+        template<typename>
+        struct always_false {
+            static constexpr bool value = false;
+        };
+
+        template<typename T>
+        struct type_identity {
+            using type = T;
+        };
+
+        template<typename T>
+        auto try_add_lvalue_reference(int) -> type_identity<T &>;
+
+        template<typename T>
+        auto try_add_lvalue_reference(...) -> type_identity<T>;
+
+        template<typename T>
+        auto try_add_rvalue_reference(int) -> type_identity<T &&>;
+
+        template<typename T>
+        auto try_add_rvalue_reference(...) -> type_identity<T>;
+    }
+
+    template<typename T>
+    struct add_lvalue_reference : decltype(vt::detail::try_add_lvalue_reference<T>(0)) {
+    };
+
+    template<typename T>
+    struct add_rvalue_reference : decltype(vt::detail::try_add_rvalue_reference<T>(0)) {
+    };
+
+    template<typename T>
+    typename vt::add_rvalue_reference<T>::type declval() noexcept {
+        static_assert(vt::detail::always_false<T>::value, "declval is not allowed in an evaluated context.");
+    }
+
+    template<bool ctime_condition>
+    struct if_constexpr;
+
+    template<>
+    struct if_constexpr<true> {
+        template<typename Func, typename ...Args>
+        static void run(Func func, Args ...args) { func(args...); }
+    };
+
+    template<>
+    struct if_constexpr<false> {
+        template<typename Func, typename ...Args>
+        static void run(Func, Args ...) {}
+    };
 }
 
 #endif //VNET_LINALG_STANDARD_UTILITY_H

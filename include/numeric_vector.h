@@ -73,6 +73,36 @@ namespace vt {
          */
         explicit numeric_vector_static_t(const T (&array)[Size]) { allocate_from(array); }
 
+        /**
+         * Extended constructor
+         *
+         * @tparam S1
+         * @tparam S2
+         * @param v1
+         * @param v2
+         */
+        template<size_t S1, size_t S2>
+        numeric_vector_static_t(const numeric_vector_static_t<T, S1> &v1,
+                                const numeric_vector_static_t<T, S2> &v2) {
+            insert<0>(v1);
+            insert<S1>(v2);
+        }
+
+        /**
+         * Extended constructor
+         *
+         * @tparam S1
+         * @tparam S2
+         * @param a1
+         * @param a2
+         */
+        template<size_t S1, size_t S2>
+        numeric_vector_static_t(const T (&a1)[S1],
+                                const T (&a2)[S2]) {
+            insert<0>(a1);
+            insert<S1>(a2);
+        }
+
         __VT_FORCE_INLINE T &operator[](size_t index) { return *(arr_ + index); }
 
         __VT_FORCE_INLINE constexpr const T &operator[](size_t index) const { return *(arr_ + index); }
@@ -359,6 +389,45 @@ namespace vt {
         template<size_t OSize>
         constexpr bool equals(const T (&array)[OSize]) const { return operator==(array); }
 
+        /**
+         * Insert the vector into the vector.
+         *
+         * @tparam pos Position to insert
+         * @tparam OSize
+         * @param v Vector to insert
+         * @return Reference to this vector
+         */
+        template<size_t pos = 0, size_t OSize>
+        numeric_vector_static_t &insert(const numeric_vector_static_t<T, OSize> &v) {
+            static_assert(pos < Size, "Insertion failed! Position must be within range.");
+            static_assert(pos + OSize <= Size, "Insertion failed! Vector out of range.");
+            for (size_t i = 0; i < OSize; ++i) arr_[pos + i] = v[i];
+            return *this;
+        }
+
+        /**
+         * Insert the vector into the vector.
+         *
+         * @tparam pos Position to insert
+         * @tparam OSize
+         * @param array Vector to insert
+         * @return Reference to this vector
+         */
+        template<size_t pos = 0, size_t OSize>
+        numeric_vector_static_t &insert(const T (&array)[OSize]) {
+            static_assert(pos < Size, "Insertion failed! Position must be within range.");
+            static_assert(pos + OSize <= Size, "Insertion failed! Vector out of range.");
+            for (size_t i = 0; i < OSize; ++i) arr_[pos + i] = array[i];
+            return *this;
+        }
+
+        /**
+         * Gets a slice of this vector.
+         *
+         * @tparam from From index
+         * @tparam to To index
+         * @return Sliced vector
+         */
         template<size_t from, size_t to>
         numeric_vector_static_t<T, to - from> slice() {
             static_assert(from < to, "from must be less than to.");
@@ -497,15 +566,80 @@ namespace vt {
     using numeric_vector = numeric_vector_static_t<real_t, Size>;
 
     /**
+     * Helper class for make_numeric_vector function. Not intended for user's usages.
+     */
+    namespace {
+        template<typename... Args>
+        struct size_sum;
+
+        template<size_t Size>
+        struct size_sum<numeric_vector<Size>> {
+            static constexpr size_t value = Size;
+        };
+
+        template<size_t Size, size_t... Sizes>
+        struct size_sum<numeric_vector<Size>, numeric_vector<Sizes>...> {
+            static constexpr size_t value = Size + size_sum<numeric_vector<Sizes>...>::value;
+        };
+    }
+
+    /**
      * Creates a numeric vector.
      *
      * @tparam Size Vector dimension
      * @param array Array of data
-     * @return
+     * @return Numeric vector
      */
     template<size_t Size>
     constexpr numeric_vector<Size> make_numeric_vector(const real_t (&array)[Size]) {
         return numeric_vector<Size>(array);
+    }
+
+    /**
+     * Creates a numeric vector (copy).
+     *
+     * @tparam Size Vector dimension
+     * @param vector Vector to copy from
+     * @return Numeric vector
+     */
+    template<size_t Size>
+    constexpr numeric_vector<Size> make_numeric_vector(const numeric_vector<Size> &vector) {
+        return numeric_vector<Size>(vector);
+    }
+
+    /**
+     * Creates a numeric vector by extending multiple numeric vectors.
+     *
+     * @tparam S1
+     * @tparam S2
+     * @param v1 Vector 1
+     * @param v2 Vector 2
+     * @return Numeric vector
+     */
+    template<size_t S1, size_t S2>
+    constexpr numeric_vector<S1 + S2>
+    make_numeric_vector(const numeric_vector<S1> &v1,
+                        const numeric_vector<S2> &v2) {
+        return numeric_vector<S1 + S2>(v1, v2);
+    }
+
+    /**
+     * Creates a numeric vector by extending multiple numeric vectors.
+     *
+     * @tparam S1
+     * @tparam S2
+     * @tparam Ss
+     * @param v1 Vector 1
+     * @param v2 Vector 2
+     * @param vs Vectors
+     * @return Numeric vector
+     */
+    template<size_t S1, size_t S2, size_t... Ss>
+    constexpr numeric_vector<size_sum<numeric_vector<S1>, numeric_vector<S2>, numeric_vector<Ss>...>::value>
+    make_numeric_vector(const numeric_vector<S1> &v1,
+                        const numeric_vector<S2> &v2,
+                        const numeric_vector<Ss> &... vs) {
+        return make_numeric_vector(make_numeric_vector(v1, v2), vs...);
     }
 }
 

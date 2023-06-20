@@ -89,21 +89,17 @@ namespace vt {
          * Quad-matrix constructor, construct M from M11, M12, M21, M22
          *
          * @tparam R1
-         * @tparam R2
          * @tparam C1
-         * @tparam C2
          * @param M11 Upper-left matrix
          * @param M12 Upper-right matrix
          * @param M21 Lower-left matrix
          * @param M22 Lower-right matrix
          */
-        template<size_t R1, size_t R2, size_t C1, size_t C2>
+        template<size_t R1, size_t C1>
         numeric_matrix_static_t(const numeric_matrix_static_t<T, R1, C1> &M11,
-                                const numeric_matrix_static_t<T, R1, C2> &M12,
-                                const numeric_matrix_static_t<T, R2, C1> &M21,
-                                const numeric_matrix_static_t<T, R2, C2> &M22) {
-            static_assert(R1 + R2 == Row, "Row must be the sum of R1 and R2.");
-            static_assert(C1 + C2 == Col, "Column must be the sum of C1 and C2.");
+                                const numeric_matrix_static_t<T, R1, Col - C1> &M12,
+                                const numeric_matrix_static_t<T, Row - R1, C1> &M21,
+                                const numeric_matrix_static_t<T, Row - R1, Col - C1> &M22) {
             insert<0, 0>(M11);
             insert<0, C1>(M12);
             insert<R1, 0>(M21);
@@ -114,14 +110,12 @@ namespace vt {
          * B matrix constructor, construct M from [A | B]
          *
          * @tparam C1 Main column
-         * @tparam C2 Augment column
          * @param A Main matrix
          * @param B Augment part
          */
-        template<size_t C1, size_t C2>
+        template<size_t C1>
         numeric_matrix_static_t(const numeric_matrix_static_t<T, Row, C1> &A,
-                                const numeric_matrix_static_t<T, Row, C2> &B) {
-            static_assert(C1 + C2 == Col, "Column must be the sum of C1 and C2.");
+                                const numeric_matrix_static_t<T, Row, Col - C1> &B) {
             insert<0, 0>(A);
             insert<0, C1>(B);
         }
@@ -990,12 +984,32 @@ namespace vt {
 
         numeric_matrix_static_lu_t(const Matrix_t &l, const Matrix_t &u) : l_(l), u_(u) {}
 
+        /**
+         * L Matrix
+         *
+         * @return L Matrix
+         */
         Matrix_t &l() { return l_; }
 
+        /**
+         * L Matrix
+         *
+         * @return L Matrix
+         */
         constexpr const Matrix_t &l() const { return l_; }
 
+        /**
+         * U Matrix
+         *
+         * @return u Matrix
+         */
         Matrix_t &u() { return u_; }
 
+        /**
+         * U Matrix
+         *
+         * @return u Matrix
+         */
         constexpr const Matrix_t &u() const { return u_; }
     };
 
@@ -1020,11 +1034,46 @@ namespace vt {
      * @tparam Row Row dimension
      * @tparam Col Column dimension
      * @param array Array of data
-     * @return
+     * @return Numeric matrix
      */
     template<size_t Row, size_t Col = Row>
     constexpr numeric_matrix<Row, Col> make_numeric_matrix(const real_t (&array)[Row][Col]) {
         return numeric_matrix<Row, Col>(array);
+    }
+
+    /**
+     * Creates a numeric matrix (copy).
+     * @tparam Row Row dimension
+     * @tparam Col Column dimension
+     * @param M Input numeric matrix
+     * @return Numeric matrix
+     */
+    template<size_t Row, size_t Col = Row>
+    constexpr numeric_matrix<Row, Col> make_numeric_matrix(const numeric_matrix<Row, Col> &M) {
+        return numeric_matrix<Row, Col>(M);
+    }
+
+    /**
+     * Creates a quad matrix.
+     *
+     * @tparam Row
+     * @tparam Col
+     * @tparam R1
+     * @tparam R2
+     * @tparam C1
+     * @tparam C2
+     * @param M11
+     * @param M12
+     * @param M21
+     * @param M22
+     * @return Numeric matrix
+     */
+    template<size_t R1, size_t R2, size_t C1, size_t C2>
+    constexpr numeric_matrix<R1 + R2, C1 + C2> make_quad_matrix(const numeric_matrix<R1, C1> &M11,
+                                                                const numeric_matrix<R1, C2> &M12,
+                                                                const numeric_matrix<R2, C1> &M21,
+                                                                const numeric_matrix<R2, C2> &M22) {
+        return numeric_matrix<R1 + R2, C1 + C2>(M11, M12, M21, M22);
     }
 }
 
