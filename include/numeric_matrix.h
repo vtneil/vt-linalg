@@ -86,6 +86,20 @@ namespace vt {
         }
 
         /**
+         * Block matrix constructor
+         *
+         * @tparam ORow
+         * @tparam OCol
+         * @tparam M
+         * @tparam N
+         * @param blocks Array of blocks
+         */
+        template<size_t ORow, size_t OCol, size_t M, size_t N>
+        explicit numeric_matrix_static_t(const numeric_matrix_static_t<T, ORow, OCol> (&blocks)[M][N]) {
+            helper_insert_major(0, blocks);
+        }
+
+        /**
          * Quad-matrix constructor, construct M from M11, M12, M21, M22
          *
          * @tparam R1
@@ -763,6 +777,28 @@ namespace vt {
 
         void steal(numeric_matrix_static_t &&other) { vector_ = vt::move(other.vector_); }
 
+        template<size_t ORow, size_t OCol, size_t M, size_t N>
+        void helper_insert_major(size_t pos_row, const numeric_matrix_static_t<T, ORow, OCol> (&blocks)[M][N]) {
+            if (pos_row < M) {
+                helper_insert_minor(pos_row, 0, blocks);
+                helper_insert_major(pos_row + 1, blocks);
+            }
+        }
+
+        template<size_t ORow, size_t OCol, size_t M, size_t N>
+        void helper_insert_minor(size_t pos_row, size_t pos_col,
+                                 const numeric_matrix_static_t<T, ORow, OCol> (&blocks)[M][N]) {
+            helper_insert_unsafe(ORow * pos_row, OCol * pos_col, blocks[pos_row][pos_col]);
+            if (pos_col < N - 1) helper_insert_minor(pos_row, pos_col + 1, blocks);
+        }
+
+        template<size_t ORow, size_t OCol>
+        void helper_insert_unsafe(size_t pos_row, size_t pos_col, const numeric_matrix_static_t<T, ORow, OCol> &M) {
+            for (size_t i = 0; i < ORow; ++i)
+                for (size_t j = 0; j < OCol; ++j)
+                    vector_[pos_row + i][pos_col + j] = M[i][j];
+        }
+
         static constexpr bool static_is_a_square_matrix() { return Row == Col; }
 
         constexpr static bool is_multiple_of_2(size_t x) { return x != 0 && !(x & (x - 1)); }
@@ -1074,6 +1110,22 @@ namespace vt {
                                                                 const numeric_matrix<R2, C1> &M21,
                                                                 const numeric_matrix<R2, C2> &M22) {
         return numeric_matrix<R1 + R2, C1 + C2>(M11, M12, M21, M22);
+    }
+
+    /**
+     * Creates a block matrix.
+     *
+     * @tparam ORow
+     * @tparam OCol
+     * @tparam M
+     * @tparam N
+     * @param blocks Array of matrices
+     * @return Numeric matrix
+     */
+    template<size_t ORow, size_t OCol, size_t M, size_t N>
+    constexpr numeric_matrix<(ORow * M), (OCol * N)>
+    make_block_matrix(const numeric_matrix<ORow, OCol> (&blocks)[M][N]) {
+        return numeric_matrix<(ORow * M), (OCol * N)>(blocks);
     }
 }
 

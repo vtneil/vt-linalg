@@ -90,6 +90,22 @@ namespace vt {
             size_t ControlVectorDimension>
     using kalman_filter_t =
             simple_kalman_filter_t<StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension>;
+
+    template<size_t StateVectorDimension,
+            size_t MeasurementVectorDimension,
+            size_t ControlVectorDimension>
+    class extended_kalman_filter_t {
+    private:
+        // Note that numeric_matrix<N_, M_> maps from R_^M_ to R_^N_
+        static constexpr size_t N_ = StateVectorDimension;       // ALias
+        static constexpr size_t M_ = MeasurementVectorDimension; // Alias
+        static constexpr size_t L_ = ControlVectorDimension;     // Alias
+
+    protected:
+
+    public:
+
+    };
 }
 
 #endif //VNET_LINALG_KALMAN_H

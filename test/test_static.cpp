@@ -9,8 +9,8 @@ using numeric_matrix = vt::numeric_matrix<Row, Col>;
 
 #define NEWLINE() std::cout<<'\n'
 
-void pass_msg() {
-    std::cout << "Test Passed!";
+void pass_msg(int a, int b) {
+    std::cout << "Test Passed! " << a << ' ' << b;
 }
 
 void hello() {
@@ -120,8 +120,7 @@ int main() {
     assert((v1.slice<1, 2>().equals({2})));
 
     constexpr bool con = true;
-    vt::if_constexpr<con>::run(pass_msg);
-    vt::if_constexpr<!con>::run(hello);
+    vt::if_constexpr<con>::run(pass_msg, 3, 9);
 
     return 0;
 }

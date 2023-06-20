@@ -19,3 +19,5 @@ add_executable(examples_3d_tracking "examples/3-dimension tracking/main.cpp")
 add_executable(test_compiler test/test_compiler.cpp)
 add_executable(main "examples/2-dimension tracking/main.cpp")
 add_executable(test_nested_matrix test/test_nested_matrix.cpp)
+
+add_executable(test_tracking test/test_tracking.cpp)

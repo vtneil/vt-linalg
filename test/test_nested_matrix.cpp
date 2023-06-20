@@ -7,43 +7,28 @@ using namespace vt;
 
 
 int main() {
-    numeric_matrix_static_t<numeric_matrix<2>, 2, 2> A;
-    numeric_matrix_static_t<numeric_matrix<2>, 2, 2> B;
-    A[0][0] = numeric_matrix<2, 2>::identity();
-//    A[0][1] = numeric_matrix<2, 2>::identity();
-//    A[1][0] = numeric_matrix<2, 2>::identity();
-    A[1][1] = numeric_matrix<2, 2>::identity();
+    numeric_matrix<2, 3> zero;
+    numeric_matrix<2, 3> A1 = make_numeric_matrix({{1, 2, 3},
+                                                   {4, 5, 6}});
+    numeric_matrix<2, 3> A2 = make_numeric_matrix({{7,  8,  9},
+                                                   {10, 11, 12}});
+    numeric_matrix<2, 3> A3 = make_numeric_matrix({{3,  5,  7},
+                                                   {-1, -2, -3}});
+//    numeric_matrix<2, 3> A = numeric_matrix<2, 3>({{A1}});
+    auto A = make_block_matrix(
+            {{A1, A2, A3, A1},
+             {A1, A2, A3, A1},
+             {A1, A2, A3, A1}}
+    );
 
-    B[0][0] = make_numeric_matrix({{1, 2},
-                                   {3, 4}});
-    B[0][1] = make_numeric_matrix({{1, 2},
-                                   {3, 4}});
-    B[1][0] = make_numeric_matrix({{1, 2},
-                                   {3, 4}});
-    B[1][1] = make_numeric_matrix({{1, 2},
-                                   {3, 4}});
+    auto B = make_block_matrix({{A, A}}).transpose();
 
-    auto C = A * B;
-    auto unrolled_C = make_quad_matrix(C[0][0], C[0][1], C[1][0], C[1][1]);
-
-    for (auto &row: unrolled_C) {
+    for (auto &row: B) {
         for (auto &x: row) {
             std::cout << x << ' ';
         }
         std::cout << '\n';
     }
-
-    auto v = make_numeric_vector(
-            make_numeric_vector({1, 2, 3}),
-            make_numeric_vector({4, 5, 6, 7}),
-            make_numeric_vector({8, 9, 10}),
-            make_numeric_vector({11, 12, 13})
-    );
-
-    for (auto &x: v) {
-        std::cout << x << ' ';
-    }
-    std::cout << '\n';
 
     return 0;
 }

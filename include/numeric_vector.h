@@ -438,6 +438,28 @@ namespace vt {
         }
 
         /**
+         * Converts this vector to a matrix representation of column vector
+         *
+         * @return Column vector as matrix
+         */
+        numeric_matrix_static_t<T, Size, 1> as_matrix_col() {
+            numeric_matrix_static_t<T, Size, 1> result;
+            for (size_t i = 0; i < Size; ++i) result[i][0] = arr_[i];
+            return result;
+        }
+
+        /**
+         * Converts this vector to a matrix representation of row vector
+         *
+         * @return Row vector as matrix
+         */
+        numeric_matrix_static_t<T, 1, Size> as_matrix_row() {
+            numeric_matrix_static_t<T, 1, Size> result;
+            for (size_t i = 0; i < Size; ++i) result[0][i] = arr_[i];
+            return result;
+        }
+
+        /**
          * Returns an iterator to vector's first dimension entry.
          *
          * @return An iterator to vector's first dimension entry

@@ -164,13 +164,13 @@ namespace vt {
     template<>
     struct if_constexpr<true> {
         template<typename Func, typename ...Args>
-        static void run(Func func, Args ...args) { func(args...); }
+        static void run(Func &&func, Args &&...args) { func(args...); }
     };
 
     template<>
     struct if_constexpr<false> {
         template<typename Func, typename ...Args>
-        static void run(Func, Args ...) {}
+        static void run(Func &&, Args &&...) {}
     };
 }
 
