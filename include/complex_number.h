@@ -165,13 +165,13 @@ namespace vt {
         constexpr real_t modulus_pow_2() const { return real_ * real_ + imag_ * imag_; }
     };
 
-    constexpr complex_t operator+(real_t lhs, const complex_t &rhs) { return rhs.operator+(lhs); }
+    complex_t operator+(real_t lhs, const complex_t &rhs) { return rhs.operator+(lhs); }
 
-    constexpr complex_t operator-(real_t lhs, const complex_t &rhs) { return complex_t(lhs).operator-(rhs); }
+    complex_t operator-(real_t lhs, const complex_t &rhs) { return complex_t(lhs).operator-(rhs); }
 
-    constexpr complex_t operator*(real_t lhs, const complex_t &rhs) { return rhs.operator*(lhs); }
+    complex_t operator*(real_t lhs, const complex_t &rhs) { return rhs.operator*(lhs); }
 
-    constexpr complex_t operator/(real_t lhs, const complex_t &rhs) { return complex_t(lhs).operator/(rhs); }
+    complex_t operator/(real_t lhs, const complex_t &rhs) { return complex_t(lhs).operator/(rhs); }
 }
 
 #endif //VT_LINALG_COMPLEX_NUMBER_H

@@ -1,11 +1,7 @@
 #include <iostream>
 #include <vt_linalg>
 
-template<size_t Size>
-using numeric_vector = vt::numeric_vector<Size>;
-
-template<size_t Row, size_t Col = Row>
-using numeric_matrix = vt::numeric_matrix<Row, Col>;
+using namespace vt;
 
 #define NEWLINE() std::cout<<'\n'
 
@@ -19,6 +15,11 @@ void hello() {
 
 int main() {
     constexpr size_t N = 128;
+    auto M1 = vt::make_numeric_matrix(
+            {{1, 2, 3},
+             {4, 5, 6}}
+    );
+
     numeric_vector<2> v({1, 1});
     numeric_matrix<3, 4> A({{1, 2, 3, 4},
                             {4, 5, 6, 1},
@@ -30,14 +31,21 @@ int main() {
     numeric_matrix<3> C({{2, 0, 2},
                          {0, 4, 2},
                          {2, 2, 2}});
+    numeric_matrix<3> D(C);
     numeric_matrix<N> X;
     numeric_matrix<N> Y;
     numeric_matrix<N> Z1 = vt::move(X * Y);
     numeric_matrix<N> Z2 = vt::move(X.matmul_naive(Y));
-
     auto v1 = vt::make_numeric_vector({1, 2, 3, 4});
-    auto M1 = vt::make_numeric_matrix({{1, 2, 3}, {4, 5, 6}});
+
     auto M2 = vt::make_quad_matrix(A, A, A, A);
+
+    for (auto &row: M1) {
+        for (auto &x: row) {
+            std::cout << x << ' ';
+        }
+        std::cout << '\n';
+    }
 
     for (size_t i = 0; i < N; ++i) {
         for (size_t j = 0; j < N; ++j) {

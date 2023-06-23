@@ -4,7 +4,7 @@
 
 using namespace vt;
 
-real_t dt = 0.5;
+real_t dt = 1;
 real_t hdts = 0.5 * dt * dt;
 real_t base_noise_value = 0.001;
 

@@ -1,4 +1,0 @@
-var structvt_1_1anonymous__namespace_02numeric__vector_8h_03_1_1size__sum_3_01numeric__vector_3_01_size_01_4_01_4 =
-[
-    [ "value", "structvt_1_1anonymous__namespace_02numeric__vector_8h_03_1_1size__sum_3_01numeric__vector_3_01_size_01_4_01_4.html#ab9e18ee94e971a294e6658c07c59ab51", null ]
-];

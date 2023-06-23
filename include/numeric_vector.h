@@ -43,35 +43,47 @@ namespace vt {
          */
         constexpr numeric_vector_static_t() = default;
 
+    private:
+        template<size_t... I>
+        constexpr numeric_vector_static_t(const T &fill, vt::index_sequence<I...>)
+                : arr_{(static_cast<void>(I), fill)...} {}
+
+    public:
         /**
          * Fill constructor, initializes to fill value
          *
          * @param fill Fill value
          */
-        explicit numeric_vector_static_t(T fill) { allocate_fill(fill); }
+        constexpr explicit numeric_vector_static_t(const T &fill)
+                : numeric_vector_static_t(fill, vt::make_index_sequence<Size>()) {}
 
         /**
          * Copy constructor
          *
          * @param other Other vector
          */
-        numeric_vector_static_t(const numeric_vector_static_t &other) { allocate_from(other); }
+        constexpr numeric_vector_static_t(const numeric_vector_static_t &other) = default;
 
         /**
          * Move constructor
          *
          * @param other Other vector
          */
-        numeric_vector_static_t(numeric_vector_static_t &&other) noexcept {
-            for (size_t i = 0; i < Size; ++i) arr_[i] = vt::move(other.arr_[i]);
-        }
+        constexpr numeric_vector_static_t(numeric_vector_static_t &&other) noexcept = default;
 
+    private:
+        template<size_t... I>
+        constexpr numeric_vector_static_t(const T (&array)[Size], vt::index_sequence<I...>)
+                : arr_{array[I]...} {}
+
+    public:
         /**
          * Array constructor, construct from array
          *
          * @param array Array of entries
          */
-        explicit numeric_vector_static_t(const T (&array)[Size]) { allocate_from(array); }
+        constexpr explicit numeric_vector_static_t(const T (&array)[Size])
+                : numeric_vector_static_t(array, vt::make_index_sequence<Size>()) {}
 
         /**
          * Extended constructor
@@ -527,7 +539,7 @@ namespace vt {
     private:
         void allocate_zero() { allocate_fill(T()); }
 
-        void allocate_fill(T fill) { vt::fill(arr_, arr_ + Size, fill); }
+        void allocate_fill(const T &fill) { vt::fill(arr_, arr_ + Size, fill); }
 
         void allocate_from(const numeric_vector_static_t &other) {
             static_cast<void>(vt::copy(other.arr_, other.arr_ + Size, arr_));
@@ -590,18 +602,18 @@ namespace vt {
     /**
      * Helper class for make_numeric_vector function. Not intended for user's usages.
      */
-    namespace {
+    namespace detail {
         template<typename... Args>
         struct size_sum;
 
-        template<size_t Size>
-        struct size_sum<numeric_vector<Size>> {
+        template<template<typename, size_t> class Class, typename T, size_t Size>
+        struct size_sum<Class<T, Size>> {
             static constexpr size_t value = Size;
         };
 
-        template<size_t Size, size_t... Sizes>
-        struct size_sum<numeric_vector<Size>, numeric_vector<Sizes>...> {
-            static constexpr size_t value = Size + size_sum<numeric_vector<Sizes>...>::value;
+        template<template<typename, size_t> class Class, typename T, size_t Size, size_t... Sizes>
+        struct size_sum<Class<T, Size>, Class<T, Sizes>...> {
+            static constexpr size_t value = Size + size_sum<numeric_vector_static_t < T, Sizes>...>::value;
         };
     }
 
@@ -657,11 +669,64 @@ namespace vt {
      * @return Numeric vector
      */
     template<size_t S1, size_t S2, size_t... Ss>
-    constexpr numeric_vector<size_sum<numeric_vector<S1>, numeric_vector<S2>, numeric_vector<Ss>...>::value>
+    constexpr numeric_vector<vt::detail::size_sum<numeric_vector<S1>, numeric_vector<S2>, numeric_vector<Ss>...>::value>
     make_numeric_vector(const numeric_vector<S1> &v1,
                         const numeric_vector<S2> &v2,
                         const numeric_vector<Ss> &... vs) {
         return make_numeric_vector(make_numeric_vector(v1, v2), vs...);
+    }
+
+    namespace detail {
+        template<typename T, size_t Size>
+        constexpr numeric_vector_static_t <T, Size> make_numeric_vector_static_t() {
+            return numeric_vector_static_t<T, Size>();
+        }
+
+        template<typename T, size_t Size>
+        constexpr numeric_vector_static_t <T, Size> make_numeric_vector_static_t(const T (&array)[Size]) {
+            return numeric_vector_static_t<T, Size>(array);
+        }
+
+        template<typename T, size_t S1, size_t S2>
+        constexpr numeric_vector_static_t<T, S1 + S2>
+        make_numeric_vector_static_t(const T (&a1)[S1],
+                                     const T (&a2)[S2]) {
+            return numeric_vector_static_t<T, S1 + S2>(a1, a2);
+        }
+
+        template<typename T, size_t S1, size_t S2, size_t... Ss>
+        constexpr numeric_vector_static_t<T, size_sum<
+                numeric_vector_static_t <
+                T, S1>, numeric_vector_static_t < T, S2>, numeric_vector_static_t <T, Ss>...>::value>
+
+        make_numeric_vector_static_t(const T (&a1)[S1],
+                                     const T (&a2)[S1],
+                                     const T (&...as)[Ss]) {
+            return make_numeric_vector_static_t(make_numeric_vector_static_t(a1, a2), as...);
+        }
+
+        template<typename T>
+        constexpr numeric_vector_static_t<T, 1> make_numeric_vector_static_t(const T &val) {
+            return numeric_vector_static_t<T, 1>(val);
+        }
+
+        template<typename T, typename... Ts>
+        constexpr numeric_vector_static_t<T, 1 + sizeof...(Ts)>
+        make_numeric_vector_static_t(const T &val, const Ts &...vals) {
+            return make_numeric_vector_static_t({val, vals...});
+        }
+
+        template<typename T, size_t Row, size_t Col, size_t ...I>
+        constexpr numeric_vector_static_t <numeric_vector_static_t<T, Col>, Row>
+        make_nested(const T (&array)[Row][Col], vt::index_sequence<I...>) {
+            return make_numeric_vector_static_t(make_numeric_vector_static_t(array[I])...);
+        }
+
+        template<typename T, size_t Row, size_t Col>
+        constexpr numeric_vector_static_t <numeric_vector_static_t<T, Col>, Row>
+        make_nested(const T (&array)[Row][Col]) {
+            return make_nested(array, vt::make_index_sequence<Row>());
+        }
     }
 }
 

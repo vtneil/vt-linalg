@@ -172,6 +172,18 @@ namespace vt {
         template<typename Func, typename ...Args>
         static void run(Func &&, Args &&...) {}
     };
+
+    template<size_t... Is>
+    struct index_sequence {
+    };
+
+    template<size_t N, size_t... Is>
+    struct make_index_sequence : public make_index_sequence<N - 1, N - 1, Is...> {
+    };
+
+    template<size_t... Is>
+    struct make_index_sequence<0, Is...> : public index_sequence<Is...> {
+    };
 }
 
 #endif //VNET_LINALG_STANDARD_UTILITY_H

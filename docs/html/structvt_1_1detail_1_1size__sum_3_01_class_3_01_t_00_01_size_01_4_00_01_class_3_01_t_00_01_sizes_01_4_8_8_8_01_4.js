@@ -1,0 +1,4 @@
+var structvt_1_1detail_1_1size__sum_3_01_class_3_01_t_00_01_size_01_4_00_01_class_3_01_t_00_01_sizes_01_4_8_8_8_01_4 =
+[
+    [ "value", "structvt_1_1detail_1_1size__sum_3_01_class_3_01_t_00_01_size_01_4_00_01_class_3_01_t_00_01_sizes_01_4_8_8_8_01_4.html#acf081fa976f2365d78e8b56f31e08e09", null ]
+];

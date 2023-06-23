@@ -10,15 +10,15 @@ namespace vt {
         T *ptr_;
 
     public:
-        explicit iterator(T *ptr) : ptr_(ptr) {}
+        explicit constexpr iterator(T *ptr) : ptr_(ptr) {}
 
-        iterator(const iterator &other) : ptr_(other.ptr_) {}
+        constexpr iterator(const iterator &other) : ptr_(other.ptr_) {}
 
         T &operator*() { return *ptr_; }
 
         T *operator->() { return ptr_; }
 
-        iterator operator+(size_t n) { return iterator(ptr_ + n); }
+        constexpr iterator operator+(size_t n) const { return iterator(ptr_ + n); }
 
         iterator &operator++() {
             ++ptr_;
@@ -31,9 +31,9 @@ namespace vt {
             return tmp;
         }
 
-        iterator operator-(size_t n) { return iterator(ptr_ - n); }
+        constexpr iterator operator-(size_t n) const { return iterator(ptr_ - n); }
 
-        size_t operator-(iterator other) { return ptr_ - other.ptr_; }
+        constexpr size_t operator-(iterator other) const { return ptr_ - other.ptr_; }
 
         iterator &operator--() {
             --ptr_;
@@ -46,20 +46,20 @@ namespace vt {
             return tmp;
         }
 
-        bool operator==(const iterator &other) const { return ptr_ == other.ptr_; }
+        constexpr bool operator==(const iterator &other) const { return ptr_ == other.ptr_; }
 
-        bool operator!=(const iterator &other) const { return !operator==(other); }
+        constexpr bool operator!=(const iterator &other) const { return !operator==(other); }
 
-        bool operator==(T *ptr) const { return ptr_ == ptr; }
+        constexpr bool operator==(T *ptr) const { return ptr_ == ptr; }
 
-        bool operator!=(T *ptr) const { return !operator==(ptr); }
+        constexpr bool operator!=(T *ptr) const { return !operator==(ptr); }
     };
 
     template<typename T>
-    bool operator==(T *ptr, const iterator<T> &iterator) { return iterator.operator==(ptr); }
+    constexpr bool operator==(T *ptr, const iterator<T> &iterator) { return iterator.operator==(ptr); }
 
     template<typename T>
-    bool operator!=(T *ptr, const iterator<T> &iterator) { return !operator==(ptr, iterator); }
+    constexpr bool operator!=(T *ptr, const iterator<T> &iterator) { return !operator==(ptr, iterator); }
 }
 
 #endif //VNET_LINALG_ITERATOR_H

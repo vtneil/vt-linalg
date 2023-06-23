@@ -7,6 +7,7 @@ using namespace vt;
 
 
 int main() {
+    auto v1 = vt::detail::make_numeric_vector_static_t<real_t>({1, 2, 3}, {4, 5});
     numeric_matrix<2, 3> zero;
     numeric_matrix<2, 3> A1 = make_numeric_matrix({{1, 2, 3},
                                                    {4, 5, 6}});
@@ -22,6 +23,11 @@ int main() {
     );
 
     auto B = make_block_matrix({{A, A}}).transpose();
+
+    for (auto &x: v1) {
+        std::cout << x << ' ';
+    }
+    std::cout << '\n';
 
     for (auto &row: B) {
         for (auto &x: row) {

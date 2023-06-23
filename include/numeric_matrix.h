@@ -41,6 +41,7 @@ namespace vt {
     private:
         static constexpr size_t Order = (Row < Col) ? Row : Col;
         numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row> vector_ = {};
+//        numeric_vector_static_t<T, Col> vector_[Row] = {};
 
     public:
         /**
@@ -53,28 +54,32 @@ namespace vt {
          *
          * @param fill Fill value
          */
-        explicit numeric_matrix_static_t(T fill) { allocate_fill(fill); }
+        constexpr explicit numeric_matrix_static_t(const T &fill)
+                : vector_(
+                numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row>(numeric_vector_static_t<T, Col>(fill))
+        ) {}
 
         /**
          * Copy constructor
          *
          * @param other Other matrix
          */
-        numeric_matrix_static_t(const numeric_matrix_static_t &other) { allocate_from(other); }
+        constexpr numeric_matrix_static_t(const numeric_matrix_static_t &other) = default;
 
         /**
          * Move constructor
          *
          * @param other Other vector
          */
-        numeric_matrix_static_t(numeric_matrix_static_t &&other) noexcept { steal(vt::move(other)); }
+        constexpr numeric_matrix_static_t(numeric_matrix_static_t &&other) noexcept = default;
 
         /**
          * Array constructor, construct from array
          *
          * @param array Array of entries
          */
-        explicit numeric_matrix_static_t(const T (&array)[Row][Col]) { allocate_from(array); }
+        constexpr explicit numeric_matrix_static_t(const T (&array)[Row][Col])
+                : vector_(vt::detail::make_nested(array)) {}
 
         /**
          * Array of vectors as rows constructor, construct from array
@@ -84,6 +89,14 @@ namespace vt {
         explicit numeric_matrix_static_t(const numeric_vector_static_t<T, Col> (&vectors)[Row]) {
             allocate_from(vectors);
         }
+
+        /**
+         * Nested vector constructor
+         *
+         * @param nested Nested vector
+         */
+        constexpr explicit numeric_matrix_static_t(const numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row> &nested)
+        : vector_(nested) {}
 
         /**
          * Block matrix constructor
@@ -757,8 +770,8 @@ namespace vt {
 
         void allocate_fill(T fill) {
             vector_ = vt::move(
-                    numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row>(
-                            numeric_vector_static_t<T, Col>(fill)));
+                    numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row>(numeric_vector_static_t<T, Col>(fill))
+            );
         }
 
         void allocate_from(const numeric_matrix_static_t &other) { vector_ = other.vector_; }
@@ -952,7 +965,7 @@ namespace vt {
      * @return Determinant
      */
     template<typename T, size_t Row, size_t Col>
-    constexpr T det(const numeric_matrix_static_t<T, Row, Col> &A) { return A.det(); }
+    T det(const numeric_matrix_static_t<T, Row, Col> &A) { return A.det(); }
 
     /**
      * Finds trace of this matrix.\n
@@ -965,7 +978,7 @@ namespace vt {
      * @return Trace
      */
     template<typename T, size_t Row, size_t Col>
-    constexpr T tr(const numeric_matrix_static_t<T, Row, Col> &A) { return A.tr(); }
+    T tr(const numeric_matrix_static_t<T, Row, Col> &A) { return A.tr(); }
 
     /**
      * Finds inverse of this matrix.\n
@@ -978,7 +991,7 @@ namespace vt {
      * @return Inverse
      */
     template<typename T, size_t Row, size_t Col>
-    constexpr numeric_matrix_static_t<T, Row, Col> inv(const numeric_matrix_static_t<T, Row, Col> &A) {
+    numeric_matrix_static_t<T, Row, Col> inv(const numeric_matrix_static_t<T, Row, Col> &A) {
         return A.inv();
     }
 
@@ -992,7 +1005,7 @@ namespace vt {
      * @return RRE form of this matrix
      */
     template<typename T, size_t Row, size_t Col>
-    constexpr numeric_matrix_static_t<T, Row, Col> RRE(const numeric_matrix_static_t<T, Row, Col> &A) {
+    numeric_matrix_static_t<T, Row, Col> RRE(const numeric_matrix_static_t<T, Row, Col> &A) {
         return A.RRE();
     }
 

@@ -1,11 +1,12 @@
 var classvt_1_1numeric__matrix__static__t =
 [
     [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#a7347ea9483671bf493925bbb7e47acb1", null ],
-    [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#a97947b0d7381e5df2eef11f0847cfc89", null ],
-    [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#ac8195f93eeccd7b6f2910aba652a8bdf", null ],
-    [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#ae6d4c59dcdd488647ec48b2dff5991eb", null ],
-    [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#a978412bed21364469f95975fc3ae23bf", null ],
+    [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#a09be9645c665d0112bac2ed10b841f23", null ],
+    [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#a8ce237af0dbb8d8e3dea3589fbeed871", null ],
+    [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#a1614b1f592b7f3187ae38ef7a93ac84a", null ],
+    [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#a292697e30ce04e82506a68fd3a0162d6", null ],
     [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#a2966ee50765213239347969815e97af9", null ],
+    [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#a4d7d5eada2fe2fc4214ee5f2df71fd73", null ],
     [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#acd8506e1570d505e7b57c5eb586668c2", null ],
     [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#ac02150f3a8419bd9c69c5a7d3dfaee90", null ],
     [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html#afe3bcd5a462593e675c7f5061ad103b9", null ],

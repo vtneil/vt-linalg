@@ -8,10 +8,15 @@ var hierarchy =
     [ "vt::if_constexpr< ctime_condition >", "structvt_1_1if__constexpr.html", null ],
     [ "vt::if_constexpr< false >", "structvt_1_1if__constexpr_3_01false_01_4.html", null ],
     [ "vt::if_constexpr< true >", "structvt_1_1if__constexpr_3_01true_01_4.html", null ],
+    [ "vt::index_sequence< Is >", "structvt_1_1index__sequence.html", null ],
+    [ "vt::index_sequence< Is... >", "structvt_1_1index__sequence.html", [
+      [ "vt::make_index_sequence< 0, Is... >", "structvt_1_1make__index__sequence_3_010_00_01_is_8_8_8_01_4.html", null ]
+    ] ],
     [ "vt::initializer_list< T >", "classvt_1_1initializer__list.html", null ],
     [ "vt::is_same< T, U >", "structvt_1_1is__same.html", null ],
     [ "vt::is_same< T, T >", "structvt_1_1is__same_3_01_t_00_01_t_01_4.html", null ],
     [ "vt::iterator< T >", "classvt_1_1iterator.html", null ],
+    [ "vt::make_index_sequence< N, Is >", "structvt_1_1make__index__sequence.html", null ],
     [ "vt::numeric_matrix_dynamic_lu_t< T >", "classvt_1_1numeric__matrix__dynamic__lu__t.html", null ],
     [ "vt::numeric_matrix_dynamic_t< T >", "classvt_1_1numeric__matrix__dynamic__t.html", null ],
     [ "vt::numeric_matrix_dynamic_t< M_, M_ >", "classvt_1_1numeric__matrix__dynamic__t.html", null ],
@@ -33,9 +38,9 @@ var hierarchy =
     [ "vt::remove_reference< T & >", "structvt_1_1remove__reference_3_01_t_01_6_01_4.html", null ],
     [ "vt::remove_reference< T && >", "structvt_1_1remove__reference_3_01_t_01_6_6_01_4.html", null ],
     [ "vt::simple_kalman_filter_t< StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension >", "classvt_1_1simple__kalman__filter__t.html", null ],
-    [ "vt::anonymous_namespace{numeric_vector.h}::size_sum< Args >", "structvt_1_1anonymous__namespace_02numeric__vector_8h_03_1_1size__sum.html", null ],
-    [ "vt::anonymous_namespace{numeric_vector.h}::size_sum< numeric_vector< Size > >", "structvt_1_1anonymous__namespace_02numeric__vector_8h_03_1_1size__sum_3_01numeric__vector_3_01_size_01_4_01_4.html", null ],
-    [ "vt::anonymous_namespace{numeric_vector.h}::size_sum< numeric_vector< Size >, numeric_vector< Sizes >... >", "structvt_1_1anonymous__namespace_02numeric__vector_8h_03_1_1size__sum_3_01numeric__vector_3_01_se01ba5d6fe1a414ec7cb866cb3f1dade.html", null ],
+    [ "vt::detail::size_sum< Args >", "structvt_1_1detail_1_1size__sum.html", null ],
+    [ "vt::detail::size_sum< Class< T, Size > >", "structvt_1_1detail_1_1size__sum_3_01_class_3_01_t_00_01_size_01_4_01_4.html", null ],
+    [ "vt::detail::size_sum< Class< T, Size >, Class< T, Sizes >... >", "structvt_1_1detail_1_1size__sum_3_01_class_3_01_t_00_01_size_01_4_00_01_class_3_01_t_00_01_sizes_01_4_8_8_8_01_4.html", null ],
     [ "decltypevt::detail::try_add_lvalue_reference", null, [
       [ "vt::add_lvalue_reference< T >", "structvt_1_1add__lvalue__reference.html", null ]
     ] ],
