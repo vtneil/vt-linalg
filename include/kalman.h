@@ -82,7 +82,7 @@ namespace vt {
             P_ = (numeric_matrix<N_, N_>::identity() - K * H_) * P_;
         }
 
-        __VT_FORCE_INLINE numeric_vector<N_> &state_vector() { return x_; }
+        FORCE_INLINE numeric_vector<N_> &state_vector() { return x_; }
     };
 
     template<size_t StateVectorDimension,

@@ -115,17 +115,17 @@ namespace vt {
             insert<S1>(a2);
         }
 
-        __VT_FORCE_INLINE T &operator[](size_t index) { return *(arr_ + index); }
+        FORCE_INLINE T &operator[](size_t index) { return *(arr_ + index); }
 
-        __VT_FORCE_INLINE constexpr const T &operator[](size_t index) const { return *(arr_ + index); }
+        FORCE_INLINE constexpr const T &operator[](size_t index) const { return *(arr_ + index); }
 
-        __VT_FORCE_INLINE T &at(size_t index) { return operator[](index); };
+        FORCE_INLINE T &at(size_t index) { return operator[](index); };
 
-        __VT_FORCE_INLINE constexpr const T &at(size_t index) const { return operator[](index); };
+        FORCE_INLINE constexpr const T &at(size_t index) const { return operator[](index); };
 
-        __VT_FORCE_INLINE T &operator()(size_t index) { return at(index); }
+        FORCE_INLINE T &operator()(size_t index) { return at(index); }
 
-        __VT_FORCE_INLINE constexpr const T &operator()(size_t index) const { return at(index); }
+        FORCE_INLINE constexpr const T &operator()(size_t index) const { return at(index); }
 
         numeric_vector_static_t &operator=(const numeric_vector_static_t &other) {
             if (this != &other) allocate_from(other);

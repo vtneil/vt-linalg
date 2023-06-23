@@ -147,19 +147,19 @@ namespace vt {
             insert<0, C1>(B);
         }
 
-        __VT_FORCE_INLINE numeric_vector_static_t<T, Col> &operator[](size_t index) { return vector_[index]; }
+        FORCE_INLINE numeric_vector_static_t<T, Col> &operator[](size_t index) { return vector_[index]; }
 
-        __VT_FORCE_INLINE constexpr const numeric_vector_static_t<T, Col> &
+        FORCE_INLINE constexpr const numeric_vector_static_t<T, Col> &
         operator[](size_t index) const { return vector_[index]; }
 
-        __VT_FORCE_INLINE T &at(size_t r_index, size_t c_index) { return vector_[r_index][c_index]; };
+        FORCE_INLINE T &at(size_t r_index, size_t c_index) { return vector_[r_index][c_index]; };
 
-        __VT_FORCE_INLINE constexpr const T &
+        FORCE_INLINE constexpr const T &
         at(size_t r_index, size_t c_index) const { return vector_[r_index][c_index]; };
 
-        __VT_FORCE_INLINE T &operator()(size_t r_index, size_t c_index) { return at(r_index, c_index); }
+        FORCE_INLINE T &operator()(size_t r_index, size_t c_index) { return at(r_index, c_index); }
 
-        __VT_FORCE_INLINE constexpr const T &operator()(size_t r_index, size_t c_index) const {
+        FORCE_INLINE constexpr const T &operator()(size_t r_index, size_t c_index) const {
             return at(r_index, c_index);
         }
 

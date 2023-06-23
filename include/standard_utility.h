@@ -6,24 +6,27 @@
 #include <string.h>
 #include <math.h>
 
-#define __VT_FORCE_INLINE __attribute__((always_inline))
+#ifdef FORCE_INLINE
+#undef FORCE_INLINE
+#endif
+#define FORCE_INLINE __attribute__((always_inline))
 
 namespace vt {
     typedef double real_t;
 
     template<typename T>
-    __VT_FORCE_INLINE constexpr const T &min(const T &a, const T &b) { return (a < b) ? a : b; }
+    FORCE_INLINE constexpr const T &min(const T &a, const T &b) { return (a < b) ? a : b; }
 
     template<typename T, typename... Ts>
-    __VT_FORCE_INLINE constexpr const T &min(const T &a, const T &b, const Ts &...args) {
+    FORCE_INLINE constexpr const T &min(const T &a, const T &b, const Ts &...args) {
         return min(min(a, b), args...);
     }
 
     template<typename T>
-    __VT_FORCE_INLINE constexpr const T &max(const T &a, const T &b) { return (a > b) ? a : b; }
+    FORCE_INLINE constexpr const T &max(const T &a, const T &b) { return (a > b) ? a : b; }
 
     template<typename T, typename... Ts>
-    __VT_FORCE_INLINE constexpr const T &max(const T &a, const T &b, const Ts &...args) {
+    FORCE_INLINE constexpr const T &max(const T &a, const T &b, const Ts &...args) {
         return max(max(a, b), args...);
     }
 
@@ -53,7 +56,7 @@ namespace vt {
      * @return
      */
     template<typename T>
-    __VT_FORCE_INLINE constexpr
+    FORCE_INLINE constexpr
     remove_reference_t<T> &&move(T &&t) noexcept { return static_cast<remove_reference_t<T> &&>(t); }
 
     /**

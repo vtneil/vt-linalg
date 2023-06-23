@@ -14,7 +14,7 @@ var standard__utility_8h =
     [ "vt::index_sequence< Is >", "structvt_1_1index__sequence.html", null ],
     [ "vt::make_index_sequence< N, Is >", "structvt_1_1make__index__sequence.html", null ],
     [ "vt::make_index_sequence< 0, Is... >", "structvt_1_1make__index__sequence_3_010_00_01Is_8_8_8_01_4.html", null ],
-    [ "__VT_FORCE_INLINE", "standard__utility_8h.html#af28951760f96d6af0ff099259b331819", null ],
+    [ "FORCE_INLINE", "standard__utility_8h.html#ac032d233a8ebfcd82fd49d0824eefb18", null ],
     [ "real_t", "standard__utility_8h.html#aeae9b54065d998de4d2749d868511123", null ],
     [ "remove_reference_t", "standard__utility_8h.html#abff0b8c0c4a3cf4f5c6689ed6a1626d9", null ],
     [ "__attribute__", "standard__utility_8h.html#a18008ef9b4d8470f4602cc545c0ac5fe", null ],

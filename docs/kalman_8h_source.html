@@ -36,7 +36,7 @@
                 <tbody>
                 <tr id="projectrow">
                     <td id="projectalign">
-                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.0.7</span>
+                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.0.8</span>
                         </div>
                         <div id="projectbrief">C++ Efficient Linear Algebra Library</div>
                     </td>
@@ -158,7 +158,7 @@ $(document).ready(function(){initNavTree('kalman_8h_source.html',''); initResiza
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a> = (<a class="code hl_function" href="classvt_1_1numeric__matrix__dynamic__t.html#a1f0e7a81039b2e5a8eab2f2d813624e4">numeric_matrix&lt;N_, N_&gt;::identity</a>() - K * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#afee8bd91be07e78b7bf9c0708b128215">H_</a>) * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a>;</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classvt_1_1simple__kalman__filter__t.html#ad8e31d83221819d1a8aad23bf6d48bf7">   85</a></span>        <a class="code hl_define" href="standard__utility_8h.html#af28951760f96d6af0ff099259b331819">__VT_FORCE_INLINE</a> <a class="code hl_class" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector&lt;N_&gt;</a> &amp;state_vector() { <span class="keywordflow">return</span> <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#ac7b17df6e1de611c38e401e93d4cdfa7">x_</a>; }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classvt_1_1simple__kalman__filter__t.html#acac90ef6cdbc3a78787a2603375683bd">   85</a></span>        <a class="code hl_define" href="standard__utility_8h.html#ac032d233a8ebfcd82fd49d0824eefb18">FORCE_INLINE</a> <a class="code hl_class" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector&lt;N_&gt;</a> &amp;<a class="code hl_function" href="classvt_1_1simple__kalman__filter__t.html#acac90ef6cdbc3a78787a2603375683bd">state_vector</a>() { <span class="keywordflow">return</span> <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#ac7b17df6e1de611c38e401e93d4cdfa7">x_</a>; }</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    };</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keyword">template</span>&lt;<span class="keywordtype">size_t</span> StateVectorDimension,</div>
@@ -205,6 +205,7 @@ $(document).ready(function(){initNavTree('kalman_8h_source.html',''); initResiza
 <div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_a7f9ef659d0e2eb3f013e8d349d1d8904"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">vt::simple_kalman_filter_t::N_</a></div><div class="ttdeci">static constexpr size_t N_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00026">kalman.h:26</a></div></div>
 <div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_aa8cd79c0f68f94923f618d67fda37752"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#aa8cd79c0f68f94923f618d67fda37752">vt::simple_kalman_filter_t::F_</a></div><div class="ttdeci">numeric_matrix&lt; N_, N_ &gt; &amp; F_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00031">kalman.h:31</a></div></div>
 <div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_ac7b17df6e1de611c38e401e93d4cdfa7"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#ac7b17df6e1de611c38e401e93d4cdfa7">vt::simple_kalman_filter_t::x_</a></div><div class="ttdeci">numeric_vector&lt; N_ &gt; &amp; x_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00036">kalman.h:36</a></div></div>
+<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_acac90ef6cdbc3a78787a2603375683bd"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#acac90ef6cdbc3a78787a2603375683bd">vt::simple_kalman_filter_t::state_vector</a></div><div class="ttdeci">numeric_vector&lt; N_ &gt; &amp; state_vector()</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00085">kalman.h:85</a></div></div>
 <div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_ad9d11d7a8813b558eb4490ce13bd153a"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#ad9d11d7a8813b558eb4490ce13bd153a">vt::simple_kalman_filter_t::L_</a></div><div class="ttdeci">static constexpr size_t L_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00028">kalman.h:28</a></div></div>
 <div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_aed6c26ced5f4befaa518da6b0c89b339"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#aed6c26ced5f4befaa518da6b0c89b339">vt::simple_kalman_filter_t::predict</a></div><div class="ttdeci">void predict(const numeric_vector&lt; L_ &gt; &amp;u)</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00068">kalman.h:68</a></div></div>
 <div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_afee8bd91be07e78b7bf9c0708b128215"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#afee8bd91be07e78b7bf9c0708b128215">vt::simple_kalman_filter_t::H_</a></div><div class="ttdeci">numeric_matrix&lt; M_, N_ &gt; &amp; H_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00033">kalman.h:33</a></div></div>
@@ -212,14 +213,14 @@ $(document).ready(function(){initNavTree('kalman_8h_source.html',''); initResiza
 <div class="ttc" id="anumeric__matrix_8h_html"><div class="ttname"><a href="numeric__matrix_8h.html">numeric_matrix.h</a></div><div class="ttdoc">Numeric matrix library.</div></div>
 <div class="ttc" id="anumeric__vector_8h_html"><div class="ttname"><a href="numeric__vector_8h.html">numeric_vector.h</a></div><div class="ttdoc">Numeric static vector library.</div></div>
 <div class="ttc" id="astandard__utility_8h_html"><div class="ttname"><a href="standard__utility_8h.html">standard_utility.h</a></div></div>
-<div class="ttc" id="astandard__utility_8h_html_af28951760f96d6af0ff099259b331819"><div class="ttname"><a href="standard__utility_8h.html#af28951760f96d6af0ff099259b331819">__VT_FORCE_INLINE</a></div><div class="ttdeci">#define __VT_FORCE_INLINE</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00009">standard_utility.h:9</a></div></div>
+<div class="ttc" id="astandard__utility_8h_html_ac032d233a8ebfcd82fd49d0824eefb18"><div class="ttname"><a href="standard__utility_8h.html#ac032d233a8ebfcd82fd49d0824eefb18">FORCE_INLINE</a></div><div class="ttdeci">#define FORCE_INLINE</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00012">standard_utility.h:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="kalman_8h.html">kalman.h</a></li>
-    <li class="footer">Generated on Sat Jun 24 2023 00:22:08 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Sat Jun 24 2023 00:46:48 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>
