@@ -36,7 +36,7 @@
                 <tbody>
                 <tr id="projectrow">
                     <td id="projectalign">
-                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.0.8</span>
+                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.0.9</span>
                         </div>
                         <div id="projectbrief">C++ Efficient Linear Algebra Library</div>
                     </td>
@@ -102,6 +102,9 @@ $(document).ready(function(){initNavTree('classvt_1_1extended__kalman__filter__t
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classvt_1_1extended__kalman__filter__t-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt; Class Template Reference</div></div>
@@ -110,6 +113,51 @@ $(document).ready(function(){initNavTree('classvt_1_1extended__kalman__filter__t
 
 <p><code>#include &lt;<a class="el" href="kalman_8h_source.html">kalman.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a29d2e5337808a3c9ee3f8158923aba31"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt;(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a29d2e5337808a3c9ee3f8158923aba31">state_func_t</a>) (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;x, const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab42dfaa14e5802304fdcd576ab1ed1c5">L_</a> &gt; &amp;u)</td></tr>
+<tr class="separator:a29d2e5337808a3c9ee3f8158923aba31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe7c27b11b7aba644069b96484e66ced"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt;(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#afe7c27b11b7aba644069b96484e66ced">state_jacobian_t</a>) (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;x, const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab42dfaa14e5802304fdcd576ab1ed1c5">L_</a> &gt; &amp;u)</td></tr>
+<tr class="separator:afe7c27b11b7aba644069b96484e66ced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7ef174772f4f684c95e437e51172178"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a> &gt;(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#aa7ef174772f4f684c95e437e51172178">observation_func_t</a>) (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;x)</td></tr>
+<tr class="separator:aa7ef174772f4f684c95e437e51172178"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1732d6aa733ecbe53ba205c627357b31"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt;(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a1732d6aa733ecbe53ba205c627357b31">observation_jacobian_t</a>) (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;x)</td></tr>
+<tr class="separator:a1732d6aa733ecbe53ba205c627357b31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a7c4470517a33a3ea0b004942a567d816"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a7c4470517a33a3ea0b004942a567d816">extended_kalman_filter_t</a> (<a class="el" href="classvt_1_1extended__kalman__filter__t.html#a29d2e5337808a3c9ee3f8158923aba31">state_func_t</a> f_vec_func, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#afe7c27b11b7aba644069b96484e66ced">state_jacobian_t</a> Fj_mat_func, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#aa7ef174772f4f684c95e437e51172178">observation_func_t</a> h_vec_func, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a1732d6aa733ecbe53ba205c627357b31">observation_jacobian_t</a> Hj_mat_func, <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;Q_matrix, <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a> &gt; &amp;R_matrix, <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;x_0)</td></tr>
+<tr class="separator:a7c4470517a33a3ea0b004942a567d816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9ffb724c78d4e598fb4321ecfde5ba3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#ae9ffb724c78d4e598fb4321ecfde5ba3">extended_kalman_filter_t</a> (const <a class="el" href="classvt_1_1extended__kalman__filter__t.html">extended_kalman_filter_t</a> &amp;)=delete</td></tr>
+<tr class="separator:ae9ffb724c78d4e598fb4321ecfde5ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac371f969067c746e9653998e0f828c76"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#ac371f969067c746e9653998e0f828c76">extended_kalman_filter_t</a> (<a class="el" href="classvt_1_1extended__kalman__filter__t.html">extended_kalman_filter_t</a> &amp;&amp;) noexcept=delete</td></tr>
+<tr class="separator:ac371f969067c746e9653998e0f828c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0a46c21852c0e4fece0589cc630005d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab0a46c21852c0e4fece0589cc630005d">predict</a> (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab42dfaa14e5802304fdcd576ab1ed1c5">L_</a> &gt; &amp;u)</td></tr>
+<tr class="separator:ab0a46c21852c0e4fece0589cc630005d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f3926932b2456c12781dba2943d22de"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a7f3926932b2456c12781dba2943d22de">update</a> (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a> &gt; &amp;z)</td></tr>
+<tr class="separator:a7f3926932b2456c12781dba2943d22de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8686be66ccee8d279e7a6a20eb89aa86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a8686be66ccee8d279e7a6a20eb89aa86">state_vector</a> ()</td></tr>
+<tr class="separator:a8686be66ccee8d279e7a6a20eb89aa86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a018c72320a1d757997dfeb1010de37c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a29d2e5337808a3c9ee3f8158923aba31">state_func_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a018c72320a1d757997dfeb1010de37c8">f_</a></td></tr>
+<tr class="separator:a018c72320a1d757997dfeb1010de37c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61b3b5f2a7fa0ba9cc1c08fc70823ab8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#afe7c27b11b7aba644069b96484e66ced">state_jacobian_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a61b3b5f2a7fa0ba9cc1c08fc70823ab8">Fj_</a></td></tr>
+<tr class="separator:a61b3b5f2a7fa0ba9cc1c08fc70823ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a823096e98239e35750a62f0251791201"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#aa7ef174772f4f684c95e437e51172178">observation_func_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a823096e98239e35750a62f0251791201">h_</a></td></tr>
+<tr class="separator:a823096e98239e35750a62f0251791201"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a060640d71c95472326be037e9c8bda1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a1732d6aa733ecbe53ba205c627357b31">observation_jacobian_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a060640d71c95472326be037e9c8bda1d">Hj_</a></td></tr>
+<tr class="separator:a060640d71c95472326be037e9c8bda1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e10c6a3f527c6f5e95998299d37c1af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a2e10c6a3f527c6f5e95998299d37c1af">Q_</a></td></tr>
+<tr class="separator:a2e10c6a3f527c6f5e95998299d37c1af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8abcbd75eea79cf4047c07ad8f549eb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a8abcbd75eea79cf4047c07ad8f549eb0">R_</a></td></tr>
+<tr class="separator:a8abcbd75eea79cf4047c07ad8f549eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adee7eaaf581b24b237ba6c8d44436af6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#adee7eaaf581b24b237ba6c8d44436af6">x_</a></td></tr>
+<tr class="separator:adee7eaaf581b24b237ba6c8d44436af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35e40a53b8f22a5fa70bbef24463c3b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a35e40a53b8f22a5fa70bbef24463c3b7">P_</a></td></tr>
+<tr class="separator:a35e40a53b8f22a5fa70bbef24463c3b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:ab145c5c5a1f9d1b962dc638ae0b41c90"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> = StateVectorDimension</td></tr>
@@ -122,8 +170,330 @@ Static Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt;<br />
 class vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;</div>
-<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00097">97</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00105">105</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a29d2e5337808a3c9ee3f8158923aba31" name="a29d2e5337808a3c9ee3f8158923aba31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29d2e5337808a3c9ee3f8158923aba31">&#9670;&#160;</a></span>state_func_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt;(* <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::state_func_t) (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;x, const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab42dfaa14e5802304fdcd576ab1ed1c5">L_</a> &gt; &amp;u)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00113">113</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+</div>
+</div>
+<a id="afe7c27b11b7aba644069b96484e66ced" name="afe7c27b11b7aba644069b96484e66ced"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe7c27b11b7aba644069b96484e66ced">&#9670;&#160;</a></span>state_jacobian_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt;(* <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::state_jacobian_t) (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;x, const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab42dfaa14e5802304fdcd576ab1ed1c5">L_</a> &gt; &amp;u)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00116">116</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+</div>
+</div>
+<a id="aa7ef174772f4f684c95e437e51172178" name="aa7ef174772f4f684c95e437e51172178"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7ef174772f4f684c95e437e51172178">&#9670;&#160;</a></span>observation_func_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a> &gt;(* <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::observation_func_t) (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;x)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00119">119</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+</div>
+</div>
+<a id="a1732d6aa733ecbe53ba205c627357b31" name="a1732d6aa733ecbe53ba205c627357b31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1732d6aa733ecbe53ba205c627357b31">&#9670;&#160;</a></span>observation_jacobian_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt;(* <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::observation_jacobian_t) (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;x)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00121">121</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7c4470517a33a3ea0b004942a567d816" name="a7c4470517a33a3ea0b004942a567d816"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c4470517a33a3ea0b004942a567d816">&#9670;&#160;</a></span>extended_kalman_filter_t() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::extended_kalman_filter_t </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a29d2e5337808a3c9ee3f8158923aba31">state_func_t</a>&#160;</td>
+          <td class="paramname"><em>f_vec_func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#afe7c27b11b7aba644069b96484e66ced">state_jacobian_t</a>&#160;</td>
+          <td class="paramname"><em>Fj_mat_func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#aa7ef174772f4f684c95e437e51172178">observation_func_t</a>&#160;</td>
+          <td class="paramname"><em>h_vec_func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a1732d6aa733ecbe53ba205c627357b31">observation_jacobian_t</a>&#160;</td>
+          <td class="paramname"><em>Hj_mat_func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Q_matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>R_matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>x_0</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00134">134</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  143</span>                : <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a018c72320a1d757997dfeb1010de37c8">f_</a>(f_vec_func), <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a61b3b5f2a7fa0ba9cc1c08fc70823ab8">Fj_</a>{Fj_mat_func}, <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a823096e98239e35750a62f0251791201">h_</a>{h_vec_func}, <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a060640d71c95472326be037e9c8bda1d">Hj_</a>{Hj_mat_func},</div>
+<div class="line"><span class="lineno">  144</span>                  <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a2e10c6a3f527c6f5e95998299d37c1af">Q_</a>{Q_matrix}, <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a8abcbd75eea79cf4047c07ad8f549eb0">R_</a>{R_matrix}, <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#adee7eaaf581b24b237ba6c8d44436af6">x_</a>{x_0}, <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a35e40a53b8f22a5fa70bbef24463c3b7">P_</a>{Q_matrix} {}</div>
+<div class="ttc" id="aclassvt_1_1extended__kalman__filter__t_html_a018c72320a1d757997dfeb1010de37c8"><div class="ttname"><a href="classvt_1_1extended__kalman__filter__t.html#a018c72320a1d757997dfeb1010de37c8">vt::extended_kalman_filter_t::f_</a></div><div class="ttdeci">state_func_t f_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00124">kalman.h:124</a></div></div>
+<div class="ttc" id="aclassvt_1_1extended__kalman__filter__t_html_a060640d71c95472326be037e9c8bda1d"><div class="ttname"><a href="classvt_1_1extended__kalman__filter__t.html#a060640d71c95472326be037e9c8bda1d">vt::extended_kalman_filter_t::Hj_</a></div><div class="ttdeci">observation_jacobian_t Hj_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00127">kalman.h:127</a></div></div>
+<div class="ttc" id="aclassvt_1_1extended__kalman__filter__t_html_a2e10c6a3f527c6f5e95998299d37c1af"><div class="ttname"><a href="classvt_1_1extended__kalman__filter__t.html#a2e10c6a3f527c6f5e95998299d37c1af">vt::extended_kalman_filter_t::Q_</a></div><div class="ttdeci">numeric_matrix&lt; N_, N_ &gt; &amp; Q_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00128">kalman.h:128</a></div></div>
+<div class="ttc" id="aclassvt_1_1extended__kalman__filter__t_html_a35e40a53b8f22a5fa70bbef24463c3b7"><div class="ttname"><a href="classvt_1_1extended__kalman__filter__t.html#a35e40a53b8f22a5fa70bbef24463c3b7">vt::extended_kalman_filter_t::P_</a></div><div class="ttdeci">numeric_matrix&lt; N_, N_ &gt; P_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00131">kalman.h:131</a></div></div>
+<div class="ttc" id="aclassvt_1_1extended__kalman__filter__t_html_a61b3b5f2a7fa0ba9cc1c08fc70823ab8"><div class="ttname"><a href="classvt_1_1extended__kalman__filter__t.html#a61b3b5f2a7fa0ba9cc1c08fc70823ab8">vt::extended_kalman_filter_t::Fj_</a></div><div class="ttdeci">state_jacobian_t Fj_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00125">kalman.h:125</a></div></div>
+<div class="ttc" id="aclassvt_1_1extended__kalman__filter__t_html_a823096e98239e35750a62f0251791201"><div class="ttname"><a href="classvt_1_1extended__kalman__filter__t.html#a823096e98239e35750a62f0251791201">vt::extended_kalman_filter_t::h_</a></div><div class="ttdeci">observation_func_t h_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00126">kalman.h:126</a></div></div>
+<div class="ttc" id="aclassvt_1_1extended__kalman__filter__t_html_a8abcbd75eea79cf4047c07ad8f549eb0"><div class="ttname"><a href="classvt_1_1extended__kalman__filter__t.html#a8abcbd75eea79cf4047c07ad8f549eb0">vt::extended_kalman_filter_t::R_</a></div><div class="ttdeci">numeric_matrix&lt; M_, M_ &gt; &amp; R_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00129">kalman.h:129</a></div></div>
+<div class="ttc" id="aclassvt_1_1extended__kalman__filter__t_html_adee7eaaf581b24b237ba6c8d44436af6"><div class="ttname"><a href="classvt_1_1extended__kalman__filter__t.html#adee7eaaf581b24b237ba6c8d44436af6">vt::extended_kalman_filter_t::x_</a></div><div class="ttdeci">numeric_vector&lt; N_ &gt; &amp; x_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00130">kalman.h:130</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae9ffb724c78d4e598fb4321ecfde5ba3" name="ae9ffb724c78d4e598fb4321ecfde5ba3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9ffb724c78d4e598fb4321ecfde5ba3">&#9670;&#160;</a></span>extended_kalman_filter_t() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::extended_kalman_filter_t </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classvt_1_1extended__kalman__filter__t.html">extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac371f969067c746e9653998e0f828c76" name="ac371f969067c746e9653998e0f828c76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac371f969067c746e9653998e0f828c76">&#9670;&#160;</a></span>extended_kalman_filter_t() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::extended_kalman_filter_t </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classvt_1_1extended__kalman__filter__t.html">extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab0a46c21852c0e4fece0589cc630005d" name="ab0a46c21852c0e4fece0589cc630005d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0a46c21852c0e4fece0589cc630005d">&#9670;&#160;</a></span>predict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab42dfaa14e5802304fdcd576ab1ed1c5">L_</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>u</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00150">150</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  150</span>                                                          {</div>
+<div class="line"><span class="lineno">  151</span>            <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#adee7eaaf581b24b237ba6c8d44436af6">x_</a> = vt::move(<a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a018c72320a1d757997dfeb1010de37c8">f_</a>(<a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#adee7eaaf581b24b237ba6c8d44436af6">x_</a>, u));</div>
+<div class="line"><span class="lineno">  152</span>            numeric_matrix&lt;N_, N_&gt; F_ = vt::move(<a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a61b3b5f2a7fa0ba9cc1c08fc70823ab8">Fj_</a>(<a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#adee7eaaf581b24b237ba6c8d44436af6">x_</a>, u));</div>
+<div class="line"><span class="lineno">  153</span>            <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a35e40a53b8f22a5fa70bbef24463c3b7">P_</a> = vt::move(F_ * <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a35e40a53b8f22a5fa70bbef24463c3b7">P_</a> * F_.transpose() + <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a2e10c6a3f527c6f5e95998299d37c1af">Q_</a>);</div>
+<div class="line"><span class="lineno">  154</span>        }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="kalman_8h_source.html#l00124">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::f_</a>, <a class="el" href="kalman_8h_source.html#l00125">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::Fj_</a>, <a class="el" href="kalman_8h_source.html#l00131">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::P_</a>, <a class="el" href="kalman_8h_source.html#l00128">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::Q_</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00279">vt::numeric_matrix_dynamic_t&lt; T &gt;::transpose()</a>, and <a class="el" href="kalman_8h_source.html#l00130">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::x_</a>.</p>
+
+</div>
+</div>
+<a id="a7f3926932b2456c12781dba2943d22de" name="a7f3926932b2456c12781dba2943d22de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f3926932b2456c12781dba2943d22de">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>z</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00156">156</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  156</span>                                                         {</div>
+<div class="line"><span class="lineno">  157</span>            numeric_vector &lt; M_ &gt; y_ = vt::move(z - <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a823096e98239e35750a62f0251791201">h_</a>(<a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#adee7eaaf581b24b237ba6c8d44436af6">x_</a>));</div>
+<div class="line"><span class="lineno">  158</span>            numeric_matrix&lt;M_, N_&gt; Hjx_ = vt::move(<a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a060640d71c95472326be037e9c8bda1d">Hj_</a>(<a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#adee7eaaf581b24b237ba6c8d44436af6">x_</a>));</div>
+<div class="line"><span class="lineno">  159</span>            numeric_matrix&lt;N_, M_&gt; Hjx_t = vt::move(Hjx_.transpose());</div>
+<div class="line"><span class="lineno">  160</span>            numeric_matrix&lt;M_, M_&gt; S_ = vt::move(Hjx_ * <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a35e40a53b8f22a5fa70bbef24463c3b7">P_</a> * Hjx_t + <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a8abcbd75eea79cf4047c07ad8f549eb0">R_</a>);</div>
+<div class="line"><span class="lineno">  161</span>            numeric_matrix&lt;N_, M_&gt; K_ = vt::move(<a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a35e40a53b8f22a5fa70bbef24463c3b7">P_</a> * Hjx_t * S_.inverse());</div>
+<div class="line"><span class="lineno">  162</span>            <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#adee7eaaf581b24b237ba6c8d44436af6">x_</a> += K_ * y_;</div>
+<div class="line"><span class="lineno">  163</span>            <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a35e40a53b8f22a5fa70bbef24463c3b7">P_</a> = vt::move((<a class="code hl_function" href="classvt_1_1numeric__matrix__dynamic__t.html#a1f0e7a81039b2e5a8eab2f2d813624e4">numeric_matrix&lt;N_, N_&gt;::identity</a>() - K_ * <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a060640d71c95472326be037e9c8bda1d">Hj_</a>(<a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#adee7eaaf581b24b237ba6c8d44436af6">x_</a>)) * <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#a35e40a53b8f22a5fa70bbef24463c3b7">P_</a>);</div>
+<div class="line"><span class="lineno">  164</span>        }</div>
+<div class="ttc" id="aclassvt_1_1numeric__matrix__dynamic__t_html_a1f0e7a81039b2e5a8eab2f2d813624e4"><div class="ttname"><a href="classvt_1_1numeric__matrix__dynamic__t.html#a1f0e7a81039b2e5a8eab2f2d813624e4">vt::numeric_matrix_dynamic_t::identity</a></div><div class="ttdeci">static numeric_matrix_dynamic_t identity(size_t n)</div><div class="ttdef"><b>Definition</b> <a href="dynamic__numeric__matrix_8h_source.html#l00596">dynamic_numeric_matrix.h:596</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="kalman_8h_source.html#l00126">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::h_</a>, <a class="el" href="kalman_8h_source.html#l00127">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::Hj_</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00312">vt::numeric_matrix_dynamic_t&lt; T &gt;::inverse()</a>, <a class="el" href="kalman_8h_source.html#l00131">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::P_</a>, <a class="el" href="kalman_8h_source.html#l00129">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::R_</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00279">vt::numeric_matrix_dynamic_t&lt; T &gt;::transpose()</a>, and <a class="el" href="kalman_8h_source.html#l00130">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::x_</a>.</p>
+
+</div>
+</div>
+<a id="a8686be66ccee8d279e7a6a20eb89aa86" name="a8686be66ccee8d279e7a6a20eb89aa86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8686be66ccee8d279e7a6a20eb89aa86">&#9670;&#160;</a></span>state_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a> &gt; &amp; <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::state_vector </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00166">166</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  166</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classvt_1_1extended__kalman__filter__t.html#adee7eaaf581b24b237ba6c8d44436af6">x_</a>; }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="kalman_8h_source.html#l00130">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::x_</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="ab145c5c5a1f9d1b962dc638ae0b41c90" name="ab145c5c5a1f9d1b962dc638ae0b41c90"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab145c5c5a1f9d1b962dc638ae0b41c90">&#9670;&#160;</a></span>N_</h2>
 
@@ -146,7 +516,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00100">100</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00108">108</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 
 </div>
 </div>
@@ -172,7 +542,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00101">101</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00109">109</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 
 </div>
 </div>
@@ -198,7 +568,231 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00102">102</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00110">110</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+</div>
+</div>
+<a id="a018c72320a1d757997dfeb1010de37c8" name="a018c72320a1d757997dfeb1010de37c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a018c72320a1d757997dfeb1010de37c8">&#9670;&#160;</a></span>f_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a29d2e5337808a3c9ee3f8158923aba31">state_func_t</a> <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::f_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00124">124</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00150">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict()</a>.</p>
+
+</div>
+</div>
+<a id="a61b3b5f2a7fa0ba9cc1c08fc70823ab8" name="a61b3b5f2a7fa0ba9cc1c08fc70823ab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61b3b5f2a7fa0ba9cc1c08fc70823ab8">&#9670;&#160;</a></span>Fj_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#afe7c27b11b7aba644069b96484e66ced">state_jacobian_t</a> <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::Fj_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00125">125</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00150">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict()</a>.</p>
+
+</div>
+</div>
+<a id="a823096e98239e35750a62f0251791201" name="a823096e98239e35750a62f0251791201"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a823096e98239e35750a62f0251791201">&#9670;&#160;</a></span>h_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#aa7ef174772f4f684c95e437e51172178">observation_func_t</a> <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::h_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00126">126</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00156">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
+
+</div>
+</div>
+<a id="a060640d71c95472326be037e9c8bda1d" name="a060640d71c95472326be037e9c8bda1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a060640d71c95472326be037e9c8bda1d">&#9670;&#160;</a></span>Hj_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classvt_1_1extended__kalman__filter__t.html#a1732d6aa733ecbe53ba205c627357b31">observation_jacobian_t</a> <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::Hj_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00127">127</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00156">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
+
+</div>
+</div>
+<a id="a2e10c6a3f527c6f5e95998299d37c1af" name="a2e10c6a3f527c6f5e95998299d37c1af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e10c6a3f527c6f5e95998299d37c1af">&#9670;&#160;</a></span>Q_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a>&gt;&amp; <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::Q_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00128">128</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00150">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict()</a>.</p>
+
+</div>
+</div>
+<a id="a8abcbd75eea79cf4047c07ad8f549eb0" name="a8abcbd75eea79cf4047c07ad8f549eb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8abcbd75eea79cf4047c07ad8f549eb0">&#9670;&#160;</a></span>R_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">M_</a>&gt;&amp; <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::R_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00129">129</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00156">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
+
+</div>
+</div>
+<a id="adee7eaaf581b24b237ba6c8d44436af6" name="adee7eaaf581b24b237ba6c8d44436af6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adee7eaaf581b24b237ba6c8d44436af6">&#9670;&#160;</a></span>x_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt;<a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a>&gt;&amp; <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::x_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00130">130</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00150">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict()</a>, <a class="el" href="kalman_8h_source.html#l00166">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::state_vector()</a>, and <a class="el" href="kalman_8h_source.html#l00156">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
+
+</div>
+</div>
+<a id="a35e40a53b8f22a5fa70bbef24463c3b7" name="a35e40a53b8f22a5fa70bbef24463c3b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35e40a53b8f22a5fa70bbef24463c3b7">&#9670;&#160;</a></span>P_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a>, <a class="el" href="classvt_1_1extended__kalman__filter__t.html#ab145c5c5a1f9d1b962dc638ae0b41c90">N_</a>&gt; <a class="el" href="classvt_1_1extended__kalman__filter__t.html">vt::extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::P_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00131">131</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00150">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict()</a>, and <a class="el" href="kalman_8h_source.html#l00156">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
 
 </div>
 </div>
@@ -211,7 +805,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevt.html">vt</a></li><li class="navelem"><a class="el" href="classvt_1_1extended__kalman__filter__t.html">extended_kalman_filter_t</a></li>
-    <li class="footer">Generated on Sat Jun 24 2023 00:46:48 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Thu Jun 29 2023 16:24:23 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pair_5ft_0',['Pair_t',['../classvt_1_1numeric__matrix__static__lu__t.html#a9078ef328c1819fcaeec00b1e7ac8f0b',1,'vt::numeric_matrix_static_lu_t']]],
-  ['pm_1',['PM',['../classvt_1_1numeric__matrix__dynamic__lu__t.html#a71445c8f68378ab85bbd70c21d593827',1,'vt::numeric_matrix_dynamic_lu_t']]]
+  ['numeric_5fmatrix_0',['numeric_matrix',['../namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c',1,'vt']]],
+  ['numeric_5fvector_1',['numeric_vector',['../namespacevt.html#ac85ac7cc62be588ef897c14927bfee90',1,'vt']]]
 ];

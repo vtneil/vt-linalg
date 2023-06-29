@@ -10,10 +10,11 @@ var searchData=
   ['numeric_5fmatrix_5fstatic_5ft_7',['numeric_matrix_static_t',['../classvt_1_1numeric__matrix__static__t.html',1,'vt']]],
   ['numeric_5fmatrix_5fstatic_5ft_3c_20t_2c_20osize_2c_20osize_20_3e_8',['numeric_matrix_static_t&lt; T, OSize, OSize &gt;',['../classvt_1_1numeric__matrix__static__t.html',1,'vt']]],
   ['numeric_5fvector_5fdynamic_5ft_9',['numeric_vector_dynamic_t',['../classvt_1_1numeric__vector__dynamic__t.html',1,'vt']]],
-  ['numeric_5fvector_5fdynamic_5ft_3c_20n_5f_20_3e_10',['numeric_vector_dynamic_t&lt; N_ &gt;',['../classvt_1_1numeric__vector__dynamic__t.html',1,'vt']]],
-  ['numeric_5fvector_5fdynamic_5ft_3c_20vt_3a_3anumeric_5fvector_5fdynamic_5ft_3c_20m_5f_20_3e_20_3e_11',['numeric_vector_dynamic_t&lt; vt::numeric_vector_dynamic_t&lt; M_ &gt; &gt;',['../classvt_1_1numeric__vector__dynamic__t.html',1,'vt']]],
-  ['numeric_5fvector_5fdynamic_5ft_3c_20vt_3a_3anumeric_5fvector_5fdynamic_5ft_3c_20n_5f_20_3e_20_3e_12',['numeric_vector_dynamic_t&lt; vt::numeric_vector_dynamic_t&lt; N_ &gt; &gt;',['../classvt_1_1numeric__vector__dynamic__t.html',1,'vt']]],
-  ['numeric_5fvector_5fdynamic_5ft_3c_20vt_3a_3anumeric_5fvector_5fdynamic_5ft_3c_20t_20_3e_20_3e_13',['numeric_vector_dynamic_t&lt; vt::numeric_vector_dynamic_t&lt; T &gt; &gt;',['../classvt_1_1numeric__vector__dynamic__t.html',1,'vt']]],
-  ['numeric_5fvector_5fstatic_5ft_14',['numeric_vector_static_t',['../classvt_1_1numeric__vector__static__t.html',1,'vt']]],
-  ['numeric_5fvector_5fstatic_5ft_3c_20vt_3a_3anumeric_5fvector_5fstatic_5ft_3c_20t_2c_20col_20_3e_2c_20row_20_3e_15',['numeric_vector_static_t&lt; vt::numeric_vector_static_t&lt; T, Col &gt;, Row &gt;',['../classvt_1_1numeric__vector__static__t.html',1,'vt']]]
+  ['numeric_5fvector_5fdynamic_5ft_3c_20m_5f_20_3e_10',['numeric_vector_dynamic_t&lt; M_ &gt;',['../classvt_1_1numeric__vector__dynamic__t.html',1,'vt']]],
+  ['numeric_5fvector_5fdynamic_5ft_3c_20n_5f_20_3e_11',['numeric_vector_dynamic_t&lt; N_ &gt;',['../classvt_1_1numeric__vector__dynamic__t.html',1,'vt']]],
+  ['numeric_5fvector_5fdynamic_5ft_3c_20vt_3a_3anumeric_5fvector_5fdynamic_5ft_3c_20m_5f_20_3e_20_3e_12',['numeric_vector_dynamic_t&lt; vt::numeric_vector_dynamic_t&lt; M_ &gt; &gt;',['../classvt_1_1numeric__vector__dynamic__t.html',1,'vt']]],
+  ['numeric_5fvector_5fdynamic_5ft_3c_20vt_3a_3anumeric_5fvector_5fdynamic_5ft_3c_20n_5f_20_3e_20_3e_13',['numeric_vector_dynamic_t&lt; vt::numeric_vector_dynamic_t&lt; N_ &gt; &gt;',['../classvt_1_1numeric__vector__dynamic__t.html',1,'vt']]],
+  ['numeric_5fvector_5fdynamic_5ft_3c_20vt_3a_3anumeric_5fvector_5fdynamic_5ft_3c_20t_20_3e_20_3e_14',['numeric_vector_dynamic_t&lt; vt::numeric_vector_dynamic_t&lt; T &gt; &gt;',['../classvt_1_1numeric__vector__dynamic__t.html',1,'vt']]],
+  ['numeric_5fvector_5fstatic_5ft_15',['numeric_vector_static_t',['../classvt_1_1numeric__vector__static__t.html',1,'vt']]],
+  ['numeric_5fvector_5fstatic_5ft_3c_20vt_3a_3anumeric_5fvector_5fstatic_5ft_3c_20t_2c_20col_20_3e_2c_20row_20_3e_16',['numeric_vector_static_t&lt; vt::numeric_vector_static_t&lt; T, Col &gt;, Row &gt;',['../classvt_1_1numeric__vector__static__t.html',1,'vt']]]
 ];

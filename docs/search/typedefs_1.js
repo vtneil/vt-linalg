@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kalman_5ffilter_5ft_0',['kalman_filter_t',['../namespacevt.html#a6b1ee88b9740d8a0190438cbb22900d8',1,'vt']]]
+  ['ekf_0',['EKF',['../namespacevt.html#a0f2e8397a70c6f58ed46ca9a571bb1a5',1,'vt']]]
 ];

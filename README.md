@@ -24,7 +24,7 @@ These data structures can be created directly from array. They are also `constex
 
 ### PlatformIO
 
-See [vt_linalg registry](https://registry.platformio.org/libraries/vtneil/vt-linalg) on PlatformIO for further
+See [vt-linalg registry](https://registry.platformio.org/libraries/vtneil/vt-linalg) on PlatformIO for further
 instructions.
 
 ## Documentation

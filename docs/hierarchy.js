@@ -27,6 +27,7 @@ var hierarchy =
     [ "vt::numeric_matrix_static_t< T, Row, Col >", "classvt_1_1numeric__matrix__static__t.html", null ],
     [ "vt::numeric_matrix_static_t< T, OSize, OSize >", "classvt_1_1numeric__matrix__static__t.html", null ],
     [ "vt::numeric_vector_dynamic_t< T >", "classvt_1_1numeric__vector__dynamic__t.html", null ],
+    [ "vt::numeric_vector_dynamic_t< M_ >", "classvt_1_1numeric__vector__dynamic__t.html", null ],
     [ "vt::numeric_vector_dynamic_t< N_ >", "classvt_1_1numeric__vector__dynamic__t.html", null ],
     [ "vt::numeric_vector_dynamic_t< vt::numeric_vector_dynamic_t< M_ > >", "classvt_1_1numeric__vector__dynamic__t.html", null ],
     [ "vt::numeric_vector_dynamic_t< vt::numeric_vector_dynamic_t< N_ > >", "classvt_1_1numeric__vector__dynamic__t.html", null ],
@@ -48,9 +49,8 @@ var hierarchy =
       [ "vt::add_rvalue_reference< T >", "structvt_1_1add__rvalue__reference.html", null ]
     ] ],
     [ "vt::detail::type_identity< T >", "structvt_1_1detail_1_1type__identity.html", null ],
+    [ "M_ *", "classM___01_5.html", null ],
     [ "N_ *", "classN___01_5.html", null ],
-    [ "numeric_vector_dynamic_t< M_ > *", "classvt_1_1numeric__vector__dynamic__t_3_01M___01_4_01_5.html", null ],
-    [ "numeric_vector_dynamic_t< N_ > *", "classvt_1_1numeric__vector__dynamic__t_3_01N___01_4_01_5.html", null ],
     [ "numeric_vector_dynamic_t< T > *", "classvt_1_1numeric__vector__dynamic__t_3_01T_01_4_01_5.html", null ],
     [ "numeric_vector_static_t< T, Col >", "classvt_1_1numeric__vector__static__t_3_01T_00_01Col_01_4.html", null ]
 ];

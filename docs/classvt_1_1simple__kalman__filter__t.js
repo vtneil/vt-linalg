@@ -1,8 +1,8 @@
 var classvt_1_1simple__kalman__filter__t =
 [
     [ "simple_kalman_filter_t", "classvt_1_1simple__kalman__filter__t.html#a323dd8a1fae694509aebab0516360cfc", null ],
-    [ "simple_kalman_filter_t", "classvt_1_1simple__kalman__filter__t.html#a70d16b2fadee833532422a4a31094c81", null ],
-    [ "simple_kalman_filter_t", "classvt_1_1simple__kalman__filter__t.html#a374c4b7591a834e6a560d06ce71ae42f", null ],
+    [ "simple_kalman_filter_t", "classvt_1_1simple__kalman__filter__t.html#aafca93aa036026542152e276e157876a", null ],
+    [ "simple_kalman_filter_t", "classvt_1_1simple__kalman__filter__t.html#aaca45b6490689f4a4404ab20f4badc88", null ],
     [ "predict", "classvt_1_1simple__kalman__filter__t.html#aed6c26ced5f4befaa518da6b0c89b339", null ],
     [ "update", "classvt_1_1simple__kalman__filter__t.html#a409dff901dd81f2dbd9e420d11cfeaa3", null ],
     [ "state_vector", "classvt_1_1simple__kalman__filter__t.html#acac90ef6cdbc3a78787a2603375683bd", null ],

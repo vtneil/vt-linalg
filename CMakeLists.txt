@@ -17,8 +17,11 @@ add_executable(test_complex test/test_complex.cpp)
 add_executable(examples_1d_constant "examples/1-dimension constant rate/main.cpp")
 add_executable(examples_3d_tracking "examples/3-dimension tracking/main.cpp")
 add_executable(test_compiler test/test_compiler.cpp)
-add_executable(main "examples/2-dimension tracking/main.cpp")
+add_executable(main "examples/1-dimension tracking EKF/main.cpp")
+add_executable(main2 "examples/1-dimension tracking/main.cpp")
 add_executable(test_nested_matrix test/test_nested_matrix.cpp)
 
 add_executable(test_tracking test/test_tracking.cpp)
 add_executable(test_creation test/test_creation.cpp)
+
+add_executable(test_kalman_ekf test/test_kalman_ekf.cpp)
