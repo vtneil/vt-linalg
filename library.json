@@ -1,8 +1,8 @@
 {
     "name": "vt-linalg",
-    "version": "1.0.9",
+    "version": "1.1.0",
     "description": "VT Linear Algebra and Kalman Filter",
-    "keywords": "linear algebra, kalman",
+    "keywords": "linear algebra, kalman, ekf",
     "repository": {
         "type": "git",
         "url": "https://github.com/vtneil/vt-linalg.git"
@@ -18,5 +18,14 @@
     "license": "MIT",
     "homepage": "https://vt.in.th/docs/vt-linalg/index.html",
     "frameworks": "*",
-    "platforms": "*"
+    "platforms": "*",
+    "export": {
+        "include": [
+            "examples/*",
+            "include/*",
+            "test/*",
+            "README.md",
+            "LICENSE"
+        ]
+    }
 }
