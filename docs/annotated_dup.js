@@ -13,6 +13,8 @@ var annotated_dup =
       [ "circular_buffer_dynamic_t", "classvt_1_1circular__buffer__dynamic__t.html", "classvt_1_1circular__buffer__dynamic__t" ],
       [ "circular_buffer_static_t", "classvt_1_1circular__buffer__static__t.html", "classvt_1_1circular__buffer__static__t" ],
       [ "complex_t", "classvt_1_1complex__t.html", "classvt_1_1complex__t" ],
+      [ "enable_if", "structvt_1_1enable__if.html", null ],
+      [ "enable_if< true, T >", "structvt_1_1enable__if_3_01true_00_01T_01_4.html", "structvt_1_1enable__if_3_01true_00_01T_01_4" ],
       [ "extended_kalman_filter_t", "classvt_1_1extended__kalman__filter__t.html", "classvt_1_1extended__kalman__filter__t" ],
       [ "if_constexpr", "structvt_1_1if__constexpr.html", null ],
       [ "if_constexpr< false >", "structvt_1_1if__constexpr_3_01false_01_4.html", null ],

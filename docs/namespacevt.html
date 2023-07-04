@@ -128,6 +128,10 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1complex__t.html">complex_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1enable__if.html">enable_if</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1enable__if_3_01true_00_01T_01_4.html">enable_if&lt; true, T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html">extended_kalman_filter_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1if__constexpr.html">if_constexpr</a></td></tr>
@@ -196,6 +200,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:abff0b8c0c4a3cf4f5c6689ed6a1626d9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:abff0b8c0c4a3cf4f5c6689ed6a1626d9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#abff0b8c0c4a3cf4f5c6689ed6a1626d9">remove_reference_t</a> = typename <a class="el" href="structvt_1_1remove__reference.html">vt::remove_reference</a>&lt; T &gt;::type</td></tr>
 <tr class="separator:abff0b8c0c4a3cf4f5c6689ed6a1626d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e6682804eae6f8c624b71eecf3f8214"><td class="memTemplParams" colspan="2">template&lt;bool B, typename T  = void&gt; </td></tr>
+<tr class="memitem:a1e6682804eae6f8c624b71eecf3f8214"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a1e6682804eae6f8c624b71eecf3f8214">enable_if_t</a> = typename <a class="el" href="structvt_1_1enable__if.html">enable_if</a>&lt; B, T &gt;::type</td></tr>
+<tr class="separator:a1e6682804eae6f8c624b71eecf3f8214"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -406,7 +413,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00093">93</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00156">156</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 
 </div>
 </div>
@@ -424,7 +431,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00099">99</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00160">160</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 
 </div>
 </div>
@@ -442,7 +449,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00172">172</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00164">164</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 
 </div>
 </div>
@@ -477,6 +484,24 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00049">49</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
+
+</div>
+</div>
+<a id="a1e6682804eae6f8c624b71eecf3f8214" name="a1e6682804eae6f8c624b71eecf3f8214"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e6682804eae6f8c624b71eecf3f8214">&#9670;&#160;</a></span>enable_if_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;bool B, typename T  = void&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacevt.html#a1e6682804eae6f8c624b71eecf3f8214">vt::enable_if_t</a> = typedef typename <a class="el" href="structvt_1_1enable__if.html">enable_if</a>&lt;B, T&gt;::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00201">201</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
 
 </div>
 </div>
@@ -2177,7 +2202,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevt.html">vt</a></li>
-    <li class="footer">Generated on Thu Jun 29 2023 16:24:23 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Tue Jul 4 2023 13:43:39 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

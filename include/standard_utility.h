@@ -187,6 +187,18 @@ namespace vt {
     template<size_t... Is>
     struct make_index_sequence<0, Is...> : public index_sequence<Is...> {
     };
+
+    template<bool B, typename T = void>
+    struct enable_if {
+    };
+
+    template<typename T>
+    struct enable_if<true, T> {
+        typedef T type;
+    };
+
+    template<bool B, typename T = void>
+    using enable_if_t = typename enable_if<B, T>::type;
 }
 
 #endif //VNET_LINALG_STANDARD_UTILITY_H
