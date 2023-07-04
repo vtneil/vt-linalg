@@ -127,8 +127,20 @@ int main() {
     assert((v1.slice<0, 4>().equals({1, 2, 3, 4})));
     assert((v1.slice<1, 2>().equals({2})));
 
+    assert(inv(make_numeric_matrix({{1, 1},
+                                    {1, 1}})) == make_numeric_matrix({{0, 0},
+                                                                      {0, 0}}));
+
     constexpr bool con = true;
     vt::if_constexpr<con>::run(pass_msg, 3, 9);
+    std::cout << '\n';
+
+    real_t a = 0, b = 0, c = 0, d = 0;
+    numeric_vector<4> vx({4, 5, 8, 9});
+
+    vx.assign_to(a, b, c);
+
+    std::cout << a << ' ' << b << ' ' << c << ' ' << d;
 
     return 0;
 }

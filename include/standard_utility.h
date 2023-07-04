@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include "standard_constants.h"
 
 #ifdef FORCE_INLINE
 #undef FORCE_INLINE
@@ -12,7 +13,7 @@
 #define FORCE_INLINE __attribute__((always_inline))
 
 namespace vt {
-    typedef double real_t;
+    using real_t = double;
 
     template<typename T>
     FORCE_INLINE constexpr const T &min(const T &a, const T &b) { return (a < b) ? a : b; }

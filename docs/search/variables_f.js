@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['value_0',['value',['../structvt_1_1detail_1_1size__sum_3_01Class_3_01T_00_01Size_01_4_01_4.html#a7bca794553ded50c246024609b86b3e2',1,'vt::detail::size_sum&lt; Class&lt; T, Size &gt; &gt;::value'],['../structvt_1_1detail_1_1size__sum_3_01Class_3_01T_00_01Size_01_4_00_01Class_3_01T_00_01Sizes_01_4_8_8_8_01_4.html#acf081fa976f2365d78e8b56f31e08e09',1,'vt::detail::size_sum&lt; Class&lt; T, Size &gt;, Class&lt; T, Sizes &gt;... &gt;::value'],['../structvt_1_1is__same.html#a81cccebdf2d2c92c4d01a0937a98ecd2',1,'vt::is_same::value'],['../structvt_1_1is__same_3_01T_00_01T_01_4.html#a1b7103edef1dd7c321f39b5b57e40993',1,'vt::is_same&lt; T, T &gt;::value'],['../structvt_1_1detail_1_1always__false.html#af4f14401b6d16f45888b9145fdfd1250',1,'vt::detail::always_false::value']]],
-  ['vector_5f_1',['vector_',['../classvt_1_1numeric__matrix__dynamic__t.html#a490e9073e1609424415700301fbcce03',1,'vt::numeric_matrix_dynamic_t::vector_'],['../classvt_1_1numeric__matrix__static__t.html#aef48c0e2b34094ebefba6a9518f87448',1,'vt::numeric_matrix_static_t::vector_']]]
+  ['second_0',['second',['../classvt_1_1pair.html#a159ef2f807a5e5fbc413f56a4d79d0cc',1,'vt::pair']]],
+  ['size_5f_1',['size_',['../classvt_1_1circular__buffer__static__t.html#ab5399e0d8ad9dcc711d495b757a22114',1,'vt::circular_buffer_static_t::size_'],['../classvt_1_1numeric__vector__dynamic__t.html#a415263b03a4847c9607ea2d2feefc706',1,'vt::numeric_vector_dynamic_t::size_'],['../classvt_1_1initializer__list.html#afef7b0f02471221ca57a6d78c33cb0d5',1,'vt::initializer_list::size_']]],
+  ['start_5findex_5f_2',['start_index_',['../classvt_1_1circular__buffer__static__t.html#a19c53e588866c0777782b129f062e89a',1,'vt::circular_buffer_static_t']]],
+  ['strassen_5fdimension_3',['STRASSEN_DIMENSION',['../classvt_1_1numeric__matrix__dynamic__t.html#a49d6a6510c97e2ee3adb556b347e5289',1,'vt::numeric_matrix_dynamic_t']]],
+  ['strassen_5fthreshold_4',['STRASSEN_THRESHOLD',['../classvt_1_1numeric__matrix__dynamic__t.html#ae9fd4c815e01c6a086bd6694ad29dcb3',1,'vt::numeric_matrix_dynamic_t']]]
 ];

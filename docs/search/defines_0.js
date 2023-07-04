@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['force_5finline_0',['FORCE_INLINE',['../standard__utility_8h.html#ac032d233a8ebfcd82fd49d0824eefb18',1,'standard_utility.h']]]
+  ['deg_5fto_5frad_0',['DEG_TO_RAD',['../standard__constants_8h.html#a212460e743fecb084d717bb2180c5a56',1,'standard_constants.h']]]
 ];

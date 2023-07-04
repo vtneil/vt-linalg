@@ -8,6 +8,11 @@ var annotated_dup =
         [ "size_sum< Class< T, Size >, Class< T, Sizes >... >", "structvt_1_1detail_1_1size__sum_3_01Class_3_01T_00_01Size_01_4_00_01Class_3_01T_00_01Sizes_01_4_8_8_8_01_4.html", null ],
         [ "type_identity", "structvt_1_1detail_1_1type__identity.html", "structvt_1_1detail_1_1type__identity" ]
       ] ],
+      [ "impl", "namespacevt_1_1impl.html", [
+        [ "numeric_matrix_static_lu_t", "classvt_1_1impl_1_1numeric__matrix__static__lu__t.html", "classvt_1_1impl_1_1numeric__matrix__static__lu__t" ],
+        [ "numeric_matrix_static_t", "classvt_1_1impl_1_1numeric__matrix__static__t.html", "classvt_1_1impl_1_1numeric__matrix__static__t" ],
+        [ "numeric_vector_static_t", "classvt_1_1impl_1_1numeric__vector__static__t.html", "classvt_1_1impl_1_1numeric__vector__static__t" ]
+      ] ],
       [ "add_lvalue_reference", "structvt_1_1add__lvalue__reference.html", null ],
       [ "add_rvalue_reference", "structvt_1_1add__rvalue__reference.html", null ],
       [ "circular_buffer_dynamic_t", "classvt_1_1circular__buffer__dynamic__t.html", "classvt_1_1circular__buffer__dynamic__t" ],
@@ -15,6 +20,7 @@ var annotated_dup =
       [ "complex_t", "classvt_1_1complex__t.html", "classvt_1_1complex__t" ],
       [ "enable_if", "structvt_1_1enable__if.html", null ],
       [ "enable_if< true, T >", "structvt_1_1enable__if_3_01true_00_01T_01_4.html", "structvt_1_1enable__if_3_01true_00_01T_01_4" ],
+      [ "euler_t", "structvt_1_1euler__t.html", "structvt_1_1euler__t" ],
       [ "extended_kalman_filter_t", "classvt_1_1extended__kalman__filter__t.html", "classvt_1_1extended__kalman__filter__t" ],
       [ "if_constexpr", "structvt_1_1if__constexpr.html", null ],
       [ "if_constexpr< false >", "structvt_1_1if__constexpr_3_01false_01_4.html", null ],
@@ -28,11 +34,9 @@ var annotated_dup =
       [ "make_index_sequence< 0, Is... >", "structvt_1_1make__index__sequence_3_010_00_01Is_8_8_8_01_4.html", null ],
       [ "numeric_matrix_dynamic_lu_t", "classvt_1_1numeric__matrix__dynamic__lu__t.html", "classvt_1_1numeric__matrix__dynamic__lu__t" ],
       [ "numeric_matrix_dynamic_t", "classvt_1_1numeric__matrix__dynamic__t.html", "classvt_1_1numeric__matrix__dynamic__t" ],
-      [ "numeric_matrix_static_lu_t", "classvt_1_1numeric__matrix__static__lu__t.html", "classvt_1_1numeric__matrix__static__lu__t" ],
-      [ "numeric_matrix_static_t", "classvt_1_1numeric__matrix__static__t.html", "classvt_1_1numeric__matrix__static__t" ],
       [ "numeric_vector_dynamic_t", "classvt_1_1numeric__vector__dynamic__t.html", "classvt_1_1numeric__vector__dynamic__t" ],
-      [ "numeric_vector_static_t", "classvt_1_1numeric__vector__static__t.html", "classvt_1_1numeric__vector__static__t" ],
       [ "pair", "classvt_1_1pair.html", "classvt_1_1pair" ],
+      [ "quaternion_t", "structvt_1_1quaternion__t.html", "structvt_1_1quaternion__t" ],
       [ "remove_reference", "structvt_1_1remove__reference.html", "structvt_1_1remove__reference" ],
       [ "remove_reference< T & >", "structvt_1_1remove__reference_3_01T_01_6_01_4.html", "structvt_1_1remove__reference_3_01T_01_6_01_4" ],
       [ "remove_reference< T && >", "structvt_1_1remove__reference_3_01T_01_6_6_01_4.html", "structvt_1_1remove__reference_3_01T_01_6_6_01_4" ],

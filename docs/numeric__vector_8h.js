@@ -1,11 +1,13 @@
 var numeric__vector_8h =
 [
-    [ "vt::numeric_vector_static_t< T, Size >", "classvt_1_1numeric__vector__static__t.html", "classvt_1_1numeric__vector__static__t" ],
+    [ "vt::impl::numeric_vector_static_t< T, Size >", "classvt_1_1impl_1_1numeric__vector__static__t.html", "classvt_1_1impl_1_1numeric__vector__static__t" ],
     [ "vt::detail::size_sum< Class< T, Size > >", "structvt_1_1detail_1_1size__sum_3_01Class_3_01T_00_01Size_01_4_01_4.html", null ],
     [ "vt::detail::size_sum< Class< T, Size >, Class< T, Sizes >... >", "structvt_1_1detail_1_1size__sum_3_01Class_3_01T_00_01Size_01_4_00_01Class_3_01T_00_01Sizes_01_4_8_8_8_01_4.html", null ],
-    [ "operator*", "numeric__vector_8h.html#a08076388e0ceb09916a8e9b5ecdf2fe3", null ],
-    [ "operator+", "numeric__vector_8h.html#a58f988004c12c66d53e79f333b021a86", null ],
-    [ "operator-", "numeric__vector_8h.html#a8e5d7449eb97d5d8d99848eb269beeb8", null ],
+    [ "helper_assign_to", "numeric__vector_8h.html#abbd3b2d200a1d103e026e7e35b300108", null ],
+    [ "helper_assign_to", "numeric__vector_8h.html#afdf2b1bbbcf9b24fc104664095cd7850", null ],
+    [ "operator*", "numeric__vector_8h.html#a4cba278087a4c32bb0db8f905621f32d", null ],
+    [ "operator+", "numeric__vector_8h.html#a67db91fc7c9a731986373129e07e380e", null ],
+    [ "operator-", "numeric__vector_8h.html#af3ee39844abcfc078d5a0e4402d34556", null ],
     [ "make_numeric_vector", "numeric__vector_8h.html#a22a4673f10baa3f620d81c4d768eb262", null ],
     [ "make_numeric_vector", "numeric__vector_8h.html#a39822289c228dd758545b928f025e88f", null ],
     [ "make_numeric_vector", "numeric__vector_8h.html#a289a90be24eb04bd3126cb82ae46cc25", null ],

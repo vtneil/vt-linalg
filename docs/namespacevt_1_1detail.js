@@ -5,6 +5,8 @@ var namespacevt_1_1detail =
     [ "size_sum< Class< T, Size > >", "structvt_1_1detail_1_1size__sum_3_01Class_3_01T_00_01Size_01_4_01_4.html", null ],
     [ "size_sum< Class< T, Size >, Class< T, Sizes >... >", "structvt_1_1detail_1_1size__sum_3_01Class_3_01T_00_01Size_01_4_00_01Class_3_01T_00_01Sizes_01_4_8_8_8_01_4.html", null ],
     [ "type_identity", "structvt_1_1detail_1_1type__identity.html", "structvt_1_1detail_1_1type__identity" ],
+    [ "helper_assign_to", "namespacevt_1_1detail.html#abbd3b2d200a1d103e026e7e35b300108", null ],
+    [ "helper_assign_to", "namespacevt_1_1detail.html#afdf2b1bbbcf9b24fc104664095cd7850", null ],
     [ "make_numeric_vector_static_t", "namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a", null ],
     [ "make_numeric_vector_static_t", "namespacevt_1_1detail.html#a6fab7f11fd20d62c080ee91cf6ff08cd", null ],
     [ "make_numeric_vector_static_t", "namespacevt_1_1detail.html#a6230bf8adc4865dcef9923d535dc3cc9", null ],

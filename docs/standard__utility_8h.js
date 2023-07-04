@@ -17,7 +17,7 @@ var standard__utility_8h =
     [ "vt::enable_if< B, T >", "structvt_1_1enable__if.html", null ],
     [ "vt::enable_if< true, T >", "structvt_1_1enable__if_3_01true_00_01T_01_4.html", "structvt_1_1enable__if_3_01true_00_01T_01_4" ],
     [ "FORCE_INLINE", "standard__utility_8h.html#ac032d233a8ebfcd82fd49d0824eefb18", null ],
-    [ "real_t", "standard__utility_8h.html#aeae9b54065d998de4d2749d868511123", null ],
+    [ "real_t", "standard__utility_8h.html#acfba66711730fde2d67f6c5c9d4bd26e", null ],
     [ "remove_reference_t", "standard__utility_8h.html#abff0b8c0c4a3cf4f5c6689ed6a1626d9", null ],
     [ "enable_if_t", "standard__utility_8h.html#a1e6682804eae6f8c624b71eecf3f8214", null ],
     [ "__attribute__", "standard__utility_8h.html#a18008ef9b4d8470f4602cc545c0ac5fe", null ],

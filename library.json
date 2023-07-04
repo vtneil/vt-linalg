@@ -1,6 +1,6 @@
 {
     "name": "vt-linalg",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "description": "VT Linear Algebra and Kalman Filter",
     "keywords": "linear algebra, kalman, ekf",
     "repository": {

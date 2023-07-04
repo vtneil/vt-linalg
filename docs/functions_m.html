@@ -36,7 +36,7 @@
                 <tbody>
                 <tr id="projectrow">
                     <td id="projectalign">
-                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.1.1</span>
+                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.2.0</span>
                         </div>
                         <div id="projectbrief">C++ Efficient Linear Algebra Library</div>
                     </td>
@@ -106,12 +106,12 @@ $(document).ready(function(){initNavTree('functions_m.html',''); initResizable()
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>M_&#160;:&#160;<a class="el" href="classvt_1_1extended__kalman__filter__t.html#a924d8887d51b1af02523264dc4bd8742">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;</a></li>
 <li>matmul()&#160;:&#160;<a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a0bcc8376c0b750ba18abe9e16c84086b">vt::numeric_matrix_dynamic_t&lt; T &gt;</a></li>
-<li>matmul_naive()&#160;:&#160;<a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a031fb83a33a86ad9d5cf43fdbe159fdc">vt::numeric_matrix_dynamic_t&lt; T &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__static__t.html#a68c94c8713f0bbad8ea3d102b4126e09">vt::numeric_matrix_static_t&lt; T, Row, Col &gt;</a></li>
-<li>matpow()&#160;:&#160;<a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a71fe3a4cab15029e25009cf168fb897e">vt::numeric_matrix_dynamic_t&lt; T &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__static__t.html#a246f5e2782a85a0960bf745b8dd25651">vt::numeric_matrix_static_t&lt; T, Row, Col &gt;</a></li>
-<li>matpow_naive()&#160;:&#160;<a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a404ab254c9384cb09ae629853d74ff16">vt::numeric_matrix_dynamic_t&lt; T &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__static__t.html#a3fcecb3f5dd4f01486c78226629a6815">vt::numeric_matrix_static_t&lt; T, Row, Col &gt;</a></li>
-<li>Matrix_t&#160;:&#160;<a class="el" href="classvt_1_1numeric__matrix__static__lu__t.html#a33ac93c5322b6f11b677a8e0be362147">vt::numeric_matrix_static_lu_t&lt; T, OSize &gt;</a></li>
-<li>mm_naive()&#160;:&#160;<a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a673a752de2c5131e60f451da481207cb">vt::numeric_matrix_dynamic_t&lt; T &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__static__t.html#a01e349faeb75022716ea8be095d8caf7">vt::numeric_matrix_static_t&lt; T, Row, Col &gt;</a></li>
-<li>mm_strassen()&#160;:&#160;<a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#ad17ebf244557600b666924b847eb2c3e">vt::numeric_matrix_dynamic_t&lt; T &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__static__t.html#aa30f046e44e41c64d7f307e24390b339">vt::numeric_matrix_static_t&lt; T, Row, Col &gt;</a></li>
+<li>matmul_naive()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html#a258197105c14d51ffc9d6885c2d1e8df">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a031fb83a33a86ad9d5cf43fdbe159fdc">vt::numeric_matrix_dynamic_t&lt; T &gt;</a></li>
+<li>matpow()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html#a045d239b1c95ec0a53ed68221cf847fa">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a71fe3a4cab15029e25009cf168fb897e">vt::numeric_matrix_dynamic_t&lt; T &gt;</a></li>
+<li>matpow_naive()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html#a40f193fcea74744a058f841c612b14c9">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a404ab254c9384cb09ae629853d74ff16">vt::numeric_matrix_dynamic_t&lt; T &gt;</a></li>
+<li>Matrix_t&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__lu__t.html#a94eed8f6379d0cb2238f4f03e5561258">vt::impl::numeric_matrix_static_lu_t&lt; T, OSize &gt;</a></li>
+<li>mm_naive()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html#a32dc7b65d1beaa4c277a4c274473d494">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a673a752de2c5131e60f451da481207cb">vt::numeric_matrix_dynamic_t&lt; T &gt;</a></li>
+<li>mm_strassen()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html#a025cd1aefc57a95361f369f4f67907a0">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#ad17ebf244557600b666924b847eb2c3e">vt::numeric_matrix_dynamic_t&lt; T &gt;</a></li>
 <li>modulus()&#160;:&#160;<a class="el" href="classvt_1_1complex__t.html#aa1016f1d0dc87b4ca9761340fdd95b0c">vt::complex_t</a></li>
 <li>modulus_pow_2()&#160;:&#160;<a class="el" href="classvt_1_1complex__t.html#a8548686f0eb57291fe3e7737774f9043">vt::complex_t</a></li>
 </ul>
@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('functions_m.html',''); initResizable()
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jul 4 2023 13:45:47 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Tue Jul 4 2023 15:43:31 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

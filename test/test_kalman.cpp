@@ -1,5 +1,6 @@
 #include <iostream>
 #include "vt_kalman"
+#include "vt_imu"
 
 using namespace vt;
 

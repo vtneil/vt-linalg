@@ -36,7 +36,7 @@
                 <tbody>
                 <tr id="projectrow">
                     <td id="projectalign">
-                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.1.1</span>
+                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.2.0</span>
                         </div>
                         <div id="projectbrief">C++ Efficient Linear Algebra Library</div>
                     </td>
@@ -115,6 +115,10 @@ $(document).ready(function(){initNavTree('namespacevt.html',''); initResizable()
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacevt_1_1detail"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html">detail</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacevt_1_1impl"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt_1_1impl.html">impl</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacevt_1_1imu__tools"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt_1_1imu__tools.html">imu_tools</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -131,6 +135,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1enable__if.html">enable_if</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1enable__if_3_01true_00_01T_01_4.html">enable_if&lt; true, T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1euler__t.html">euler_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1extended__kalman__filter__t.html">extended_kalman_filter_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,15 +164,11 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__static__lu__t.html">numeric_matrix_static_lu_t</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1pair.html">pair</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1quaternion__t.html">quaternion_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1remove__reference.html">remove_reference</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,10 +184,10 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ad4a501378bca1ffa96e76b01f3a26683"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Capacity&gt; </td></tr>
 <tr class="memitem:ad4a501378bca1ffa96e76b01f3a26683"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#ad4a501378bca1ffa96e76b01f3a26683">buffer_t</a> = <a class="el" href="classvt_1_1circular__buffer__static__t.html">circular_buffer_static_t</a>&lt; T, Capacity &gt;</td></tr>
 <tr class="separator:ad4a501378bca1ffa96e76b01f3a26683"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b691c76fd111c2c78a2c0f3c87adb2c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a> = <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a>&lt; double &gt;</td></tr>
-<tr class="separator:a0b691c76fd111c2c78a2c0f3c87adb2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac85ac7cc62be588ef897c14927bfee90"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a> = <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a>&lt; double &gt;</td></tr>
-<tr class="separator:ac85ac7cc62be588ef897c14927bfee90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76f5bbf0cc019111132e7cfc493509d1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a> = <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a>&lt; double &gt;</td></tr>
+<tr class="separator:a76f5bbf0cc019111132e7cfc493509d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa067e8af8afe803ea08e30dbec856b92"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a> = <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a>&lt; double &gt;</td></tr>
+<tr class="separator:aa067e8af8afe803ea08e30dbec856b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b1ee88b9740d8a0190438cbb22900d8"><td class="memTemplParams" colspan="2">template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </td></tr>
 <tr class="memitem:a6b1ee88b9740d8a0190438cbb22900d8"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a6b1ee88b9740d8a0190438cbb22900d8">kalman_filter_t</a> = <a class="el" href="classvt_1_1simple__kalman__filter__t.html">simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;</td></tr>
 <tr class="separator:a6b1ee88b9740d8a0190438cbb22900d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -195,8 +197,11 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a0f2e8397a70c6f58ed46ca9a571bb1a5"><td class="memTemplParams" colspan="2">template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </td></tr>
 <tr class="memitem:a0f2e8397a70c6f58ed46ca9a571bb1a5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a0f2e8397a70c6f58ed46ca9a571bb1a5">EKF</a> = <a class="el" href="classvt_1_1extended__kalman__filter__t.html">extended_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;</td></tr>
 <tr class="separator:a0f2e8397a70c6f58ed46ca9a571bb1a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeae9b54065d998de4d2749d868511123"><td class="memItemLeft" align="right" valign="top">typedef double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a></td></tr>
-<tr class="separator:aeae9b54065d998de4d2749d868511123"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92f5dbeeffc0583ebb1ca91eb87414c9"><td class="memTemplParams" colspan="2">template&lt;size_t OSize&gt; </td></tr>
+<tr class="memitem:a92f5dbeeffc0583ebb1ca91eb87414c9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a92f5dbeeffc0583ebb1ca91eb87414c9">numeric_matrix_lu</a> = <a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__lu__t.html">impl::numeric_matrix_static_lu_t</a>&lt; <a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>, OSize &gt;</td></tr>
+<tr class="separator:a92f5dbeeffc0583ebb1ca91eb87414c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfba66711730fde2d67f6c5c9d4bd26e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a> = double</td></tr>
+<tr class="separator:acfba66711730fde2d67f6c5c9d4bd26e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abff0b8c0c4a3cf4f5c6689ed6a1626d9"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:abff0b8c0c4a3cf4f5c6689ed6a1626d9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#abff0b8c0c4a3cf4f5c6689ed6a1626d9">remove_reference_t</a> = typename <a class="el" href="structvt_1_1remove__reference.html">vt::remove_reference</a>&lt; T &gt;::type</td></tr>
 <tr class="separator:abff0b8c0c4a3cf4f5c6689ed6a1626d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,13 +214,13 @@ Functions</h2></td></tr>
 <tr class="memitem:a9de9d1b1b7157656ceba8002b03137b0"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Capacity&gt; </td></tr>
 <tr class="memitem:a9de9d1b1b7157656ceba8002b03137b0"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#ad4a501378bca1ffa96e76b01f3a26683">buffer_t</a>&lt; T, Capacity &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a9de9d1b1b7157656ceba8002b03137b0">make_buffer</a> ()</td></tr>
 <tr class="separator:a9de9d1b1b7157656ceba8002b03137b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a894532ffbda33eb3b13c07ebcf720525"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1complex__t.html">complex_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#a894532ffbda33eb3b13c07ebcf720525">operator+</a> (<a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a> lhs, const <a class="el" href="classvt_1_1complex__t.html">complex_t</a> &amp;rhs)</td></tr>
+<tr class="memitem:a894532ffbda33eb3b13c07ebcf720525"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1complex__t.html">complex_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#a894532ffbda33eb3b13c07ebcf720525">operator+</a> (<a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a> lhs, const <a class="el" href="classvt_1_1complex__t.html">complex_t</a> &amp;rhs)</td></tr>
 <tr class="separator:a894532ffbda33eb3b13c07ebcf720525"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75c37a09435e42181704b1636f50ad31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1complex__t.html">complex_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#a75c37a09435e42181704b1636f50ad31">operator-</a> (<a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a> lhs, const <a class="el" href="classvt_1_1complex__t.html">complex_t</a> &amp;rhs)</td></tr>
+<tr class="memitem:a75c37a09435e42181704b1636f50ad31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1complex__t.html">complex_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#a75c37a09435e42181704b1636f50ad31">operator-</a> (<a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a> lhs, const <a class="el" href="classvt_1_1complex__t.html">complex_t</a> &amp;rhs)</td></tr>
 <tr class="separator:a75c37a09435e42181704b1636f50ad31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7576c58be19bf55f7058414383681580"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1complex__t.html">complex_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#a7576c58be19bf55f7058414383681580">operator*</a> (<a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a> lhs, const <a class="el" href="classvt_1_1complex__t.html">complex_t</a> &amp;rhs)</td></tr>
+<tr class="memitem:a7576c58be19bf55f7058414383681580"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1complex__t.html">complex_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#a7576c58be19bf55f7058414383681580">operator*</a> (<a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a> lhs, const <a class="el" href="classvt_1_1complex__t.html">complex_t</a> &amp;rhs)</td></tr>
 <tr class="separator:a7576c58be19bf55f7058414383681580"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae114f08e706fdcb3e1767e514edb457c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1complex__t.html">complex_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#ae114f08e706fdcb3e1767e514edb457c">operator/</a> (<a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a> lhs, const <a class="el" href="classvt_1_1complex__t.html">complex_t</a> &amp;rhs)</td></tr>
+<tr class="memitem:ae114f08e706fdcb3e1767e514edb457c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1complex__t.html">complex_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevt.html#ae114f08e706fdcb3e1767e514edb457c">operator/</a> (<a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a> lhs, const <a class="el" href="classvt_1_1complex__t.html">complex_t</a> &amp;rhs)</td></tr>
 <tr class="separator:ae114f08e706fdcb3e1767e514edb457c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d90f48e317717bda84ac874a205a901"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a8d90f48e317717bda84ac874a205a901"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a8d90f48e317717bda84ac874a205a901">operator*</a> (T lhs, const <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a>&lt; T &gt; &amp;rhs)</td></tr>
@@ -247,53 +252,41 @@ Functions</h2></td></tr>
 <tr class="memitem:a4d2073e24f8228bb924a665f54635221"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a4d2073e24f8228bb924a665f54635221"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a4d2073e24f8228bb924a665f54635221">operator!=</a> (T *ptr, const <a class="el" href="classvt_1_1iterator.html">iterator</a>&lt; T &gt; &amp;<a class="el" href="classvt_1_1iterator.html">iterator</a>)</td></tr>
 <tr class="separator:a4d2073e24f8228bb924a665f54635221"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4651aa31b95a67a50550282a479b89f"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Row, size_t Col&gt; </td></tr>
-<tr class="memitem:af4651aa31b95a67a50550282a479b89f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#af4651aa31b95a67a50550282a479b89f">operator*</a> (T lhs, const <a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;rhs)</td></tr>
-<tr class="separator:af4651aa31b95a67a50550282a479b89f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8a5691b8c9e704b0827241381922283"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Row, size_t Col&gt; </td></tr>
-<tr class="memitem:ad8a5691b8c9e704b0827241381922283"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#ad8a5691b8c9e704b0827241381922283">det</a> (const <a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;A)</td></tr>
-<tr class="separator:ad8a5691b8c9e704b0827241381922283"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a859de16faf1e803d824bf0880b0c5f3d"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Row, size_t Col&gt; </td></tr>
-<tr class="memitem:a859de16faf1e803d824bf0880b0c5f3d"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a859de16faf1e803d824bf0880b0c5f3d">tr</a> (const <a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;A)</td></tr>
-<tr class="separator:a859de16faf1e803d824bf0880b0c5f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a860323affc7844ddffaaec90eaad994e"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Row, size_t Col&gt; </td></tr>
-<tr class="memitem:a860323affc7844ddffaaec90eaad994e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a860323affc7844ddffaaec90eaad994e">inv</a> (const <a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;A)</td></tr>
-<tr class="separator:a860323affc7844ddffaaec90eaad994e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6116d5ca3733d5cd262ae69e5b92de5"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Row, size_t Col&gt; </td></tr>
-<tr class="memitem:ac6116d5ca3733d5cd262ae69e5b92de5"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#ac6116d5ca3733d5cd262ae69e5b92de5">RRE</a> (const <a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;A)</td></tr>
-<tr class="separator:ac6116d5ca3733d5cd262ae69e5b92de5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b47578bcfaa8dbdeed27146e8f584b8"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Row, size_t Col&gt; </td></tr>
+<tr class="memitem:a8b47578bcfaa8dbdeed27146e8f584b8"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a8b47578bcfaa8dbdeed27146e8f584b8">det</a> (const <a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;A)</td></tr>
+<tr class="separator:a8b47578bcfaa8dbdeed27146e8f584b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d94274fbce8ddc3574932a9b9a03acb"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Row, size_t Col&gt; </td></tr>
+<tr class="memitem:a1d94274fbce8ddc3574932a9b9a03acb"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a1d94274fbce8ddc3574932a9b9a03acb">tr</a> (const <a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;A)</td></tr>
+<tr class="separator:a1d94274fbce8ddc3574932a9b9a03acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52ba1e39e76f6cd7ba62052fe73f8d7c"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Row, size_t Col&gt; </td></tr>
+<tr class="memitem:a52ba1e39e76f6cd7ba62052fe73f8d7c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a52ba1e39e76f6cd7ba62052fe73f8d7c">inv</a> (const <a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;A)</td></tr>
+<tr class="separator:a52ba1e39e76f6cd7ba62052fe73f8d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2db6c1faf745d9c5ebbd38951397d3da"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Row, size_t Col&gt; </td></tr>
+<tr class="memitem:a2db6c1faf745d9c5ebbd38951397d3da"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a2db6c1faf745d9c5ebbd38951397d3da">RRE</a> (const <a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;A)</td></tr>
+<tr class="separator:a2db6c1faf745d9c5ebbd38951397d3da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a695c50243b0e67333ec90c444dfae7f9"><td class="memTemplParams" colspan="2">template&lt;size_t Row, size_t Col = Row&gt; </td></tr>
-<tr class="memitem:a695c50243b0e67333ec90c444dfae7f9"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; Row, Col &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a695c50243b0e67333ec90c444dfae7f9">make_numeric_matrix</a> (const <a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a>(&amp;array)[Row][Col])</td></tr>
+<tr class="memitem:a695c50243b0e67333ec90c444dfae7f9"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; Row, Col &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a695c50243b0e67333ec90c444dfae7f9">make_numeric_matrix</a> (const <a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>(&amp;array)[Row][Col])</td></tr>
 <tr class="separator:a695c50243b0e67333ec90c444dfae7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3231f5d1c8e79a9dcee9b8d848789a2"><td class="memTemplParams" colspan="2">template&lt;size_t Row, size_t Col = Row&gt; </td></tr>
-<tr class="memitem:aa3231f5d1c8e79a9dcee9b8d848789a2"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; Row, Col &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#aa3231f5d1c8e79a9dcee9b8d848789a2">make_numeric_matrix</a> (const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; Row, Col &gt; &amp;M)</td></tr>
+<tr class="memitem:aa3231f5d1c8e79a9dcee9b8d848789a2"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; Row, Col &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#aa3231f5d1c8e79a9dcee9b8d848789a2">make_numeric_matrix</a> (const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; Row, Col &gt; &amp;M)</td></tr>
 <tr class="separator:aa3231f5d1c8e79a9dcee9b8d848789a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95651b86fe470f83d68e15b33aca82b0"><td class="memTemplParams" colspan="2">template&lt;size_t R1, size_t R2, size_t C1, size_t C2&gt; </td></tr>
-<tr class="memitem:a95651b86fe470f83d68e15b33aca82b0"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R1+R2, C1+C2 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a95651b86fe470f83d68e15b33aca82b0">make_quad_matrix</a> (const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R1, C1 &gt; &amp;M11, const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R1, C2 &gt; &amp;M12, const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R2, C1 &gt; &amp;M21, const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R2, C2 &gt; &amp;M22)</td></tr>
+<tr class="memitem:a95651b86fe470f83d68e15b33aca82b0"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; R1+R2, C1+C2 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a95651b86fe470f83d68e15b33aca82b0">make_quad_matrix</a> (const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; R1, C1 &gt; &amp;M11, const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; R1, C2 &gt; &amp;M12, const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; R2, C1 &gt; &amp;M21, const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; R2, C2 &gt; &amp;M22)</td></tr>
 <tr class="separator:a95651b86fe470f83d68e15b33aca82b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4ef758d9bcd5c3e3397cf2c93c88e52"><td class="memTemplParams" colspan="2">template&lt;size_t ORow, size_t OCol, size_t M, size_t N&gt; </td></tr>
-<tr class="memitem:ac4ef758d9bcd5c3e3397cf2c93c88e52"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt;(ORow *M),(OCol *N)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#ac4ef758d9bcd5c3e3397cf2c93c88e52">make_block_matrix</a> (const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; ORow, OCol &gt;(&amp;blocks)[M][N])</td></tr>
+<tr class="memitem:ac4ef758d9bcd5c3e3397cf2c93c88e52"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;(ORow *M),(OCol *N)&gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#ac4ef758d9bcd5c3e3397cf2c93c88e52">make_block_matrix</a> (const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; ORow, OCol &gt;(&amp;blocks)[M][N])</td></tr>
 <tr class="separator:ac4ef758d9bcd5c3e3397cf2c93c88e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08076388e0ceb09916a8e9b5ecdf2fe3"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size&gt; </td></tr>
-<tr class="memitem:a08076388e0ceb09916a8e9b5ecdf2fe3"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a08076388e0ceb09916a8e9b5ecdf2fe3">operator*</a> (T lhs, const <a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt; &amp;rhs)</td></tr>
-<tr class="separator:a08076388e0ceb09916a8e9b5ecdf2fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58f988004c12c66d53e79f333b021a86"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size&gt; </td></tr>
-<tr class="memitem:a58f988004c12c66d53e79f333b021a86"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a58f988004c12c66d53e79f333b021a86">operator+</a> (const T(&amp;lhs)[Size], const <a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt; &amp;rhs)</td></tr>
-<tr class="separator:a58f988004c12c66d53e79f333b021a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e5d7449eb97d5d8d99848eb269beeb8"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size&gt; </td></tr>
-<tr class="memitem:a8e5d7449eb97d5d8d99848eb269beeb8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a8e5d7449eb97d5d8d99848eb269beeb8">operator-</a> (const T(&amp;lhs)[Size], const <a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt; &amp;rhs)</td></tr>
-<tr class="separator:a8e5d7449eb97d5d8d99848eb269beeb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22a4673f10baa3f620d81c4d768eb262"><td class="memTemplParams" colspan="2">template&lt;size_t Size&gt; </td></tr>
-<tr class="memitem:a22a4673f10baa3f620d81c4d768eb262"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; Size &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a22a4673f10baa3f620d81c4d768eb262">make_numeric_vector</a> (const <a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a>(&amp;array)[Size])</td></tr>
+<tr class="memitem:a22a4673f10baa3f620d81c4d768eb262"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; Size &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a22a4673f10baa3f620d81c4d768eb262">make_numeric_vector</a> (const <a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>(&amp;array)[Size])</td></tr>
 <tr class="separator:a22a4673f10baa3f620d81c4d768eb262"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39822289c228dd758545b928f025e88f"><td class="memTemplParams" colspan="2">template&lt;size_t Size&gt; </td></tr>
-<tr class="memitem:a39822289c228dd758545b928f025e88f"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; Size &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a39822289c228dd758545b928f025e88f">make_numeric_vector</a> (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; Size &gt; &amp;vector)</td></tr>
+<tr class="memitem:a39822289c228dd758545b928f025e88f"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; Size &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a39822289c228dd758545b928f025e88f">make_numeric_vector</a> (const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; Size &gt; &amp;vector)</td></tr>
 <tr class="separator:a39822289c228dd758545b928f025e88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a289a90be24eb04bd3126cb82ae46cc25"><td class="memTemplParams" colspan="2">template&lt;size_t S1, size_t S2&gt; </td></tr>
-<tr class="memitem:a289a90be24eb04bd3126cb82ae46cc25"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S1+S2 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a289a90be24eb04bd3126cb82ae46cc25">make_numeric_vector</a> (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S1 &gt; &amp;v1, const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S2 &gt; &amp;v2)</td></tr>
+<tr class="memitem:a289a90be24eb04bd3126cb82ae46cc25"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S1+S2 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a289a90be24eb04bd3126cb82ae46cc25">make_numeric_vector</a> (const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S1 &gt; &amp;v1, const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S2 &gt; &amp;v2)</td></tr>
 <tr class="separator:a289a90be24eb04bd3126cb82ae46cc25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a878c22f9723ac1427d43dfb4181f8f09"><td class="memTemplParams" colspan="2">template&lt;size_t S1, size_t S2, size_t... Ss&gt; </td></tr>
-<tr class="memitem:a878c22f9723ac1427d43dfb4181f8f09"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="structvt_1_1detail_1_1size__sum.html">vt::detail::size_sum</a>&lt; <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S1 &gt;, <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S2 &gt;, <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; Ss &gt;... &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a878c22f9723ac1427d43dfb4181f8f09">make_numeric_vector</a> (const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S1 &gt; &amp;v1, const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S2 &gt; &amp;v2, const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; Ss &gt; &amp;... vs)</td></tr>
+<tr class="memitem:a878c22f9723ac1427d43dfb4181f8f09"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; <a class="el" href="structvt_1_1detail_1_1size__sum.html">vt::detail::size_sum</a>&lt; <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S1 &gt;, <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S2 &gt;, <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; Ss &gt;... &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a878c22f9723ac1427d43dfb4181f8f09">make_numeric_vector</a> (const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S1 &gt; &amp;v1, const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S2 &gt; &amp;v2, const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; Ss &gt; &amp;... vs)</td></tr>
 <tr class="separator:a878c22f9723ac1427d43dfb4181f8f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a699358e2a99a3fa7c3b1f13eea299299"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 &gt; </td></tr>
 <tr class="memitem:a699358e2a99a3fa7c3b1f13eea299299"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classvt_1_1pair.html">pair</a>&lt; T1, T2 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt.html#a699358e2a99a3fa7c3b1f13eea299299">make_pair</a> (const T1 &amp;t1, const T2 &amp;t2)</td></tr>
@@ -349,14 +342,14 @@ template&lt;typename T , size_t Capacity&gt; </div>
 
 </div>
 </div>
-<a id="a0b691c76fd111c2c78a2c0f3c87adb2c" name="a0b691c76fd111c2c78a2c0f3c87adb2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b691c76fd111c2c78a2c0f3c87adb2c">&#9670;&#160;</a></span>numeric_matrix</h2>
+<a id="a76f5bbf0cc019111132e7cfc493509d1" name="a76f5bbf0cc019111132e7cfc493509d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76f5bbf0cc019111132e7cfc493509d1">&#9670;&#160;</a></span>numeric_matrix</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">vt::numeric_matrix</a> = typedef <a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt;<a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a>, Row, Col&gt;</td>
+          <td class="memname">using <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">vt::numeric_matrix</a> = typedef <a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt;<a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>, Row, Col&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -375,14 +368,14 @@ This numeric matrix uses real type (real_t), defined as double).</p>
 
 </div>
 </div>
-<a id="ac85ac7cc62be588ef897c14927bfee90" name="ac85ac7cc62be588ef897c14927bfee90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac85ac7cc62be588ef897c14927bfee90">&#9670;&#160;</a></span>numeric_vector</h2>
+<a id="aa067e8af8afe803ea08e30dbec856b92" name="aa067e8af8afe803ea08e30dbec856b92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa067e8af8afe803ea08e30dbec856b92">&#9670;&#160;</a></span>numeric_vector</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">vt::numeric_vector</a> = typedef <a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt;<a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a>, Size&gt;</td>
+          <td class="memname">using <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">vt::numeric_vector</a> = typedef <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">impl::numeric_vector_static_t</a>&lt;<a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>, Size&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -453,19 +446,37 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 
 </div>
 </div>
-<a id="aeae9b54065d998de4d2749d868511123" name="aeae9b54065d998de4d2749d868511123"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeae9b54065d998de4d2749d868511123">&#9670;&#160;</a></span>real_t</h2>
+<a id="a92f5dbeeffc0583ebb1ca91eb87414c9" name="a92f5dbeeffc0583ebb1ca91eb87414c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92f5dbeeffc0583ebb1ca91eb87414c9">&#9670;&#160;</a></span>numeric_matrix_lu</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t OSize&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacevt.html#a92f5dbeeffc0583ebb1ca91eb87414c9">vt::numeric_matrix_lu</a> = typedef <a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__lu__t.html">impl::numeric_matrix_static_lu_t</a>&lt;<a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>, OSize&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01111">1111</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
+
+</div>
+</div>
+<a id="acfba66711730fde2d67f6c5c9d4bd26e" name="acfba66711730fde2d67f6c5c9d4bd26e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfba66711730fde2d67f6c5c9d4bd26e">&#9670;&#160;</a></span>real_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef double <a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">vt::real_t</a></td>
+          <td class="memname">using <a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">vt::real_t</a> = typedef double</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00015">15</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00016">16</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
 
 </div>
 </div>
@@ -483,7 +494,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00049">49</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00050">50</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
 
 </div>
 </div>
@@ -501,7 +512,7 @@ template&lt;bool B, typename T  = void&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00201">201</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00202">202</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
 
 </div>
 </div>
@@ -538,7 +549,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
 </div>
 </div>
 <a id="a894532ffbda33eb3b13c07ebcf720525" name="a894532ffbda33eb3b13c07ebcf720525"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a894532ffbda33eb3b13c07ebcf720525">&#9670;&#160;</a></span>operator+() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a894532ffbda33eb3b13c07ebcf720525">&#9670;&#160;</a></span>operator+() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -546,7 +557,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classvt_1_1complex__t.html">complex_t</a> vt::operator+ </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>&#160;</td>
           <td class="paramname"><em>lhs</em>, </td>
         </tr>
         <tr>
@@ -569,7 +580,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
 </div>
 </div>
 <a id="a75c37a09435e42181704b1636f50ad31" name="a75c37a09435e42181704b1636f50ad31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75c37a09435e42181704b1636f50ad31">&#9670;&#160;</a></span>operator-() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a75c37a09435e42181704b1636f50ad31">&#9670;&#160;</a></span>operator-() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -577,7 +588,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classvt_1_1complex__t.html">complex_t</a> vt::operator- </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>&#160;</td>
           <td class="paramname"><em>lhs</em>, </td>
         </tr>
         <tr>
@@ -601,7 +612,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
 </div>
 </div>
 <a id="a7576c58be19bf55f7058414383681580" name="a7576c58be19bf55f7058414383681580"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7576c58be19bf55f7058414383681580">&#9670;&#160;</a></span>operator*() <span class="overload">[1/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7576c58be19bf55f7058414383681580">&#9670;&#160;</a></span>operator*() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -609,7 +620,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classvt_1_1complex__t.html">complex_t</a> vt::operator* </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>&#160;</td>
           <td class="paramname"><em>lhs</em>, </td>
         </tr>
         <tr>
@@ -640,7 +651,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classvt_1_1complex__t.html">complex_t</a> vt::operator/ </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>&#160;</td>
           <td class="paramname"><em>lhs</em>, </td>
         </tr>
         <tr>
@@ -663,7 +674,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
 </div>
 </div>
 <a id="a8d90f48e317717bda84ac874a205a901" name="a8d90f48e317717bda84ac874a205a901"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d90f48e317717bda84ac874a205a901">&#9670;&#160;</a></span>operator*() <span class="overload">[2/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d90f48e317717bda84ac874a205a901">&#9670;&#160;</a></span>operator*() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -802,7 +813,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <a id="ab38df2da8cca665646f622c515ac45c0" name="ab38df2da8cca665646f622c515ac45c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab38df2da8cca665646f622c515ac45c0">&#9670;&#160;</a></span>operator*() <span class="overload">[3/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab38df2da8cca665646f622c515ac45c0">&#9670;&#160;</a></span>operator*() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -840,7 +851,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <a id="ad57fe2b66c1b9e1310cfd023ebad03d7" name="ad57fe2b66c1b9e1310cfd023ebad03d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad57fe2b66c1b9e1310cfd023ebad03d7">&#9670;&#160;</a></span>operator+() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad57fe2b66c1b9e1310cfd023ebad03d7">&#9670;&#160;</a></span>operator+() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -877,7 +888,7 @@ template&lt;typename T , size_t N&gt; </div>
 </div>
 </div>
 <a id="ad2ca225eb3285cd9ab56b9dec3cc847c" name="ad2ca225eb3285cd9ab56b9dec3cc847c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2ca225eb3285cd9ab56b9dec3cc847c">&#9670;&#160;</a></span>operator-() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2ca225eb3285cd9ab56b9dec3cc847c">&#9670;&#160;</a></span>operator-() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1001,46 +1012,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="af4651aa31b95a67a50550282a479b89f" name="af4651aa31b95a67a50550282a479b89f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4651aa31b95a67a50550282a479b89f">&#9670;&#160;</a></span>operator*() <span class="overload">[4/5]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , size_t Row, size_t Col&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; vt::operator* </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l00951">951</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  951</span>                                                                                                           {</div>
-<div class="line"><span class="lineno">  952</span>        <a class="code hl_class" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t&lt;T, Row, Col&gt;</a> tmp(rhs);</div>
-<div class="line"><span class="lineno">  953</span>        tmp.operator*=(lhs);</div>
-<div class="line"><span class="lineno">  954</span>        <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><span class="lineno">  955</span>    }</div>
-<div class="ttc" id="aclassvt_1_1numeric__matrix__static__t_html"><div class="ttname"><a href="classvt_1_1numeric__matrix__static__t.html">vt::numeric_matrix_static_t</a></div><div class="ttdef"><b>Definition</b> <a href="numeric__matrix_8h_source.html#l00031">numeric_matrix.h:31</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ad8a5691b8c9e704b0827241381922283" name="ad8a5691b8c9e704b0827241381922283"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8a5691b8c9e704b0827241381922283">&#9670;&#160;</a></span>det() <span class="overload">[2/2]</span></h2>
+<a id="a8b47578bcfaa8dbdeed27146e8f584b8" name="a8b47578bcfaa8dbdeed27146e8f584b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b47578bcfaa8dbdeed27146e8f584b8">&#9670;&#160;</a></span>det() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1050,7 +1023,7 @@ template&lt;typename T , size_t Row, size_t Col&gt; </div>
         <tr>
           <td class="memname">T vt::det </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;&#160;</td>
           <td class="paramname"><em>A</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1074,16 +1047,16 @@ If this matrix is not square, the compile-time error is thrown.</p>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Determinant </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l00968">968</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  968</span>{ <span class="keywordflow">return</span> A.<a class="code hl_function" href="classvt_1_1numeric__matrix__static__t.html#a689603a3d70f44780932f38959897ecc">det</a>(); }</div>
-<div class="ttc" id="aclassvt_1_1numeric__matrix__static__t_html_a689603a3d70f44780932f38959897ecc"><div class="ttname"><a href="classvt_1_1numeric__matrix__static__t.html#a689603a3d70f44780932f38959897ecc">vt::numeric_matrix_static_t::det</a></div><div class="ttdeci">T det() const</div><div class="ttdef"><b>Definition</b> <a href="numeric__matrix_8h_source.html#l00479">numeric_matrix.h:479</a></div></div>
+<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l00996">996</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  996</span>{ <span class="keywordflow">return</span> A.<a class="code hl_function" href="classvt_1_1impl_1_1numeric__matrix__static__t.html#ad7238c87f39f16e078ec846796a98f98">det</a>(); }</div>
+<div class="ttc" id="aclassvt_1_1impl_1_1numeric__matrix__static__t_html_ad7238c87f39f16e078ec846796a98f98"><div class="ttname"><a href="classvt_1_1impl_1_1numeric__matrix__static__t.html#ad7238c87f39f16e078ec846796a98f98">vt::impl::numeric_matrix_static_t::det</a></div><div class="ttdeci">T det() const</div><div class="ttdef"><b>Definition</b> <a href="numeric__matrix_8h_source.html#l00491">numeric_matrix.h:491</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__matrix_8h_source.html#l00479">vt::numeric_matrix_static_t&lt; T, Row, Col &gt;::det()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__matrix_8h_source.html#l00491">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;::det()</a>.</p>
 
 </div>
 </div>
-<a id="a859de16faf1e803d824bf0880b0c5f3d" name="a859de16faf1e803d824bf0880b0c5f3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a859de16faf1e803d824bf0880b0c5f3d">&#9670;&#160;</a></span>tr() <span class="overload">[2/2]</span></h2>
+<a id="a1d94274fbce8ddc3574932a9b9a03acb" name="a1d94274fbce8ddc3574932a9b9a03acb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d94274fbce8ddc3574932a9b9a03acb">&#9670;&#160;</a></span>tr() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1093,7 +1066,7 @@ template&lt;typename T , size_t Row, size_t Col&gt; </div>
         <tr>
           <td class="memname">T vt::tr </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;&#160;</td>
           <td class="paramname"><em>A</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1117,16 +1090,16 @@ If this matrix is not square, the compile-time error is thrown.</p>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Trace </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l00981">981</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  981</span>{ <span class="keywordflow">return</span> A.<a class="code hl_function" href="classvt_1_1numeric__matrix__static__t.html#aa85eb269e767733d332972a9aa07e6a5">tr</a>(); }</div>
-<div class="ttc" id="aclassvt_1_1numeric__matrix__static__t_html_aa85eb269e767733d332972a9aa07e6a5"><div class="ttname"><a href="classvt_1_1numeric__matrix__static__t.html#aa85eb269e767733d332972a9aa07e6a5">vt::numeric_matrix_static_t::tr</a></div><div class="ttdeci">T tr() const</div><div class="ttdef"><b>Definition</b> <a href="numeric__matrix_8h_source.html#l00498">numeric_matrix.h:498</a></div></div>
+<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01009">1009</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1009</span>{ <span class="keywordflow">return</span> A.<a class="code hl_function" href="classvt_1_1impl_1_1numeric__matrix__static__t.html#ad4d8f1fd84a5e39df7e618f5031ff037">tr</a>(); }</div>
+<div class="ttc" id="aclassvt_1_1impl_1_1numeric__matrix__static__t_html_ad4d8f1fd84a5e39df7e618f5031ff037"><div class="ttname"><a href="classvt_1_1impl_1_1numeric__matrix__static__t.html#ad4d8f1fd84a5e39df7e618f5031ff037">vt::impl::numeric_matrix_static_t::tr</a></div><div class="ttdeci">T tr() const</div><div class="ttdef"><b>Definition</b> <a href="numeric__matrix_8h_source.html#l00516">numeric_matrix.h:516</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__matrix_8h_source.html#l00498">vt::numeric_matrix_static_t&lt; T, Row, Col &gt;::tr()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__matrix_8h_source.html#l00516">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;::tr()</a>.</p>
 
 </div>
 </div>
-<a id="a860323affc7844ddffaaec90eaad994e" name="a860323affc7844ddffaaec90eaad994e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a860323affc7844ddffaaec90eaad994e">&#9670;&#160;</a></span>inv() <span class="overload">[2/2]</span></h2>
+<a id="a52ba1e39e76f6cd7ba62052fe73f8d7c" name="a52ba1e39e76f6cd7ba62052fe73f8d7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52ba1e39e76f6cd7ba62052fe73f8d7c">&#9670;&#160;</a></span>inv() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1134,9 +1107,9 @@ If this matrix is not square, the compile-time error is thrown.</p>
 template&lt;typename T , size_t Row, size_t Col&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; vt::inv </td>
+          <td class="memname"><a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt; vt::inv </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;&#160;</td>
           <td class="paramname"><em>A</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1160,18 +1133,18 @@ If this matrix is not square, the compile-time error is thrown.</p>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Inverse </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l00994">994</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  994</span>                                                                                            {</div>
-<div class="line"><span class="lineno">  995</span>        <span class="keywordflow">return</span> A.<a class="code hl_function" href="classvt_1_1numeric__matrix__static__t.html#ae13573d07b1e7bdb5e0e28845cc1336e">inv</a>();</div>
-<div class="line"><span class="lineno">  996</span>    }</div>
-<div class="ttc" id="aclassvt_1_1numeric__matrix__static__t_html_ae13573d07b1e7bdb5e0e28845cc1336e"><div class="ttname"><a href="classvt_1_1numeric__matrix__static__t.html#ae13573d07b1e7bdb5e0e28845cc1336e">vt::numeric_matrix_static_t::inv</a></div><div class="ttdeci">numeric_matrix_static_t inv() const</div><div class="ttdef"><b>Definition</b> <a href="numeric__matrix_8h_source.html#l00511">numeric_matrix.h:511</a></div></div>
+<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01022">1022</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1022</span>                                                                                                      {</div>
+<div class="line"><span class="lineno"> 1023</span>        <span class="keywordflow">return</span> A.<a class="code hl_function" href="classvt_1_1impl_1_1numeric__matrix__static__t.html#a31a89f344384cc9ed206e3fe20cfca6b">inv</a>();</div>
+<div class="line"><span class="lineno"> 1024</span>    }</div>
+<div class="ttc" id="aclassvt_1_1impl_1_1numeric__matrix__static__t_html_a31a89f344384cc9ed206e3fe20cfca6b"><div class="ttname"><a href="classvt_1_1impl_1_1numeric__matrix__static__t.html#a31a89f344384cc9ed206e3fe20cfca6b">vt::impl::numeric_matrix_static_t::inv</a></div><div class="ttdeci">numeric_matrix_static_t inv() const</div><div class="ttdef"><b>Definition</b> <a href="numeric__matrix_8h_source.html#l00531">numeric_matrix.h:531</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__matrix_8h_source.html#l00511">vt::numeric_matrix_static_t&lt; T, Row, Col &gt;::inv()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__matrix_8h_source.html#l00531">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;::inv()</a>.</p>
 
 </div>
 </div>
-<a id="ac6116d5ca3733d5cd262ae69e5b92de5" name="ac6116d5ca3733d5cd262ae69e5b92de5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6116d5ca3733d5cd262ae69e5b92de5">&#9670;&#160;</a></span>RRE() <span class="overload">[2/2]</span></h2>
+<a id="a2db6c1faf745d9c5ebbd38951397d3da" name="a2db6c1faf745d9c5ebbd38951397d3da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2db6c1faf745d9c5ebbd38951397d3da">&#9670;&#160;</a></span>RRE() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1179,9 +1152,9 @@ If this matrix is not square, the compile-time error is thrown.</p>
 template&lt;typename T , size_t Row, size_t Col&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; vt::RRE </td>
+          <td class="memname"><a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt; vt::RRE </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classvt_1_1numeric__matrix__static__t.html">numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html">impl::numeric_matrix_static_t</a>&lt; T, Row, Col &gt; &amp;&#160;</td>
           <td class="paramname"><em>A</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1204,13 +1177,13 @@ template&lt;typename T , size_t Row, size_t Col&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>RRE form of this matrix </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01008">1008</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1008</span>                                                                                            {</div>
-<div class="line"><span class="lineno"> 1009</span>        <span class="keywordflow">return</span> A.<a class="code hl_function" href="classvt_1_1numeric__matrix__static__t.html#a32debcd5751b16ef4f972da1ba5ee83d">RRE</a>();</div>
-<div class="line"><span class="lineno"> 1010</span>    }</div>
-<div class="ttc" id="aclassvt_1_1numeric__matrix__static__t_html_a32debcd5751b16ef4f972da1ba5ee83d"><div class="ttname"><a href="classvt_1_1numeric__matrix__static__t.html#a32debcd5751b16ef4f972da1ba5ee83d">vt::numeric_matrix_static_t::RRE</a></div><div class="ttdeci">numeric_matrix_static_t RRE() const</div><div class="ttdef"><b>Definition</b> <a href="numeric__matrix_8h_source.html#l00559">numeric_matrix.h:559</a></div></div>
+<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01036">1036</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1036</span>                                                                                                      {</div>
+<div class="line"><span class="lineno"> 1037</span>        <span class="keywordflow">return</span> A.<a class="code hl_function" href="classvt_1_1impl_1_1numeric__matrix__static__t.html#a913266f8a9d10989340d57934f247039">RRE</a>();</div>
+<div class="line"><span class="lineno"> 1038</span>    }</div>
+<div class="ttc" id="aclassvt_1_1impl_1_1numeric__matrix__static__t_html_a913266f8a9d10989340d57934f247039"><div class="ttname"><a href="classvt_1_1impl_1_1numeric__matrix__static__t.html#a913266f8a9d10989340d57934f247039">vt::impl::numeric_matrix_static_t::RRE</a></div><div class="ttdeci">numeric_matrix_static_t RRE() const</div><div class="ttdef"><b>Definition</b> <a href="numeric__matrix_8h_source.html#l00580">numeric_matrix.h:580</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__matrix_8h_source.html#l00559">vt::numeric_matrix_static_t&lt; T, Row, Col &gt;::RRE()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__matrix_8h_source.html#l00580">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;::RRE()</a>.</p>
 
 </div>
 </div>
@@ -1226,9 +1199,9 @@ template&lt;size_t Row, size_t Col = Row&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; Row, Col &gt; vt::make_numeric_matrix </td>
+          <td class="memname">constexpr <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; Row, Col &gt; vt::make_numeric_matrix </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a>(&amp;)&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>(&amp;)&#160;</td>
           <td class="paramname"><em>array</em>[Row][Col]</td><td>)</td>
           <td></td>
         </tr>
@@ -1255,10 +1228,10 @@ template&lt;size_t Row, size_t Col = Row&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numeric matrix </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01089">1089</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1089</span>                                                                                            {</div>
-<div class="line"><span class="lineno"> 1090</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix&lt;Row, Col&gt;</a>(array);</div>
-<div class="line"><span class="lineno"> 1091</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01122">1122</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1122</span>                                                                                            {</div>
+<div class="line"><span class="lineno"> 1123</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix&lt;Row, Col&gt;</a>(array);</div>
+<div class="line"><span class="lineno"> 1124</span>    }</div>
 <div class="ttc" id="aclassvt_1_1numeric__matrix__dynamic__t_html"><div class="ttname"><a href="classvt_1_1numeric__matrix__dynamic__t.html">vt::numeric_matrix_dynamic_t</a></div><div class="ttdef"><b>Definition</b> <a href="dynamic__numeric__matrix_8h_source.html#l00021">dynamic_numeric_matrix.h:21</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -1275,9 +1248,9 @@ template&lt;size_t Row, size_t Col = Row&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; Row, Col &gt; vt::make_numeric_matrix </td>
+          <td class="memname">constexpr <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; Row, Col &gt; vt::make_numeric_matrix </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; Row, Col &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; Row, Col &gt; &amp;&#160;</td>
           <td class="paramname"><em>M</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1303,10 +1276,10 @@ template&lt;size_t Row, size_t Col = Row&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numeric matrix </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01101">1101</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1101</span>                                                                                              {</div>
-<div class="line"><span class="lineno"> 1102</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix&lt;Row, Col&gt;</a>(M);</div>
-<div class="line"><span class="lineno"> 1103</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01134">1134</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1134</span>                                                                                              {</div>
+<div class="line"><span class="lineno"> 1135</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix&lt;Row, Col&gt;</a>(M);</div>
+<div class="line"><span class="lineno"> 1136</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1322,27 +1295,27 @@ template&lt;size_t R1, size_t R2, size_t C1, size_t C2&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R1+R2, C1+C2 &gt; vt::make_quad_matrix </td>
+          <td class="memname">constexpr <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; R1+R2, C1+C2 &gt; vt::make_quad_matrix </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R1, C1 &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; R1, C1 &gt; &amp;&#160;</td>
           <td class="paramname"><em>M11</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R1, C2 &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; R1, C2 &gt; &amp;&#160;</td>
           <td class="paramname"><em>M12</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R2, C1 &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; R2, C1 &gt; &amp;&#160;</td>
           <td class="paramname"><em>M21</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; R2, C2 &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; R2, C2 &gt; &amp;&#160;</td>
           <td class="paramname"><em>M22</em>&#160;</td>
         </tr>
         <tr>
@@ -1380,10 +1353,10 @@ template&lt;size_t R1, size_t R2, size_t C1, size_t C2&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numeric matrix </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01121">1121</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1124</span>                                                                                                   {</div>
-<div class="line"><span class="lineno"> 1125</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix&lt;R1 + R2, C1 + C2&gt;</a>(M11, M12, M21, M22);</div>
-<div class="line"><span class="lineno"> 1126</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01154">1154</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1157</span>                                                                                                   {</div>
+<div class="line"><span class="lineno"> 1158</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix&lt;R1 + R2, C1 + C2&gt;</a>(M11, M12, M21, M22);</div>
+<div class="line"><span class="lineno"> 1159</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1399,9 +1372,9 @@ template&lt;size_t ORow, size_t OCol, size_t M, size_t N&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt;(ORow *M),(OCol *N)&gt; vt::make_block_matrix </td>
+          <td class="memname">constexpr <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;(ORow *M),(OCol *N)&gt; vt::make_block_matrix </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#a0b691c76fd111c2c78a2c0f3c87adb2c">numeric_matrix</a>&lt; ORow, OCol &gt;(&amp;)&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; ORow, OCol &gt;(&amp;)&#160;</td>
           <td class="paramname"><em>blocks</em>[M][N]</td><td>)</td>
           <td></td>
         </tr>
@@ -1430,122 +1403,10 @@ template&lt;size_t ORow, size_t OCol, size_t M, size_t N&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numeric matrix </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01140">1140</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1140</span>                                                                        {</div>
-<div class="line"><span class="lineno"> 1141</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix&lt;(ORow * M), (OCol * N)&gt;</a>(blocks);</div>
-<div class="line"><span class="lineno"> 1142</span>    }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a08076388e0ceb09916a8e9b5ecdf2fe3" name="a08076388e0ceb09916a8e9b5ecdf2fe3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08076388e0ceb09916a8e9b5ecdf2fe3">&#9670;&#160;</a></span>operator*() <span class="overload">[5/5]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , size_t Size&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt; vt::operator* </td>
-          <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00569">569</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  569</span>                                                                                                   {</div>
-<div class="line"><span class="lineno">  570</span>        <a class="code hl_class" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t&lt;T, Size&gt;</a> tmp(rhs);</div>
-<div class="line"><span class="lineno">  571</span>        tmp.operator*=(lhs);</div>
-<div class="line"><span class="lineno">  572</span>        <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><span class="lineno">  573</span>    }</div>
-<div class="ttc" id="aclassvt_1_1numeric__vector__static__t_html"><div class="ttname"><a href="classvt_1_1numeric__vector__static__t.html">vt::numeric_vector_static_t</a></div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00028">numeric_vector.h:28</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a58f988004c12c66d53e79f333b021a86" name="a58f988004c12c66d53e79f333b021a86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58f988004c12c66d53e79f333b021a86">&#9670;&#160;</a></span>operator+() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , size_t Size&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt; vt::operator+ </td>
-          <td>(</td>
-          <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>lhs</em>[Size], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00576">576</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  576</span>                                                                                                                  {</div>
-<div class="line"><span class="lineno">  577</span>        <a class="code hl_class" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t&lt;T, Size&gt;</a> tmp(rhs);</div>
-<div class="line"><span class="lineno">  578</span>        tmp.operator+=(lhs);</div>
-<div class="line"><span class="lineno">  579</span>        <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><span class="lineno">  580</span>    }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a8e5d7449eb97d5d8d99848eb269beeb8" name="a8e5d7449eb97d5d8d99848eb269beeb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e5d7449eb97d5d8d99848eb269beeb8">&#9670;&#160;</a></span>operator-() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , size_t Size&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt; vt::operator- </td>
-          <td>(</td>
-          <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>lhs</em>[Size], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00583">583</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  583</span>                                                                                                                  {</div>
-<div class="line"><span class="lineno">  584</span>        <a class="code hl_class" href="classvt_1_1numeric__vector__static__t.html">numeric_vector_static_t&lt;T, Size&gt;</a> tmp(rhs);</div>
-<div class="line"><span class="lineno">  585</span>        tmp.operator-=(lhs);</div>
-<div class="line"><span class="lineno">  586</span>        <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><span class="lineno">  587</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__matrix_8h_source.html#l01173">1173</a> of file <a class="el" href="numeric__matrix_8h_source.html">numeric_matrix.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1173</span>                                                                        {</div>
+<div class="line"><span class="lineno"> 1174</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix&lt;(ORow * M), (OCol * N)&gt;</a>(blocks);</div>
+<div class="line"><span class="lineno"> 1175</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1561,9 +1422,9 @@ template&lt;size_t Size&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; Size &gt; vt::make_numeric_vector </td>
+          <td class="memname">constexpr <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; Size &gt; vt::make_numeric_vector </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#aeae9b54065d998de4d2749d868511123">real_t</a>(&amp;)&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e">real_t</a>(&amp;)&#160;</td>
           <td class="paramname"><em>array</em>[Size]</td><td>)</td>
           <td></td>
         </tr>
@@ -1589,12 +1450,12 @@ template&lt;size_t Size&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numeric vector </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00628">628</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  628</span>                                                                                    {</div>
-<div class="line"><span class="lineno">  629</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector&lt;Size&gt;</a>(array);</div>
-<div class="line"><span class="lineno">  630</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00654">654</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  654</span>                                                                                    {</div>
+<div class="line"><span class="lineno">  655</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector&lt;Size&gt;</a>(array);</div>
+<div class="line"><span class="lineno">  656</span>    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00673">make_numeric_vector()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00699">make_numeric_vector()</a>.</p>
 
 </div>
 </div>
@@ -1610,9 +1471,9 @@ template&lt;size_t Size&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; Size &gt; vt::make_numeric_vector </td>
+          <td class="memname">constexpr <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; Size &gt; vt::make_numeric_vector </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; Size &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; Size &gt; &amp;&#160;</td>
           <td class="paramname"><em>vector</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1638,10 +1499,10 @@ template&lt;size_t Size&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numeric vector </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00640">640</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  640</span>                                                                                           {</div>
-<div class="line"><span class="lineno">  641</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector&lt;Size&gt;</a>(vector);</div>
-<div class="line"><span class="lineno">  642</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00666">666</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  666</span>                                                                                           {</div>
+<div class="line"><span class="lineno">  667</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector&lt;Size&gt;</a>(vector);</div>
+<div class="line"><span class="lineno">  668</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1657,15 +1518,15 @@ template&lt;size_t S1, size_t S2&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S1+S2 &gt; vt::make_numeric_vector </td>
+          <td class="memname">constexpr <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S1+S2 &gt; vt::make_numeric_vector </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S1 &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S1 &gt; &amp;&#160;</td>
           <td class="paramname"><em>v1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S2 &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S2 &gt; &amp;&#160;</td>
           <td class="paramname"><em>v2</em>&#160;</td>
         </tr>
         <tr>
@@ -1697,10 +1558,10 @@ template&lt;size_t S1, size_t S2&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numeric vector </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00655">655</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  656</span>                                                      {</div>
-<div class="line"><span class="lineno">  657</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector&lt;S1 + S2&gt;</a>(v1, v2);</div>
-<div class="line"><span class="lineno">  658</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00681">681</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  682</span>                                                      {</div>
+<div class="line"><span class="lineno">  683</span>        <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector&lt;S1 + S2&gt;</a>(v1, v2);</div>
+<div class="line"><span class="lineno">  684</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1716,21 +1577,21 @@ template&lt;size_t S1, size_t S2, size_t... Ss&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; <a class="el" href="structvt_1_1detail_1_1size__sum.html">vt::detail::size_sum</a>&lt; <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S1 &gt;, <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S2 &gt;, <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; Ss &gt;... &gt;::value &gt; vt::make_numeric_vector </td>
+          <td class="memname">constexpr <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; <a class="el" href="structvt_1_1detail_1_1size__sum.html">vt::detail::size_sum</a>&lt; <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S1 &gt;, <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S2 &gt;, <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; Ss &gt;... &gt;::value &gt; vt::make_numeric_vector </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S1 &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S1 &gt; &amp;&#160;</td>
           <td class="paramname"><em>v1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; S2 &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; S2 &gt; &amp;&#160;</td>
           <td class="paramname"><em>v2</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacevt.html#ac85ac7cc62be588ef897c14927bfee90">numeric_vector</a>&lt; Ss &gt; &amp;...&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; Ss &gt; &amp;...&#160;</td>
           <td class="paramname"><em>vs</em>&#160;</td>
         </tr>
         <tr>
@@ -1764,13 +1625,13 @@ template&lt;size_t S1, size_t S2, size_t... Ss&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numeric vector </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00673">673</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  675</span>                                                          {</div>
-<div class="line"><span class="lineno">  676</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt.html#a22a4673f10baa3f620d81c4d768eb262">make_numeric_vector</a>(<a class="code hl_function" href="namespacevt.html#a22a4673f10baa3f620d81c4d768eb262">make_numeric_vector</a>(v1, v2), vs...);</div>
-<div class="line"><span class="lineno">  677</span>    }</div>
-<div class="ttc" id="anamespacevt_html_a22a4673f10baa3f620d81c4d768eb262"><div class="ttname"><a href="namespacevt.html#a22a4673f10baa3f620d81c4d768eb262">vt::make_numeric_vector</a></div><div class="ttdeci">constexpr numeric_vector&lt; Size &gt; make_numeric_vector(const real_t(&amp;array)[Size])</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00628">numeric_vector.h:628</a></div></div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00699">699</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  701</span>                                                          {</div>
+<div class="line"><span class="lineno">  702</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt.html#a22a4673f10baa3f620d81c4d768eb262">make_numeric_vector</a>(<a class="code hl_function" href="namespacevt.html#a22a4673f10baa3f620d81c4d768eb262">make_numeric_vector</a>(v1, v2), vs...);</div>
+<div class="line"><span class="lineno">  703</span>    }</div>
+<div class="ttc" id="anamespacevt_html_a22a4673f10baa3f620d81c4d768eb262"><div class="ttname"><a href="namespacevt.html#a22a4673f10baa3f620d81c4d768eb262">vt::make_numeric_vector</a></div><div class="ttdeci">constexpr numeric_vector&lt; Size &gt; make_numeric_vector(const real_t(&amp;array)[Size])</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00654">numeric_vector.h:654</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00628">make_numeric_vector()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00654">make_numeric_vector()</a>.</p>
 
 </div>
 </div>
@@ -1875,7 +1736,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="standard__utility_8h_source.html#l00018">b</a>.</p>
+<p class="reference">References <a class="el" href="standard__utility_8h_source.html#l00019">b</a>.</p>
 
 </div>
 </div>
@@ -1897,7 +1758,7 @@ template&lt;typename T , typename... Ts&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="standard__utility_8h_source.html#l00021">args</a>, and <a class="el" href="standard__utility_8h_source.html#l00018">b</a>.</p>
+<p class="reference">References <a class="el" href="standard__utility_8h_source.html#l00022">args</a>, and <a class="el" href="standard__utility_8h_source.html#l00019">b</a>.</p>
 
 </div>
 </div>
@@ -1941,9 +1802,9 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00059">59</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>                                                 { <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespacevt.html#abff0b8c0c4a3cf4f5c6689ed6a1626d9">remove_reference_t&lt;T&gt;</a> &amp;&amp;<span class="keyword">&gt;</span>(t); }</div>
-<div class="ttc" id="anamespacevt_html_abff0b8c0c4a3cf4f5c6689ed6a1626d9"><div class="ttname"><a href="namespacevt.html#abff0b8c0c4a3cf4f5c6689ed6a1626d9">vt::remove_reference_t</a></div><div class="ttdeci">typename vt::remove_reference&lt; T &gt;::type remove_reference_t</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00049">standard_utility.h:49</a></div></div>
+<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00060">60</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>                                                 { <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="namespacevt.html#abff0b8c0c4a3cf4f5c6689ed6a1626d9">remove_reference_t&lt;T&gt;</a> &amp;&amp;<span class="keyword">&gt;</span>(t); }</div>
+<div class="ttc" id="anamespacevt_html_abff0b8c0c4a3cf4f5c6689ed6a1626d9"><div class="ttname"><a href="namespacevt.html#abff0b8c0c4a3cf4f5c6689ed6a1626d9">vt::remove_reference_t</a></div><div class="ttdeci">typename vt::remove_reference&lt; T &gt;::type remove_reference_t</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00050">standard_utility.h:50</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1989,17 +1850,17 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00070">70</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>                          {</div>
-<div class="line"><span class="lineno">   71</span>        T tmp = vt::move(a);</div>
-<div class="line"><span class="lineno">   72</span>        a = vt::move(b);</div>
-<div class="line"><span class="lineno">   73</span>        <a class="code hl_variable" href="namespacevt.html#adbd88eb951bd0237e80168ca1b0736c2">b</a> = vt::move(tmp);</div>
-<div class="line"><span class="lineno">   74</span>    }</div>
-<div class="ttc" id="anamespacevt_html_adbd88eb951bd0237e80168ca1b0736c2"><div class="ttname"><a href="namespacevt.html#adbd88eb951bd0237e80168ca1b0736c2">vt::b</a></div><div class="ttdeci">const T &amp; b</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00018">standard_utility.h:18</a></div></div>
+<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00071">71</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>                          {</div>
+<div class="line"><span class="lineno">   72</span>        T tmp = vt::move(a);</div>
+<div class="line"><span class="lineno">   73</span>        a = vt::move(b);</div>
+<div class="line"><span class="lineno">   74</span>        <a class="code hl_variable" href="namespacevt.html#adbd88eb951bd0237e80168ca1b0736c2">b</a> = vt::move(tmp);</div>
+<div class="line"><span class="lineno">   75</span>    }</div>
+<div class="ttc" id="anamespacevt_html_adbd88eb951bd0237e80168ca1b0736c2"><div class="ttname"><a href="namespacevt.html#adbd88eb951bd0237e80168ca1b0736c2">vt::b</a></div><div class="ttdeci">const T &amp; b</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00019">standard_utility.h:19</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="standard__utility_8h_source.html#l00018">b</a>.</p>
+<p class="reference">References <a class="el" href="standard__utility_8h_source.html#l00019">b</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="complex__number_8h_source.html#l00023">vt::complex_t::operator=()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00386">vt::numeric_matrix_dynamic_t&lt; T &gt;::slice()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00401">vt::numeric_matrix_dynamic_t&lt; T &gt;::swap()</a>, <a class="el" href="dynamic__numeric__vector_8h_source.html#l00244">vt::numeric_vector_dynamic_t&lt; T &gt;::swap()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00528">vt::numeric_vector_static_t&lt; T, Size &gt;::swap()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="complex__number_8h_source.html#l00023">vt::complex_t::operator=()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00386">vt::numeric_matrix_dynamic_t&lt; T &gt;::slice()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00401">vt::numeric_matrix_dynamic_t&lt; T &gt;::swap()</a>, <a class="el" href="dynamic__numeric__vector_8h_source.html#l00244">vt::numeric_vector_dynamic_t&lt; T &gt;::swap()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00546">vt::impl::numeric_vector_static_t&lt; T, Size &gt;::swap()</a>.</p>
 
 </div>
 </div>
@@ -2053,12 +1914,12 @@ template&lt;typename ForwardIt , typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00107">107</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  107</span>                                                               {</div>
-<div class="line"><span class="lineno">  108</span>        <span class="keywordflow">for</span> (; first != last; <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(++first)) *first = value;</div>
-<div class="line"><span class="lineno">  109</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00108">108</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  108</span>                                                               {</div>
+<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">for</span> (; first != last; <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(++first)) *first = value;</div>
+<div class="line"><span class="lineno">  110</span>    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00542">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_fill()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00551">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_fill()</a>, <a class="el" href="dynamic__numeric__vector_8h_source.html#l00274">vt::numeric_vector_dynamic_t&lt; T &gt;::allocate_fill()</a>, <a class="el" href="numeric__matrix_8h_source.html#l00771">vt::numeric_matrix_static_t&lt; T, Row, Col &gt;::allocate_fill()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00039">vt::numeric_matrix_dynamic_t&lt; T &gt;::numeric_matrix_dynamic_t()</a>, and <a class="el" href="dynamic__numeric__vector_8h_source.html#l00032">vt::numeric_vector_dynamic_t&lt; T &gt;::numeric_vector_dynamic_t()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00567">vt::impl::numeric_vector_static_t&lt; T, Size &gt;::allocate_fill()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00551">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_fill()</a>, <a class="el" href="dynamic__numeric__vector_8h_source.html#l00274">vt::numeric_vector_dynamic_t&lt; T &gt;::allocate_fill()</a>, <a class="el" href="numeric__matrix_8h_source.html#l00796">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;::allocate_fill()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00039">vt::numeric_matrix_dynamic_t&lt; T &gt;::numeric_matrix_dynamic_t()</a>, and <a class="el" href="dynamic__numeric__vector_8h_source.html#l00032">vt::numeric_vector_dynamic_t&lt; T &gt;::numeric_vector_dynamic_t()</a>.</p>
 
 </div>
 </div>
@@ -2113,13 +1974,13 @@ template&lt;typename InputIt , typename OutputIt &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00122">122</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  122</span>                                                                 {</div>
-<div class="line"><span class="lineno">  123</span>        <span class="keywordflow">for</span> (; first != last; <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(++first), <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(++d_first)) *d_first = *first;</div>
-<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">return</span> d_first;</div>
-<div class="line"><span class="lineno">  125</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00123">123</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  123</span>                                                                 {</div>
+<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">for</span> (; first != last; <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(++first), <span class="keyword">static_cast&lt;</span><span class="keywordtype">void</span><span class="keyword">&gt;</span>(++d_first)) *d_first = *first;</div>
+<div class="line"><span class="lineno">  125</span>        <span class="keywordflow">return</span> d_first;</div>
+<div class="line"><span class="lineno">  126</span>    }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="dynamic__numeric__vector_8h_source.html#l00279">vt::numeric_vector_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="numeric__vector_8h_source.html#l00544">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__vector_8h_source.html#l00286">vt::numeric_vector_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="numeric__vector_8h_source.html#l00548">vt::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>, <a class="el" href="circular__buffer_8h_source.html#l00025">vt::circular_buffer_static_t&lt; T, Capacity &gt;::circular_buffer_static_t()</a>, <a class="el" href="dynamic__numeric__vector_8h_source.html#l00044">vt::numeric_vector_dynamic_t&lt; T &gt;::numeric_vector_dynamic_t()</a>, and <a class="el" href="dynamic__numeric__vector_8h_source.html#l00049">vt::numeric_vector_dynamic_t&lt; T &gt;::numeric_vector_dynamic_t()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dynamic__numeric__vector_8h_source.html#l00279">vt::numeric_vector_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="numeric__vector_8h_source.html#l00569">vt::impl::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__vector_8h_source.html#l00286">vt::numeric_vector_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="numeric__vector_8h_source.html#l00573">vt::impl::numeric_vector_static_t&lt; T, Size &gt;::allocate_from()</a>, <a class="el" href="circular__buffer_8h_source.html#l00025">vt::circular_buffer_static_t&lt; T, Capacity &gt;::circular_buffer_static_t()</a>, <a class="el" href="dynamic__numeric__vector_8h_source.html#l00044">vt::numeric_vector_dynamic_t&lt; T &gt;::numeric_vector_dynamic_t()</a>, and <a class="el" href="dynamic__numeric__vector_8h_source.html#l00049">vt::numeric_vector_dynamic_t&lt; T &gt;::numeric_vector_dynamic_t()</a>.</p>
 
 </div>
 </div>
@@ -2148,11 +2009,11 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00160">160</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  160</span>                                                              {</div>
-<div class="line"><span class="lineno">  161</span>        <span class="keyword">static_assert</span>(<a class="code hl_struct" href="structvt_1_1detail_1_1always__false.html">vt::detail::always_false&lt;T&gt;::value</a>, <span class="stringliteral">&quot;declval is not allowed in an evaluated context.&quot;</span>);</div>
-<div class="line"><span class="lineno">  162</span>    }</div>
-<div class="ttc" id="astructvt_1_1detail_1_1always__false_html"><div class="ttname"><a href="structvt_1_1detail_1_1always__false.html">vt::detail::always_false</a></div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00129">standard_utility.h:129</a></div></div>
+<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00161">161</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  161</span>                                                              {</div>
+<div class="line"><span class="lineno">  162</span>        <span class="keyword">static_assert</span>(<a class="code hl_struct" href="structvt_1_1detail_1_1always__false.html">vt::detail::always_false&lt;T&gt;::value</a>, <span class="stringliteral">&quot;declval is not allowed in an evaluated context.&quot;</span>);</div>
+<div class="line"><span class="lineno">  163</span>    }</div>
+<div class="ttc" id="astructvt_1_1detail_1_1always__false_html"><div class="ttname"><a href="structvt_1_1detail_1_1always__false.html">vt::detail::always_false</a></div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00130">standard_utility.h:130</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2169,9 +2030,9 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00018">18</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00019">19</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="namespacevt.html#a18008ef9b4d8470f4602cc545c0ac5fe">__attribute__()</a>, and <a class="el" href="standard__utility_8h_source.html#l00070">swap()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="namespacevt.html#a18008ef9b4d8470f4602cc545c0ac5fe">__attribute__()</a>, and <a class="el" href="standard__utility_8h_source.html#l00071">swap()</a>.</p>
 
 </div>
 </div>
@@ -2188,11 +2049,11 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">{</div>
 <div class="line">        <span class="keywordflow">return</span> min(min(a, b), <a class="code hl_variable" href="namespacevt.html#ade94e08ee4125211703d31c08f97a241">args</a>...)</div>
-<div class="ttc" id="anamespacevt_html_ade94e08ee4125211703d31c08f97a241"><div class="ttname"><a href="namespacevt.html#ade94e08ee4125211703d31c08f97a241">vt::args</a></div><div class="ttdeci">const T const Ts &amp; args</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00021">standard_utility.h:21</a></div></div>
+<div class="ttc" id="anamespacevt_html_ade94e08ee4125211703d31c08f97a241"><div class="ttname"><a href="namespacevt.html#ade94e08ee4125211703d31c08f97a241">vt::args</a></div><div class="ttdeci">const T const Ts &amp; args</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00022">standard_utility.h:22</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00021">21</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="standard__utility_8h_source.html#l00022">22</a> of file <a class="el" href="standard__utility_8h_source.html">standard_utility.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="namespacevt.html#a6e7bcd66ccc4f1c98caea04c8d3899f9">__attribute__()</a>, and <a class="el" href="standard__utility_8h_source.html#l00170">vt::if_constexpr&lt; true &gt;::run()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="namespacevt.html#a6e7bcd66ccc4f1c98caea04c8d3899f9">__attribute__()</a>, and <a class="el" href="standard__utility_8h_source.html#l00171">vt::if_constexpr&lt; true &gt;::run()</a>.</p>
 
 </div>
 </div>
@@ -2202,7 +2063,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevt.html">vt</a></li>
-    <li class="footer">Generated on Tue Jul 4 2023 13:45:47 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Tue Jul 4 2023 15:43:31 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>
