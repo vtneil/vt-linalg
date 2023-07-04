@@ -26,11 +26,11 @@ namespace vt {
         static constexpr size_t L_ = ControlVectorDimension;     // Alias
 
     protected:
-        const numeric_matrix<N_, N_> F_; // state-transition model
-        const numeric_matrix<N_, L_> B_; // control-input model
-        const numeric_matrix<M_, N_> H_; // measurement model
-        const numeric_matrix<N_, N_> Q_; // covariance of the process noise
-        const numeric_matrix<M_, M_> R_; // covariance of the measurement noise
+        const numeric_matrix<N_, N_> &F_; // state-transition model
+        const numeric_matrix<N_, L_> &B_; // control-input model
+        const numeric_matrix<M_, N_> &H_; // measurement model
+        const numeric_matrix<N_, N_> &Q_; // covariance of the process noise
+        const numeric_matrix<M_, M_> &R_; // covariance of the measurement noise
         numeric_vector<N_> x_;    // state vector
         numeric_matrix<N_, N_> P_; // state covariance, self-initialized as Q_
 
@@ -109,8 +109,8 @@ namespace vt {
         const state_jacobian_t Fj_; // state-transition Jacobian
         const observation_func_t h_; // measurement model
         const observation_jacobian_t Hj_; // measurement Jacobian
-        const numeric_matrix<N_, N_> Q_; // covariance of the process noise
-        const numeric_matrix<M_, M_> R_; // covariance of the measurement noise
+        const numeric_matrix<N_, N_> &Q_; // covariance of the process noise
+        const numeric_matrix<M_, M_> &R_; // covariance of the measurement noise
         numeric_vector<N_> x_;    // state vector
         numeric_matrix<N_, N_> P_; // state covariance, self-initialized as Q_
 
