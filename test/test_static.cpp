@@ -131,16 +131,33 @@ int main() {
                                     {1, 1}})) == make_numeric_matrix({{0, 0},
                                                                       {0, 0}}));
 
-    constexpr bool con = true;
-    vt::if_constexpr<con>::run(pass_msg, 3, 9);
-    std::cout << '\n';
-
     real_t a = 0, b = 0, c = 0, d = 0;
     numeric_vector<4> vx({4, 5, 8, 9});
 
     vx.assign_to(a, b, c);
 
-    std::cout << a << ' ' << b << ' ' << c << ' ' << d;
+    std::cout << a << ' ' << b << ' ' << c << ' ' << d << '\n';
+
+    auto Diag1 = make_diagonal_matrix({1, 2, 3});
+    auto Diag2 = make_diagonal_matrix<3>(5);
+
+    assert((Diag1 == make_numeric_matrix({{1, 0, 0},
+                                          {0, 2, 0},
+                                          {0, 0, 3}})));
+    assert((Diag2 == make_numeric_matrix({{5, 0, 0},
+                                          {0, 5, 0},
+                                          {0, 0, 5}})));
+
+    for (auto &row: Diag2) {
+        for (auto &x: row) {
+            std::cout << x << ' ';
+        }
+        std::cout << '\n';
+    }
+
+    constexpr bool con = true;
+    vt::if_constexpr<con>::run(pass_msg, 3, 9);
+    std::cout << '\n';
 
     return 0;
 }

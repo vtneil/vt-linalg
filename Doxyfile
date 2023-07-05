@@ -8,7 +8,7 @@ DOXYFILE_ENCODING      = UTF-8
 
 PROJECT_NAME           = "VT Linear Algebra Library"
 
-PROJECT_NUMBER         = 1.2.1
+PROJECT_NUMBER         = 1.2.2
 
 PROJECT_BRIEF          = "C++ Efficient Linear Algebra Library"
 

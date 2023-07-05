@@ -200,6 +200,11 @@ namespace vt {
 
     template<bool B, typename T = void>
     using enable_if_t = typename enable_if<B, T>::type;
+
+    template<bool condition, typename T>
+    constexpr T choose_if(const T &value_if_true, const T &value_if_false) {
+        return condition ? value_if_true : value_if_false;
+    }
 }
 
 #endif //VNET_LINALG_STANDARD_UTILITY_H

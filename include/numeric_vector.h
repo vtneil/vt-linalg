@@ -755,6 +755,26 @@ namespace vt {
         make_nested(const T (&array)[Row][Col]) {
             return make_nested(array, vt::make_index_sequence<Row>());
         }
+
+        template<typename T, size_t Order, size_t I, size_t ...J>
+        constexpr numeric_vector_static_t <T, Order>
+        make_diagonal_minor(const T &value, vt::index_sequence<J...>) {
+            return make_numeric_vector_static_t(choose_if<(I == J)>(value, T())...);
+        }
+
+        template<typename T, size_t Order, size_t ...I>
+        constexpr numeric_vector_static_t <numeric_vector_static_t<T, Order>, Order>
+        make_diagonal(const T (&array)[Order], vt::index_sequence<I...>) {
+            return make_numeric_vector_static_t(
+                    make_diagonal_minor<T, Order, I>(array[I], vt::make_index_sequence<Order>())...
+            );
+        }
+
+        template<typename T, size_t Order, size_t ...I>
+        constexpr numeric_vector_static_t <numeric_vector_static_t<T, Order>, Order>
+        make_diagonal(const T (&array)[Order]) {
+            return make_diagonal(array, vt::make_index_sequence<Order>());
+        }
     }
 }
 

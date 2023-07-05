@@ -840,7 +840,7 @@ namespace vt {
 
             static constexpr bool static_is_a_square_matrix() { return Row == Col; }
 
-            constexpr static bool is_multiple_of_2(size_t x) { return x != 0 && !(x & (x - 1)); }
+            static constexpr bool is_multiple_of_2(size_t x) { return x != 0 && !(x & (x - 1)); }
 
             static size_t closest_2(size_t x) {
                 if (is_multiple_of_2(x)) return x;
@@ -942,10 +942,8 @@ namespace vt {
              * @param value Fill value
              * @return Filled diagonal matrix
              */
-            static numeric_matrix_static_t diagonals(T value) {
-                numeric_matrix_static_t tmp;
-                for (size_t i = 0; i < Order; ++i) tmp[i][i] = value;
-                return tmp;
+            static constexpr numeric_matrix_static_t diagonals(const T &value) {
+                return numeric_matrix_static_t(detail::make_diagonal(numeric_vector_static_t<T, Order>(value).arr_));
             }
 
             /**
@@ -954,10 +952,8 @@ namespace vt {
              * @param array Fill array
              * @return Filled diagonal matrix
              */
-            static numeric_matrix_static_t diagonals(const T (&array)[Order]) {
-                numeric_matrix_static_t tmp;
-                for (size_t i = 0; i < Order; ++i) tmp[i][i] = array[i];
-                return tmp;
+            static constexpr numeric_matrix_static_t diagonals(const T (&array)[Order]) {
+                return numeric_matrix_static_t(detail::make_diagonal(array));
             }
 
             /**
@@ -993,7 +989,7 @@ namespace vt {
      * @return Determinant
      */
     template<typename T, size_t Row, size_t Col>
-    T det(const impl::numeric_matrix_static_t <T, Row, Col> &A) { return A.det(); }
+    T det(const impl::numeric_matrix_static_t<T, Row, Col> &A) { return A.det(); }
 
     /**
      * Finds trace of this matrix.\n
@@ -1006,7 +1002,7 @@ namespace vt {
      * @return Trace
      */
     template<typename T, size_t Row, size_t Col>
-    T tr(const impl::numeric_matrix_static_t <T, Row, Col> &A) { return A.tr(); }
+    T tr(const impl::numeric_matrix_static_t<T, Row, Col> &A) { return A.tr(); }
 
     /**
      * Finds inverse of this matrix.\n
@@ -1019,7 +1015,7 @@ namespace vt {
      * @return Inverse
      */
     template<typename T, size_t Row, size_t Col>
-    impl::numeric_matrix_static_t <T, Row, Col> inv(const impl::numeric_matrix_static_t <T, Row, Col> &A) {
+    impl::numeric_matrix_static_t<T, Row, Col> inv(const impl::numeric_matrix_static_t<T, Row, Col> &A) {
         return A.inv();
     }
 
@@ -1033,7 +1029,7 @@ namespace vt {
      * @return RRE form of this matrix
      */
     template<typename T, size_t Row, size_t Col>
-    impl::numeric_matrix_static_t <T, Row, Col> RRE(const impl::numeric_matrix_static_t <T, Row, Col> &A) {
+    impl::numeric_matrix_static_t<T, Row, Col> RRE(const impl::numeric_matrix_static_t<T, Row, Col> &A) {
         return A.RRE();
     }
 
@@ -1172,6 +1168,32 @@ namespace vt {
     constexpr numeric_matrix<(ORow * M), (OCol * N)>
     make_block_matrix(const numeric_matrix<ORow, OCol> (&blocks)[M][N]) {
         return numeric_matrix<(ORow * M), (OCol * N)>(blocks);
+    }
+
+    /**
+     * Creates a diagonal matrix filled with array of values.
+     *
+     * @tparam Order
+     * @param array Array of diagonal's values
+     * @return Numeric matrix
+     */
+    template<size_t Order>
+    constexpr numeric_matrix<Order, Order>
+    make_diagonal_matrix(const real_t (&array)[Order]) {
+        return numeric_matrix<Order, Order>::diagonals(array);
+    }
+
+    /**
+     * Creates a diagonal matrix filled with value.
+     *
+     * @tparam Order
+     * @param value Value to fill the diagonal
+     * @return Numeric matrix
+     */
+    template<size_t Order>
+    constexpr numeric_matrix<Order, Order>
+    make_diagonal_matrix(real_t value) {
+        return numeric_matrix<Order, Order>::diagonals(value);
     }
 }
 
