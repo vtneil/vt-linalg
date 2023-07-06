@@ -1,5 +1,5 @@
-#ifndef VNET_LINALG_PAIR_H
-#define VNET_LINALG_PAIR_H
+#ifndef VT_LINALG_PAIR_H
+#define VT_LINALG_PAIR_H
 
 #include "standard_utility.h"
 
@@ -37,4 +37,4 @@ namespace vt {
     constexpr pair<T1, T2> make_pair(T1 &&t1, T2 &&t2) { return pair<T1, T2>(t1, t2); }
 }
 
-#endif //VNET_LINALG_PAIR_H
+#endif //VT_LINALG_PAIR_H

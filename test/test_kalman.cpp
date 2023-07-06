@@ -30,14 +30,14 @@ int main() {
     for (size_t i = 0; i < SAMPLES; ++i) {
         kf.predict(controls[i]);
         std::cout << "Predicted state: ";
-        for (const auto &state: kf.state_vector()) {
+        for (auto &state: kf.state_vector) {
             std::cout << state << " ";
         }
         std::cout << '\n';
 
         kf.update(measurements[i]);
         std::cout << i + 1 << " - Estimated state: ";
-        for (const auto &state: kf.state_vector()) {
+        for (auto &state: kf.state_vector) {
             std::cout << state << " ";
         }
         std::cout << '\n';

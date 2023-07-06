@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['matrix_5ft_0',['Matrix_t',['../classvt_1_1impl_1_1numeric__matrix__static__lu__t.html#a94eed8f6379d0cb2238f4f03e5561258',1,'vt::impl::numeric_matrix_static_lu_t']]]
+  ['kalman_5ffilter_5ft_0',['kalman_filter_t',['../namespacevt.html#a6b1ee88b9740d8a0190438cbb22900d8',1,'vt']]],
+  ['kf_1',['KF',['../namespacevt.html#a746ff8ff9a0b1e65b11bf79f42774bce',1,'vt']]]
 ];

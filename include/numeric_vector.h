@@ -5,23 +5,30 @@
  * @brief Numeric static vector library
  */
 
-#ifndef VNET_LINALG_NUMERIC_VECTOR_H
-#define VNET_LINALG_NUMERIC_VECTOR_H
+#ifndef VT_LINALG_NUMERIC_VECTOR_H
+#define VT_LINALG_NUMERIC_VECTOR_H
 
 #include "standard_utility.h"
 #include "iterator.h"
 
 namespace vt {
     namespace detail {
-        template<typename T, size_t Size, size_t IMax, size_t I>
-        void helper_assign_to(const T (&array)[Size], T &var) {
-            var = array[I];
-        }
+        template<typename T, size_t Size, size_t, size_t I>
+        void helper_assign_to(const T (&array)[Size], T &var) { var = array[I]; }
 
         template<typename T, size_t Size, size_t IMax, size_t I, typename... Ts>
         void helper_assign_to(const T (&array)[Size], T &var, Ts &...vars) {
             helper_assign_to<T, Size, IMax, I>(array, var);
             if (I < IMax) helper_assign_to<T, Size, IMax, I + 1>(array, vars...);
+        }
+
+        template<typename T, size_t Size, size_t, size_t I>
+        void helper_assign_from(T (&array)[Size], const T &var) { array[I] = var; }
+
+        template<typename T, size_t Size, size_t IMax, size_t I, typename... Ts>
+        void helper_assign_from(T (&array)[Size], const T &var, const Ts &...vars) {
+            helper_assign_from<T, Size, IMax, I>(array, var);
+            if (I < IMax) helper_assign_from<T, Size, IMax, I + 1>(array, vars...);
         }
     }
 
@@ -44,8 +51,7 @@ namespace vt {
             static_assert(Size > 0, "Capacity must be greater than 0.");
 
         private:
-            template<typename U, size_t V, size_t W>
-            friend
+            template<typename U, size_t V, size_t W> friend
             class numeric_matrix_static_t;
 
         private:
@@ -76,14 +82,14 @@ namespace vt {
              *
              * @param other Other vector
              */
-            constexpr numeric_vector_static_t(const numeric_vector_static_t &other) = default;
+            constexpr numeric_vector_static_t(const numeric_vector_static_t &) = default;
 
             /**
              * Move constructor
              *
              * @param other Other vector
              */
-            constexpr numeric_vector_static_t(numeric_vector_static_t &&other) noexcept = default;
+            constexpr numeric_vector_static_t(numeric_vector_static_t &&) noexcept = default;
 
         private:
             template<size_t... I>
@@ -501,7 +507,7 @@ namespace vt {
              *
              * @return An iterator to vector's first dimension entry
              */
-            constexpr iterator<T> begin() const { return iterator<T>(arr_); }
+            constexpr const_iterator<T> begin() const { return const_iterator<T>(arr_); }
 
             /**
              * Returns an iterator to vector's last dimension entry.
@@ -515,7 +521,7 @@ namespace vt {
              *
              * @return An iterator to vector's last dimension entry
              */
-            constexpr iterator<T> end() const { return iterator<T>(arr_ + Size); }
+            constexpr const_iterator<T> end() const { return const_iterator<T>(arr_ + Size); }
 
             /**
              * Returns vector's dimension (size).
@@ -554,11 +560,36 @@ namespace vt {
              */
             constexpr numeric_vector_static_t copy() const { return numeric_vector_static_t(*this); }
 
+            /**
+             * Assign to variables from this vector's values.
+             *
+             * @tparam Ts
+             * @param vars
+             */
             template<typename... Ts>
-            void assign_to(Ts &...vars) {
+            numeric_vector_static_t &assign_to(Ts &...vars) {
                 static_assert(sizeof...(Ts) <= Size,
                               "Number of variables must not be greater than vector\'s dimension.");
                 detail::helper_assign_to<T, Size, sizeof...(Ts), 0>(arr_, vars...);
+                return *this;
+            }
+
+            template<typename... Ts>
+            numeric_vector_static_t &assign_from(const Ts &...vars) {
+                static_assert(sizeof...(Ts) <= Size,
+                              "Number of variables must not be greater than vector\'s dimension.");
+                detail::helper_assign_from<T, Size, sizeof...(Ts), 0>(arr_, vars...);
+                return *this;
+            }
+
+            detail::output_assignment_chain<T, Size, 1> operator>>(T &var) const {
+                var = arr_[0];
+                return detail::output_assignment_chain<T, Size, 1>(arr_);
+            }
+
+            detail::input_assignment_chain<T, Size, 1> operator<<(const T &var) {
+                arr_[0] = var;
+                return detail::input_assignment_chain<T, Size, 1>(arr_);
             }
 
         private:
@@ -639,7 +670,7 @@ namespace vt {
 
         template<template<typename, size_t> class Class, typename T, size_t Size, size_t... Sizes>
         struct size_sum<Class<T, Size>, Class<T, Sizes>...> {
-            static constexpr size_t value = Size + size_sum<impl::numeric_vector_static_t < T, Sizes>...>::value;
+            static constexpr size_t value = Size + size_sum<impl::numeric_vector_static_t<T, Sizes>...>::value;
         };
     }
 
@@ -678,8 +709,7 @@ namespace vt {
      */
     template<size_t S1, size_t S2>
     constexpr numeric_vector<S1 + S2>
-    make_numeric_vector(const numeric_vector<S1> &v1,
-                        const numeric_vector<S2> &v2) {
+    make_numeric_vector(const numeric_vector<S1> &v1, const numeric_vector<S2> &v2) {
         return numeric_vector<S1 + S2>(v1, v2);
     }
 
@@ -696,9 +726,7 @@ namespace vt {
      */
     template<size_t S1, size_t S2, size_t... Ss>
     constexpr numeric_vector<vt::detail::size_sum<numeric_vector<S1>, numeric_vector<S2>, numeric_vector<Ss>...>::value>
-    make_numeric_vector(const numeric_vector<S1> &v1,
-                        const numeric_vector<S2> &v2,
-                        const numeric_vector<Ss> &... vs) {
+    make_numeric_vector(const numeric_vector<S1> &v1, const numeric_vector<S2> &v2, const numeric_vector<Ss> &... vs) {
         return make_numeric_vector(make_numeric_vector(v1, v2), vs...);
     }
 
@@ -706,30 +734,27 @@ namespace vt {
         using namespace impl;
 
         template<typename T, size_t Size>
-        constexpr numeric_vector_static_t <T, Size> make_numeric_vector_static_t() {
+        constexpr numeric_vector_static_t<T, Size> make_numeric_vector_static_t() {
             return numeric_vector_static_t<T, Size>();
         }
 
         template<typename T, size_t Size>
-        constexpr numeric_vector_static_t <T, Size> make_numeric_vector_static_t(const T (&array)[Size]) {
+        constexpr numeric_vector_static_t<T, Size> make_numeric_vector_static_t(const T (&array)[Size]) {
             return numeric_vector_static_t<T, Size>(array);
         }
 
         template<typename T, size_t S1, size_t S2>
         constexpr numeric_vector_static_t<T, S1 + S2>
-        make_numeric_vector_static_t(const T (&a1)[S1],
-                                     const T (&a2)[S2]) {
+        make_numeric_vector_static_t(const T (&a1)[S1], const T (&a2)[S2]) {
             return numeric_vector_static_t<T, S1 + S2>(a1, a2);
         }
 
         template<typename T, size_t S1, size_t S2, size_t... Ss>
         constexpr numeric_vector_static_t<T, size_sum<
-                numeric_vector_static_t <
-                T, S1>, numeric_vector_static_t < T, S2>, numeric_vector_static_t <T, Ss>...>::value>
+                numeric_vector_static_t<
+                        T, S1>, numeric_vector_static_t<T, S2>, numeric_vector_static_t<T, Ss>...>::value>
 
-        make_numeric_vector_static_t(const T (&a1)[S1],
-                                     const T (&a2)[S1],
-                                     const T (&...as)[Ss]) {
+        make_numeric_vector_static_t(const T (&a1)[S1], const T (&a2)[S1], const T (&...as)[Ss]) {
             return make_numeric_vector_static_t(make_numeric_vector_static_t(a1, a2), as...);
         }
 
@@ -745,25 +770,25 @@ namespace vt {
         }
 
         template<typename T, size_t Row, size_t Col, size_t ...I>
-        constexpr numeric_vector_static_t <numeric_vector_static_t<T, Col>, Row>
+        constexpr numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row>
         make_nested(const T (&array)[Row][Col], vt::index_sequence<I...>) {
             return make_numeric_vector_static_t(make_numeric_vector_static_t(array[I])...);
         }
 
         template<typename T, size_t Row, size_t Col>
-        constexpr numeric_vector_static_t <numeric_vector_static_t<T, Col>, Row>
+        constexpr numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row>
         make_nested(const T (&array)[Row][Col]) {
             return make_nested(array, vt::make_index_sequence<Row>());
         }
 
         template<typename T, size_t Order, size_t I, size_t ...J>
-        constexpr numeric_vector_static_t <T, Order>
+        constexpr numeric_vector_static_t<T, Order>
         make_diagonal_minor(const T &value, vt::index_sequence<J...>) {
             return make_numeric_vector_static_t(choose_if<(I == J)>(value, T())...);
         }
 
         template<typename T, size_t Order, size_t ...I>
-        constexpr numeric_vector_static_t <numeric_vector_static_t<T, Order>, Order>
+        constexpr numeric_vector_static_t<numeric_vector_static_t<T, Order>, Order>
         make_diagonal(const T (&array)[Order], vt::index_sequence<I...>) {
             return make_numeric_vector_static_t(
                     make_diagonal_minor<T, Order, I>(array[I], vt::make_index_sequence<Order>())...
@@ -771,11 +796,11 @@ namespace vt {
         }
 
         template<typename T, size_t Order, size_t ...I>
-        constexpr numeric_vector_static_t <numeric_vector_static_t<T, Order>, Order>
+        constexpr numeric_vector_static_t<numeric_vector_static_t<T, Order>, Order>
         make_diagonal(const T (&array)[Order]) {
             return make_diagonal(array, vt::make_index_sequence<Order>());
         }
     }
 }
 
-#endif //VNET_LINALG_NUMERIC_VECTOR_H
+#endif //VT_LINALG_NUMERIC_VECTOR_H

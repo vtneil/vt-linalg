@@ -5,8 +5,8 @@
  * @brief Numeric matrix library
  */
 
-#ifndef VNET_LINALG_DYNAMIC_NUMERIC_MATRIX_H
-#define VNET_LINALG_DYNAMIC_NUMERIC_MATRIX_H
+#ifndef VT_LINALG_DYNAMIC_NUMERIC_MATRIX_H
+#define VT_LINALG_DYNAMIC_NUMERIC_MATRIX_H
 
 #include "standard_utility.h"
 #include "pair.h"
@@ -23,8 +23,8 @@ namespace vt {
         friend class numeric_vector_dynamic_t<T>;
 
     private:
-        static constexpr size_t STRASSEN_DIMENSION = 1024;
-        static constexpr size_t STRASSEN_THRESHOLD = STRASSEN_DIMENSION * STRASSEN_DIMENSION;
+        static constexpr size_t STRASSENDIMENSION = 1024;
+        static constexpr size_t STRASSENTHRESHOLD = STRASSENDIMENSION * STRASSENDIMENSION;
         size_t r_;
         size_t c_;
         numeric_vector_dynamic_t<numeric_vector_dynamic_t<T>> vector_;
@@ -184,7 +184,7 @@ namespace vt {
                 B.r() != 1 &&
                 A.c() != 1 &&
                 B.c() != 1 &&
-                vt::max(A.r() * A.c(), B.r() * B.c()) >= STRASSEN_THRESHOLD)
+                vt::max(A.r() * A.c(), B.r() * B.c()) >= STRASSENTHRESHOLD)
                 return mm_strassen(C, A, B);
             return mm_naive(C, A, B);
         }
@@ -257,9 +257,9 @@ namespace vt {
 
         bool is_square() const { return r_ == c_; }
 
-        bool can_multiply_with(const numeric_matrix_dynamic_t &other) const { return c_ == other.r_; }
+        bool caNmultiply_with(const numeric_matrix_dynamic_t &other) const { return c_ == other.r_; }
 
-        bool can_multiply_with(const numeric_vector_dynamic_t<T> &other) const { return c_ == other.size_; }
+        bool caNmultiply_with(const numeric_vector_dynamic_t<T> &other) const { return c_ == other.size_; }
 
         numeric_vector_dynamic_t<T> row(size_t r_index) const { return numeric_vector_dynamic_t<T>(operator[](r_index)); }
 
@@ -270,9 +270,9 @@ namespace vt {
         }
 
         numeric_vector_dynamic_t<T> diag() {
-            size_t min_dim = vt::min(r_, c_);
-            numeric_vector_dynamic_t<T> tmp(min_dim);
-            for (size_t i = 0; i < min_dim; ++i) tmp[i] = vector_[i][i];
+            size_t miNdim = vt::min(r_, c_);
+            numeric_vector_dynamic_t<T> tmp(miNdim);
+            for (size_t i = 0; i < miNdim; ++i) tmp[i] = vector_[i][i];
             return tmp;
         }
 
@@ -529,9 +529,9 @@ namespace vt {
         }
 
         template<size_t N>
-        void put_array(size_t index, const T (&array)[N_]) {
+        void put_array(size_t index, const T (&array)[N]) {
             vector_[index] = array;
-            c_ = N_;
+            c_ = N;
         }
 
         template<typename... Vectors>
@@ -541,7 +541,7 @@ namespace vt {
         }
 
         template<size_t N, typename... Arrays>
-        void put_array(size_t index, const T (&array)[N_], const Arrays (&...arrays)[N_]) {
+        void put_array(size_t index, const T (&array)[N], const Arrays (&...arrays)[N]) {
             vector_[index] = array;
             put_array(index + 1, arrays...);
         }
@@ -611,8 +611,8 @@ namespace vt {
         }
 
         template<size_t N, typename... Arrays>
-        static numeric_matrix_dynamic_t from(const Arrays (&...arrays)[N_]) {
-            numeric_matrix_dynamic_t tmp(N_, 0);
+        static numeric_matrix_dynamic_t from(const Arrays (&...arrays)[N]) {
+            numeric_matrix_dynamic_t tmp(N, 0);
             tmp.put_array(0, arrays...);
             return tmp;
         }
@@ -675,4 +675,4 @@ namespace vt {
     using numeric_matrix = numeric_matrix_dynamic_t<double>;
 }
 
-#endif //VNET_LINALG_DYNAMIC_NUMERIC_MATRIX_H
+#endif //VT_LINALG_DYNAMIC_NUMERIC_MATRIX_H

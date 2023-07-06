@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['numeric_5fmatrix_0',['numeric_matrix',['../namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1',1,'vt']]],
-  ['numeric_5fmatrix_5flu_1',['numeric_matrix_lu',['../namespacevt.html#a92f5dbeeffc0583ebb1ca91eb87414c9',1,'vt']]],
-  ['numeric_5fvector_2',['numeric_vector',['../namespacevt.html#aa067e8af8afe803ea08e30dbec856b92',1,'vt']]]
+  ['matrix_5ft_0',['Matrix_t',['../classvt_1_1impl_1_1numeric__matrix__static__lu__t.html#a94eed8f6379d0cb2238f4f03e5561258',1,'vt::impl::numeric_matrix_static_lu_t']]]
 ];

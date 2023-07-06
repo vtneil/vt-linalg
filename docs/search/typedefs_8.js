@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['state_5ffunc_5ft_0',['state_func_t',['../classvt_1_1extended__kalman__filter__t.html#a29d2e5337808a3c9ee3f8158923aba31',1,'vt::extended_kalman_filter_t']]],
-  ['state_5fjacobian_5ft_1',['state_jacobian_t',['../classvt_1_1extended__kalman__filter__t.html#afe7c27b11b7aba644069b96484e66ced',1,'vt::extended_kalman_filter_t']]]
+  ['real_5ft_0',['real_t',['../namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e',1,'vt']]],
+  ['remove_5freference_5ft_1',['remove_reference_t',['../namespacevt.html#abff0b8c0c4a3cf4f5c6689ed6a1626d9',1,'vt']]]
 ];

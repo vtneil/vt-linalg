@@ -1,5 +1,5 @@
-#ifndef VNET_LINALG_INITIALIZER_LIST_H
-#define VNET_LINALG_INITIALIZER_LIST_H
+#ifndef VT_LINALG_INITIALIZER_LIST_H
+#define VT_LINALG_INITIALIZER_LIST_H
 
 #include "standard_utility.h"
 
@@ -33,4 +33,4 @@ namespace vt {
     };
 }
 
-#endif //VNET_LINALG_INITIALIZER_LIST_H
+#endif //VT_LINALG_INITIALIZER_LIST_H

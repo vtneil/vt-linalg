@@ -36,7 +36,7 @@
                 <tbody>
                 <tr id="projectrow">
                     <td id="projectalign">
-                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.2.0</span>
+                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.3.0</span>
                         </div>
                         <div id="projectbrief">C++ Efficient Linear Algebra Library</div>
                     </td>
@@ -112,6 +112,10 @@ $(document).ready(function(){initNavTree('namespacevt_1_1detail.html',''); initR
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1detail_1_1always__false.html">always_false</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1detail_1_1input__assignment__chain.html">input_assignment_chain</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1detail_1_1output__assignment__chain.html">output_assignment_chain</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1detail_1_1size__sum.html">size_sum</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvt_1_1detail_1_1size__sum_3_01Class_3_01T_00_01Size_01_4_01_4.html">size_sum&lt; Class&lt; T, Size &gt; &gt;</a></td></tr>
@@ -123,12 +127,18 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abbd3b2d200a1d103e026e7e35b300108"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size, size_t IMax, size_t I&gt; </td></tr>
+<tr class="memitem:abbd3b2d200a1d103e026e7e35b300108"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size, size_t , size_t I&gt; </td></tr>
 <tr class="memitem:abbd3b2d200a1d103e026e7e35b300108"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#abbd3b2d200a1d103e026e7e35b300108">helper_assign_to</a> (const T(&amp;array)[Size], T &amp;var)</td></tr>
 <tr class="separator:abbd3b2d200a1d103e026e7e35b300108"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdf2b1bbbcf9b24fc104664095cd7850"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size, size_t IMax, size_t I, typename... Ts&gt; </td></tr>
 <tr class="memitem:afdf2b1bbbcf9b24fc104664095cd7850"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#afdf2b1bbbcf9b24fc104664095cd7850">helper_assign_to</a> (const T(&amp;array)[Size], T &amp;var, Ts &amp;...vars)</td></tr>
 <tr class="separator:afdf2b1bbbcf9b24fc104664095cd7850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f100557719f243fc46dcfe54607f41c"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size, size_t , size_t I&gt; </td></tr>
+<tr class="memitem:a9f100557719f243fc46dcfe54607f41c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#a9f100557719f243fc46dcfe54607f41c">helper_assign_from</a> (T(&amp;array)[Size], const T &amp;var)</td></tr>
+<tr class="separator:a9f100557719f243fc46dcfe54607f41c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a285693c88e3a93c0e48d68e5d4836aeb"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size, size_t IMax, size_t I, typename... Ts&gt; </td></tr>
+<tr class="memitem:a285693c88e3a93c0e48d68e5d4836aeb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#a285693c88e3a93c0e48d68e5d4836aeb">helper_assign_from</a> (T(&amp;array)[Size], const T &amp;var, const Ts &amp;...vars)</td></tr>
+<tr class="separator:a285693c88e3a93c0e48d68e5d4836aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7cf172faf81f6da17710976ed8d547a"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size&gt; </td></tr>
 <tr class="memitem:ac7cf172faf81f6da17710976ed8d547a"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a> ()</td></tr>
 <tr class="separator:ac7cf172faf81f6da17710976ed8d547a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,6 +163,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a448b6d2fb4f75d8a80966d714ae13313"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Row, size_t Col&gt; </td></tr>
 <tr class="memitem:a448b6d2fb4f75d8a80966d714ae13313"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Col &gt;, Row &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#a448b6d2fb4f75d8a80966d714ae13313">make_nested</a> (const T(&amp;array)[Row][Col])</td></tr>
 <tr class="separator:a448b6d2fb4f75d8a80966d714ae13313"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1254544747af3fd1e8104bc081a15da"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Order, size_t I, size_t ... J&gt; </td></tr>
+<tr class="memitem:af1254544747af3fd1e8104bc081a15da"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Order &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#af1254544747af3fd1e8104bc081a15da">make_diagonal_minor</a> (const T &amp;value, <a class="el" href="structvt_1_1index__sequence.html">vt::index_sequence</a>&lt; J... &gt;)</td></tr>
+<tr class="separator:af1254544747af3fd1e8104bc081a15da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7543026ff7c8814252a34b9855aadcdd"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Order, size_t ... I&gt; </td></tr>
+<tr class="memitem:a7543026ff7c8814252a34b9855aadcdd"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Order &gt;, Order &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#a7543026ff7c8814252a34b9855aadcdd">make_diagonal</a> (const T(&amp;array)[Order], <a class="el" href="structvt_1_1index__sequence.html">vt::index_sequence</a>&lt; I... &gt;)</td></tr>
+<tr class="separator:a7543026ff7c8814252a34b9855aadcdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af69d5a4eaef40cad02d9d745972c717a"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Order, size_t ... I&gt; </td></tr>
+<tr class="memitem:af69d5a4eaef40cad02d9d745972c717a"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Order &gt;, Order &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#af69d5a4eaef40cad02d9d745972c717a">make_diagonal</a> (const T(&amp;array)[Order])</td></tr>
+<tr class="separator:af69d5a4eaef40cad02d9d745972c717a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3eacd1e6dbf322f556f7d07eefa1844e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a3eacd1e6dbf322f556f7d07eefa1844e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#a3eacd1e6dbf322f556f7d07eefa1844e">try_add_lvalue_reference</a> (int) -&gt; <a class="el" href="structvt_1_1detail_1_1type__identity.html">type_identity</a>&lt; T &amp; &gt;</td></tr>
 <tr class="separator:a3eacd1e6dbf322f556f7d07eefa1844e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,7 +194,7 @@ Functions</h2></td></tr>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , size_t Size, size_t IMax, size_t I&gt; </div>
+template&lt;typename T , size_t Size, size_t , size_t I&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void vt::detail::helper_assign_to </td>
@@ -198,11 +217,9 @@ template&lt;typename T , size_t Size, size_t IMax, size_t I&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00017">17</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>                                                              {</div>
-<div class="line"><span class="lineno">   18</span>            var = array[I];</div>
-<div class="line"><span class="lineno">   19</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>{ var = array[I]; }</div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00558">vt::impl::numeric_vector_static_t&lt; T, Size &gt;::assign_to()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00570">vt::impl::numeric_vector_static_t&lt; T, Size &gt;::assign_to()</a>.</p>
 
 </div>
 </div>
@@ -240,11 +257,88 @@ template&lt;typename T , size_t Size, size_t IMax, size_t I, typename... Ts&gt; 
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00022">22</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   22</span>                                                                           {</div>
-<div class="line"><span class="lineno">   23</span>            helper_assign_to&lt;T, Size, IMax, I&gt;(array, var);</div>
-<div class="line"><span class="lineno">   24</span>            <span class="keywordflow">if</span> (I &lt; IMax) helper_assign_to&lt;T, Size, IMax, I + 1&gt;(array, vars...);</div>
-<div class="line"><span class="lineno">   25</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00020">20</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>                                                                           {</div>
+<div class="line"><span class="lineno">   21</span>            helper_assign_to&lt;T, Size, IMax, I&gt;(array, var);</div>
+<div class="line"><span class="lineno">   22</span>            <span class="keywordflow">if</span> (I &lt; IMax) helper_assign_to&lt;T, Size, IMax, I + 1&gt;(array, vars...);</div>
+<div class="line"><span class="lineno">   23</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9f100557719f243fc46dcfe54607f41c" name="a9f100557719f243fc46dcfe54607f41c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f100557719f243fc46dcfe54607f41c">&#9670;&#160;</a></span>helper_assign_from() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , size_t Size, size_t , size_t I&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void vt::detail::helper_assign_from </td>
+          <td>(</td>
+          <td class="paramtype">T(&amp;)&#160;</td>
+          <td class="paramname"><em>array</em>[Size], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>var</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00026">26</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>{ array[I] = var; }</div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00578">vt::impl::numeric_vector_static_t&lt; T, Size &gt;::assign_from()</a>.</p>
+
+</div>
+</div>
+<a id="a285693c88e3a93c0e48d68e5d4836aeb" name="a285693c88e3a93c0e48d68e5d4836aeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a285693c88e3a93c0e48d68e5d4836aeb">&#9670;&#160;</a></span>helper_assign_from() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , size_t Size, size_t IMax, size_t I, typename... Ts&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void vt::detail::helper_assign_from </td>
+          <td>(</td>
+          <td class="paramtype">T(&amp;)&#160;</td>
+          <td class="paramname"><em>array</em>[Size], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>var</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Ts &amp;...&#160;</td>
+          <td class="paramname"><em>vars</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00029">29</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>                                                                                   {</div>
+<div class="line"><span class="lineno">   30</span>            helper_assign_from&lt;T, Size, IMax, I&gt;(array, var);</div>
+<div class="line"><span class="lineno">   31</span>            <span class="keywordflow">if</span> (I &lt; IMax) helper_assign_from&lt;T, Size, IMax, I + 1&gt;(array, vars...);</div>
+<div class="line"><span class="lineno">   32</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -273,13 +367,13 @@ template&lt;typename T , size_t Size&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00709">709</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  709</span>                                                                                   {</div>
-<div class="line"><span class="lineno">  710</span>            <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t&lt;T, Size&gt;</a>();</div>
-<div class="line"><span class="lineno">  711</span>        }</div>
-<div class="ttc" id="aclassvt_1_1impl_1_1numeric__vector__static__t_html"><div class="ttname"><a href="classvt_1_1impl_1_1numeric__vector__static__t.html">vt::impl::numeric_vector_static_t</a></div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00042">numeric_vector.h:42</a></div></div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00737">737</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  737</span>                                                                                  {</div>
+<div class="line"><span class="lineno">  738</span>            <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t&lt;T, Size&gt;</a>();</div>
+<div class="line"><span class="lineno">  739</span>        }</div>
+<div class="ttc" id="aclassvt_1_1impl_1_1numeric__vector__static__t_html"><div class="ttname"><a href="classvt_1_1impl_1_1numeric__vector__static__t.html">vt::impl::numeric_vector_static_t</a></div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00049">numeric_vector.h:49</a></div></div>
 </div><!-- fragment -->
-<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00749">make_nested()</a>, <a class="el" href="numeric__vector_8h_source.html#l00743">make_numeric_vector_static_t()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00730">make_numeric_vector_static_t()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00792">make_diagonal()</a>, <a class="el" href="numeric__vector_8h_source.html#l00786">make_diagonal_minor()</a>, <a class="el" href="numeric__vector_8h_source.html#l00774">make_nested()</a>, <a class="el" href="numeric__vector_8h_source.html#l00768">make_numeric_vector_static_t()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00757">make_numeric_vector_static_t()</a>.</p>
 
 </div>
 </div>
@@ -309,10 +403,10 @@ template&lt;typename T , size_t Size&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00714">714</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  714</span>                                                                                                         {</div>
-<div class="line"><span class="lineno">  715</span>            <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t&lt;T, Size&gt;</a>(array);</div>
-<div class="line"><span class="lineno">  716</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00742">742</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  742</span>                                                                                                        {</div>
+<div class="line"><span class="lineno">  743</span>            <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t&lt;T, Size&gt;</a>(array);</div>
+<div class="line"><span class="lineno">  744</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -352,10 +446,10 @@ template&lt;typename T , size_t S1, size_t S2&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00720">720</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  721</span>                                                        {</div>
-<div class="line"><span class="lineno">  722</span>            <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t&lt;T, S1 + S2&gt;</a>(a1, a2);</div>
-<div class="line"><span class="lineno">  723</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00748">748</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  748</span>                                                                           {</div>
+<div class="line"><span class="lineno">  749</span>            <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t&lt;T, S1 + S2&gt;</a>(a1, a2);</div>
+<div class="line"><span class="lineno">  750</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -401,13 +495,13 @@ template&lt;typename T , size_t S1, size_t S2, size_t... Ss&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00730">730</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  732</span>                                                           {</div>
-<div class="line"><span class="lineno">  733</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>(<a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>(a1, a2), as...);</div>
-<div class="line"><span class="lineno">  734</span>        }</div>
-<div class="ttc" id="anamespacevt_1_1detail_html_ac7cf172faf81f6da17710976ed8d547a"><div class="ttname"><a href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">vt::detail::make_numeric_vector_static_t</a></div><div class="ttdeci">constexpr numeric_vector_static_t&lt; T, Size &gt; make_numeric_vector_static_t()</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00709">numeric_vector.h:709</a></div></div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00757">757</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  757</span>                                                                                                 {</div>
+<div class="line"><span class="lineno">  758</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>(<a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>(a1, a2), as...);</div>
+<div class="line"><span class="lineno">  759</span>        }</div>
+<div class="ttc" id="anamespacevt_1_1detail_html_ac7cf172faf81f6da17710976ed8d547a"><div class="ttname"><a href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">vt::detail::make_numeric_vector_static_t</a></div><div class="ttdeci">constexpr numeric_vector_static_t&lt; T, Size &gt; make_numeric_vector_static_t()</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00737">numeric_vector.h:737</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00709">make_numeric_vector_static_t()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00737">make_numeric_vector_static_t()</a>.</p>
 
 </div>
 </div>
@@ -437,10 +531,10 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00737">737</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  737</span>                                                                                           {</div>
-<div class="line"><span class="lineno">  738</span>            <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t&lt;T, 1&gt;</a>(val);</div>
-<div class="line"><span class="lineno">  739</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00762">762</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  762</span>                                                                                           {</div>
+<div class="line"><span class="lineno">  763</span>            <span class="keywordflow">return</span> <a class="code hl_class" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t&lt;T, 1&gt;</a>(val);</div>
+<div class="line"><span class="lineno">  764</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -480,12 +574,12 @@ template&lt;typename T , typename... Ts&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00743">743</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  743</span>                                                                      {</div>
-<div class="line"><span class="lineno">  744</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>({val, vals...});</div>
-<div class="line"><span class="lineno">  745</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00768">768</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  768</span>                                                                      {</div>
+<div class="line"><span class="lineno">  769</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>({val, vals...});</div>
+<div class="line"><span class="lineno">  770</span>        }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00709">make_numeric_vector_static_t()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00737">make_numeric_vector_static_t()</a>.</p>
 
 </div>
 </div>
@@ -525,14 +619,14 @@ template&lt;typename T , size_t Row, size_t Col, size_t ... I&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00749">749</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  749</span>                                                                        {</div>
-<div class="line"><span class="lineno">  750</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>(<a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>(array[I])...);</div>
-<div class="line"><span class="lineno">  751</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00774">774</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  774</span>                                                                        {</div>
+<div class="line"><span class="lineno">  775</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>(<a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>(array[I])...);</div>
+<div class="line"><span class="lineno">  776</span>        }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00709">make_numeric_vector_static_t()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00737">make_numeric_vector_static_t()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00755">make_nested()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="numeric__vector_8h_source.html#l00780">make_nested()</a>.</p>
 
 </div>
 </div>
@@ -562,14 +656,144 @@ template&lt;typename T , size_t Row, size_t Col&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00755">755</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  755</span>                                                {</div>
-<div class="line"><span class="lineno">  756</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt_1_1detail.html#a2a255cfe6918ff24d8c44a9d427fd71d">make_nested</a>(array, <a class="code hl_struct" href="structvt_1_1make__index__sequence.html">vt::make_index_sequence&lt;Row&gt;</a>());</div>
-<div class="line"><span class="lineno">  757</span>        }</div>
-<div class="ttc" id="anamespacevt_1_1detail_html_a2a255cfe6918ff24d8c44a9d427fd71d"><div class="ttname"><a href="namespacevt_1_1detail.html#a2a255cfe6918ff24d8c44a9d427fd71d">vt::detail::make_nested</a></div><div class="ttdeci">constexpr numeric_vector_static_t&lt; numeric_vector_static_t&lt; T, Col &gt;, Row &gt; make_nested(const T(&amp;array)[Row][Col], vt::index_sequence&lt; I... &gt;)</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00749">numeric_vector.h:749</a></div></div>
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00780">780</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  780</span>                                                {</div>
+<div class="line"><span class="lineno">  781</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt_1_1detail.html#a2a255cfe6918ff24d8c44a9d427fd71d">make_nested</a>(array, <a class="code hl_struct" href="structvt_1_1make__index__sequence.html">vt::make_index_sequence&lt;Row&gt;</a>());</div>
+<div class="line"><span class="lineno">  782</span>        }</div>
+<div class="ttc" id="anamespacevt_1_1detail_html_a2a255cfe6918ff24d8c44a9d427fd71d"><div class="ttname"><a href="namespacevt_1_1detail.html#a2a255cfe6918ff24d8c44a9d427fd71d">vt::detail::make_nested</a></div><div class="ttdeci">constexpr numeric_vector_static_t&lt; numeric_vector_static_t&lt; T, Col &gt;, Row &gt; make_nested(const T(&amp;array)[Row][Col], vt::index_sequence&lt; I... &gt;)</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00774">numeric_vector.h:774</a></div></div>
 <div class="ttc" id="astructvt_1_1make__index__sequence_html"><div class="ttname"><a href="structvt_1_1make__index__sequence.html">vt::make_index_sequence</a></div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00185">standard_utility.h:185</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00749">make_nested()</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00774">make_nested()</a>.</p>
+
+</div>
+</div>
+<a id="af1254544747af3fd1e8104bc081a15da" name="af1254544747af3fd1e8104bc081a15da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1254544747af3fd1e8104bc081a15da">&#9670;&#160;</a></span>make_diagonal_minor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , size_t Order, size_t I, size_t ... J&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Order &gt; vt::detail::make_diagonal_minor </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvt_1_1index__sequence.html">vt::index_sequence</a>&lt; J... &gt;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00786">786</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  786</span>                                                                    {</div>
+<div class="line"><span class="lineno">  787</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>(choose_if&lt;(I == J)&gt;(value, T())...);</div>
+<div class="line"><span class="lineno">  788</span>        }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="standard__utility_8h_source.html#l00205">vt::choose_if()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00737">make_numeric_vector_static_t()</a>.</p>
+
+</div>
+</div>
+<a id="a7543026ff7c8814252a34b9855aadcdd" name="a7543026ff7c8814252a34b9855aadcdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7543026ff7c8814252a34b9855aadcdd">&#9670;&#160;</a></span>make_diagonal() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , size_t Order, size_t ... I&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Order &gt;, Order &gt; vt::detail::make_diagonal </td>
+          <td>(</td>
+          <td class="paramtype">const T(&amp;)&#160;</td>
+          <td class="paramname"><em>array</em>[Order], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvt_1_1index__sequence.html">vt::index_sequence</a>&lt; I... &gt;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00792">792</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  792</span>                                                                       {</div>
+<div class="line"><span class="lineno">  793</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt_1_1detail.html#ac7cf172faf81f6da17710976ed8d547a">make_numeric_vector_static_t</a>(</div>
+<div class="line"><span class="lineno">  794</span>                    make_diagonal_minor&lt;T, Order, I&gt;(array[I], <a class="code hl_struct" href="structvt_1_1make__index__sequence.html">vt::make_index_sequence&lt;Order&gt;</a>())...</div>
+<div class="line"><span class="lineno">  795</span>            );</div>
+<div class="line"><span class="lineno">  796</span>        }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00737">make_numeric_vector_static_t()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="numeric__matrix_8h_source.html#l00979">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;::diagonals()</a>, <a class="el" href="numeric__matrix_8h_source.html#l00989">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;::diagonals()</a>, and <a class="el" href="numeric__vector_8h_source.html#l00800">make_diagonal()</a>.</p>
+
+</div>
+</div>
+<a id="af69d5a4eaef40cad02d9d745972c717a" name="af69d5a4eaef40cad02d9d745972c717a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af69d5a4eaef40cad02d9d745972c717a">&#9670;&#160;</a></span>make_diagonal() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , size_t Order, size_t ... I&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Order &gt;, Order &gt; vt::detail::make_diagonal </td>
+          <td>(</td>
+          <td class="paramtype">const T(&amp;)&#160;</td>
+          <td class="paramname"><em>array</em>[Order]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="numeric__vector_8h_source.html#l00800">800</a> of file <a class="el" href="numeric__vector_8h_source.html">numeric_vector.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  800</span>                                               {</div>
+<div class="line"><span class="lineno">  801</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespacevt_1_1detail.html#a7543026ff7c8814252a34b9855aadcdd">make_diagonal</a>(array, <a class="code hl_struct" href="structvt_1_1make__index__sequence.html">vt::make_index_sequence&lt;Order&gt;</a>());</div>
+<div class="line"><span class="lineno">  802</span>        }</div>
+<div class="ttc" id="anamespacevt_1_1detail_html_a7543026ff7c8814252a34b9855aadcdd"><div class="ttname"><a href="namespacevt_1_1detail.html#a7543026ff7c8814252a34b9855aadcdd">vt::detail::make_diagonal</a></div><div class="ttdeci">constexpr numeric_vector_static_t&lt; numeric_vector_static_t&lt; T, Order &gt;, Order &gt; make_diagonal(const T(&amp;array)[Order], vt::index_sequence&lt; I... &gt;)</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00792">numeric_vector.h:792</a></div></div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00792">make_diagonal()</a>.</p>
 
 </div>
 </div>
@@ -659,7 +883,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevt.html">vt</a></li><li class="navelem"><a class="el" href="namespacevt_1_1detail.html">detail</a></li>
-    <li class="footer">Generated on Tue Jul 4 2023 15:43:31 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Thu Jul 6 2023 19:49:33 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

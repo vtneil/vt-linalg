@@ -11,5 +11,7 @@ var numeric__matrix_8h =
     [ "make_numeric_matrix", "numeric__matrix_8h.html#a695c50243b0e67333ec90c444dfae7f9", null ],
     [ "make_numeric_matrix", "numeric__matrix_8h.html#aa3231f5d1c8e79a9dcee9b8d848789a2", null ],
     [ "make_quad_matrix", "numeric__matrix_8h.html#a95651b86fe470f83d68e15b33aca82b0", null ],
-    [ "make_block_matrix", "numeric__matrix_8h.html#ac4ef758d9bcd5c3e3397cf2c93c88e52", null ]
+    [ "make_block_matrix", "numeric__matrix_8h.html#ac4ef758d9bcd5c3e3397cf2c93c88e52", null ],
+    [ "make_diagonal_matrix", "numeric__matrix_8h.html#a149709a3e19a450b1b452516002ea531", null ],
+    [ "make_diagonal_matrix", "numeric__matrix_8h.html#aa44ed0e8cb5148208cbd4caf7ff149b9", null ]
 ];

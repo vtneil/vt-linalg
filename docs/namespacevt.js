@@ -8,6 +8,9 @@ var namespacevt =
       [ "euler_to_quaternion", "namespacevt_1_1imu__tools.html#a97e6b4f1d3017275b8386c51aa78d7b1", null ],
       [ "euler_to_quaternion", "namespacevt_1_1imu__tools.html#adba4e2a682ba7babc6c5e3666ccf67fa", null ]
     ] ],
+    [ "kalman", "namespacevt_1_1kalman.html", [
+      [ "make_F_1D", "namespacevt_1_1kalman.html#aedc5d6afea93bdd08e603f2e0b58482e", null ]
+    ] ],
     [ "add_lvalue_reference", "structvt_1_1add__lvalue__reference.html", null ],
     [ "add_rvalue_reference", "structvt_1_1add__rvalue__reference.html", null ],
     [ "circular_buffer_dynamic_t", "classvt_1_1circular__buffer__dynamic__t.html", "classvt_1_1circular__buffer__dynamic__t" ],
@@ -39,6 +42,7 @@ var namespacevt =
     [ "buffer_t", "namespacevt.html#ad4a501378bca1ffa96e76b01f3a26683", null ],
     [ "numeric_matrix", "namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1", null ],
     [ "numeric_vector", "namespacevt.html#aa067e8af8afe803ea08e30dbec856b92", null ],
+    [ "const_iterator", "namespacevt.html#aec0182ccc4bc6a4a88a8e92923e5e770", null ],
     [ "kalman_filter_t", "namespacevt.html#a6b1ee88b9740d8a0190438cbb22900d8", null ],
     [ "KF", "namespacevt.html#a746ff8ff9a0b1e65b11bf79f42774bce", null ],
     [ "EKF", "namespacevt.html#a0f2e8397a70c6f58ed46ca9a571bb1a5", null ],
@@ -57,8 +61,8 @@ var namespacevt =
     [ "inv", "namespacevt.html#a6e140c124ede868b6f02d8bdb9207825", null ],
     [ "RRE", "namespacevt.html#a0d823ede5b0ce3c7cc61f6daeddd02ad", null ],
     [ "operator*", "namespacevt.html#ab38df2da8cca665646f622c515ac45c0", null ],
-    [ "operator+", "namespacevt.html#ad57fe2b66c1b9e1310cfd023ebad03d7", null ],
-    [ "operator-", "namespacevt.html#ad2ca225eb3285cd9ab56b9dec3cc847c", null ],
+    [ "operator+", "namespacevt.html#a802b72fba29cfbc17e5366033249dcf2", null ],
+    [ "operator-", "namespacevt.html#a4f85588091382b180a9f20999fa359ea", null ],
     [ "operator==", "namespacevt.html#aa761836aee7ca2065c5d7afae749d98a", null ],
     [ "operator!=", "namespacevt.html#a4d2073e24f8228bb924a665f54635221", null ],
     [ "det", "namespacevt.html#a8b47578bcfaa8dbdeed27146e8f584b8", null ],
@@ -69,6 +73,8 @@ var namespacevt =
     [ "make_numeric_matrix", "namespacevt.html#aa3231f5d1c8e79a9dcee9b8d848789a2", null ],
     [ "make_quad_matrix", "namespacevt.html#a95651b86fe470f83d68e15b33aca82b0", null ],
     [ "make_block_matrix", "namespacevt.html#ac4ef758d9bcd5c3e3397cf2c93c88e52", null ],
+    [ "make_diagonal_matrix", "namespacevt.html#a149709a3e19a450b1b452516002ea531", null ],
+    [ "make_diagonal_matrix", "namespacevt.html#aa44ed0e8cb5148208cbd4caf7ff149b9", null ],
     [ "make_numeric_vector", "namespacevt.html#a22a4673f10baa3f620d81c4d768eb262", null ],
     [ "make_numeric_vector", "namespacevt.html#a39822289c228dd758545b928f025e88f", null ],
     [ "make_numeric_vector", "namespacevt.html#a289a90be24eb04bd3126cb82ae46cc25", null ],
@@ -82,6 +88,7 @@ var namespacevt =
     [ "fill", "namespacevt.html#ad848e88073c4da3aae708ccf5f9f5df5", null ],
     [ "copy", "namespacevt.html#aeaf81bd3d3b480c3c93997da6e596dc5", null ],
     [ "declval", "namespacevt.html#aab5e8fcc8becab365ccdc59cf093d0a9", null ],
+    [ "choose_if", "namespacevt.html#a151d27d5e6fe4155652d3a7eae000ab5", null ],
     [ "b", "namespacevt.html#adbd88eb951bd0237e80168ca1b0736c2", null ],
     [ "args", "namespacevt.html#ade94e08ee4125211703d31c08f97a241", null ]
 ];

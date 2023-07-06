@@ -31,6 +31,7 @@ var standard__utility_8h =
     [ "try_add_rvalue_reference", "standard__utility_8h.html#a68269e70f7d39c6e2434b3b94f52496d", null ],
     [ "try_add_rvalue_reference", "standard__utility_8h.html#a48263d82168835433a0230bbd2e8f3e2", null ],
     [ "declval", "standard__utility_8h.html#aab5e8fcc8becab365ccdc59cf093d0a9", null ],
+    [ "choose_if", "standard__utility_8h.html#a151d27d5e6fe4155652d3a7eae000ab5", null ],
     [ "b", "standard__utility_8h.html#adbd88eb951bd0237e80168ca1b0736c2", null ],
     [ "args", "standard__utility_8h.html#ade94e08ee4125211703d31c08f97a241", null ]
 ];

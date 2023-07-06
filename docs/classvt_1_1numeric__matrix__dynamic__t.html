@@ -36,7 +36,7 @@
                 <tbody>
                 <tr id="projectrow">
                     <td id="projectalign">
-                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.2.0</span>
+                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.3.0</span>
                         </div>
                         <div id="projectbrief">C++ Efficient Linear Algebra Library</div>
                     </td>
@@ -215,10 +215,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0f7068dd29b9f1701058de72bf60b37c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfdd6ac4b7ef13429afd606ed4414f2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#adfdd6ac4b7ef13429afd606ed4414f2a">is_square</a> () const</td></tr>
 <tr class="separator:adfdd6ac4b7ef13429afd606ed4414f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a272f350ee3ecd09cdb743f49f344ec45"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a272f350ee3ecd09cdb743f49f344ec45">can_multiply_with</a> (const <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a> &amp;other) const</td></tr>
-<tr class="separator:a272f350ee3ecd09cdb743f49f344ec45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a595ada73512c99452aa2928af435be29"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a595ada73512c99452aa2928af435be29">can_multiply_with</a> (const <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a>&lt; T &gt; &amp;other) const</td></tr>
-<tr class="separator:a595ada73512c99452aa2928af435be29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab872819fd52b74aa0b4d3aeba59c557f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#ab872819fd52b74aa0b4d3aeba59c557f">caNmultiply_with</a> (const <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a> &amp;other) const</td></tr>
+<tr class="separator:ab872819fd52b74aa0b4d3aeba59c557f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad58b19cbb99efe6390da8585c395ff44"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#ad58b19cbb99efe6390da8585c395ff44">caNmultiply_with</a> (const <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a>&lt; T &gt; &amp;other) const</td></tr>
+<tr class="separator:ad58b19cbb99efe6390da8585c395ff44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dd2b49af36a3503db48fa4aab983e7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a3dd2b49af36a3503db48fa4aab983e7a">row</a> (size_t r_index) const</td></tr>
 <tr class="separator:a3dd2b49af36a3503db48fa4aab983e7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adef1b25e3e9b858e67394a6ae9cfa678"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#adef1b25e3e9b858e67394a6ae9cfa678">col</a> (size_t c_index) const</td></tr>
@@ -297,9 +297,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a7528f99156d4833733a28977a8b55492"><td class="memTemplParams" colspan="2">template&lt;typename... Vectors&gt; </td></tr>
 <tr class="memitem:a7528f99156d4833733a28977a8b55492"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a7528f99156d4833733a28977a8b55492">from</a> (const Vectors &amp;...vectors)</td></tr>
 <tr class="separator:a7528f99156d4833733a28977a8b55492"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35acaf03d85269c83ef1757cff5afb1b"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename... Arrays&gt; </td></tr>
-<tr class="memitem:a35acaf03d85269c83ef1757cff5afb1b"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a35acaf03d85269c83ef1757cff5afb1b">from</a> (const Arrays(&amp;...arrays)[N_])</td></tr>
-<tr class="separator:a35acaf03d85269c83ef1757cff5afb1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a573b273eebe95c82b744a6f453ffb716"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename... Arrays&gt; </td></tr>
+<tr class="memitem:a573b273eebe95c82b744a6f453ffb716"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a573b273eebe95c82b744a6f453ffb716">from</a> (const Arrays(&amp;...arrays)[N])</td></tr>
+<tr class="separator:a573b273eebe95c82b744a6f453ffb716"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93031624e6d0df18d0ca56bedd808bba"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a93031624e6d0df18d0ca56bedd808bba">from_row</a> (const <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a>&lt; T &gt; &amp;vector)</td></tr>
 <tr class="separator:a93031624e6d0df18d0ca56bedd808bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a767ddf82aa84e060fec4bbeae633e8ee"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a767ddf82aa84e060fec4bbeae633e8ee">from_col</a> (const <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a>&lt; T &gt; &amp;vector)</td></tr>
@@ -313,15 +313,15 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a66b4f25187c02322bff0051effad962c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a784737411b9c83fdc1ae95416f2b8b2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a784737411b9c83fdc1ae95416f2b8b2b">put_array</a> (size_t index, const <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a>&lt; T &gt; &amp;vector)</td></tr>
 <tr class="separator:a784737411b9c83fdc1ae95416f2b8b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab9bf41f2a2056c1f0f9e738c13b5bb1"><td class="memTemplParams" colspan="2">template&lt;size_t N&gt; </td></tr>
-<tr class="memitem:aab9bf41f2a2056c1f0f9e738c13b5bb1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#aab9bf41f2a2056c1f0f9e738c13b5bb1">put_array</a> (size_t index, const T(&amp;array)[N_])</td></tr>
-<tr class="separator:aab9bf41f2a2056c1f0f9e738c13b5bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17e71e64c47680314e43f08f111e778d"><td class="memTemplParams" colspan="2">template&lt;size_t N&gt; </td></tr>
+<tr class="memitem:a17e71e64c47680314e43f08f111e778d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a17e71e64c47680314e43f08f111e778d">put_array</a> (size_t index, const T(&amp;array)[N])</td></tr>
+<tr class="separator:a17e71e64c47680314e43f08f111e778d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d4bbdebe77f0ee9ff7db02c3bc93dc8"><td class="memTemplParams" colspan="2">template&lt;typename... Vectors&gt; </td></tr>
 <tr class="memitem:a6d4bbdebe77f0ee9ff7db02c3bc93dc8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a6d4bbdebe77f0ee9ff7db02c3bc93dc8">put_array</a> (size_t index, const <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a>&lt; T &gt; &amp;vector, const Vectors &amp;...vectors)</td></tr>
 <tr class="separator:a6d4bbdebe77f0ee9ff7db02c3bc93dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa769f305a9ec648e4c6fa006278a861"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename... Arrays&gt; </td></tr>
-<tr class="memitem:aaa769f305a9ec648e4c6fa006278a861"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#aaa769f305a9ec648e4c6fa006278a861">put_array</a> (size_t index, const T(&amp;array)[N_], const Arrays(&amp;...arrays)[N_])</td></tr>
-<tr class="separator:aaa769f305a9ec648e4c6fa006278a861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e785aa618a7f271efe50e5f5712b38"><td class="memTemplParams" colspan="2">template&lt;size_t N, typename... Arrays&gt; </td></tr>
+<tr class="memitem:aa0e785aa618a7f271efe50e5f5712b38"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#aa0e785aa618a7f271efe50e5f5712b38">put_array</a> (size_t index, const T(&amp;array)[N], const Arrays(&amp;...arrays)[N])</td></tr>
+<tr class="separator:aa0e785aa618a7f271efe50e5f5712b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a175b4d893a71ceb7d4c2b247bdf35a16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a175b4d893a71ceb7d4c2b247bdf35a16">allocate_zero</a> ()</td></tr>
 <tr class="separator:a175b4d893a71ceb7d4c2b247bdf35a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3ab9946014805aba054fed0643a7727"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#ae3ab9946014805aba054fed0643a7727">allocate_fill</a> (T <a class="el" href="namespacevt.html#ad848e88073c4da3aae708ccf5f9f5df5">fill</a>)</td></tr>
@@ -359,10 +359,10 @@ Private Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a49d6a6510c97e2ee3adb556b347e5289"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a49d6a6510c97e2ee3adb556b347e5289">STRASSEN_DIMENSION</a> = 1024</td></tr>
-<tr class="separator:a49d6a6510c97e2ee3adb556b347e5289"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9fd4c815e01c6a086bd6694ad29dcb3"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#ae9fd4c815e01c6a086bd6694ad29dcb3">STRASSEN_THRESHOLD</a> = <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a49d6a6510c97e2ee3adb556b347e5289">STRASSEN_DIMENSION</a> * <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a49d6a6510c97e2ee3adb556b347e5289">STRASSEN_DIMENSION</a></td></tr>
-<tr class="separator:ae9fd4c815e01c6a086bd6694ad29dcb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accbc57e57bc8a8fbf5a59c937760946a"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#accbc57e57bc8a8fbf5a59c937760946a">STRASSENDIMENSION</a> = 1024</td></tr>
+<tr class="separator:accbc57e57bc8a8fbf5a59c937760946a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f9ea401c1d58f819a6ee26f74da6290"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a4f9ea401c1d58f819a6ee26f74da6290">STRASSENTHRESHOLD</a> = <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#accbc57e57bc8a8fbf5a59c937760946a">STRASSENDIMENSION</a> * <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#accbc57e57bc8a8fbf5a59c937760946a">STRASSENDIMENSION</a></td></tr>
+<tr class="separator:a4f9ea401c1d58f819a6ee26f74da6290"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -1743,15 +1743,15 @@ template&lt;typename T &gt; </div>
 <div class="line"><span class="lineno">  184</span>                B.r() != 1 &amp;&amp;</div>
 <div class="line"><span class="lineno">  185</span>                A.c() != 1 &amp;&amp;</div>
 <div class="line"><span class="lineno">  186</span>                B.c() != 1 &amp;&amp;</div>
-<div class="line"><span class="lineno">  187</span>                vt::max(A.r() * A.c(), B.r() * B.c()) &gt;= <a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#ae9fd4c815e01c6a086bd6694ad29dcb3">STRASSEN_THRESHOLD</a>)</div>
+<div class="line"><span class="lineno">  187</span>                vt::max(A.r() * A.c(), B.r() * B.c()) &gt;= <a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#a4f9ea401c1d58f819a6ee26f74da6290">STRASSENTHRESHOLD</a>)</div>
 <div class="line"><span class="lineno">  188</span>                <span class="keywordflow">return</span> <a class="code hl_function" href="classvt_1_1numeric__matrix__dynamic__t.html#ad17ebf244557600b666924b847eb2c3e">mm_strassen</a>(C, A, B);</div>
 <div class="line"><span class="lineno">  189</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classvt_1_1numeric__matrix__dynamic__t.html#a673a752de2c5131e60f451da481207cb">mm_naive</a>(C, A, B);</div>
 <div class="line"><span class="lineno">  190</span>        }</div>
+<div class="ttc" id="aclassvt_1_1numeric__matrix__dynamic__t_html_a4f9ea401c1d58f819a6ee26f74da6290"><div class="ttname"><a href="classvt_1_1numeric__matrix__dynamic__t.html#a4f9ea401c1d58f819a6ee26f74da6290">vt::numeric_matrix_dynamic_t::STRASSENTHRESHOLD</a></div><div class="ttdeci">static constexpr size_t STRASSENTHRESHOLD</div><div class="ttdef"><b>Definition</b> <a href="dynamic__numeric__matrix_8h_source.html#l00027">dynamic_numeric_matrix.h:27</a></div></div>
 <div class="ttc" id="aclassvt_1_1numeric__matrix__dynamic__t_html_a673a752de2c5131e60f451da481207cb"><div class="ttname"><a href="classvt_1_1numeric__matrix__dynamic__t.html#a673a752de2c5131e60f451da481207cb">vt::numeric_matrix_dynamic_t::mm_naive</a></div><div class="ttdeci">static numeric_matrix_dynamic_t &amp; mm_naive(numeric_matrix_dynamic_t &amp;C, const numeric_matrix_dynamic_t &amp;A, const numeric_matrix_dynamic_t &amp;B)</div><div class="ttdef"><b>Definition</b> <a href="dynamic__numeric__matrix_8h_source.html#l00456">dynamic_numeric_matrix.h:456</a></div></div>
 <div class="ttc" id="aclassvt_1_1numeric__matrix__dynamic__t_html_ad17ebf244557600b666924b847eb2c3e"><div class="ttname"><a href="classvt_1_1numeric__matrix__dynamic__t.html#ad17ebf244557600b666924b847eb2c3e">vt::numeric_matrix_dynamic_t::mm_strassen</a></div><div class="ttdeci">static numeric_matrix_dynamic_t &amp; mm_strassen(numeric_matrix_dynamic_t &amp;C, const numeric_matrix_dynamic_t &amp;A, const numeric_matrix_dynamic_t &amp;B)</div><div class="ttdef"><b>Definition</b> <a href="dynamic__numeric__matrix_8h_source.html#l00469">dynamic_numeric_matrix.h:469</a></div></div>
-<div class="ttc" id="aclassvt_1_1numeric__matrix__dynamic__t_html_ae9fd4c815e01c6a086bd6694ad29dcb3"><div class="ttname"><a href="classvt_1_1numeric__matrix__dynamic__t.html#ae9fd4c815e01c6a086bd6694ad29dcb3">vt::numeric_matrix_dynamic_t::STRASSEN_THRESHOLD</a></div><div class="ttdeci">static constexpr size_t STRASSEN_THRESHOLD</div><div class="ttdef"><b>Definition</b> <a href="dynamic__numeric__matrix_8h_source.html#l00027">dynamic_numeric_matrix.h:27</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00417">vt::numeric_matrix_dynamic_t&lt; T &gt;::c()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00456">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00469">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_strassen()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00415">vt::numeric_matrix_dynamic_t&lt; T &gt;::r()</a>, and <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00027">vt::numeric_matrix_dynamic_t&lt; T &gt;::STRASSEN_THRESHOLD</a>.</p>
+<p class="reference">References <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00417">vt::numeric_matrix_dynamic_t&lt; T &gt;::c()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00456">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00469">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_strassen()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00415">vt::numeric_matrix_dynamic_t&lt; T &gt;::r()</a>, and <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00027">vt::numeric_matrix_dynamic_t&lt; T &gt;::STRASSENTHRESHOLD</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00158">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator*()</a>.</p>
 
@@ -2271,8 +2271,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a272f350ee3ecd09cdb743f49f344ec45" name="a272f350ee3ecd09cdb743f49f344ec45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a272f350ee3ecd09cdb743f49f344ec45">&#9670;&#160;</a></span>can_multiply_with() <span class="overload">[1/2]</span></h2>
+<a id="ab872819fd52b74aa0b4d3aeba59c557f" name="ab872819fd52b74aa0b4d3aeba59c557f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab872819fd52b74aa0b4d3aeba59c557f">&#9670;&#160;</a></span>caNmultiply_with() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2283,7 +2283,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">vt::numeric_matrix_dynamic_t</a>&lt; T &gt;::can_multiply_with </td>
+          <td class="memname">bool <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">vt::numeric_matrix_dynamic_t</a>&lt; T &gt;::caNmultiply_with </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a>&lt; T &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
@@ -2304,8 +2304,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a595ada73512c99452aa2928af435be29" name="a595ada73512c99452aa2928af435be29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a595ada73512c99452aa2928af435be29">&#9670;&#160;</a></span>can_multiply_with() <span class="overload">[2/2]</span></h2>
+<a id="ad58b19cbb99efe6390da8585c395ff44" name="ad58b19cbb99efe6390da8585c395ff44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad58b19cbb99efe6390da8585c395ff44">&#9670;&#160;</a></span>caNmultiply_with() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2316,7 +2316,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">vt::numeric_matrix_dynamic_t</a>&lt; T &gt;::can_multiply_with </td>
+          <td class="memname">bool <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">vt::numeric_matrix_dynamic_t</a>&lt; T &gt;::caNmultiply_with </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html">numeric_vector_dynamic_t</a>&lt; T &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
@@ -2434,9 +2434,9 @@ template&lt;typename T &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00272">272</a> of file <a class="el" href="dynamic__numeric__matrix_8h_source.html">dynamic_numeric_matrix.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  272</span>                                           {</div>
-<div class="line"><span class="lineno">  273</span>            <span class="keywordtype">size_t</span> min_dim = vt::min(<a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#aa14f0ee34291585dd8037995c29ca53f">r_</a>, <a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#ab902c0179e8ac2163a9522de275b9d80">c_</a>);</div>
-<div class="line"><span class="lineno">  274</span>            <a class="code hl_friend" href="classvt_1_1numeric__matrix__dynamic__t.html#a1676eeb8669ebb3b331c8707ec2aa886">numeric_vector_dynamic_t&lt;T&gt;</a> tmp(min_dim);</div>
-<div class="line"><span class="lineno">  275</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; min_dim; ++i) tmp[i] = <a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#a490e9073e1609424415700301fbcce03">vector_</a>[i][i];</div>
+<div class="line"><span class="lineno">  273</span>            <span class="keywordtype">size_t</span> miNdim = vt::min(<a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#aa14f0ee34291585dd8037995c29ca53f">r_</a>, <a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#ab902c0179e8ac2163a9522de275b9d80">c_</a>);</div>
+<div class="line"><span class="lineno">  274</span>            <a class="code hl_friend" href="classvt_1_1numeric__matrix__dynamic__t.html#a1676eeb8669ebb3b331c8707ec2aa886">numeric_vector_dynamic_t&lt;T&gt;</a> tmp(miNdim);</div>
+<div class="line"><span class="lineno">  275</span>            <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; miNdim; ++i) tmp[i] = <a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#a490e9073e1609424415700301fbcce03">vector_</a>[i][i];</div>
 <div class="line"><span class="lineno">  276</span>            <span class="keywordflow">return</span> tmp;</div>
 <div class="line"><span class="lineno">  277</span>        }</div>
 </div><!-- fragment -->
@@ -2480,7 +2480,7 @@ template&lt;typename T &gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00029">vt::numeric_matrix_dynamic_t&lt; T &gt;::c_</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00028">vt::numeric_matrix_dynamic_t&lt; T &gt;::r_</a>, and <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00030">vt::numeric_matrix_dynamic_t&lt; T &gt;::vector_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00451">vt::numeric_matrix_dynamic_t&lt; T &gt;::inv_ut()</a>, <a class="el" href="kalman_8h_source.html#l00134">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict()</a>, and <a class="el" href="kalman_8h_source.html#l00140">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00451">vt::numeric_matrix_dynamic_t&lt; T &gt;::inv_ut()</a>.</p>
 
 </div>
 </div>
@@ -2640,7 +2640,7 @@ template&lt;typename T &gt; </div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00307">vt::numeric_matrix_dynamic_t&lt; T &gt;::inv()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00140">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00150">vt::extended_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
 
 </div>
 </div>
@@ -3696,8 +3696,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="aab9bf41f2a2056c1f0f9e738c13b5bb1" name="aab9bf41f2a2056c1f0f9e738c13b5bb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab9bf41f2a2056c1f0f9e738c13b5bb1">&#9670;&#160;</a></span>put_array() <span class="overload">[2/4]</span></h2>
+<a id="a17e71e64c47680314e43f08f111e778d" name="a17e71e64c47680314e43f08f111e778d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17e71e64c47680314e43f08f111e778d">&#9670;&#160;</a></span>put_array() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3719,7 +3719,7 @@ template&lt;size_t N&gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>array</em>[N_]&#160;</td>
+          <td class="paramname"><em>array</em>[N]&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -3735,9 +3735,9 @@ template&lt;size_t N&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00532">532</a> of file <a class="el" href="dynamic__numeric__matrix_8h_source.html">dynamic_numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  532</span>                                                           {</div>
+<div class="fragment"><div class="line"><span class="lineno">  532</span>                                                          {</div>
 <div class="line"><span class="lineno">  533</span>            <a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#a490e9073e1609424415700301fbcce03">vector_</a>[index] = array;</div>
-<div class="line"><span class="lineno">  534</span>            <a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#ab902c0179e8ac2163a9522de275b9d80">c_</a> = N_;</div>
+<div class="line"><span class="lineno">  534</span>            <a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#ab902c0179e8ac2163a9522de275b9d80">c_</a> = N;</div>
 <div class="line"><span class="lineno">  535</span>        }</div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00029">vt::numeric_matrix_dynamic_t&lt; T &gt;::c_</a>, and <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00030">vt::numeric_matrix_dynamic_t&lt; T &gt;::vector_</a>.</p>
@@ -3799,8 +3799,8 @@ template&lt;typename... Vectors&gt; </div>
 
 </div>
 </div>
-<a id="aaa769f305a9ec648e4c6fa006278a861" name="aaa769f305a9ec648e4c6fa006278a861"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa769f305a9ec648e4c6fa006278a861">&#9670;&#160;</a></span>put_array() <span class="overload">[4/4]</span></h2>
+<a id="aa0e785aa618a7f271efe50e5f5712b38" name="aa0e785aa618a7f271efe50e5f5712b38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e785aa618a7f271efe50e5f5712b38">&#9670;&#160;</a></span>put_array() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3822,13 +3822,13 @@ template&lt;size_t N, typename... Arrays&gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const T(&amp;)&#160;</td>
-          <td class="paramname"><em>array</em>[N_], </td>
+          <td class="paramname"><em>array</em>[N], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const &#160;</td>
-          <td class="paramname"><em>Arrays</em>(&amp;...arrays)[N_]&#160;</td>
+          <td class="paramname"><em>Arrays</em>(&amp;...arrays)[N]&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -3844,7 +3844,7 @@ template&lt;size_t N, typename... Arrays&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00544">544</a> of file <a class="el" href="dynamic__numeric__matrix_8h_source.html">dynamic_numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  544</span>                                                                                          {</div>
+<div class="fragment"><div class="line"><span class="lineno">  544</span>                                                                                        {</div>
 <div class="line"><span class="lineno">  545</span>            <a class="code hl_variable" href="classvt_1_1numeric__matrix__dynamic__t.html#a490e9073e1609424415700301fbcce03">vector_</a>[index] = array;</div>
 <div class="line"><span class="lineno">  546</span>            <a class="code hl_function" href="classvt_1_1numeric__matrix__dynamic__t.html#a784737411b9c83fdc1ae95416f2b8b2b">put_array</a>(index + 1, arrays...);</div>
 <div class="line"><span class="lineno">  547</span>        }</div>
@@ -4398,8 +4398,8 @@ template&lt;typename... Vectors&gt; </div>
 
 </div>
 </div>
-<a id="a35acaf03d85269c83ef1757cff5afb1b" name="a35acaf03d85269c83ef1757cff5afb1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35acaf03d85269c83ef1757cff5afb1b">&#9670;&#160;</a></span>from() <span class="overload">[2/2]</span></h2>
+<a id="a573b273eebe95c82b744a6f453ffb716" name="a573b273eebe95c82b744a6f453ffb716"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a573b273eebe95c82b744a6f453ffb716">&#9670;&#160;</a></span>from() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4415,7 +4415,7 @@ template&lt;size_t N, typename... Arrays&gt; </div>
           <td class="memname">static <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a> <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">vt::numeric_matrix_dynamic_t</a>&lt; T &gt;::from </td>
           <td>(</td>
           <td class="paramtype">const &#160;</td>
-          <td class="paramname"><em>Arrays</em>(&amp;...arrays)[N_]</td><td>)</td>
+          <td class="paramname"><em>Arrays</em>(&amp;...arrays)[N]</td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -4427,8 +4427,8 @@ template&lt;size_t N, typename... Arrays&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00614">614</a> of file <a class="el" href="dynamic__numeric__matrix_8h_source.html">dynamic_numeric_matrix.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  614</span>                                                                            {</div>
-<div class="line"><span class="lineno">  615</span>            <a class="code hl_function" href="classvt_1_1numeric__matrix__dynamic__t.html#a786cd67efcb1f9c5e29f2e955e433915">numeric_matrix_dynamic_t</a> tmp(N_, 0);</div>
+<div class="fragment"><div class="line"><span class="lineno">  614</span>                                                                           {</div>
+<div class="line"><span class="lineno">  615</span>            <a class="code hl_function" href="classvt_1_1numeric__matrix__dynamic__t.html#a786cd67efcb1f9c5e29f2e955e433915">numeric_matrix_dynamic_t</a> tmp(N, 0);</div>
 <div class="line"><span class="lineno">  616</span>            tmp.put_array(0, arrays...);</div>
 <div class="line"><span class="lineno">  617</span>            <span class="keywordflow">return</span> tmp;</div>
 <div class="line"><span class="lineno">  618</span>        }</div>
@@ -4571,8 +4571,8 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a49d6a6510c97e2ee3adb556b347e5289" name="a49d6a6510c97e2ee3adb556b347e5289"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49d6a6510c97e2ee3adb556b347e5289">&#9670;&#160;</a></span>STRASSEN_DIMENSION</h2>
+<a id="accbc57e57bc8a8fbf5a59c937760946a" name="accbc57e57bc8a8fbf5a59c937760946a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accbc57e57bc8a8fbf5a59c937760946a">&#9670;&#160;</a></span>STRASSENDIMENSION</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4583,7 +4583,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">vt::numeric_matrix_dynamic_t</a>&lt; T &gt;::STRASSEN_DIMENSION = 1024</td>
+          <td class="memname">constexpr size_t <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">vt::numeric_matrix_dynamic_t</a>&lt; T &gt;::STRASSENDIMENSION = 1024</td>
         </tr>
       </table>
   </td>
@@ -4597,8 +4597,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="ae9fd4c815e01c6a086bd6694ad29dcb3" name="ae9fd4c815e01c6a086bd6694ad29dcb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9fd4c815e01c6a086bd6694ad29dcb3">&#9670;&#160;</a></span>STRASSEN_THRESHOLD</h2>
+<a id="a4f9ea401c1d58f819a6ee26f74da6290" name="a4f9ea401c1d58f819a6ee26f74da6290"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f9ea401c1d58f819a6ee26f74da6290">&#9670;&#160;</a></span>STRASSENTHRESHOLD</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4609,7 +4609,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr size_t <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">vt::numeric_matrix_dynamic_t</a>&lt; T &gt;::STRASSEN_THRESHOLD = <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a49d6a6510c97e2ee3adb556b347e5289">STRASSEN_DIMENSION</a> * <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a49d6a6510c97e2ee3adb556b347e5289">STRASSEN_DIMENSION</a></td>
+          <td class="memname">constexpr size_t <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">vt::numeric_matrix_dynamic_t</a>&lt; T &gt;::STRASSENTHRESHOLD = <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#accbc57e57bc8a8fbf5a59c937760946a">STRASSENDIMENSION</a> * <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#accbc57e57bc8a8fbf5a59c937760946a">STRASSENDIMENSION</a></td>
         </tr>
       </table>
   </td>
@@ -4649,7 +4649,7 @@ template&lt;typename T &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00028">28</a> of file <a class="el" href="dynamic__numeric__matrix_8h_source.html">dynamic_numeric_matrix.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00551">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_fill()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00559">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00576">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00566">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00549">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_zero()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00260">vt::numeric_matrix_dynamic_t&lt; T &gt;::can_multiply_with()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00266">vt::numeric_matrix_dynamic_t&lt; T &gt;::col()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00287">vt::numeric_matrix_dynamic_t&lt; T &gt;::det()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00272">vt::numeric_matrix_dynamic_t&lt; T &gt;::diag()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00519">vt::numeric_matrix_dynamic_t&lt; T &gt;::fix_zero()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00246">vt::numeric_matrix_dynamic_t&lt; T &gt;::float_equals()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00129">vt::numeric_matrix_dynamic_t&lt; T &gt;::iadd()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00371">vt::numeric_matrix_dynamic_t&lt; T &gt;::insert()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00379">vt::numeric_matrix_dynamic_t&lt; T &gt;::insert()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00435">vt::numeric_matrix_dynamic_t&lt; T &gt;::inv_lt()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00258">vt::numeric_matrix_dynamic_t&lt; T &gt;::is_square()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00146">vt::numeric_matrix_dynamic_t&lt; T &gt;::isub()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00344">vt::numeric_matrix_dynamic_t&lt; T &gt;::LU()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00192">vt::numeric_matrix_dynamic_t&lt; T &gt;::matmul_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00215">vt::numeric_matrix_dynamic_t&lt; T &gt;::matpow_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00456">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00469">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_strassen()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00419">vt::numeric_matrix_dynamic_t&lt; T &gt;::n()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00055">vt::numeric_matrix_dynamic_t&lt; T &gt;::numeric_matrix_dynamic_t()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00158">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator*()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00174">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator*()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00083">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator=()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00104">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator=()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00221">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator==()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00231">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator==()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00204">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator^()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00415">vt::numeric_matrix_dynamic_t&lt; T &gt;::r()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00314">vt::numeric_matrix_dynamic_t&lt; T &gt;::RRE()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00386">vt::numeric_matrix_dynamic_t&lt; T &gt;::slice()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00553">vt::numeric_matrix_dynamic_t&lt; T &gt;::steal()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00401">vt::numeric_matrix_dynamic_t&lt; T &gt;::swap()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00300">vt::numeric_matrix_dynamic_t&lt; T &gt;::tr()</a>, and <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00279">vt::numeric_matrix_dynamic_t&lt; T &gt;::transpose()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00551">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_fill()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00559">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00576">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00566">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00549">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_zero()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00260">vt::numeric_matrix_dynamic_t&lt; T &gt;::caNmultiply_with()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00266">vt::numeric_matrix_dynamic_t&lt; T &gt;::col()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00287">vt::numeric_matrix_dynamic_t&lt; T &gt;::det()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00272">vt::numeric_matrix_dynamic_t&lt; T &gt;::diag()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00519">vt::numeric_matrix_dynamic_t&lt; T &gt;::fix_zero()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00246">vt::numeric_matrix_dynamic_t&lt; T &gt;::float_equals()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00129">vt::numeric_matrix_dynamic_t&lt; T &gt;::iadd()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00371">vt::numeric_matrix_dynamic_t&lt; T &gt;::insert()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00379">vt::numeric_matrix_dynamic_t&lt; T &gt;::insert()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00435">vt::numeric_matrix_dynamic_t&lt; T &gt;::inv_lt()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00258">vt::numeric_matrix_dynamic_t&lt; T &gt;::is_square()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00146">vt::numeric_matrix_dynamic_t&lt; T &gt;::isub()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00344">vt::numeric_matrix_dynamic_t&lt; T &gt;::LU()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00192">vt::numeric_matrix_dynamic_t&lt; T &gt;::matmul_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00215">vt::numeric_matrix_dynamic_t&lt; T &gt;::matpow_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00456">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00469">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_strassen()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00419">vt::numeric_matrix_dynamic_t&lt; T &gt;::n()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00055">vt::numeric_matrix_dynamic_t&lt; T &gt;::numeric_matrix_dynamic_t()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00158">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator*()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00174">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator*()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00083">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator=()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00104">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator=()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00221">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator==()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00231">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator==()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00204">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator^()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00415">vt::numeric_matrix_dynamic_t&lt; T &gt;::r()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00314">vt::numeric_matrix_dynamic_t&lt; T &gt;::RRE()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00386">vt::numeric_matrix_dynamic_t&lt; T &gt;::slice()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00553">vt::numeric_matrix_dynamic_t&lt; T &gt;::steal()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00401">vt::numeric_matrix_dynamic_t&lt; T &gt;::swap()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00300">vt::numeric_matrix_dynamic_t&lt; T &gt;::tr()</a>, and <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00279">vt::numeric_matrix_dynamic_t&lt; T &gt;::transpose()</a>.</p>
 
 </div>
 </div>
@@ -4677,7 +4677,7 @@ template&lt;typename T &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00029">29</a> of file <a class="el" href="dynamic__numeric__matrix_8h_source.html">dynamic_numeric_matrix.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00551">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_fill()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00559">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00576">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00566">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00549">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_zero()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00417">vt::numeric_matrix_dynamic_t&lt; T &gt;::c()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00260">vt::numeric_matrix_dynamic_t&lt; T &gt;::can_multiply_with()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00262">vt::numeric_matrix_dynamic_t&lt; T &gt;::can_multiply_with()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00287">vt::numeric_matrix_dynamic_t&lt; T &gt;::det()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00272">vt::numeric_matrix_dynamic_t&lt; T &gt;::diag()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00519">vt::numeric_matrix_dynamic_t&lt; T &gt;::fix_zero()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00246">vt::numeric_matrix_dynamic_t&lt; T &gt;::float_equals()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00129">vt::numeric_matrix_dynamic_t&lt; T &gt;::iadd()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00371">vt::numeric_matrix_dynamic_t&lt; T &gt;::insert()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00379">vt::numeric_matrix_dynamic_t&lt; T &gt;::insert()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00435">vt::numeric_matrix_dynamic_t&lt; T &gt;::inv_lt()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00258">vt::numeric_matrix_dynamic_t&lt; T &gt;::is_square()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00146">vt::numeric_matrix_dynamic_t&lt; T &gt;::isub()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00344">vt::numeric_matrix_dynamic_t&lt; T &gt;::LU()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00192">vt::numeric_matrix_dynamic_t&lt; T &gt;::matmul_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00456">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00469">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_strassen()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00419">vt::numeric_matrix_dynamic_t&lt; T &gt;::n()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00055">vt::numeric_matrix_dynamic_t&lt; T &gt;::numeric_matrix_dynamic_t()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00158">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator*()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00083">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator=()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00104">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator=()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00221">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator==()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00231">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator==()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00204">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator^()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00526">vt::numeric_matrix_dynamic_t&lt; T &gt;::put_array()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00532">vt::numeric_matrix_dynamic_t&lt; T &gt;::put_array()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00314">vt::numeric_matrix_dynamic_t&lt; T &gt;::RRE()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00386">vt::numeric_matrix_dynamic_t&lt; T &gt;::slice()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00553">vt::numeric_matrix_dynamic_t&lt; T &gt;::steal()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00401">vt::numeric_matrix_dynamic_t&lt; T &gt;::swap()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00300">vt::numeric_matrix_dynamic_t&lt; T &gt;::tr()</a>, and <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00279">vt::numeric_matrix_dynamic_t&lt; T &gt;::transpose()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00551">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_fill()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00559">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00576">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00566">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_from()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00549">vt::numeric_matrix_dynamic_t&lt; T &gt;::allocate_zero()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00417">vt::numeric_matrix_dynamic_t&lt; T &gt;::c()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00260">vt::numeric_matrix_dynamic_t&lt; T &gt;::caNmultiply_with()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00262">vt::numeric_matrix_dynamic_t&lt; T &gt;::caNmultiply_with()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00287">vt::numeric_matrix_dynamic_t&lt; T &gt;::det()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00272">vt::numeric_matrix_dynamic_t&lt; T &gt;::diag()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00519">vt::numeric_matrix_dynamic_t&lt; T &gt;::fix_zero()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00246">vt::numeric_matrix_dynamic_t&lt; T &gt;::float_equals()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00129">vt::numeric_matrix_dynamic_t&lt; T &gt;::iadd()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00371">vt::numeric_matrix_dynamic_t&lt; T &gt;::insert()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00379">vt::numeric_matrix_dynamic_t&lt; T &gt;::insert()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00435">vt::numeric_matrix_dynamic_t&lt; T &gt;::inv_lt()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00258">vt::numeric_matrix_dynamic_t&lt; T &gt;::is_square()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00146">vt::numeric_matrix_dynamic_t&lt; T &gt;::isub()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00344">vt::numeric_matrix_dynamic_t&lt; T &gt;::LU()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00192">vt::numeric_matrix_dynamic_t&lt; T &gt;::matmul_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00456">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_naive()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00469">vt::numeric_matrix_dynamic_t&lt; T &gt;::mm_strassen()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00419">vt::numeric_matrix_dynamic_t&lt; T &gt;::n()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00055">vt::numeric_matrix_dynamic_t&lt; T &gt;::numeric_matrix_dynamic_t()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00158">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator*()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00083">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator=()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00104">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator=()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00221">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator==()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00231">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator==()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00204">vt::numeric_matrix_dynamic_t&lt; T &gt;::operator^()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00526">vt::numeric_matrix_dynamic_t&lt; T &gt;::put_array()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00532">vt::numeric_matrix_dynamic_t&lt; T &gt;::put_array()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00314">vt::numeric_matrix_dynamic_t&lt; T &gt;::RRE()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00386">vt::numeric_matrix_dynamic_t&lt; T &gt;::slice()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00553">vt::numeric_matrix_dynamic_t&lt; T &gt;::steal()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00401">vt::numeric_matrix_dynamic_t&lt; T &gt;::swap()</a>, <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00300">vt::numeric_matrix_dynamic_t&lt; T &gt;::tr()</a>, and <a class="el" href="dynamic__numeric__matrix_8h_source.html#l00279">vt::numeric_matrix_dynamic_t&lt; T &gt;::transpose()</a>.</p>
 
 </div>
 </div>
@@ -4718,7 +4718,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevt.html">vt</a></li><li class="navelem"><a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html">numeric_matrix_dynamic_t</a></li>
-    <li class="footer">Generated on Tue Jul 4 2023 15:43:31 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Thu Jul 6 2023 19:49:33 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

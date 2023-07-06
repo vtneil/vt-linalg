@@ -5,8 +5,8 @@
  * @brief Numeric vector library
  */
 
-#ifndef VNET_LINALG_DYNAMIC_NUMERIC_VECTOR_H
-#define VNET_LINALG_DYNAMIC_NUMERIC_VECTOR_H
+#ifndef VT_LINALG_DYNAMIC_NUMERIC_VECTOR_H
+#define VT_LINALG_DYNAMIC_NUMERIC_VECTOR_H
 
 #include "standard_utility.h"
 #include "iterator.h"
@@ -39,7 +39,7 @@ namespace vt {
         }
 
         template<size_t N>
-        explicit numeric_vector_dynamic_t(const T (&array)[N_]) : size_(N_) { allocate_from(array); }
+        explicit numeric_vector_dynamic_t(const T (&array)[N]) : size_(N) { allocate_from(array); }
 
         numeric_vector_dynamic_t(const iterator<T> &begin, const iterator<T> &end) : size_(end - begin) {
             arr_ = new T[size_];
@@ -85,7 +85,7 @@ namespace vt {
         }
 
         template<size_t N>
-        numeric_vector_dynamic_t &operator=(const T (&array)[N_]) {
+        numeric_vector_dynamic_t &operator=(const T (&array)[N]) {
             deallocate();
             allocate_from(array);
             return *this;
@@ -97,7 +97,7 @@ namespace vt {
         }
 
         template<size_t N>
-        numeric_vector_dynamic_t &operator+=(const T (&array)[N_]) {
+        numeric_vector_dynamic_t &operator+=(const T (&array)[N]) {
             for (size_t i = 0; i < size_; ++i) arr_[i] += array[i];
             return *this;
         }
@@ -109,7 +109,7 @@ namespace vt {
         }
 
         template<size_t N>
-        numeric_vector_dynamic_t operator+(const T (&array)[N_]) const {
+        numeric_vector_dynamic_t operator+(const T (&array)[N]) const {
             numeric_vector_dynamic_t tmp(*this);
             tmp.operator+=(array);
             return tmp;
@@ -118,7 +118,7 @@ namespace vt {
         numeric_vector_dynamic_t add(const numeric_vector_dynamic_t &other) const { return operator+(other); }
 
         template<size_t N>
-        numeric_vector_dynamic_t add(const T (&array)[N_]) const { return operator+(array); }
+        numeric_vector_dynamic_t add(const T (&array)[N]) const { return operator+(array); }
 
         numeric_vector_dynamic_t &operator-=(const numeric_vector_dynamic_t &other) {
             for (size_t i = 0; i < size_; ++i) arr_[i] -= other.arr_[i];
@@ -126,7 +126,7 @@ namespace vt {
         }
 
         template<size_t N>
-        numeric_vector_dynamic_t &operator-=(const T (&array)[N_]) {
+        numeric_vector_dynamic_t &operator-=(const T (&array)[N]) {
             for (size_t i = 0; i < size_; ++i) arr_[i] -= array[i];
             return *this;
         }
@@ -138,7 +138,7 @@ namespace vt {
         }
 
         template<size_t N>
-        numeric_vector_dynamic_t operator-(const T (&array)[N_]) const {
+        numeric_vector_dynamic_t operator-(const T (&array)[N]) const {
             numeric_vector_dynamic_t tmp(*this);
             tmp.operator-=(array);
             return tmp;
@@ -147,7 +147,7 @@ namespace vt {
         numeric_vector_dynamic_t subtract(const numeric_vector_dynamic_t &other) const { return operator-(other); }
 
         template<size_t N>
-        numeric_vector_dynamic_t subtract(const T (&array)[N_]) const { return operator-(array); }
+        numeric_vector_dynamic_t subtract(const T (&array)[N]) const { return operator-(array); }
 
         numeric_vector_dynamic_t &operator*=(T rhs) {
             for (size_t i = 0; i < size_; ++i) arr_[i] *= rhs;
@@ -178,7 +178,7 @@ namespace vt {
         }
 
         template<size_t N>
-        T dot(const T (&array)[N_]) const {
+        T dot(const T (&array)[N]) const {
             T acc = 0;
             for (size_t i = 0; i < size_; ++i) acc += arr_[i] * array[i];
             return acc;
@@ -187,7 +187,7 @@ namespace vt {
         constexpr T inner(const numeric_vector_dynamic_t &other) const { return dot(other); }
 
         template<size_t N>
-        constexpr T inner(const T (&array)[N_]) const { return dot(array); }
+        constexpr T inner(const T (&array)[N]) const { return dot(array); }
 
         numeric_matrix_dynamic_t<T> outer(const numeric_vector_dynamic_t &other) const {
             numeric_matrix_dynamic_t<T> result(size_, other.size_);
@@ -198,10 +198,10 @@ namespace vt {
         }
 
         template<size_t N>
-        numeric_matrix_dynamic_t<T> outer(const T (&array)[N_]) const {
-            numeric_matrix_dynamic_t<T> result(size_, N_);
+        numeric_matrix_dynamic_t<T> outer(const T (&array)[N]) const {
+            numeric_matrix_dynamic_t<T> result(size_, N);
             for (size_t i = 0; i < size_; ++i)
-                for (size_t j = 0; j < N_; ++j)
+                for (size_t j = 0; j < N; ++j)
                     result[i][j] = arr_[i] * array[j];
             return result;
         }
@@ -218,8 +218,8 @@ namespace vt {
         }
 
         template<size_t N>
-        bool operator==(const T (&array)[N_]) const {
-            if (size_ != N_) return false;
+        bool operator==(const T (&array)[N]) const {
+            if (size_ != N) return false;
             for (size_t i = 0; i < size_; ++i) if (arr_[i] != array[i]) return false;
             return true;
         }
@@ -227,7 +227,7 @@ namespace vt {
         bool operator!=(const numeric_vector_dynamic_t &other) const { return !operator==(other); }
 
         template<size_t N>
-        bool operator!=(const T (&array)[N_]) const { return !operator==(array); }
+        bool operator!=(const T (&array)[N]) const { return !operator==(array); }
 
         bool equals(const numeric_vector_dynamic_t &other) const { return operator==(other); }
 
@@ -239,7 +239,7 @@ namespace vt {
         }
 
         template<size_t N>
-        bool equals(const T (&array)[N_]) const { return operator==(array); }
+        bool equals(const T (&array)[N]) const { return operator==(array); }
 
         void swap(numeric_vector_dynamic_t &other) {
             vt::swap(arr_, other.arr_);
@@ -283,10 +283,10 @@ namespace vt {
         }
 
         template<size_t N>
-        void allocate_from(const T (&array)[N_]) {
-            size_ = N_;
+        void allocate_from(const T (&array)[N]) {
+            size_ = N;
             arr_ = new T[size_];
-            static_cast<void>(vt::copy(array, array + N_, arr_));
+            static_cast<void>(vt::copy(array, array + N, arr_));
         }
 
         void deallocate() { delete[] arr_; }
@@ -310,14 +310,14 @@ namespace vt {
     }
 
     template<typename T, size_t N>
-    numeric_vector_dynamic_t<T> operator+(const T (&lhs)[N_], const numeric_vector_dynamic_t<T> &rhs) {
+    numeric_vector_dynamic_t<T> operator+(const T (&lhs)[N], const numeric_vector_dynamic_t<T> &rhs) {
         numeric_vector_dynamic_t<T> tmp(rhs);
         tmp.operator+=(lhs);
         return tmp;
     }
 
     template<typename T, size_t N>
-    numeric_vector_dynamic_t<T> operator-(const T (&lhs)[N_], const numeric_vector_dynamic_t<T> &rhs) {
+    numeric_vector_dynamic_t<T> operator-(const T (&lhs)[N], const numeric_vector_dynamic_t<T> &rhs) {
         numeric_vector_dynamic_t<T> tmp(rhs);
         tmp.operator-=(lhs);
         return tmp;
@@ -326,4 +326,4 @@ namespace vt {
     using numeric_vector = numeric_vector_dynamic_t<double>;
 }
 
-#endif //VNET_LINALG_DYNAMIC_NUMERIC_VECTOR_H
+#endif //VT_LINALG_DYNAMIC_NUMERIC_VECTOR_H

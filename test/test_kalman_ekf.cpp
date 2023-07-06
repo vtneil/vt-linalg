@@ -48,14 +48,14 @@ int main() {
     for (size_t i = 0; i < SAMPLES; ++i) {
         ekf.predict(controls[i]);
         std::cout << "Predicted state: ";
-        for (const auto &state: ekf.state_vector()) {
+        for (const auto &state: ekf.state_vector) {
             std::cout << state << " ";
         }
         std::cout << '\n';
 
         ekf.update(measurements[i]);
         std::cout << i + 1 << " - Estimated state: ";
-        for (const auto &state: ekf.state_vector()) {
+        for (const auto &state: ekf.state_vector) {
             std::cout << state << " ";
         }
         std::cout << '\n';

@@ -16,6 +16,7 @@ var hierarchy =
       [ "vt::make_index_sequence< 0, Is... >", "structvt_1_1make__index__sequence_3_010_00_01Is_8_8_8_01_4.html", null ]
     ] ],
     [ "vt::initializer_list< T >", "classvt_1_1initializer__list.html", null ],
+    [ "vt::detail::input_assignment_chain< T, Size, Index >", "structvt_1_1detail_1_1input__assignment__chain.html", null ],
     [ "vt::is_same< T, U >", "structvt_1_1is__same.html", null ],
     [ "vt::is_same< T, T >", "structvt_1_1is__same_3_01T_00_01T_01_4.html", null ],
     [ "vt::iterator< T >", "classvt_1_1iterator.html", null ],
@@ -36,6 +37,7 @@ var hierarchy =
     [ "vt::numeric_vector_dynamic_t< vt::numeric_vector_dynamic_t< T > >", "classvt_1_1numeric__vector__dynamic__t.html", null ],
     [ "vt::impl::numeric_vector_static_t< T, Size >", "classvt_1_1impl_1_1numeric__vector__static__t.html", null ],
     [ "vt::impl::numeric_vector_static_t< vt::impl::numeric_vector_static_t< T, Col >, Row >", "classvt_1_1impl_1_1numeric__vector__static__t.html", null ],
+    [ "vt::detail::output_assignment_chain< T, Size, Index >", "structvt_1_1detail_1_1output__assignment__chain.html", null ],
     [ "vt::pair< T1, T2 >", "classvt_1_1pair.html", null ],
     [ "vt::quaternion_t", "structvt_1_1quaternion__t.html", null ],
     [ "vt::remove_reference< T >", "structvt_1_1remove__reference.html", null ],

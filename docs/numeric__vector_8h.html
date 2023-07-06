@@ -36,7 +36,7 @@
                 <tbody>
                 <tr id="projectrow">
                     <td id="projectalign">
-                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.2.0</span>
+                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.3.0</span>
                         </div>
                         <div id="projectbrief">C++ Efficient Linear Algebra Library</div>
                     </td>
@@ -136,12 +136,18 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abbd3b2d200a1d103e026e7e35b300108"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size, size_t IMax, size_t I&gt; </td></tr>
+<tr class="memitem:abbd3b2d200a1d103e026e7e35b300108"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size, size_t , size_t I&gt; </td></tr>
 <tr class="memitem:abbd3b2d200a1d103e026e7e35b300108"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#abbd3b2d200a1d103e026e7e35b300108">vt::detail::helper_assign_to</a> (const T(&amp;array)[Size], T &amp;var)</td></tr>
 <tr class="separator:abbd3b2d200a1d103e026e7e35b300108"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdf2b1bbbcf9b24fc104664095cd7850"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size, size_t IMax, size_t I, typename... Ts&gt; </td></tr>
 <tr class="memitem:afdf2b1bbbcf9b24fc104664095cd7850"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#afdf2b1bbbcf9b24fc104664095cd7850">vt::detail::helper_assign_to</a> (const T(&amp;array)[Size], T &amp;var, Ts &amp;...vars)</td></tr>
 <tr class="separator:afdf2b1bbbcf9b24fc104664095cd7850"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f100557719f243fc46dcfe54607f41c"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size, size_t , size_t I&gt; </td></tr>
+<tr class="memitem:a9f100557719f243fc46dcfe54607f41c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#a9f100557719f243fc46dcfe54607f41c">vt::detail::helper_assign_from</a> (T(&amp;array)[Size], const T &amp;var)</td></tr>
+<tr class="separator:a9f100557719f243fc46dcfe54607f41c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a285693c88e3a93c0e48d68e5d4836aeb"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size, size_t IMax, size_t I, typename... Ts&gt; </td></tr>
+<tr class="memitem:a285693c88e3a93c0e48d68e5d4836aeb"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#a285693c88e3a93c0e48d68e5d4836aeb">vt::detail::helper_assign_from</a> (T(&amp;array)[Size], const T &amp;var, const Ts &amp;...vars)</td></tr>
+<tr class="separator:a285693c88e3a93c0e48d68e5d4836aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cba278087a4c32bb0db8f905621f32d"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Size&gt; </td></tr>
 <tr class="memitem:a4cba278087a4c32bb0db8f905621f32d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1impl.html#a4cba278087a4c32bb0db8f905621f32d">vt::impl::operator*</a> (T lhs, const <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Size &gt; &amp;rhs)</td></tr>
 <tr class="separator:a4cba278087a4c32bb0db8f905621f32d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,6 +193,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a448b6d2fb4f75d8a80966d714ae13313"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Row, size_t Col&gt; </td></tr>
 <tr class="memitem:a448b6d2fb4f75d8a80966d714ae13313"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Col &gt;, Row &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#a448b6d2fb4f75d8a80966d714ae13313">vt::detail::make_nested</a> (const T(&amp;array)[Row][Col])</td></tr>
 <tr class="separator:a448b6d2fb4f75d8a80966d714ae13313"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1254544747af3fd1e8104bc081a15da"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Order, size_t I, size_t ... J&gt; </td></tr>
+<tr class="memitem:af1254544747af3fd1e8104bc081a15da"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Order &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#af1254544747af3fd1e8104bc081a15da">vt::detail::make_diagonal_minor</a> (const T &amp;value, <a class="el" href="structvt_1_1index__sequence.html">vt::index_sequence</a>&lt; J... &gt;)</td></tr>
+<tr class="separator:af1254544747af3fd1e8104bc081a15da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7543026ff7c8814252a34b9855aadcdd"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Order, size_t ... I&gt; </td></tr>
+<tr class="memitem:a7543026ff7c8814252a34b9855aadcdd"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Order &gt;, Order &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#a7543026ff7c8814252a34b9855aadcdd">vt::detail::make_diagonal</a> (const T(&amp;array)[Order], <a class="el" href="structvt_1_1index__sequence.html">vt::index_sequence</a>&lt; I... &gt;)</td></tr>
+<tr class="separator:a7543026ff7c8814252a34b9855aadcdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af69d5a4eaef40cad02d9d745972c717a"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t Order, size_t ... I&gt; </td></tr>
+<tr class="memitem:af69d5a4eaef40cad02d9d745972c717a"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html">numeric_vector_static_t</a>&lt; T, Order &gt;, Order &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacevt_1_1detail.html#af69d5a4eaef40cad02d9d745972c717a">vt::detail::make_diagonal</a> (const T(&amp;array)[Order])</td></tr>
+<tr class="separator:af69d5a4eaef40cad02d9d745972c717a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Numeric static vector library. </p>
@@ -200,7 +215,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="numeric__vector_8h.html">numeric_vector.h</a></li>
-    <li class="footer">Generated on Tue Jul 4 2023 15:43:31 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Thu Jul 6 2023 19:49:33 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

@@ -9,8 +9,8 @@
  * Referencing https://www.intechopen.com/chapters/63164
  */
 
-#ifndef VNET_LINALG_KALMAN_H
-#define VNET_LINALG_KALMAN_H
+#ifndef VT_LINALG_KALMAN_H
+#define VT_LINALG_KALMAN_H
 
 #include "standard_utility.h"
 #include "numeric_vector.h"
@@ -65,9 +65,9 @@ namespace vt {
          *
          * @param u control input vector
          */
-        void predict(const numeric_vector<L_> &u) {
+        void predict(const numeric_vector<L_> &u = {}) {
             x_ = vt::move(F_ * x_ + B_ * u);
-            P_ = vt::move(F_ * P_ * F_.transpose() + Q_);
+            P_ = vt::move(F_ * P_.matmul_T(F_) + Q_);
         }
 
         /**
@@ -77,12 +77,16 @@ namespace vt {
          */
         void update(const numeric_vector<M_> &z) {
             numeric_vector<M_> y_ = vt::move(z - H_ * x_);
-            numeric_matrix<N_, M_> K_ = vt::move(P_ * H_.transpose() * (H_ * P_ * H_.transpose() + R_).inverse());
+            numeric_matrix<N_, M_> P_H_t = vt::move(P_.matmul_T(H_));
+            numeric_matrix<N_, M_> K_ = vt::move(P_H_t * (H_ * P_H_t + R_).inverse());
             x_ += K_ * y_;
             P_ = vt::move((numeric_matrix<N_, N_>::identity() - K_ * H_) * P_);
         }
 
-        FORCE_INLINE numeric_vector<N_> &state_vector() { return x_; }
+        template<typename ...Ts>
+        void update(Ts ...vs) { update(make_numeric_vector({vs...})); }
+
+        const numeric_vector<N_> &state_vector = x_;
     };
 
     template<size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension>
@@ -127,27 +131,33 @@ namespace vt {
                 : f_(f_vec_func), Fj_{Fj_mat_func}, h_{h_vec_func}, Hj_{Hj_mat_func},
                   Q_{Q_matrix}, R_{R_matrix}, x_{x_0}, P_{Q_matrix} {}
 
+        /**
+         * Disabled copy constructor
+         */
         constexpr extended_kalman_filter_t(const extended_kalman_filter_t &) = delete;
 
+        /**
+         * Disabled move constructor
+         */
         constexpr extended_kalman_filter_t(extended_kalman_filter_t &&) noexcept = delete;
 
-        virtual void predict(const numeric_vector<L_> &u) {
+        void predict(const numeric_vector<L_> &u) {
             x_ = vt::move(f_(x_, u));
             numeric_matrix<N_, N_> F_ = vt::move(Fj_(x_, u));
-            P_ = vt::move(F_ * P_ * F_.transpose() + Q_);
+            P_ = vt::move(F_ * P_.matmul_T(F_) + Q_);
         }
 
-        virtual void update(const numeric_vector<M_> &z) {
+        void update(const numeric_vector<M_> &z) {
             numeric_vector<M_> y_ = vt::move(z - h_(x_));
             numeric_matrix<M_, N_> Hjx_ = vt::move(Hj_(x_));
-            numeric_matrix<N_, M_> Hjx_t = vt::move(Hjx_.transpose());
-            numeric_matrix<M_, M_> S_ = vt::move(Hjx_ * P_ * Hjx_t + R_);
-            numeric_matrix<N_, M_> K_ = vt::move(P_ * Hjx_t * S_.inverse());
+            numeric_matrix<N_, M_> P_Hjx_t = vt::move(P_.matmul_T(Hjx_));
+            numeric_matrix<M_, M_> S_ = vt::move(Hjx_ * P_Hjx_t + R_);
+            numeric_matrix<N_, M_> K_ = vt::move(P_Hjx_t * S_.inverse());
             x_ += K_ * y_;
             P_ = vt::move((numeric_matrix<N_, N_>::identity() - K_ * Hj_(x_)) * P_);
         }
 
-        FORCE_INLINE numeric_vector<N_> &state_vector() { return x_; }
+        const numeric_vector<N_> &state_vector = x_;
     };
 
     // Aliases
@@ -165,4 +175,4 @@ namespace vt {
             extended_kalman_filter_t<StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension>;
 }
 
-#endif //VNET_LINALG_KALMAN_H
+#endif //VT_LINALG_KALMAN_H

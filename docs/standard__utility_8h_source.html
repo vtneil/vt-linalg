@@ -36,7 +36,7 @@
                 <tbody>
                 <tr id="projectrow">
                     <td id="projectalign">
-                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.2.0</span>
+                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.3.0</span>
                         </div>
                         <div id="projectbrief">C++ Efficient Linear Algebra Library</div>
                     </td>
@@ -104,8 +104,8 @@ $(document).ready(function(){initNavTree('standard__utility_8h_source.html','');
   <div class="headertitle"><div class="title">standard_utility.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="standard__utility_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef VNET_LINALG_STANDARD_UTILITY_H</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define VNET_LINALG_STANDARD_UTILITY_H</span></div>
+<a href="standard__utility_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef VT_LINALG_STANDARD_UTILITY_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define VT_LINALG_STANDARD_UTILITY_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
@@ -262,12 +262,18 @@ $(document).ready(function(){initNavTree('standard__utility_8h_source.html','');
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> B, <span class="keyword">typename</span> T = <span class="keywordtype">void</span>&gt;</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="namespacevt.html#a1e6682804eae6f8c624b71eecf3f8214">  202</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespacevt.html#a1e6682804eae6f8c624b71eecf3f8214">enable_if_t</a> = <span class="keyword">typename</span> <a class="code hl_struct" href="structvt_1_1enable__if.html">enable_if&lt;B, T&gt;::type</a>;</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>}</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="preprocessor">#endif </span><span class="comment">//VNET_LINALG_STANDARD_UTILITY_H</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keyword">template</span>&lt;<span class="keywordtype">bool</span> condition, <span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno"><a class="line" href="namespacevt.html#a151d27d5e6fe4155652d3a7eae000ab5">  205</a></span>    <span class="keyword">constexpr</span> T <a class="code hl_function" href="namespacevt.html#a151d27d5e6fe4155652d3a7eae000ab5">choose_if</a>(<span class="keyword">const</span> T &amp;value_if_true, <span class="keyword">const</span> T &amp;value_if_false) {</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="keywordflow">return</span> condition ? value_if_true : value_if_false;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    }</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>}</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="preprocessor">#endif </span><span class="comment">//VT_LINALG_STANDARD_UTILITY_H</span></div>
 <div class="ttc" id="anamespacevt_1_1detail_html_a3eacd1e6dbf322f556f7d07eefa1844e"><div class="ttname"><a href="namespacevt_1_1detail.html#a3eacd1e6dbf322f556f7d07eefa1844e">vt::detail::try_add_lvalue_reference</a></div><div class="ttdeci">auto try_add_lvalue_reference(int) -&gt; type_identity&lt; T &amp; &gt;</div></div>
 <div class="ttc" id="anamespacevt_1_1detail_html_a68269e70f7d39c6e2434b3b94f52496d"><div class="ttname"><a href="namespacevt_1_1detail.html#a68269e70f7d39c6e2434b3b94f52496d">vt::detail::try_add_rvalue_reference</a></div><div class="ttdeci">auto try_add_rvalue_reference(int) -&gt; type_identity&lt; T &amp;&amp; &gt;</div></div>
 <div class="ttc" id="anamespacevt_html"><div class="ttname"><a href="namespacevt.html">vt</a></div><div class="ttdef"><b>Definition</b> <a href="circular__buffer_8h_source.html#l00006">circular_buffer.h:6</a></div></div>
+<div class="ttc" id="anamespacevt_html_a151d27d5e6fe4155652d3a7eae000ab5"><div class="ttname"><a href="namespacevt.html#a151d27d5e6fe4155652d3a7eae000ab5">vt::choose_if</a></div><div class="ttdeci">constexpr T choose_if(const T &amp;value_if_true, const T &amp;value_if_false)</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00205">standard_utility.h:205</a></div></div>
 <div class="ttc" id="anamespacevt_html_a1e6682804eae6f8c624b71eecf3f8214"><div class="ttname"><a href="namespacevt.html#a1e6682804eae6f8c624b71eecf3f8214">vt::enable_if_t</a></div><div class="ttdeci">typename enable_if&lt; B, T &gt;::type enable_if_t</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00202">standard_utility.h:202</a></div></div>
 <div class="ttc" id="anamespacevt_html_a6a7ec841ca2f701599c29c4fd0d758d4"><div class="ttname"><a href="namespacevt.html#a6a7ec841ca2f701599c29c4fd0d758d4">vt::swap</a></div><div class="ttdeci">void swap(T &amp;a, T &amp;b)</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00071">standard_utility.h:71</a></div></div>
 <div class="ttc" id="anamespacevt_html_aab5e8fcc8becab365ccdc59cf093d0a9"><div class="ttname"><a href="namespacevt.html#aab5e8fcc8becab365ccdc59cf093d0a9">vt::declval</a></div><div class="ttdeci">vt::add_rvalue_reference&lt; T &gt;::type declval() noexcept</div><div class="ttdef"><b>Definition</b> <a href="standard__utility_8h_source.html#l00161">standard_utility.h:161</a></div></div>
@@ -304,7 +310,7 @@ $(document).ready(function(){initNavTree('standard__utility_8h_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="standard__utility_8h.html">standard_utility.h</a></li>
-    <li class="footer">Generated on Tue Jul 4 2023 15:43:31 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Thu Jul 6 2023 19:49:33 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

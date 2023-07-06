@@ -32,12 +32,12 @@ int main() {
                          {0, 4, 2},
                          {2, 2, 2}});
     numeric_matrix<3> D(C);
+    numeric_matrix<4, 3> E(A.transpose());
     numeric_matrix<N> X;
     numeric_matrix<N> Y;
     numeric_matrix<N> Z1 = vt::move(X * Y);
     numeric_matrix<N> Z2 = vt::move(X.matmul_naive(Y));
     auto v1 = vt::make_numeric_vector({1, 2, 3, 4});
-
     auto M2 = vt::make_quad_matrix(A, A, A, A);
 
     for (auto &row: M1) {
@@ -134,9 +134,13 @@ int main() {
     real_t a = 0, b = 0, c = 0, d = 0;
     numeric_vector<4> vx({4, 5, 8, 9});
 
-    vx.assign_to(a, b, c);
+//    vx.assign_to(a, b, c, d);
+//    vx.assign_from(a, b, c, d);
+    vx >> a >> b >> c >> d;
+    vx << d << c << b << a;
 
     std::cout << a << ' ' << b << ' ' << c << ' ' << d << '\n';
+    std::cout << vx[0] << ' ' << vx[1] << ' ' << vx[2] << ' ' << vx[3] << '\n';
 
     auto Diag1 = make_diagonal_matrix({1, 2, 3});
     auto Diag2 = make_diagonal_matrix<3>(5);
@@ -148,12 +152,7 @@ int main() {
                                           {0, 5, 0},
                                           {0, 0, 5}})));
 
-    for (auto &row: Diag2) {
-        for (auto &x: row) {
-            std::cout << x << ' ';
-        }
-        std::cout << '\n';
-    }
+    assert((C * E.transpose() == C.matmul_T(E)));
 
     constexpr bool con = true;
     vt::if_constexpr<con>::run(pass_msg, 3, 9);

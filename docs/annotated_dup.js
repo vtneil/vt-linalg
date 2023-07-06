@@ -3,6 +3,8 @@ var annotated_dup =
     [ "vt", "namespacevt.html", [
       [ "detail", "namespacevt_1_1detail.html", [
         [ "always_false", "structvt_1_1detail_1_1always__false.html", null ],
+        [ "input_assignment_chain", "structvt_1_1detail_1_1input__assignment__chain.html", "structvt_1_1detail_1_1input__assignment__chain" ],
+        [ "output_assignment_chain", "structvt_1_1detail_1_1output__assignment__chain.html", "structvt_1_1detail_1_1output__assignment__chain" ],
         [ "size_sum", "structvt_1_1detail_1_1size__sum.html", null ],
         [ "size_sum< Class< T, Size > >", "structvt_1_1detail_1_1size__sum_3_01Class_3_01T_00_01Size_01_4_01_4.html", null ],
         [ "size_sum< Class< T, Size >, Class< T, Sizes >... >", "structvt_1_1detail_1_1size__sum_3_01Class_3_01T_00_01Size_01_4_00_01Class_3_01T_00_01Sizes_01_4_8_8_8_01_4.html", null ],

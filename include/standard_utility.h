@@ -1,5 +1,5 @@
-#ifndef VNET_LINALG_STANDARD_UTILITY_H
-#define VNET_LINALG_STANDARD_UTILITY_H
+#ifndef VT_LINALG_STANDARD_UTILITY_H
+#define VT_LINALG_STANDARD_UTILITY_H
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -207,4 +207,4 @@ namespace vt {
     }
 }
 
-#endif //VNET_LINALG_STANDARD_UTILITY_H
+#endif //VT_LINALG_STANDARD_UTILITY_H

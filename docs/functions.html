@@ -36,7 +36,7 @@
                 <tbody>
                 <tr id="projectrow">
                     <td id="projectalign">
-                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.2.0</span>
+                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.3.0</span>
                         </div>
                         <div id="projectbrief">C++ Efficient Linear Algebra Library</div>
                     </td>
@@ -110,9 +110,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>allocate_zero()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html#a03e320edb6c4761398b05458c2353468">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;</a>, <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html#ac72e1bc3c88e835ddcf4e6c2ccd406d4">vt::impl::numeric_vector_static_t&lt; T, Size &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a175b4d893a71ceb7d4c2b247bdf35a16">vt::numeric_matrix_dynamic_t&lt; T &gt;</a>, <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html#a55b1d3ab78a8bb1558617a3aebc4c2e5">vt::numeric_vector_dynamic_t&lt; T &gt;</a></li>
 <li>arr()&#160;:&#160;<a class="el" href="classvt_1_1circular__buffer__static__t.html#ab05b7171037ac09ca6c8dfa408b97cab">vt::circular_buffer_static_t&lt; T, Capacity &gt;</a></li>
 <li>arr_&#160;:&#160;<a class="el" href="classvt_1_1circular__buffer__static__t.html#ac3a74477c6e6de9107b76ef0c19afcd2">vt::circular_buffer_static_t&lt; T, Capacity &gt;</a>, <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html#a2ec4813f146de4324cbda8c6723831e2">vt::impl::numeric_vector_static_t&lt; T, Size &gt;</a>, <a class="el" href="classvt_1_1initializer__list.html#a4fc3d1580bc749087c5078ad714cca92">vt::initializer_list&lt; T &gt;</a>, <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html#aebf0862456da94f0ad7d9c80d92394d5">vt::numeric_vector_dynamic_t&lt; T &gt;</a></li>
+<li>arr_ref&#160;:&#160;<a class="el" href="structvt_1_1detail_1_1input__assignment__chain.html#a8c58efeaea0adb1956e1ab4001c5f482">vt::detail::input_assignment_chain&lt; T, Size, Index &gt;</a>, <a class="el" href="structvt_1_1detail_1_1output__assignment__chain.html#af71dfeb358ef946c706bc7f1c37a198a">vt::detail::output_assignment_chain&lt; T, Size, Index &gt;</a></li>
 <li>as_matrix_col()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html#a6b0d4c2e2e03bd4aea9cdfd4ff1bff2b">vt::impl::numeric_vector_static_t&lt; T, Size &gt;</a></li>
 <li>as_matrix_row()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html#a3c745fecd536615dee515c77e936b313">vt::impl::numeric_vector_static_t&lt; T, Size &gt;</a></li>
-<li>assign_to()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html#a90cc9e3bd37bed0c18f7f262d4c2fd60">vt::impl::numeric_vector_static_t&lt; T, Size &gt;</a></li>
+<li>assign_from()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html#aac596f1203f371de61cc94161c98f338">vt::impl::numeric_vector_static_t&lt; T, Size &gt;</a></li>
+<li>assign_to()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html#a4fc8eb950c90466c144922e2c74ab369">vt::impl::numeric_vector_static_t&lt; T, Size &gt;</a></li>
 <li>at()&#160;:&#160;<a class="el" href="classvt_1_1impl_1_1numeric__matrix__static__t.html#a53d5c5c101aac43bad3973712ed45dfd">vt::impl::numeric_matrix_static_t&lt; T, Row, Col &gt;</a>, <a class="el" href="classvt_1_1impl_1_1numeric__vector__static__t.html#ad4b2ed2b607c06857ae478c2b8804bdc">vt::impl::numeric_vector_static_t&lt; T, Size &gt;</a>, <a class="el" href="classvt_1_1numeric__matrix__dynamic__t.html#a9301d6b1b58ed7812e6a230012596d55">vt::numeric_matrix_dynamic_t&lt; T &gt;</a>, <a class="el" href="classvt_1_1numeric__vector__dynamic__t.html#a6dcbde31a22b927ecdd7d07b1fb9d710">vt::numeric_vector_dynamic_t&lt; T &gt;</a></li>
 <li>available_for()&#160;:&#160;<a class="el" href="classvt_1_1circular__buffer__static__t.html#a32b59131b0637defb4210994c111fa8b">vt::circular_buffer_static_t&lt; T, Capacity &gt;</a></li>
 </ul>
@@ -121,7 +123,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jul 4 2023 15:43:31 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Thu Jul 6 2023 19:49:33 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>

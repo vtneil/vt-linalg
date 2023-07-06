@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['real_5ft_0',['real_t',['../namespacevt.html#acfba66711730fde2d67f6c5c9d4bd26e',1,'vt']]],
-  ['remove_5freference_5ft_1',['remove_reference_t',['../namespacevt.html#abff0b8c0c4a3cf4f5c6689ed6a1626d9',1,'vt']]]
+  ['pair_5ft_0',['Pair_t',['../classvt_1_1impl_1_1numeric__matrix__static__lu__t.html#a09e2e736c53affce993d6530bad602f2',1,'vt::impl::numeric_matrix_static_lu_t']]],
+  ['pm_1',['PM',['../classvt_1_1numeric__matrix__dynamic__lu__t.html#a71445c8f68378ab85bbd70c21d593827',1,'vt::numeric_matrix_dynamic_lu_t']]]
 ];

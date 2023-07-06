@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quaternion_5ft_0',['quaternion_t',['../structvt_1_1quaternion__t.html',1,'vt']]]
+  ['pair_0',['pair',['../classvt_1_1pair.html',1,'vt']]]
 ];

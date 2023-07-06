@@ -1,5 +1,5 @@
-#ifndef VNET_LINALG_ITERATOR_H
-#define VNET_LINALG_ITERATOR_H
+#ifndef VT_LINALG_ITERATOR_H
+#define VT_LINALG_ITERATOR_H
 
 #include "standard_utility.h"
 
@@ -56,10 +56,47 @@ namespace vt {
     };
 
     template<typename T>
-    constexpr bool operator==(T *ptr, const iterator<T> &iterator) { return iterator.operator==(ptr); }
+    constexpr bool operator==(T *ptr, const iterator <T> &iterator) { return iterator.operator==(ptr); }
 
     template<typename T>
-    constexpr bool operator!=(T *ptr, const iterator<T> &iterator) { return !operator==(ptr, iterator); }
+    constexpr bool operator!=(T *ptr, const iterator <T> &iterator) { return !operator==(ptr, iterator); }
+
+    template<typename T>
+    using const_iterator = iterator<const T>;
+
+    namespace detail {
+        template<typename T, size_t Size, size_t Index>
+        struct output_assignment_chain {
+            const T (&arr_ref)[Size];
+
+            explicit output_assignment_chain(const T (&arr)[Size]) : arr_ref{arr} {}
+
+            static_assert(Size > 0, "Size must be greater than 0.");
+            using next_iterator = output_assignment_chain<T, Size, Index + 1>;
+
+            next_iterator operator>>(T &var) const {
+                var = arr_ref[Index];
+                static_assert(Index < Size, "Can\'t assign index greater than or equal to size.");
+                return next_iterator(arr_ref);
+            }
+        };
+
+        template<typename T, size_t Size, size_t Index>
+        struct input_assignment_chain {
+            T (&arr_ref)[Size];
+
+            explicit input_assignment_chain(T (&arr)[Size]) : arr_ref{arr} {}
+
+            static_assert(Size > 0, "Size must be greater than 0.");
+            using next_iterator = input_assignment_chain<T, Size, Index + 1>;
+
+            next_iterator operator<<(const T &var) {
+                arr_ref[Index] = var;
+                static_assert(Index < Size, "Can\'t assign index greater than or equal to size.");
+                return next_iterator(arr_ref);
+            }
+        };
+    }
 }
 
-#endif //VNET_LINALG_ITERATOR_H
+#endif //VT_LINALG_ITERATOR_H

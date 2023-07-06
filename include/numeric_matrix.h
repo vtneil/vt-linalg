@@ -5,8 +5,8 @@
  * @brief Numeric matrix library
  */
 
-#ifndef VNET_LINALG_NUMERIC_MATRIX_H
-#define VNET_LINALG_NUMERIC_MATRIX_H
+#ifndef VT_LINALG_NUMERIC_MATRIX_H
+#define VT_LINALG_NUMERIC_MATRIX_H
 
 #include "standard_utility.h"
 #include "pair.h"
@@ -35,8 +35,7 @@ namespace vt {
             static_assert(Col > 0, "Column must be greater than 0.");
 
         private:
-            template<typename U, size_t V>
-            friend
+            template<typename U, size_t V> friend
             class numeric_vector_static_t;
 
         private:
@@ -65,14 +64,14 @@ namespace vt {
              *
              * @param other Other matrix
              */
-            constexpr numeric_matrix_static_t(const numeric_matrix_static_t &other) = default;
+            constexpr numeric_matrix_static_t(const numeric_matrix_static_t &) = default;
 
             /**
              * Move constructor
              *
              * @param other Other vector
              */
-            constexpr numeric_matrix_static_t(numeric_matrix_static_t &&other) noexcept = default;
+            constexpr numeric_matrix_static_t(numeric_matrix_static_t &&) noexcept = default;
 
             /**
              * Array constructor, construct from array
@@ -251,6 +250,25 @@ namespace vt {
             operator*=(const numeric_matrix_static_t<T, Order, Order> &other) {
                 steal(vt::move(operator*(other)));
                 return *this;
+            }
+
+            template<size_t ORow, size_t OCol>
+            numeric_matrix_static_t<T, Row, OCol> matmul(const numeric_matrix_static_t<T, ORow, OCol> &other) const {
+                return operator*(other);
+            }
+
+            /**
+             * Multiply with another matrix transposed (i.e., A * B^T).
+             *
+             * @tparam ORow
+             * @tparam OCol
+             * @param other
+             * @return
+             */
+            template<size_t ORow, size_t OCol>
+            numeric_matrix_static_t<T, Row, ORow> matmul_T(const numeric_matrix_static_t<T, ORow, OCol> &other) const {
+                numeric_matrix_static_t<T, Row, ORow> C;
+                return mm_naive_T(C, *this, other);
             }
 
             template<size_t ORow, size_t OCol>
@@ -714,7 +732,7 @@ namespace vt {
              *
              * @return An iterator to matrix's first row
              */
-            constexpr iterator<numeric_vector_static_t<T, Col>> begin() const { return vector_.begin(); }
+            constexpr const_iterator<numeric_vector_static_t<T, Col>> begin() const { return vector_.begin(); }
 
             /**
              * Returns an iterator to matrix's last row.
@@ -728,7 +746,7 @@ namespace vt {
              *
              * @return An iterator to matrix's last row
              */
-            constexpr iterator<numeric_vector_static_t<T, Col>> end() const { return vector_.end(); }
+            constexpr const_iterator<numeric_vector_static_t<T, Col>> end() const { return vector_.end(); }
 
             /**
              * Returns number of rows.
@@ -862,6 +880,22 @@ namespace vt {
                         const T &val_A = A[i][k];
                         for (size_t j = 0; j < OCol; ++j) {
                             row_C[j] += val_A * B[k][j];
+                        }
+                    }
+                }
+                return C;
+            }
+
+            template<size_t ORow, size_t X, size_t OCol>
+            static numeric_matrix_static_t<T, ORow, OCol> &mm_naive_T(numeric_matrix_static_t<T, ORow, OCol> &C,
+                                                                      const numeric_matrix_static_t<T, ORow, X> &A,
+                                                                      const numeric_matrix_static_t<T, OCol, X> &B) {
+                for (size_t i = 0; i < ORow; ++i) {
+                    numeric_vector_static_t<T, OCol> &row_C = C[i];
+                    for (size_t k = 0; k < X; ++k) {
+                        const T &val_A = A[i][k];
+                        for (size_t j = 0; j < OCol; ++j) {
+                            row_C[j] += val_A * B[j][k];
                         }
                     }
                 }
@@ -1197,4 +1231,4 @@ namespace vt {
     }
 }
 
-#endif //VNET_LINALG_NUMERIC_MATRIX_H
+#endif //VT_LINALG_NUMERIC_MATRIX_H

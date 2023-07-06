@@ -36,7 +36,7 @@
                 <tbody>
                 <tr id="projectrow">
                     <td id="projectalign">
-                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.2.0</span>
+                        <div id="projectname">VT Linear Algebra Library<span id="projectnumber">&#160;1.3.0</span>
                         </div>
                         <div id="projectbrief">C++ Efficient Linear Algebra Library</div>
                     </td>
@@ -103,6 +103,7 @@ $(document).ready(function(){initNavTree('classvt_1_1simple__kalman__filter__t.h
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classvt_1_1simple__kalman__filter__t-members.html">List of all members</a>  </div>
@@ -120,25 +121,31 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:abf82464b85cc0da4c2528f73e6fe39bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9b3c83d984164fcaf239f41f6a793b4"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#ab9b3c83d984164fcaf239f41f6a793b4">simple_kalman_filter_t</a> (<a class="el" href="classvt_1_1simple__kalman__filter__t.html">simple_kalman_filter_t</a> &amp;&amp;) noexcept=delete</td></tr>
 <tr class="separator:ab9b3c83d984164fcaf239f41f6a793b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed6c26ced5f4befaa518da6b0c89b339"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#aed6c26ced5f4befaa518da6b0c89b339">predict</a> (const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#ad9d11d7a8813b558eb4490ce13bd153a">L_</a> &gt; &amp;u)</td></tr>
-<tr class="separator:aed6c26ced5f4befaa518da6b0c89b339"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe8b82a89180689f2a775d0a0d103873"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#abe8b82a89180689f2a775d0a0d103873">predict</a> (const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#ad9d11d7a8813b558eb4490ce13bd153a">L_</a> &gt; &amp;u={})</td></tr>
+<tr class="separator:abe8b82a89180689f2a775d0a0d103873"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a409dff901dd81f2dbd9e420d11cfeaa3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#a409dff901dd81f2dbd9e420d11cfeaa3">update</a> (const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a> &gt; &amp;z)</td></tr>
 <tr class="separator:a409dff901dd81f2dbd9e420d11cfeaa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acac90ef6cdbc3a78787a2603375683bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#acac90ef6cdbc3a78787a2603375683bd">state_vector</a> ()</td></tr>
-<tr class="separator:acac90ef6cdbc3a78787a2603375683bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacda56aeef6ca28e507dbae859ad57f4"><td class="memTemplParams" colspan="2">template&lt;typename ... Ts&gt; </td></tr>
+<tr class="memitem:aacda56aeef6ca28e507dbae859ad57f4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#aacda56aeef6ca28e507dbae859ad57f4">update</a> (Ts ...vs)</td></tr>
+<tr class="separator:aacda56aeef6ca28e507dbae859ad57f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a90e1505eaac8d807e3f987e70957442f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#a90e1505eaac8d807e3f987e70957442f">state_vector</a> = <a class="el" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a></td></tr>
+<tr class="separator:a90e1505eaac8d807e3f987e70957442f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a221f9deee5d9aa7fee3137f200d69621"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#a221f9deee5d9aa7fee3137f200d69621">F_</a></td></tr>
-<tr class="separator:a221f9deee5d9aa7fee3137f200d69621"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59f7f343e1559951be831f94b6d87428"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#ad9d11d7a8813b558eb4490ce13bd153a">L_</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#a59f7f343e1559951be831f94b6d87428">B_</a></td></tr>
-<tr class="separator:a59f7f343e1559951be831f94b6d87428"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c96e0e5853cf45ca317ac68f3f4f91e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#a4c96e0e5853cf45ca317ac68f3f4f91e">H_</a></td></tr>
-<tr class="separator:a4c96e0e5853cf45ca317ac68f3f4f91e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09977757c4f10d30351cce1b75c3eb61"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#a09977757c4f10d30351cce1b75c3eb61">Q_</a></td></tr>
-<tr class="separator:a09977757c4f10d30351cce1b75c3eb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c84d1e3f57c948b4b0db100d2120900"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#a4c84d1e3f57c948b4b0db100d2120900">R_</a></td></tr>
-<tr class="separator:a4c84d1e3f57c948b4b0db100d2120900"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0111c32eff53291faa093a57966eeaf0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#a0111c32eff53291faa093a57966eeaf0">F_</a></td></tr>
+<tr class="separator:a0111c32eff53291faa093a57966eeaf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a236ab6a193c317b7403091163e759c66"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#ad9d11d7a8813b558eb4490ce13bd153a">L_</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#a236ab6a193c317b7403091163e759c66">B_</a></td></tr>
+<tr class="separator:a236ab6a193c317b7403091163e759c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7f2f709abca58682d9cbfd6db849677"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#ab7f2f709abca58682d9cbfd6db849677">H_</a></td></tr>
+<tr class="separator:ab7f2f709abca58682d9cbfd6db849677"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab25456c1248307f2757c1df391711177"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#ab25456c1248307f2757c1df391711177">Q_</a></td></tr>
+<tr class="separator:ab25456c1248307f2757c1df391711177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeea2135012407f8ade9715fb307b20c4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#aeea2135012407f8ade9715fb307b20c4">R_</a></td></tr>
+<tr class="separator:aeea2135012407f8ade9715fb307b20c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaeba45b68239a1eca136e19c16a452a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a></td></tr>
 <tr class="separator:abaeba45b68239a1eca136e19c16a452a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51cdcae7c4a03e7e58505b413fbe7281"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a></td></tr>
@@ -231,15 +238,15 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00048">48</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   56</span>                : <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a221f9deee5d9aa7fee3137f200d69621">F_</a>{F_matrix}, <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a59f7f343e1559951be831f94b6d87428">B_</a>{B_matrix}, <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a4c96e0e5853cf45ca317ac68f3f4f91e">H_</a>{H_matrix},</div>
-<div class="line"><span class="lineno">   57</span>                  <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a09977757c4f10d30351cce1b75c3eb61">Q_</a>{Q_matrix}, <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a4c84d1e3f57c948b4b0db100d2120900">R_</a>{R_matrix}, <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a>{x_0}, <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a>{Q_matrix} {}</div>
-<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_a09977757c4f10d30351cce1b75c3eb61"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#a09977757c4f10d30351cce1b75c3eb61">vt::simple_kalman_filter_t::Q_</a></div><div class="ttdeci">const numeric_matrix&lt; N_, N_ &gt; Q_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00032">kalman.h:32</a></div></div>
-<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_a221f9deee5d9aa7fee3137f200d69621"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#a221f9deee5d9aa7fee3137f200d69621">vt::simple_kalman_filter_t::F_</a></div><div class="ttdeci">const numeric_matrix&lt; N_, N_ &gt; F_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00029">kalman.h:29</a></div></div>
-<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_a4c84d1e3f57c948b4b0db100d2120900"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#a4c84d1e3f57c948b4b0db100d2120900">vt::simple_kalman_filter_t::R_</a></div><div class="ttdeci">const numeric_matrix&lt; M_, M_ &gt; R_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00033">kalman.h:33</a></div></div>
-<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_a4c96e0e5853cf45ca317ac68f3f4f91e"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#a4c96e0e5853cf45ca317ac68f3f4f91e">vt::simple_kalman_filter_t::H_</a></div><div class="ttdeci">const numeric_matrix&lt; M_, N_ &gt; H_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00031">kalman.h:31</a></div></div>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>                : <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a0111c32eff53291faa093a57966eeaf0">F_</a>{F_matrix}, <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a236ab6a193c317b7403091163e759c66">B_</a>{B_matrix}, <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#ab7f2f709abca58682d9cbfd6db849677">H_</a>{H_matrix},</div>
+<div class="line"><span class="lineno">   57</span>                  <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#ab25456c1248307f2757c1df391711177">Q_</a>{Q_matrix}, <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#aeea2135012407f8ade9715fb307b20c4">R_</a>{R_matrix}, <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a>{x_0}, <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a>{Q_matrix} {}</div>
+<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_a0111c32eff53291faa093a57966eeaf0"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#a0111c32eff53291faa093a57966eeaf0">vt::simple_kalman_filter_t::F_</a></div><div class="ttdeci">const numeric_matrix&lt; N_, N_ &gt; &amp; F_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00029">kalman.h:29</a></div></div>
+<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_a236ab6a193c317b7403091163e759c66"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#a236ab6a193c317b7403091163e759c66">vt::simple_kalman_filter_t::B_</a></div><div class="ttdeci">const numeric_matrix&lt; N_, L_ &gt; &amp; B_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00030">kalman.h:30</a></div></div>
 <div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_a51cdcae7c4a03e7e58505b413fbe7281"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">vt::simple_kalman_filter_t::P_</a></div><div class="ttdeci">numeric_matrix&lt; N_, N_ &gt; P_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00035">kalman.h:35</a></div></div>
-<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_a59f7f343e1559951be831f94b6d87428"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#a59f7f343e1559951be831f94b6d87428">vt::simple_kalman_filter_t::B_</a></div><div class="ttdeci">const numeric_matrix&lt; N_, L_ &gt; B_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00030">kalman.h:30</a></div></div>
+<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_ab25456c1248307f2757c1df391711177"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#ab25456c1248307f2757c1df391711177">vt::simple_kalman_filter_t::Q_</a></div><div class="ttdeci">const numeric_matrix&lt; N_, N_ &gt; &amp; Q_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00032">kalman.h:32</a></div></div>
+<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_ab7f2f709abca58682d9cbfd6db849677"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#ab7f2f709abca58682d9cbfd6db849677">vt::simple_kalman_filter_t::H_</a></div><div class="ttdeci">const numeric_matrix&lt; M_, N_ &gt; &amp; H_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00031">kalman.h:31</a></div></div>
 <div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_abaeba45b68239a1eca136e19c16a452a"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">vt::simple_kalman_filter_t::x_</a></div><div class="ttdeci">numeric_vector&lt; N_ &gt; x_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00034">kalman.h:34</a></div></div>
+<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_aeea2135012407f8ade9715fb307b20c4"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#aeea2135012407f8ade9715fb307b20c4">vt::simple_kalman_filter_t::R_</a></div><div class="ttdeci">const numeric_matrix&lt; M_, M_ &gt; &amp; R_</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00033">kalman.h:33</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -300,8 +307,8 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aed6c26ced5f4befaa518da6b0c89b339" name="aed6c26ced5f4befaa518da6b0c89b339"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed6c26ced5f4befaa518da6b0c89b339">&#9670;&#160;</a></span>predict()</h2>
+<a id="abe8b82a89180689f2a775d0a0d103873" name="abe8b82a89180689f2a775d0a0d103873"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe8b82a89180689f2a775d0a0d103873">&#9670;&#160;</a></span>predict()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -315,7 +322,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
           <td class="memname">void <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#ad9d11d7a8813b558eb4490ce13bd153a">L_</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>u</em></td><td>)</td>
+          <td class="paramname"><em>u</em> = <code>{}</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -334,17 +341,15 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00068">68</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>                                                  {</div>
-<div class="line"><span class="lineno">   69</span>            <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a> = vt::move(<a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a221f9deee5d9aa7fee3137f200d69621">F_</a> * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a> + <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a59f7f343e1559951be831f94b6d87428">B_</a> * u);</div>
-<div class="line"><span class="lineno">   70</span>            <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a> = vt::move(<a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a221f9deee5d9aa7fee3137f200d69621">F_</a> * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a> * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a221f9deee5d9aa7fee3137f200d69621">F_</a>.transpose() + <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a09977757c4f10d30351cce1b75c3eb61">Q_</a>);</div>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>                                                   {}) {</div>
+<div class="line"><span class="lineno">   69</span>            <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a> = vt::move(<a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a0111c32eff53291faa093a57966eeaf0">F_</a> * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a> + <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a236ab6a193c317b7403091163e759c66">B_</a> * u);</div>
+<div class="line"><span class="lineno">   70</span>            <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a> = vt::move(<a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a0111c32eff53291faa093a57966eeaf0">F_</a> * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a>.matmul_T(<a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a0111c32eff53291faa093a57966eeaf0">F_</a>) + <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#ab25456c1248307f2757c1df391711177">Q_</a>);</div>
 <div class="line"><span class="lineno">   71</span>        }</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8h_source.html#l00030">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::B_</a>, <a class="el" href="kalman_8h_source.html#l00029">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::F_</a>, <a class="el" href="kalman_8h_source.html#l00035">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::P_</a>, <a class="el" href="kalman_8h_source.html#l00032">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::Q_</a>, and <a class="el" href="kalman_8h_source.html#l00034">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::x_</a>.</p>
-
 </div>
 </div>
 <a id="a409dff901dd81f2dbd9e420d11cfeaa3" name="a409dff901dd81f2dbd9e420d11cfeaa3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a409dff901dd81f2dbd9e420d11cfeaa3">&#9670;&#160;</a></span>update()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a409dff901dd81f2dbd9e420d11cfeaa3">&#9670;&#160;</a></span>update() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -378,32 +383,36 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 
 <p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00078">78</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   78</span>                                                 {</div>
-<div class="line"><span class="lineno">   79</span>            numeric_vector&lt;M_&gt; y_ = vt::move(z - <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a4c96e0e5853cf45ca317ac68f3f4f91e">H_</a> * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a>);</div>
-<div class="line"><span class="lineno">   80</span>            numeric_matrix&lt;N_, M_&gt; K_ = vt::move(<a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a> * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a4c96e0e5853cf45ca317ac68f3f4f91e">H_</a>.transpose() * (<a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a4c96e0e5853cf45ca317ac68f3f4f91e">H_</a> * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a> * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a4c96e0e5853cf45ca317ac68f3f4f91e">H_</a>.transpose() + <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a4c84d1e3f57c948b4b0db100d2120900">R_</a>).inverse());</div>
-<div class="line"><span class="lineno">   81</span>            <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a> += K_ * y_;</div>
-<div class="line"><span class="lineno">   82</span>            <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a> = vt::move((<a class="code hl_function" href="classvt_1_1numeric__matrix__dynamic__t.html#a1f0e7a81039b2e5a8eab2f2d813624e4">numeric_matrix&lt;N_, N_&gt;::identity</a>() - K_ * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a4c96e0e5853cf45ca317ac68f3f4f91e">H_</a>) * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a>);</div>
-<div class="line"><span class="lineno">   83</span>        }</div>
+<div class="line"><span class="lineno">   79</span>            numeric_vector&lt;M_&gt; y_ = vt::move(z - <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#ab7f2f709abca58682d9cbfd6db849677">H_</a> * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a>);</div>
+<div class="line"><span class="lineno">   80</span>            numeric_matrix&lt;N_, M_&gt; P_H_t = vt::move(<a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a>.matmul_T(<a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#ab7f2f709abca58682d9cbfd6db849677">H_</a>));</div>
+<div class="line"><span class="lineno">   81</span>            numeric_matrix&lt;N_, M_&gt; K_ = vt::move(P_H_t * (<a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#ab7f2f709abca58682d9cbfd6db849677">H_</a> * P_H_t + <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#aeea2135012407f8ade9715fb307b20c4">R_</a>).inverse());</div>
+<div class="line"><span class="lineno">   82</span>            <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a> += K_ * y_;</div>
+<div class="line"><span class="lineno">   83</span>            <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a> = vt::move((<a class="code hl_function" href="classvt_1_1numeric__matrix__dynamic__t.html#a1f0e7a81039b2e5a8eab2f2d813624e4">numeric_matrix&lt;N_, N_&gt;::identity</a>() - K_ * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#ab7f2f709abca58682d9cbfd6db849677">H_</a>) * <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#a51cdcae7c4a03e7e58505b413fbe7281">P_</a>);</div>
+<div class="line"><span class="lineno">   84</span>        }</div>
 <div class="ttc" id="aclassvt_1_1numeric__matrix__dynamic__t_html_a1f0e7a81039b2e5a8eab2f2d813624e4"><div class="ttname"><a href="classvt_1_1numeric__matrix__dynamic__t.html#a1f0e7a81039b2e5a8eab2f2d813624e4">vt::numeric_matrix_dynamic_t::identity</a></div><div class="ttdeci">static numeric_matrix_dynamic_t identity(size_t n)</div><div class="ttdef"><b>Definition</b> <a href="dynamic__numeric__matrix_8h_source.html#l00596">dynamic_numeric_matrix.h:596</a></div></div>
 </div><!-- fragment -->
 <p class="reference">References <a class="el" href="kalman_8h_source.html#l00031">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::H_</a>, <a class="el" href="kalman_8h_source.html#l00035">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::P_</a>, <a class="el" href="kalman_8h_source.html#l00033">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::R_</a>, and <a class="el" href="kalman_8h_source.html#l00034">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::x_</a>.</p>
 
 </div>
 </div>
-<a id="acac90ef6cdbc3a78787a2603375683bd" name="acac90ef6cdbc3a78787a2603375683bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acac90ef6cdbc3a78787a2603375683bd">&#9670;&#160;</a></span>state_vector()</h2>
+<a id="aacda56aeef6ca28e507dbae859ad57f4" name="aacda56aeef6ca28e507dbae859ad57f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacda56aeef6ca28e507dbae859ad57f4">&#9670;&#160;</a></span>update() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+<div class="memtemplate">
+template&lt;typename ... Ts&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a> &gt; &amp; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::state_vector </td>
+          <td class="memname">void <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">Ts ...&#160;</td>
+          <td class="paramname"><em>vs</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -414,10 +423,14 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00085">85</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   85</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00087">87</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>{ <a class="code hl_function" href="classvt_1_1simple__kalman__filter__t.html#a409dff901dd81f2dbd9e420d11cfeaa3">update</a>(<a class="code hl_function" href="namespacevt.html#a22a4673f10baa3f620d81c4d768eb262">make_numeric_vector</a>({vs...})); }</div>
+<div class="ttc" id="aclassvt_1_1simple__kalman__filter__t_html_a409dff901dd81f2dbd9e420d11cfeaa3"><div class="ttname"><a href="classvt_1_1simple__kalman__filter__t.html#a409dff901dd81f2dbd9e420d11cfeaa3">vt::simple_kalman_filter_t::update</a></div><div class="ttdeci">void update(const numeric_vector&lt; M_ &gt; &amp;z)</div><div class="ttdef"><b>Definition</b> <a href="kalman_8h_source.html#l00078">kalman.h:78</a></div></div>
+<div class="ttc" id="anamespacevt_html_a22a4673f10baa3f620d81c4d768eb262"><div class="ttname"><a href="namespacevt.html#a22a4673f10baa3f620d81c4d768eb262">vt::make_numeric_vector</a></div><div class="ttdeci">constexpr numeric_vector&lt; Size &gt; make_numeric_vector(const real_t(&amp;array)[Size])</div><div class="ttdef"><b>Definition</b> <a href="numeric__vector_8h_source.html#l00685">numeric_vector.h:685</a></div></div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="kalman_8h_source.html#l00034">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::x_</a>.</p>
+<p class="reference">References <a class="el" href="numeric__vector_8h_source.html#l00685">vt::make_numeric_vector()</a>, and <a class="el" href="kalman_8h_source.html#l00087">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00087">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
 
 </div>
 </div>
@@ -500,8 +513,8 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 
 </div>
 </div>
-<a id="a221f9deee5d9aa7fee3137f200d69621" name="a221f9deee5d9aa7fee3137f200d69621"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a221f9deee5d9aa7fee3137f200d69621">&#9670;&#160;</a></span>F_</h2>
+<a id="a0111c32eff53291faa093a57966eeaf0" name="a0111c32eff53291faa093a57966eeaf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0111c32eff53291faa093a57966eeaf0">&#9670;&#160;</a></span>F_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -512,7 +525,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>&gt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::F_</td>
+          <td class="memname">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>&gt;&amp; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::F_</td>
         </tr>
       </table>
   </td>
@@ -524,12 +537,10 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 
 <p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00029">29</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00068">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict()</a>.</p>
-
 </div>
 </div>
-<a id="a59f7f343e1559951be831f94b6d87428" name="a59f7f343e1559951be831f94b6d87428"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59f7f343e1559951be831f94b6d87428">&#9670;&#160;</a></span>B_</h2>
+<a id="a236ab6a193c317b7403091163e759c66" name="a236ab6a193c317b7403091163e759c66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a236ab6a193c317b7403091163e759c66">&#9670;&#160;</a></span>B_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -540,7 +551,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#ad9d11d7a8813b558eb4490ce13bd153a">L_</a>&gt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::B_</td>
+          <td class="memname">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#ad9d11d7a8813b558eb4490ce13bd153a">L_</a>&gt;&amp; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::B_</td>
         </tr>
       </table>
   </td>
@@ -552,12 +563,10 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 
 <p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00030">30</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00068">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict()</a>.</p>
-
 </div>
 </div>
-<a id="a4c96e0e5853cf45ca317ac68f3f4f91e" name="a4c96e0e5853cf45ca317ac68f3f4f91e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c96e0e5853cf45ca317ac68f3f4f91e">&#9670;&#160;</a></span>H_</h2>
+<a id="ab7f2f709abca58682d9cbfd6db849677" name="ab7f2f709abca58682d9cbfd6db849677"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7f2f709abca58682d9cbfd6db849677">&#9670;&#160;</a></span>H_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -568,7 +577,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>&gt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::H_</td>
+          <td class="memname">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>&gt;&amp; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::H_</td>
         </tr>
       </table>
   </td>
@@ -584,8 +593,8 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 
 </div>
 </div>
-<a id="a09977757c4f10d30351cce1b75c3eb61" name="a09977757c4f10d30351cce1b75c3eb61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09977757c4f10d30351cce1b75c3eb61">&#9670;&#160;</a></span>Q_</h2>
+<a id="ab25456c1248307f2757c1df391711177" name="ab25456c1248307f2757c1df391711177"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab25456c1248307f2757c1df391711177">&#9670;&#160;</a></span>Q_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -596,7 +605,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>&gt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::Q_</td>
+          <td class="memname">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>&gt;&amp; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::Q_</td>
         </tr>
       </table>
   </td>
@@ -608,12 +617,10 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 
 <p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00032">32</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00068">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict()</a>.</p>
-
 </div>
 </div>
-<a id="a4c84d1e3f57c948b4b0db100d2120900" name="a4c84d1e3f57c948b4b0db100d2120900"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c84d1e3f57c948b4b0db100d2120900">&#9670;&#160;</a></span>R_</h2>
+<a id="aeea2135012407f8ade9715fb307b20c4" name="aeea2135012407f8ade9715fb307b20c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeea2135012407f8ade9715fb307b20c4">&#9670;&#160;</a></span>R_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -624,7 +631,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a>&gt; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::R_</td>
+          <td class="memname">const <a class="el" href="namespacevt.html#a76f5bbf0cc019111132e7cfc493509d1">numeric_matrix</a>&lt;<a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a>, <a class="el" href="classvt_1_1simple__kalman__filter__t.html#a507fb0a99e523ef9966ba2a284e05b56">M_</a>&gt;&amp; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::R_</td>
         </tr>
       </table>
   </td>
@@ -664,7 +671,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 
 <p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00034">34</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00068">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict()</a>, <a class="el" href="kalman_8h_source.html#l00085">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::state_vector()</a>, and <a class="el" href="kalman_8h_source.html#l00078">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00078">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
 
 </div>
 </div>
@@ -692,7 +699,25 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 
 <p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00035">35</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00068">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::predict()</a>, and <a class="el" href="kalman_8h_source.html#l00078">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="kalman_8h_source.html#l00078">vt::simple_kalman_filter_t&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::update()</a>.</p>
+
+</div>
+</div>
+<a id="a90e1505eaac8d807e3f987e70957442f" name="a90e1505eaac8d807e3f987e70957442f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90e1505eaac8d807e3f987e70957442f">&#9670;&#160;</a></span>state_vector</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="namespacevt.html#aa067e8af8afe803ea08e30dbec856b92">numeric_vector</a>&lt;<a class="el" href="classvt_1_1simple__kalman__filter__t.html#a7f9ef659d0e2eb3f013e8d349d1d8904">N_</a>&gt;&amp; <a class="el" href="classvt_1_1simple__kalman__filter__t.html">vt::simple_kalman_filter_t</a>&lt; StateVectorDimension, MeasurementVectorDimension, ControlVectorDimension &gt;::state_vector = <a class="el" href="classvt_1_1simple__kalman__filter__t.html#abaeba45b68239a1eca136e19c16a452a">x_</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="kalman_8h_source.html#l00089">89</a> of file <a class="el" href="kalman_8h_source.html">kalman.h</a>.</p>
 
 </div>
 </div>
@@ -705,7 +730,7 @@ template&lt;size_t StateVectorDimension, size_t MeasurementVectorDimension, size
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacevt.html">vt</a></li><li class="navelem"><a class="el" href="classvt_1_1simple__kalman__filter__t.html">simple_kalman_filter_t</a></li>
-    <li class="footer">Generated on Tue Jul 4 2023 15:43:31 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+    <li class="footer">Generated on Thu Jul 6 2023 19:49:33 for VT Linear Algebra Library by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
   </ul>
 </div>
 </body>
