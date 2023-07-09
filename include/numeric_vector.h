@@ -474,6 +474,30 @@ namespace vt {
             }
 
             /**
+             * First N elements.
+             *
+             * @tparam N
+             * @return
+             */
+            template<size_t N>
+            numeric_vector_static_t<T, N> head() {
+                static_assert(N <= Size, "N must be in range of dimension.");
+                return slice<0, N>();
+            }
+
+            /**
+             * Last N elements.
+             *
+             * @tparam N
+             * @return
+             */
+            template<size_t N>
+            numeric_vector_static_t<T, N> tail() {
+                static_assert(N <= Size, "N must be in range of dimension.");
+                return slice<Size - N, Size>();
+            }
+
+            /**
              * Converts this vector to a matrix representation of column vector
              *
              * @return Column vector as matrix

@@ -205,6 +205,23 @@ namespace vt {
     constexpr T choose_if(const T &value_if_true, const T &value_if_false) {
         return condition ? value_if_true : value_if_false;
     }
+
+    namespace detail {
+        template<typename T, size_t N>
+        struct integral_coefficient_helper {
+            static constexpr real_t value = (1.0 / static_cast<real_t>(N + 1)) * integral_coefficient_helper<T, N - 1>::value;
+        };
+
+        template<typename T>
+        struct integral_coefficient_helper<T, 1> {
+            static constexpr real_t value = 0.5;
+        };
+    }
+
+    template<size_t N>
+    constexpr real_t integral_coefficient() {
+        return detail::integral_coefficient_helper<real_t , N>::value;
+    }
 }
 
 #endif //VT_LINALG_STANDARD_UTILITY_H

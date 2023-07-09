@@ -20,6 +20,8 @@ int main() {
              {4, 5, 6}}
     );
 
+    std::cout << integral_coefficient<1>() << ' ' << integral_coefficient<2>() << '\n';
+
     numeric_vector<2> v({1, 1});
     numeric_matrix<3, 4> A({{1, 2, 3, 4},
                             {4, 5, 6, 1},
