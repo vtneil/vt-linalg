@@ -85,7 +85,7 @@ namespace vt {
         }
 
         template<typename ...Ts>
-        void update(Ts ...vs) { return update(make_numeric_vector({vs...})); }
+        const numeric_vector<N_> &update(Ts ...vs) { return update(make_numeric_vector({vs...})); }
 
         const numeric_vector<N_> &state_vector = x_;
 
@@ -160,7 +160,7 @@ namespace vt {
         }
 
         template<typename ...Ts>
-        void update(Ts ...vs) { return update(make_numeric_vector({vs...})); }
+        const numeric_vector<N_> &update(Ts ...vs) { return update(make_numeric_vector({vs...})); }
 
         const numeric_vector<N_> &state_vector = x_;
 
