@@ -74,7 +74,7 @@ namespace vt {
             static_assert(Size > 0, "Size must be greater than 0.");
             using next_iterator = output_assignment_chain<T, Size, Index + 1>;
 
-            next_iterator operator>>(T &var) const {
+            FORCE_INLINE next_iterator operator>>(T &var) const {
                 var = arr_ref[Index];
                 static_assert(Index < Size, "Can\'t assign index greater than or equal to size.");
                 return next_iterator(arr_ref);
@@ -90,7 +90,7 @@ namespace vt {
             static_assert(Size > 0, "Size must be greater than 0.");
             using next_iterator = input_assignment_chain<T, Size, Index + 1>;
 
-            next_iterator operator<<(const T &var) {
+            FORCE_INLINE next_iterator operator<<(const T &var) {
                 arr_ref[Index] = var;
                 static_assert(Index < Size, "Can\'t assign index greater than or equal to size.");
                 return next_iterator(arr_ref);

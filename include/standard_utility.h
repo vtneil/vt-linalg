@@ -12,6 +12,11 @@
 #endif
 #define FORCE_INLINE __attribute__((always_inline))
 
+#ifdef NO_INLINE
+#undef NO_INLINE
+#endif
+#define NO_INLINE __attribute__((noinline))
+
 namespace vt {
     using real_t = double;
 

@@ -606,12 +606,12 @@ namespace vt {
                 return *this;
             }
 
-            detail::output_assignment_chain<T, Size, 1> operator>>(T &var) const {
+            FORCE_INLINE detail::output_assignment_chain<T, Size, 1> operator>>(T &var) const {
                 var = arr_[0];
                 return detail::output_assignment_chain<T, Size, 1>(arr_);
             }
 
-            detail::input_assignment_chain<T, Size, 1> operator<<(const T &var) {
+            FORCE_INLINE detail::input_assignment_chain<T, Size, 1> operator<<(const T &var) {
                 arr_[0] = var;
                 return detail::input_assignment_chain<T, Size, 1>(arr_);
             }
