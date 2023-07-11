@@ -156,6 +156,15 @@ int main() {
 
     assert((C * E.transpose() == C.matmul_T(E)));
 
+    float f1, f2, f3;
+
+    tie_object<float, float> node{1.1, 1.2};
+
+    tie(f1, f2, f3) << 1 << 2 << 3;
+    tie(5, 6, 7) >> f3 >> f2 >> f1;
+
+    std::cout << f1 << ' ' << f2 << ' ' << f3 << '\n';
+
     constexpr bool con = true;
     vt::if_constexpr<con>::run(pass_msg, 3, 9);
     std::cout << '\n';

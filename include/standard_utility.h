@@ -65,6 +65,18 @@ namespace vt {
     FORCE_INLINE constexpr
     remove_reference_t<T> &&move(T &&t) noexcept { return static_cast<remove_reference_t<T> &&>(t); }
 
+    template<class T>
+    struct remove_const {
+        typedef T type;
+    };
+    template<class T>
+    struct remove_const<const T> {
+        typedef T type;
+    };
+
+    template<typename T>
+    using remove_const_t = typename vt::remove_const<T>::type;
+
     /**
      * Mimic std::swap
      *
@@ -167,13 +179,65 @@ namespace vt {
         static_assert(vt::detail::always_false<T>::value, "declval is not allowed in an evaluated context.");
     }
 
+    template<typename T, T v>
+    struct integral_constant {
+        static constexpr const T value = v;
+        typedef T value_type;
+        typedef integral_constant type;
+
+        explicit constexpr operator value_type() const noexcept { return value; }
+    };
+
+    typedef vt::integral_constant<bool, true> true_type;
+
+    typedef vt::integral_constant<bool, false> false_type;
+
+    template<typename T>
+    struct is_lvalue_reference : public vt::false_type {
+    };
+
+    template<typename T>
+    struct is_lvalue_reference<T &> : public vt::true_type {
+    };
+
+    template<typename T>
+    struct is_rvalue_reference : public vt::false_type {
+    };
+
+    template<typename T>
+    struct is_rvalue_reference<T &&> : public vt::true_type {
+    };
+
+    template<typename T>
+    struct is_reference : public vt::false_type {
+    };
+
+    template<typename T>
+    struct is_reference<T &> : public vt::true_type {
+    };
+
+    template<typename T>
+    struct is_reference<T &&> : public vt::true_type {
+    };
+
+    template<typename T>
+    inline constexpr T &&forward(vt::remove_reference_t<T> &t) noexcept {
+        return static_cast<T &&>(t);
+    }
+
+    template<typename T>
+    inline constexpr T &&forward(vt::remove_reference_t<T> &&t) noexcept {
+        static_assert(!is_lvalue_reference<T>::value, "cannot forward an rvalue as an lvalue");
+        return static_cast<T &&>(t);
+    }
+
     template<bool ctime_condition>
     struct if_constexpr;
 
     template<>
     struct if_constexpr<true> {
         template<typename Func, typename ...Args>
-        static void run(Func &&func, Args &&...args) { func(args...); }
+        static void run(Func &&func, Args &&...args) { func(vt::forward<Args>(args)...); }
     };
 
     template<>
@@ -214,7 +278,8 @@ namespace vt {
     namespace detail {
         template<typename T, size_t N>
         struct integral_coefficient_helper {
-            static constexpr real_t value = (1.0 / static_cast<real_t>(N + 1)) * integral_coefficient_helper<T, N - 1>::value;
+            static constexpr real_t value =
+                    (1.0 / static_cast<real_t>(N + 1)) * integral_coefficient_helper<T, N - 1>::value;
         };
 
         template<typename T>
@@ -225,7 +290,7 @@ namespace vt {
 
     template<size_t N>
     constexpr real_t integral_coefficient() {
-        return detail::integral_coefficient_helper<real_t , N>::value;
+        return detail::integral_coefficient_helper<real_t, N>::value;
     }
 }
 
