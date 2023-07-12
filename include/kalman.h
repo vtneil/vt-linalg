@@ -65,9 +65,10 @@ namespace vt {
          *
          * @param u control input vector
          */
-        void predict(const numeric_vector<L_> &u = {}) {
+        simple_kalman_filter_t &predict(const numeric_vector<L_> &u = {}) {
             x_ = vt::move(F_ * x_ + B_ * u);
             P_ = vt::move(F_ * P_.matmul_T(F_) + Q_);
+            return *this;
         }
 
         /**
@@ -75,17 +76,17 @@ namespace vt {
          *
          * @param z Measurement vector
          */
-        const numeric_vector<N_> &update(const numeric_vector<M_> &z) {
+        simple_kalman_filter_t &update(const numeric_vector<M_> &z) {
             numeric_vector<M_> y_ = vt::move(z - H_ * x_);
             numeric_matrix<N_, M_> P_H_t = vt::move(P_.matmul_T(H_));
             numeric_matrix<N_, M_> K_ = vt::move(P_H_t * (H_ * P_H_t + R_).inverse());
             x_ += K_ * y_;
             P_ = vt::move((numeric_matrix<N_, N_>::identity() - K_ * H_) * P_);
-            return x_;
+            return *this;
         }
 
         template<typename ...Ts>
-        const numeric_vector<N_> &update(Ts ...vs) { return update(make_numeric_vector({vs...})); }
+        simple_kalman_filter_t &update(Ts ...vs) { return update(make_numeric_vector({vs...})); }
 
         const numeric_vector<N_> &state_vector = x_;
 
@@ -142,13 +143,14 @@ namespace vt {
          */
         constexpr extended_kalman_filter_t(extended_kalman_filter_t &&) noexcept = delete;
 
-        void predict(const numeric_vector<L_> &u = {}) {
+        extended_kalman_filter_t &predict(const numeric_vector<L_> &u = {}) {
             x_ = vt::move(f_(x_, u));
             numeric_matrix<N_, N_> F_ = vt::move(Fj_(x_, u));
             P_ = vt::move(F_ * P_.matmul_T(F_) + Q_);
+            return *this;
         }
 
-        const numeric_vector<N_> &update(const numeric_vector<M_> &z) {
+        extended_kalman_filter_t &update(const numeric_vector<M_> &z) {
             numeric_vector<M_> y_ = vt::move(z - h_(x_));
             numeric_matrix<M_, N_> Hjx_ = vt::move(Hj_(x_));
             numeric_matrix<N_, M_> P_Hjx_t = vt::move(P_.matmul_T(Hjx_));
@@ -156,11 +158,11 @@ namespace vt {
             numeric_matrix<N_, M_> K_ = vt::move(P_Hjx_t * S_.inverse());
             x_ += K_ * y_;
             P_ = vt::move((numeric_matrix<N_, N_>::identity() - K_ * Hj_(x_)) * P_);
-            return x_;
+            return *this;
         }
 
         template<typename ...Ts>
-        const numeric_vector<N_> &update(Ts ...vs) { return update(make_numeric_vector({vs...})); }
+        extended_kalman_filter_t &update(Ts ...vs) { return update(make_numeric_vector({vs...})); }
 
         const numeric_vector<N_> &state_vector = x_;
 
