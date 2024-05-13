@@ -23,7 +23,7 @@ namespace vt {
         initializer_list() : arr_(nullptr), size_(0) {}
 
         template<size_t N>
-        explicit initializer_list(const T(&array)[N]) : arr_(array), size_(N) {}
+        explicit initializer_list(const T (&array)[N]) : arr_(array), size_(N) {}
 
         size_t size() const { return size_; }
 
@@ -31,6 +31,6 @@ namespace vt {
 
         const T *end() const { return begin() + size(); }
     };
-}
+}// namespace vt
 
-#endif //VT_LINALG_INITIALIZER_LIST_H
+#endif//VT_LINALG_INITIALIZER_LIST_H

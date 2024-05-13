@@ -56,10 +56,10 @@ namespace vt {
     };
 
     template<typename T>
-    constexpr bool operator==(T *ptr, const iterator <T> &iterator) { return iterator.operator==(ptr); }
+    constexpr bool operator==(T *ptr, const iterator<T> &iterator) { return iterator.operator==(ptr); }
 
     template<typename T>
-    constexpr bool operator!=(T *ptr, const iterator <T> &iterator) { return !operator==(ptr, iterator); }
+    constexpr bool operator!=(T *ptr, const iterator<T> &iterator) { return !operator==(ptr, iterator); }
 
     template<typename T>
     using const_iterator = iterator<const T>;
@@ -83,7 +83,8 @@ namespace vt {
 
         template<typename T, size_t Size, size_t Index>
         struct input_assignment_chain {
-            T (&arr_ref)[Size];
+            T (&arr_ref)
+            [Size];
 
             explicit input_assignment_chain(T (&arr)[Size]) : arr_ref{arr} {}
 
@@ -96,7 +97,7 @@ namespace vt {
                 return next_iterator(arr_ref);
             }
         };
-    }
-}
+    }// namespace detail
+}// namespace vt
 
-#endif //VT_LINALG_ITERATOR_H
+#endif//VT_LINALG_ITERATOR_H

@@ -8,10 +8,10 @@
 #ifndef VT_LINALG_DYNAMIC_NUMERIC_MATRIX_H
 #define VT_LINALG_DYNAMIC_NUMERIC_MATRIX_H
 
-#include "standard_utility.h"
-#include "pair.h"
-#include "iterator.h"
 #include "dynamic_numeric_vector.h"
+#include "iterator.h"
+#include "pair.h"
+#include "standard_utility.h"
 
 namespace vt {
     template<typename T>
@@ -40,7 +40,7 @@ namespace vt {
 
         numeric_matrix_dynamic_t(const numeric_matrix_dynamic_t &other) : r_(other.r_), c_(other.c_) { allocate_from(other); }
 
-        numeric_matrix_dynamic_t(numeric_matrix_dynamic_t &&other) noexcept: r_(other.r_), c_(other.c_) {
+        numeric_matrix_dynamic_t(numeric_matrix_dynamic_t &&other) noexcept : r_(other.r_), c_(other.c_) {
             steal(vt::move(other));
             other.r_ = 0;
             other.c_ = 0;
@@ -207,7 +207,8 @@ namespace vt {
             if (n == 1) return product;
             product = vt::move(product.operator^(n / 2));
             if (n % 2 == 0) return product.operator*(product);
-            else return product.operator*(product).operator*(*this);
+            else
+                return product.operator*(product).operator*(*this);
         }
 
         numeric_matrix_dynamic_t matpow(size_t n) { return operator^(n); }
@@ -286,9 +287,9 @@ namespace vt {
 
         T det() const {
             numeric_matrix_dynamic_lu_t<T> lu = vt::move(LU());
-            T det = 1;
-            size_t r_swaps = 0;
-            size_t n = vt::min(r_, c_);
+            T det                             = 1;
+            size_t r_swaps                    = 0;
+            size_t n                          = vt::min(r_, c_);
             for (size_t i = 0; i < n; ++i) {
                 det *= lu.u()[i][i];
                 if (lu.u()[i][i] == 0) return 0;
@@ -298,7 +299,7 @@ namespace vt {
         }
 
         T tr() const {
-            T acc = 0;
+            T acc    = 0;
             size_t n = vt::min(r_, c_);
             for (size_t i = 0; i < n; ++i) acc += vector_[i][i];
             return acc;
@@ -386,8 +387,8 @@ namespace vt {
         numeric_matrix_dynamic_t slice(size_t r1, size_t c1, size_t r2, size_t c2) const {
             if (r1 > r2) vt::swap(r1, r2);
             if (c1 > c2) vt::swap(c1, c2);
-            r2 = vt::min(r2, r_);
-            c2 = vt::min(c2, c_);
+            r2       = vt::min(r2, r_);
+            c2       = vt::min(c2, c_);
             size_t r = r2 - r1;
             size_t c = c2 - c1;
             numeric_matrix_dynamic_t result(r, c);
@@ -496,7 +497,7 @@ namespace vt {
                 B12 = vt::move(Bp.slice(0, cB / 2, rB / 2, cB));
                 B21 = vt::move(Bp.slice(rB / 2, 0, rB, cB / 2));
                 B22 = vt::move(Bp.slice(rB / 2, cB / 2, rB, cB));
-                C = vt::move(numeric_matrix_dynamic_t(rA, cB));
+                C   = vt::move(numeric_matrix_dynamic_t(rA, cB));
             }
 
             numeric_matrix_dynamic_t M1 = vt::move((A11 + A22) * (B11 + B22));
@@ -525,13 +526,13 @@ namespace vt {
 
         void put_array(size_t index, const numeric_vector_dynamic_t<T> &vector) {
             vector_[index] = vector;
-            c_ = vector.size();
+            c_             = vector.size();
         }
 
         template<size_t N>
         void put_array(size_t index, const T (&array)[N]) {
             vector_[index] = array;
-            c_ = N;
+            c_             = N;
         }
 
         template<typename... Vectors>
@@ -551,14 +552,14 @@ namespace vt {
         void allocate_fill(T fill) { vector_ = vt::move(numeric_vector_dynamic_t<numeric_vector_dynamic_t<T>>(r_, numeric_vector_dynamic_t<T>(c_, fill))); }
 
         void steal(numeric_matrix_dynamic_t &&other) {
-            r_ = other.r_;
-            c_ = other.c_;
+            r_      = other.r_;
+            c_      = other.c_;
             vector_ = vt::move(other.vector_);
         }
 
         void allocate_from(const numeric_matrix_dynamic_t &other) {
-            r_ = other.r_;
-            c_ = other.c_;
+            r_      = other.r_;
+            c_      = other.c_;
             vector_ = other.vector_;
         }
 
@@ -630,7 +631,7 @@ namespace vt {
 
     template<typename T>
     numeric_matrix_dynamic_t<T> operator*(T lhs, const numeric_matrix_dynamic_t<T> &rhs) {
-        numeric_matrix_dynamic_t < T > tmp(rhs);
+        numeric_matrix_dynamic_t<T> tmp(rhs);
         tmp.operator*=(lhs);
         return tmp;
     }
@@ -657,7 +658,7 @@ namespace vt {
     public:
         numeric_matrix_dynamic_lu_t(const numeric_matrix_dynamic_lu_t &other) : l_(other.l_), u_(other.u_) {}
 
-        numeric_matrix_dynamic_lu_t(numeric_matrix_dynamic_lu_t &&other) noexcept: l_(vt::move(other.l_)), u_(vt::move(other.u_)) {}
+        numeric_matrix_dynamic_lu_t(numeric_matrix_dynamic_lu_t &&other) noexcept : l_(vt::move(other.l_)), u_(vt::move(other.u_)) {}
 
         explicit numeric_matrix_dynamic_lu_t(const PM &lu) : l_(lu.first), u_(lu.second) {}
 
@@ -673,6 +674,6 @@ namespace vt {
     };
 
     using numeric_matrix = numeric_matrix_dynamic_t<double>;
-}
+}// namespace vt
 
-#endif //VT_LINALG_DYNAMIC_NUMERIC_MATRIX_H
+#endif//VT_LINALG_DYNAMIC_NUMERIC_MATRIX_H

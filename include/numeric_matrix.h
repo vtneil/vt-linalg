@@ -8,10 +8,10 @@
 #ifndef VT_LINALG_NUMERIC_MATRIX_H
 #define VT_LINALG_NUMERIC_MATRIX_H
 
-#include "standard_utility.h"
-#include "pair.h"
 #include "iterator.h"
 #include "numeric_vector.h"
+#include "pair.h"
+#include "standard_utility.h"
 
 namespace vt {
     namespace impl {
@@ -35,13 +35,13 @@ namespace vt {
             static_assert(Col > 0, "Column must be greater than 0.");
 
         private:
-            template<typename U, size_t V> friend
-            class numeric_vector_static_t;
+            template<typename U, size_t V>
+            friend class numeric_vector_static_t;
 
         private:
-            static constexpr size_t Order = (Row < Col) ? Row : Col;
+            static constexpr size_t Order                                         = (Row < Col) ? Row : Col;
             numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row> vector_ = {};
-//        numeric_vector_static_t<T, Col> vector_[Row] = {};
+            //        numeric_vector_static_t<T, Col> vector_[Row] = {};
 
         public:
             /**
@@ -55,9 +55,8 @@ namespace vt {
              * @param fill Fill value
              */
             constexpr explicit numeric_matrix_static_t(const T &fill)
-                    : vector_(
-                    numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row>(numeric_vector_static_t<T, Col>(fill))
-            ) {}
+                : vector_(
+                          numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row>(numeric_vector_static_t<T, Col>(fill))) {}
 
             /**
              * Copy constructor
@@ -79,7 +78,7 @@ namespace vt {
              * @param array Array of entries
              */
             constexpr explicit numeric_matrix_static_t(const T (&array)[Row][Col])
-                    : vector_(vt::detail::make_nested(array)) {}
+                : vector_(vt::detail::make_nested(array)) {}
 
             /**
              * Array of vectors as rows constructor, construct from array
@@ -97,7 +96,7 @@ namespace vt {
              */
             constexpr explicit numeric_matrix_static_t(
                     const numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row> &nested)
-                    : vector_(nested) {}
+                : vector_(nested) {}
 
             /**
              * Block matrix constructor
@@ -513,7 +512,7 @@ namespace vt {
 
         private:
             T det_from_lu(const numeric_matrix_static_lu_t<T, Order> &lu) const {
-                T det = 1;
+                T det          = 1;
                 size_t r_swaps = 0;
                 for (size_t i = 0; i < Order; ++i) {
                     det *= lu.u()[i][i];
@@ -524,7 +523,6 @@ namespace vt {
             }
 
         public:
-
             /**
              * Finds trace of this matrix.\n
              * If this matrix is not square, the compile-time error is thrown.
@@ -637,7 +635,8 @@ namespace vt {
             bool operator==(const numeric_matrix_static_t<T, ORow, OCol> &other) const {
                 if (this == &other) return true;
                 if (Row != ORow || Col != OCol) return false;
-                for (size_t i = 0; i < Row; ++i) if (vector_[i] != other.vector_[i]) return false;
+                for (size_t i = 0; i < Row; ++i)
+                    if (vector_[i] != other.vector_[i]) return false;
                 return true;
             }
 
@@ -652,7 +651,8 @@ namespace vt {
             template<size_t ORow, size_t OCol>
             bool operator==(const T (&array)[ORow][OCol]) const {
                 if (Row != ORow || Col != OCol) return false;
-                for (size_t i = 0; i < Row; ++i) if (vector_[i] != array[i]) return false;
+                for (size_t i = 0; i < Row; ++i)
+                    if (vector_[i] != array[i]) return false;
                 return true;
             }
 
@@ -705,7 +705,8 @@ namespace vt {
             bool float_equals(const numeric_matrix_static_t<T, ORow, OCol> &other) const {
                 if (this == &other) return true;
                 if (Row != ORow || Col != OCol) return false;
-                for (size_t i = 0; i < Row; ++i) if (!vector_[i].float_equals(other.vector_[i])) return false;
+                for (size_t i = 0; i < Row; ++i)
+                    if (!vector_[i].float_equals(other.vector_[i])) return false;
                 return true;
             }
 
@@ -753,35 +754,35 @@ namespace vt {
              *
              * @return Number of rows
              */
-            constexpr size_t r() const { return Row; }
+            [[nodiscard]] constexpr size_t r() const { return Row; }
 
             /**
              * Returns number of columns.
              *
              * @return Number of columns
              */
-            constexpr size_t c() const { return Col; }
+            [[nodiscard]] constexpr size_t c() const { return Col; }
 
             /**
              * Returns number of entries.
              *
              * @return Number of entries
              */
-            constexpr size_t n() const { return Row * Col; }
+            [[nodiscard]] constexpr size_t n() const { return Row * Col; }
 
             /**
              * Returns order of this matrix (min(Row, Col)).
              *
              * @return Order of this matrix
              */
-            constexpr size_t order() const { return Order; }
+            [[nodiscard]] constexpr size_t order() const { return Order; }
 
             /**
              * Returns whether the matrix is square.
              *
              * @return
              */
-            constexpr bool is_square() const { return Row == Col; }
+            [[nodiscard]] constexpr bool is_square() const { return Row == Col; }
 
             /**
              * Swaps entries with the other matrix.
@@ -814,8 +815,7 @@ namespace vt {
             void allocate_fill(T fill) {
                 vector_ = vt::move(
                         numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row>(
-                                numeric_vector_static_t<T, Col>(fill))
-                );
+                                numeric_vector_static_t<T, Col>(fill)));
             }
 
             void allocate_from(const numeric_matrix_static_t &other) { vector_ = other.vector_; }
@@ -1010,7 +1010,7 @@ namespace vt {
             tmp.operator*=(lhs);
             return tmp;
         }
-    }
+    }// namespace impl
 
     /**
      * Finds determinant of this matrix.\n
@@ -1078,15 +1078,15 @@ namespace vt {
         class numeric_matrix_static_lu_t {
         private:
             using Matrix_t = numeric_matrix_static_t<T, OSize, OSize>;
-            using Pair_t = vt::pair<numeric_matrix_static_t<T, OSize, OSize>, numeric_matrix_static_t<T, OSize, OSize>>;
+            using Pair_t   = vt::pair<numeric_matrix_static_t<T, OSize, OSize>, numeric_matrix_static_t<T, OSize, OSize>>;
             numeric_matrix_static_t<T, OSize, OSize> l_;
             numeric_matrix_static_t<T, OSize, OSize> u_;
 
         public:
             numeric_matrix_static_lu_t(const numeric_matrix_static_lu_t &other) : l_(other.l_), u_(other.u_) {}
 
-            numeric_matrix_static_lu_t(numeric_matrix_static_lu_t &&other) noexcept: l_(vt::move(other.l_)),
-                                                                                     u_(vt::move(other.u_)) {}
+            numeric_matrix_static_lu_t(numeric_matrix_static_lu_t &&other) noexcept : l_(vt::move(other.l_)),
+                                                                                      u_(vt::move(other.u_)) {}
 
             explicit numeric_matrix_static_lu_t(const Pair_t &lu) : l_(lu.first), u_(lu.second) {}
 
@@ -1120,7 +1120,7 @@ namespace vt {
              */
             constexpr const Matrix_t &u() const { return u_; }
         };
-    }
+    }// namespace impl
 
     /**
      * Numeric matrix where the dimension must be known at compile-time
@@ -1229,6 +1229,6 @@ namespace vt {
     make_diagonal_matrix(real_t value) {
         return numeric_matrix<Order, Order>::diagonals(value);
     }
-}
+}// namespace vt
 
-#endif //VT_LINALG_NUMERIC_MATRIX_H
+#endif//VT_LINALG_NUMERIC_MATRIX_H

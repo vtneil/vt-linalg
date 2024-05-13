@@ -8,8 +8,8 @@
 #ifndef VT_LINALG_NUMERIC_VECTOR_H
 #define VT_LINALG_NUMERIC_VECTOR_H
 
-#include "standard_utility.h"
 #include "iterator.h"
+#include "standard_utility.h"
 
 namespace vt {
     namespace detail {
@@ -30,7 +30,7 @@ namespace vt {
             helper_assign_from<T, Size, IMax, I>(array, var);
             if (I < IMax) helper_assign_from<T, Size, IMax, I + 1>(array, vars...);
         }
-    }
+    }// namespace detail
 
     namespace impl {
         template<typename T, size_t Row, size_t Col>
@@ -51,8 +51,8 @@ namespace vt {
             static_assert(Size > 0, "Capacity must be greater than 0.");
 
         private:
-            template<typename U, size_t V, size_t W> friend
-            class numeric_matrix_static_t;
+            template<typename U, size_t V, size_t W>
+            friend class numeric_matrix_static_t;
 
         private:
             T arr_[Size] = {};
@@ -66,7 +66,7 @@ namespace vt {
         private:
             template<size_t... I>
             constexpr numeric_vector_static_t(const T &fill, vt::index_sequence<I...>)
-                    : arr_{(static_cast<void>(I), fill)...} {}
+                : arr_{(static_cast<void>(I), fill)...} {}
 
         public:
             /**
@@ -75,7 +75,7 @@ namespace vt {
              * @param fill Fill value
              */
             constexpr explicit numeric_vector_static_t(const T &fill)
-                    : numeric_vector_static_t(fill, vt::make_index_sequence<Size>()) {}
+                : numeric_vector_static_t(fill, vt::make_index_sequence<Size>()) {}
 
             /**
              * Copy constructor
@@ -94,7 +94,7 @@ namespace vt {
         private:
             template<size_t... I>
             constexpr numeric_vector_static_t(const T (&array)[Size], vt::index_sequence<I...>)
-                    : arr_{array[I]...} {}
+                : arr_{array[I]...} {}
 
         public:
             /**
@@ -103,7 +103,7 @@ namespace vt {
              * @param array Array of entries
              */
             constexpr explicit numeric_vector_static_t(const T (&array)[Size])
-                    : numeric_vector_static_t(array, vt::make_index_sequence<Size>()) {}
+                : numeric_vector_static_t(array, vt::make_index_sequence<Size>()) {}
 
             /**
              * Extended constructor
@@ -153,7 +153,8 @@ namespace vt {
             }
 
             numeric_vector_static_t &operator=(numeric_vector_static_t &&other) noexcept {
-                if (this != &other) for (size_t i = 0; i < Size; ++i) arr_[i] = vt::move(other.arr_[i]);
+                if (this != &other)
+                    for (size_t i = 0; i < Size; ++i) arr_[i] = vt::move(other.arr_[i]);
                 return *this;
             }
 
@@ -348,7 +349,8 @@ namespace vt {
             bool operator==(const numeric_vector_static_t<T, OSize> &other) const {
                 if (this == &other) return true;
                 if (Size != OSize) return false;
-                for (size_t i = 0; i < Size; ++i) if (arr_[i] != other.arr_[i]) return false;
+                for (size_t i = 0; i < Size; ++i)
+                    if (arr_[i] != other.arr_[i]) return false;
                 return true;
             }
 
@@ -362,7 +364,8 @@ namespace vt {
             template<size_t OSize>
             bool operator==(const T (&array)[OSize]) const {
                 if (Size != OSize) return false;
-                for (size_t i = 0; i < Size; ++i) if (arr_[i] != array[i]) return false;
+                for (size_t i = 0; i < Size; ++i)
+                    if (arr_[i] != array[i]) return false;
                 return true;
             }
 
@@ -411,7 +414,8 @@ namespace vt {
             bool float_equals(const numeric_vector_static_t<T, OSize> &other, real_t threshold = 1e-10) const {
                 if (this == &other) return true;
                 if (Size != OSize) return false;
-                for (size_t i = 0; i < Size; ++i) if (abs(arr_[i] - other.arr_[i]) > threshold) return false;
+                for (size_t i = 0; i < Size; ++i)
+                    if (abs(arr_[i] - other.arr_[i]) > threshold) return false;
                 return true;
             }
 
@@ -665,7 +669,7 @@ namespace vt {
             tmp.operator-=(lhs);
             return tmp;
         }
-    }
+    }// namespace impl
 
     /**
      * Numeric vector where the dimension must be known at compile-time
@@ -696,7 +700,7 @@ namespace vt {
         struct size_sum<Class<T, Size>, Class<T, Sizes>...> {
             static constexpr size_t value = Size + size_sum<impl::numeric_vector_static_t<T, Sizes>...>::value;
         };
-    }
+    }// namespace detail
 
     /**
      * Creates a numeric vector.
@@ -750,7 +754,7 @@ namespace vt {
      */
     template<size_t S1, size_t S2, size_t... Ss>
     constexpr numeric_vector<vt::detail::size_sum<numeric_vector<S1>, numeric_vector<S2>, numeric_vector<Ss>...>::value>
-    make_numeric_vector(const numeric_vector<S1> &v1, const numeric_vector<S2> &v2, const numeric_vector<Ss> &... vs) {
+    make_numeric_vector(const numeric_vector<S1> &v1, const numeric_vector<S2> &v2, const numeric_vector<Ss> &...vs) {
         return make_numeric_vector(make_numeric_vector(v1, v2), vs...);
     }
 
@@ -775,8 +779,9 @@ namespace vt {
 
         template<typename T, size_t S1, size_t S2, size_t... Ss>
         constexpr numeric_vector_static_t<T, size_sum<
-                numeric_vector_static_t<
-                        T, S1>, numeric_vector_static_t<T, S2>, numeric_vector_static_t<T, Ss>...>::value>
+                                                     numeric_vector_static_t<
+                                                             T, S1>,
+                                                     numeric_vector_static_t<T, S2>, numeric_vector_static_t<T, Ss>...>::value>
 
         make_numeric_vector_static_t(const T (&a1)[S1], const T (&a2)[S1], const T (&...as)[Ss]) {
             return make_numeric_vector_static_t(make_numeric_vector_static_t(a1, a2), as...);
@@ -793,7 +798,7 @@ namespace vt {
             return make_numeric_vector_static_t({val, vals...});
         }
 
-        template<typename T, size_t Row, size_t Col, size_t ...I>
+        template<typename T, size_t Row, size_t Col, size_t... I>
         constexpr numeric_vector_static_t<numeric_vector_static_t<T, Col>, Row>
         make_nested(const T (&array)[Row][Col], vt::index_sequence<I...>) {
             return make_numeric_vector_static_t(make_numeric_vector_static_t(array[I])...);
@@ -805,26 +810,25 @@ namespace vt {
             return make_nested(array, vt::make_index_sequence<Row>());
         }
 
-        template<typename T, size_t Order, size_t I, size_t ...J>
+        template<typename T, size_t Order, size_t I, size_t... J>
         constexpr numeric_vector_static_t<T, Order>
         make_diagonal_minor(const T &value, vt::index_sequence<J...>) {
             return make_numeric_vector_static_t(choose_if<(I == J)>(value, T())...);
         }
 
-        template<typename T, size_t Order, size_t ...I>
+        template<typename T, size_t Order, size_t... I>
         constexpr numeric_vector_static_t<numeric_vector_static_t<T, Order>, Order>
         make_diagonal(const T (&array)[Order], vt::index_sequence<I...>) {
             return make_numeric_vector_static_t(
-                    make_diagonal_minor<T, Order, I>(array[I], vt::make_index_sequence<Order>())...
-            );
+                    make_diagonal_minor<T, Order, I>(array[I], vt::make_index_sequence<Order>())...);
         }
 
-        template<typename T, size_t Order, size_t ...I>
+        template<typename T, size_t Order, size_t... I>
         constexpr numeric_vector_static_t<numeric_vector_static_t<T, Order>, Order>
         make_diagonal(const T (&array)[Order]) {
             return make_diagonal(array, vt::make_index_sequence<Order>());
         }
-    }
-}
+    }// namespace detail
+}// namespace vt
 
-#endif //VT_LINALG_NUMERIC_VECTOR_H
+#endif//VT_LINALG_NUMERIC_VECTOR_H

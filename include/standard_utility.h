@@ -1,11 +1,11 @@
 #ifndef VT_LINALG_STANDARD_UTILITY_H
 #define VT_LINALG_STANDARD_UTILITY_H
 
+#include "standard_constants.h"
+#include <math.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
-#include "standard_constants.h"
 
 #ifdef FORCE_INLINE
 #undef FORCE_INLINE
@@ -62,8 +62,7 @@ namespace vt {
      * @return
      */
     template<typename T>
-    FORCE_INLINE constexpr
-    remove_reference_t<T> &&move(T &&t) noexcept { return static_cast<remove_reference_t<T> &&>(t); }
+    FORCE_INLINE constexpr remove_reference_t<T> &&move(T &&t) noexcept { return static_cast<remove_reference_t<T> &&>(t); }
 
     template<class T>
     struct remove_const {
@@ -87,8 +86,8 @@ namespace vt {
     template<typename T>
     void swap(T &a, T &b) {
         T tmp = vt::move(a);
-        a = vt::move(b);
-        b = vt::move(tmp);
+        a     = vt::move(b);
+        b     = vt::move(tmp);
     }
 
     /**
@@ -164,7 +163,7 @@ namespace vt {
 
         template<typename T>
         auto try_add_rvalue_reference(...) -> type_identity<T>;
-    }
+    }// namespace detail
 
     template<typename T>
     struct add_lvalue_reference : decltype(vt::detail::try_add_lvalue_reference<T>(0)) {
@@ -236,13 +235,13 @@ namespace vt {
 
     template<>
     struct if_constexpr<true> {
-        template<typename Func, typename ...Args>
+        template<typename Func, typename... Args>
         static void run(Func &&func, Args &&...args) { func(vt::forward<Args>(args)...); }
     };
 
     template<>
     struct if_constexpr<false> {
-        template<typename Func, typename ...Args>
+        template<typename Func, typename... Args>
         static void run(Func &&, Args &&...) {}
     };
 
@@ -286,12 +285,12 @@ namespace vt {
         struct integral_coefficient_helper<T, 1> {
             static constexpr real_t value = 0.5;
         };
-    }
+    }// namespace detail
 
     template<size_t N>
     constexpr real_t integral_coefficient() {
         return detail::integral_coefficient_helper<real_t, N>::value;
     }
-}
+}// namespace vt
 
-#endif //VT_LINALG_STANDARD_UTILITY_H
+#endif//VT_LINALG_STANDARD_UTILITY_H

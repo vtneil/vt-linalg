@@ -65,13 +65,13 @@ namespace vt {
 
             // if the angles are in degrees convert them to radians
             if (degrees) {
-                yaw = euler.yaw * DEG_TO_RAD;
+                yaw   = euler.yaw * DEG_TO_RAD;
                 pitch = euler.pitch * DEG_TO_RAD;
-                roll = euler.roll * DEG_TO_RAD;
+                roll  = euler.roll * DEG_TO_RAD;
             } else {
-                yaw = euler.yaw;
+                yaw   = euler.yaw;
                 pitch = euler.pitch;
-                roll = euler.roll;
+                roll  = euler.roll;
             }
 
             double cy = cos(yaw * 0.5);
@@ -94,13 +94,13 @@ namespace vt {
             real_t yaw, pitch, roll;
 
             if (degrees) {
-                roll = euler[0] * DEG_TO_RAD;
+                roll  = euler[0] * DEG_TO_RAD;
                 pitch = euler[1] * DEG_TO_RAD;
-                yaw = euler[2] * DEG_TO_RAD;
+                yaw   = euler[2] * DEG_TO_RAD;
             } else {
-                yaw = euler[0];
+                yaw   = euler[0];
                 pitch = euler[1];
-                roll = euler[2];
+                roll  = euler[2];
             }
 
             real_t cy = cos(yaw * 0.5);
@@ -118,7 +118,7 @@ namespace vt {
 
             return q;
         }
-    }
-}
+    }// namespace imu_tools
+}// namespace vt
 
-#endif //VT_LINALG_IMU_TOOLS_H
+#endif//VT_LINALG_IMU_TOOLS_H

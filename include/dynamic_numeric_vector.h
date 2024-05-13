@@ -8,8 +8,8 @@
 #ifndef VT_LINALG_DYNAMIC_NUMERIC_VECTOR_H
 #define VT_LINALG_DYNAMIC_NUMERIC_VECTOR_H
 
-#include "standard_utility.h"
 #include "iterator.h"
+#include "standard_utility.h"
 
 namespace vt {
     template<typename T>
@@ -33,9 +33,9 @@ namespace vt {
 
         numeric_vector_dynamic_t(const numeric_vector_dynamic_t &other) : size_(other.size_) { allocate_from(other); }
 
-        numeric_vector_dynamic_t(numeric_vector_dynamic_t &&other) noexcept: size_(other.size_), arr_(other.arr_) {
+        numeric_vector_dynamic_t(numeric_vector_dynamic_t &&other) noexcept : size_(other.size_), arr_(other.arr_) {
             other.size_ = 0;
-            other.arr_ = nullptr;
+            other.arr_  = nullptr;
         }
 
         template<size_t N>
@@ -76,10 +76,10 @@ namespace vt {
         numeric_vector_dynamic_t &operator=(numeric_vector_dynamic_t &&other) noexcept {
             if (this != &other) {
                 deallocate();
-                size_ = other.size_;
-                arr_ = other.arr_;
+                size_       = other.size_;
+                arr_        = other.arr_;
                 other.size_ = 0;
-                other.arr_ = nullptr;
+                other.arr_  = nullptr;
             }
             return *this;
         }
@@ -213,14 +213,16 @@ namespace vt {
         bool operator==(const numeric_vector_dynamic_t &other) const {
             if (this == &other) return true;
             if (size_ != other.size_) return false;
-            for (size_t i = 0; i < size_; ++i) if (arr_[i] != other.arr_[i]) return false;
+            for (size_t i = 0; i < size_; ++i)
+                if (arr_[i] != other.arr_[i]) return false;
             return true;
         }
 
         template<size_t N>
         bool operator==(const T (&array)[N]) const {
             if (size_ != N) return false;
-            for (size_t i = 0; i < size_; ++i) if (arr_[i] != array[i]) return false;
+            for (size_t i = 0; i < size_; ++i)
+                if (arr_[i] != array[i]) return false;
             return true;
         }
 
@@ -234,7 +236,8 @@ namespace vt {
         bool float_equals(const numeric_vector_dynamic_t &other) const {
             if (this == &other) return true;
             if (size_ != other.size_) return false;
-            for (size_t i = 0; i < size_; ++i) if (abs(arr_[i] - other.arr_[i]) > 0.001) return false;
+            for (size_t i = 0; i < size_; ++i)
+                if (abs(arr_[i] - other.arr_[i]) > 0.001) return false;
             return true;
         }
 
@@ -264,7 +267,7 @@ namespace vt {
         void put_array(size_t index, T value) { arr_[index] = value; }
 
         template<typename... Ts>
-        void put_array(size_t index, T value, Ts ...values) {
+        void put_array(size_t index, T value, Ts... values) {
             arr_[index] = value;
             put_array(index + 1, values...);
         }
@@ -278,14 +281,14 @@ namespace vt {
 
         void allocate_from(const numeric_vector_dynamic_t &other) {
             size_ = other.size_;
-            arr_ = new T[size_];
+            arr_  = new T[size_];
             static_cast<void>(vt::copy(other.arr_, other.arr_ + other.size_, arr_));
         }
 
         template<size_t N>
         void allocate_from(const T (&array)[N]) {
             size_ = N;
-            arr_ = new T[size_];
+            arr_  = new T[size_];
             static_cast<void>(vt::copy(array, array + N, arr_));
         }
 
@@ -324,6 +327,6 @@ namespace vt {
     }
 
     using numeric_vector = numeric_vector_dynamic_t<double>;
-}
+}// namespace vt
 
-#endif //VT_LINALG_DYNAMIC_NUMERIC_VECTOR_H
+#endif//VT_LINALG_DYNAMIC_NUMERIC_VECTOR_H

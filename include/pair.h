@@ -22,7 +22,7 @@ namespace vt {
 
         pair(const T1 &first, const T2 &second) : first(first), second(second) {}
 
-        pair(T1 &&first, T2 &&second) noexcept: first(move(first)), second(move(second)) {}
+        pair(T1 &&first, T2 &&second) noexcept : first(move(first)), second(move(second)) {}
 
         pair &operator=(const pair &other) {
             *this = pair(other);
@@ -35,6 +35,6 @@ namespace vt {
 
     template<typename T1, typename T2>
     constexpr pair<T1, T2> make_pair(T1 &&t1, T2 &&t2) { return pair<T1, T2>(t1, t2); }
-}
+}// namespace vt
 
-#endif //VT_LINALG_PAIR_H
+#endif//VT_LINALG_PAIR_H

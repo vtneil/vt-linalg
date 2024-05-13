@@ -104,8 +104,8 @@ namespace vt {
 
         complex_t &operator*=(const complex_t &rhs) {
             real_t temp_real = real_;
-            real_ = temp_real * rhs.real_ - imag_ * rhs.imag_;
-            imag_ = temp_real * rhs.imag_ + imag_ * rhs.real_;
+            real_            = temp_real * rhs.real_ - imag_ * rhs.imag_;
+            imag_            = temp_real * rhs.imag_ + imag_ * rhs.real_;
             return *this;
         }
 
@@ -129,9 +129,9 @@ namespace vt {
 
         complex_t &operator/=(const complex_t &rhs) {
             real_t denominator = rhs.modulus_pow_2();
-            real_t temp_real = real_;
-            real_ = (temp_real * rhs.real_ + imag_ * rhs.imag_) / denominator;
-            imag_ = (imag_ * rhs.real_ - temp_real * rhs.imag_) / denominator;
+            real_t temp_real   = real_;
+            real_              = (temp_real * rhs.real_ + imag_ * rhs.imag_) / denominator;
+            imag_              = (imag_ * rhs.real_ - temp_real * rhs.imag_) / denominator;
             return *this;
         }
 
@@ -172,6 +172,6 @@ namespace vt {
     complex_t operator*(real_t lhs, const complex_t &rhs) { return rhs.operator*(lhs); }
 
     complex_t operator/(real_t lhs, const complex_t &rhs) { return complex_t(lhs).operator/(rhs); }
-}
+}// namespace vt
 
-#endif //VT_LINALG_COMPLEX_NUMBER_H
+#endif//VT_LINALG_COMPLEX_NUMBER_H

@@ -7,7 +7,7 @@ namespace vt {
     namespace {
         template<size_t Capacity>
         constexpr size_t cyclic(size_t current) { return current % Capacity; }
-    }
+    }// namespace
 
     template<typename T, size_t Capacity>
     class circular_buffer_static_t {
@@ -15,24 +15,24 @@ namespace vt {
         static_assert(Capacity > 0, "Buffer capacity must not be 0.");
 
     private:
-        T arr_[Capacity] = {};
+        T arr_[Capacity]    = {};
         size_t start_index_ = 0;
-        size_t size_ = 0;
+        size_t size_        = 0;
 
     public:
         circular_buffer_static_t() = default;
 
         circular_buffer_static_t(const circular_buffer_static_t &other) {
             start_index_ = other.start_index_;
-            size_ = other.size_;
+            size_        = other.size_;
             vt::copy(other.arr_, other.arr_ + Capacity, arr_);
         }
 
         circular_buffer_static_t(circular_buffer_static_t &&other) noexcept {
-            start_index_ = other.start_index_;
-            size_ = other.size_;
+            start_index_       = other.start_index_;
+            size_              = other.size_;
             other.start_index_ = 0;
-            other.size_ = 0;
+            other.size_        = 0;
             for (size_t i = 0; i < Capacity; ++i) arr_[i] = vt::move(other.arr_[i]);
         }
 
@@ -87,6 +87,6 @@ namespace vt {
 
     template<typename T, size_t Capacity>
     constexpr buffer_t<T, Capacity> make_buffer() { return buffer_t<T, Capacity>(); }
-}
+}// namespace vt
 
-#endif //VT_LINALG_CIRCULAR_BUFFER_H
+#endif//VT_LINALG_CIRCULAR_BUFFER_H
