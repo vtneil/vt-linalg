@@ -674,6 +674,6 @@ namespace vt {
     };
 
     using numeric_matrix = numeric_matrix_dynamic_t<double>;
-}// namespace vt
+}  // namespace vt
 
-#endif//VT_LINALG_DYNAMIC_NUMERIC_MATRIX_H
+#endif  //VT_LINALG_DYNAMIC_NUMERIC_MATRIX_H

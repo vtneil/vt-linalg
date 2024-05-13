@@ -57,6 +57,6 @@ namespace vt {
                       numeric_matrix<3, 3>::diagonals(base_noise_value),
                       numeric_vector<9>()) {}
     };
-}// namespace vt
+}  // namespace vt
 
-#endif//VT_LINALG_KALMAN_LUT_H
+#endif  //VT_LINALG_KALMAN_LUT_H

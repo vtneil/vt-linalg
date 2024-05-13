@@ -35,6 +35,6 @@ namespace vt {
 
     template<typename T1, typename T2>
     constexpr pair<T1, T2> make_pair(T1 &&t1, T2 &&t2) { return pair<T1, T2>(t1, t2); }
-}// namespace vt
+}  // namespace vt
 
-#endif//VT_LINALG_PAIR_H
+#endif  //VT_LINALG_PAIR_H

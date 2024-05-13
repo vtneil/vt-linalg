@@ -31,6 +31,6 @@ namespace vt {
 
         const T *end() const { return begin() + size(); }
     };
-}// namespace vt
+}  // namespace vt
 
-#endif//VT_LINALG_INITIALIZER_LIST_H
+#endif  //VT_LINALG_INITIALIZER_LIST_H

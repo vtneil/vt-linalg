@@ -30,7 +30,7 @@ namespace vt {
             helper_assign_from<T, Size, IMax, I>(array, var);
             if (I < IMax) helper_assign_from<T, Size, IMax, I + 1>(array, vars...);
         }
-    }// namespace detail
+    }  // namespace detail
 
     namespace impl {
         template<typename T, size_t Row, size_t Col>
@@ -669,7 +669,7 @@ namespace vt {
             tmp.operator-=(lhs);
             return tmp;
         }
-    }// namespace impl
+    }  // namespace impl
 
     /**
      * Numeric vector where the dimension must be known at compile-time
@@ -700,7 +700,7 @@ namespace vt {
         struct size_sum<Class<T, Size>, Class<T, Sizes>...> {
             static constexpr size_t value = Size + size_sum<impl::numeric_vector_static_t<T, Sizes>...>::value;
         };
-    }// namespace detail
+    }  // namespace detail
 
     /**
      * Creates a numeric vector.
@@ -828,7 +828,7 @@ namespace vt {
         make_diagonal(const T (&array)[Order]) {
             return make_diagonal(array, vt::make_index_sequence<Order>());
         }
-    }// namespace detail
-}// namespace vt
+    }  // namespace detail
+}  // namespace vt
 
-#endif//VT_LINALG_NUMERIC_VECTOR_H
+#endif  //VT_LINALG_NUMERIC_VECTOR_H

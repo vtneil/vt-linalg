@@ -172,6 +172,6 @@ namespace vt {
     complex_t operator*(real_t lhs, const complex_t &rhs) { return rhs.operator*(lhs); }
 
     complex_t operator/(real_t lhs, const complex_t &rhs) { return complex_t(lhs).operator/(rhs); }
-}// namespace vt
+}  // namespace vt
 
-#endif//VT_LINALG_COMPLEX_NUMBER_H
+#endif  //VT_LINALG_COMPLEX_NUMBER_H

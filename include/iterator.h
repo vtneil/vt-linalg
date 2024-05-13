@@ -83,7 +83,7 @@ namespace vt {
 
         template<typename T, size_t Size, size_t Index>
         struct input_assignment_chain {
-            T (&arr_ref)
+            T(&arr_ref)
             [Size];
 
             explicit input_assignment_chain(T (&arr)[Size]) : arr_ref{arr} {}
@@ -97,7 +97,7 @@ namespace vt {
                 return next_iterator(arr_ref);
             }
         };
-    }// namespace detail
-}// namespace vt
+    }  // namespace detail
+}  // namespace vt
 
-#endif//VT_LINALG_ITERATOR_H
+#endif  //VT_LINALG_ITERATOR_H

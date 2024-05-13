@@ -118,7 +118,7 @@ namespace vt {
 
             return q;
         }
-    }// namespace imu_tools
-}// namespace vt
+    }  // namespace imu_tools
+}  // namespace vt
 
-#endif//VT_LINALG_IMU_TOOLS_H
+#endif  //VT_LINALG_IMU_TOOLS_H

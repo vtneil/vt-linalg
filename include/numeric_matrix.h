@@ -1010,7 +1010,7 @@ namespace vt {
             tmp.operator*=(lhs);
             return tmp;
         }
-    }// namespace impl
+    }  // namespace impl
 
     /**
      * Finds determinant of this matrix.\n
@@ -1120,7 +1120,7 @@ namespace vt {
              */
             constexpr const Matrix_t &u() const { return u_; }
         };
-    }// namespace impl
+    }  // namespace impl
 
     /**
      * Numeric matrix where the dimension must be known at compile-time
@@ -1229,6 +1229,6 @@ namespace vt {
     make_diagonal_matrix(real_t value) {
         return numeric_matrix<Order, Order>::diagonals(value);
     }
-}// namespace vt
+}  // namespace vt
 
-#endif//VT_LINALG_NUMERIC_MATRIX_H
+#endif  //VT_LINALG_NUMERIC_MATRIX_H

@@ -327,6 +327,6 @@ namespace vt {
     }
 
     using numeric_vector = numeric_vector_dynamic_t<double>;
-}// namespace vt
+}  // namespace vt
 
-#endif//VT_LINALG_DYNAMIC_NUMERIC_VECTOR_H
+#endif  //VT_LINALG_DYNAMIC_NUMERIC_VECTOR_H

@@ -163,7 +163,7 @@ namespace vt {
 
         template<typename T>
         auto try_add_rvalue_reference(...) -> type_identity<T>;
-    }// namespace detail
+    }  // namespace detail
 
     template<typename T>
     struct add_lvalue_reference : decltype(vt::detail::try_add_lvalue_reference<T>(0)) {
@@ -285,12 +285,12 @@ namespace vt {
         struct integral_coefficient_helper<T, 1> {
             static constexpr real_t value = 0.5;
         };
-    }// namespace detail
+    }  // namespace detail
 
     template<size_t N>
     constexpr real_t integral_coefficient() {
         return detail::integral_coefficient_helper<real_t, N>::value;
     }
-}// namespace vt
+}  // namespace vt
 
-#endif//VT_LINALG_STANDARD_UTILITY_H
+#endif  //VT_LINALG_STANDARD_UTILITY_H

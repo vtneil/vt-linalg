@@ -55,7 +55,7 @@ namespace vt {
         struct tie_object_element<0, tie_object<T, Ts...>> {
             typedef T type;
         };
-    }// namespace detail
+    }  // namespace detail
 
     template<size_t I, typename T, typename... Ts>
     vt::enable_if_t<(I == 0), T> get_tie(tie_object<T, Ts...> &t) {
@@ -81,6 +81,6 @@ namespace vt {
     constexpr tie_object<const Ts &...> tie(const Ts &...ts) noexcept {
         return tie_object<const Ts &...>(ts...);
     }
-}// namespace vt
+}  // namespace vt
 
-#endif//VT_LINALG_TIE_OBJECT_H
+#endif  //VT_LINALG_TIE_OBJECT_H

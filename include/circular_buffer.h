@@ -7,7 +7,7 @@ namespace vt {
     namespace {
         template<size_t Capacity>
         constexpr size_t cyclic(size_t current) { return current % Capacity; }
-    }// namespace
+    }  // namespace
 
     template<typename T, size_t Capacity>
     class circular_buffer_static_t {
@@ -87,6 +87,6 @@ namespace vt {
 
     template<typename T, size_t Capacity>
     constexpr buffer_t<T, Capacity> make_buffer() { return buffer_t<T, Capacity>(); }
-}// namespace vt
+}  // namespace vt
 
-#endif//VT_LINALG_CIRCULAR_BUFFER_H
+#endif  //VT_LINALG_CIRCULAR_BUFFER_H
