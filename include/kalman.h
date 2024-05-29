@@ -78,9 +78,12 @@ namespace vt {
         simple_kalman_filter_t &update(const numeric_vector<M_> &z) {
             numeric_vector<M_> y_        = vt::move(z - H_ * x_);
             numeric_matrix<N_, M_> P_H_t = vt::move(P_.matmul_T(H_));
-            numeric_matrix<N_, M_> K_    = vt::move(P_H_t * (H_ * P_H_t + R_).inverse());
+            numeric_matrix<M_, M_> S_    = vt::move(H_ * P_H_t + R_);
+            numeric_matrix<N_, M_> K_    = vt::move(P_H_t * S_.inverse());
+
             x_ += K_ * y_;
             P_ = vt::move((numeric_matrix<N_, N_>::identity() - K_ * H_) * P_);
+
             return *this;
         }
 
@@ -90,6 +93,101 @@ namespace vt {
         const numeric_vector<N_> &state_vector = x_;
 
         const real_t &state = x_[0];
+    };
+
+    template<size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension>
+    class adaptive_kalman_filter_t {
+    private:
+        // Note that numeric_matrix<N_, M_> maps from R_^M_ to R_^N_
+        static constexpr size_t N_ = StateVectorDimension;        // ALias
+        static constexpr size_t M_ = MeasurementVectorDimension;  // Alias
+        static constexpr size_t L_ = ControlVectorDimension;      // Alias
+
+    protected:
+        const numeric_matrix<N_, N_> &F_;  // state-transition model
+        const numeric_matrix<N_, L_> &B_;  // control-input model
+        const numeric_matrix<M_, N_> &H_;  // measurement model
+        numeric_matrix<N_, N_> &Q_;        // covariance of the process noise
+        numeric_matrix<M_, M_> &R_;        // covariance of the measurement noise
+        numeric_vector<N_> x_;             // state vector
+        numeric_matrix<N_, N_> P_;         // state covariance, self-initialized as Q_
+
+    public:
+        /**
+         * Simple Kalman filter array-copying constructor
+         *
+         * @param F_matrix state-transition model
+         * @param B_matrix control-input model
+         * @param H_matrix measurement model
+         * @param Q_matrix covariance of the process noise
+         * @param R_matrix covariance of the measurement noise
+         * @param x_0 initial state vector
+         */
+        constexpr adaptive_kalman_filter_t(
+                const numeric_matrix<N_, N_> &F_matrix,
+                const numeric_matrix<N_, L_> &B_matrix,
+                const numeric_matrix<M_, N_> &H_matrix,
+                numeric_matrix<N_, N_> &Q_matrix,
+                numeric_matrix<M_, M_> &R_matrix,
+                const numeric_vector<N_> &x_0)
+            : F_{F_matrix}, B_{B_matrix}, H_{H_matrix},
+              Q_{Q_matrix}, R_{R_matrix}, x_{x_0}, P_{Q_matrix} {}
+
+        constexpr adaptive_kalman_filter_t(const adaptive_kalman_filter_t &) = delete;
+
+        constexpr adaptive_kalman_filter_t(adaptive_kalman_filter_t &&) noexcept = delete;
+
+        /**
+         * Kalman filter prediction
+         *
+         * @param u control input vector
+         */
+        adaptive_kalman_filter_t &predict(const numeric_vector<L_> &u = {}) {
+            x_ = vt::move(F_ * x_ + B_ * u);
+            P_ = vt::move(F_ * P_.matmul_T(F_) + Q_);
+            return *this;
+        }
+
+        /**
+         * Kalman filter update
+         *
+         * @param z Measurement vector
+         */
+        adaptive_kalman_filter_t &update(const numeric_vector<M_> &z) {
+            numeric_vector<M_> y_        = vt::move(z - H_ * x_);
+            numeric_matrix<N_, M_> P_H_t = vt::move(P_.matmul_T(H_));
+            numeric_matrix<M_, M_> S_    = vt::move(H_ * P_H_t + R_);
+            numeric_matrix<N_, M_> K_    = vt::move(P_H_t * S_.inverse());
+
+            x_ += K_ * y_;
+            P_ = vt::move((numeric_matrix<N_, N_>::identity() - K_ * H_) * P_);
+
+            numeric_matrix<M_, 1> y_mat = y_.as_matrix_col();
+            numeric_matrix<M_, M_> y_yT = y_mat.matmul_T(y_mat);
+
+            adapt_R(y_yT, S_);
+            adapt_Q(K_, y_yT);
+
+            return *this;
+        }
+
+        template<typename... Ts>
+        adaptive_kalman_filter_t &update(Ts... vs) { return update(make_numeric_vector({vs...})); }
+
+        const numeric_vector<N_> &state_vector = x_;
+
+        const real_t &state = x_[0];
+
+    private:
+        void adapt_R(const numeric_matrix<M_, M_> &y_yT, const numeric_matrix<M_, M_> &S) {
+            static constexpr real_t alpha = 0.1;  // Smoothing factor
+            R_                            = (1 - alpha) * R_ + alpha * (y_yT + S);
+        }
+
+        void adapt_Q(const numeric_matrix<N_, M_> &K, const numeric_matrix<M_, M_> &y_yT) {
+            static constexpr real_t beta = 0.1;  // Smoothing factor
+            Q_                           = (1 - beta) * Q_ + beta * (K * y_yT * K.transpose());
+        }
     };
 
     template<size_t StateVectorDimension, size_t MeasurementVectorDimension, size_t ControlVectorDimension>

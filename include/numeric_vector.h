@@ -672,19 +672,6 @@ namespace vt {
     }  // namespace impl
 
     /**
-     * Numeric vector where the dimension must be known at compile-time
-     * and can't be changed by any ways during runtime to prevent unexpected
-     * behavior or errors. This avoid heap usages for safety-critical and
-     * performance-critical systems.
-     * \n
-     * This numeric vector uses real type (real_t), defined as double).
-     *
-     * @tparam Size Vector dimension
-     */
-    template<size_t Size>
-    using numeric_vector = impl::numeric_vector_static_t<real_t, Size>;
-
-    /**
      * Helper class for make_numeric_vector function. Not intended for user's usages.
      */
     namespace detail {
@@ -701,6 +688,59 @@ namespace vt {
             static constexpr size_t value = Size + size_sum<impl::numeric_vector_static_t<T, Sizes>...>::value;
         };
     }  // namespace detail
+
+    template<typename T, size_t N>
+    using generic_vector = impl::numeric_vector_static_t<T, N>;
+
+    template<typename T, size_t Size>
+    constexpr generic_vector<T, Size> make_generic_vector() {
+        return generic_vector<T, Size>();
+    }
+
+    template<typename T, size_t Size>
+    constexpr generic_vector<T, Size> make_generic_vector(const T (&array)[Size]) {
+        return generic_vector<T, Size>(array);
+    }
+
+    template<typename T, size_t Size>
+    constexpr generic_vector<T, Size> make_generic_vector(const generic_vector<T, Size> &vector) {
+        return generic_vector<T, Size>(vector);
+    }
+
+    template<typename T, size_t S1, size_t S2>
+    constexpr generic_vector<T, S1 + S2>
+    make_generic_vector(const generic_vector<T, S1> &v1, const generic_vector<T, S2> &v2) {
+        return generic_vector<T, S1 + S2>(v1, v2);
+    }
+
+    template<typename T, size_t S1, size_t S2, size_t... Ss>
+    constexpr generic_vector<T, vt::detail::size_sum<generic_vector<T, S1>, generic_vector<T, S2>, generic_vector<T, Ss>...>::value>
+    make_generic_vector(const generic_vector<T, S1> &v1, const generic_vector<T, S2> &v2, const generic_vector<T, Ss> &...vs) {
+        return make_generic_vector(make_generic_vector(v1, v2), vs...);
+    }
+
+    /**
+     * Numeric vector where the dimension must be known at compile-time
+     * and can't be changed by any ways during runtime to prevent unexpected
+     * behavior or errors. This avoid heap usages for safety-critical and
+     * performance-critical systems.
+     * \n
+     * This numeric vector uses real type (real_t), defined as double).
+     *
+     * @tparam Size Vector dimension
+     */
+    template<size_t Size>
+    using numeric_vector = impl::numeric_vector_static_t<real_t, Size>;
+
+    /**
+     *
+     * @tparam Size Vector dimension
+     * @return Numeric vector
+     */
+    template<size_t Size>
+    constexpr numeric_vector<Size> make_numeric_vector() {
+        return numeric_vector<Size>();
+    }
 
     /**
      * Creates a numeric vector.

@@ -1122,6 +1122,24 @@ namespace vt {
         };
     }  // namespace impl
 
+    template<typename T, size_t Row, size_t Col = Row>
+    using generic_matrix = impl::numeric_matrix_static_t<T, Row, Col>;
+
+    template<typename T, size_t Row, size_t Col = Row>
+    constexpr generic_matrix<T, Row, Col> make_generic_matrix() {
+        return generic_matrix<T, Row, Col>();
+    }
+
+    template<typename T, size_t Row, size_t Col = Row>
+    constexpr generic_matrix<T, Row, Col> make_generic_matrix(const T (&array)[Row][Col]) {
+        return generic_matrix<T, Row, Col>(array);
+    }
+
+    template<typename T, size_t Row, size_t Col = Row>
+    constexpr generic_matrix<T, Row, Col> make_generic_matrix(const generic_matrix<T, Row, Col> &M) {
+        return generic_matrix<T, Row, Col>(M);
+    }
+
     /**
      * Numeric matrix where the dimension must be known at compile-time
      * and can't be changed by any ways during runtime to prevent unexpected
@@ -1139,6 +1157,17 @@ namespace vt {
 
     template<size_t OSize>
     using numeric_matrix_lu = impl::numeric_matrix_static_lu_t<real_t, OSize>;
+
+    /**
+     *
+     * @tparam Row Row dimension
+     * @tparam Col Column dimension
+     * @return Numeric matrix
+     */
+    template<size_t Row, size_t Col = Row>
+    constexpr numeric_matrix<Row, Col> make_numeric_matrix() {
+        return numeric_matrix<Row, Col>();
+    }
 
     /**
      * Creates a numeric matrix.

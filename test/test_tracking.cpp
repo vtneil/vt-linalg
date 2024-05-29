@@ -11,6 +11,7 @@ real_t base_noise_value = 0.001;
 numeric_matrix<3, 3> F({{1, dt, hdts},
                         {0, 1,  dt},
                         {0, 0,  1}});
+auto K = make_numeric_matrix<1, 3>({{1}});
 numeric_matrix<3, 1> B;
 numeric_matrix<1, 3> H({{1}});
 numeric_matrix<3, 3> Q = numeric_matrix<3, 3>::diagonals(base_noise_value);

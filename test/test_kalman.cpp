@@ -1,47 +1,71 @@
 #include "vt_imu"
 #include "vt_kalman"
 #include <iostream>
+#include <vector>
 
 using namespace vt;
 
-constexpr real_t dt               = 1.0;
+constexpr real_t dt               = 0.0001;
 constexpr real_t hdts             = 0.5 * dt * dt;
-constexpr real_t base_noise_value = 0.001;
+constexpr real_t base_noise_value = 0.1;
 
-constexpr numeric_matrix<3, 3> F({{1, dt, hdts},
-                                  {0, 1, dt},
-                                  {0, 0, 1}});
-constexpr numeric_matrix<3, 1> B;
-constexpr numeric_matrix<1, 3> H({{1}});
-constexpr numeric_matrix<3, 3> Q = numeric_matrix<3, 3>::diagonals(base_noise_value);
-constexpr numeric_matrix<1, 1> R = numeric_matrix<1, 1>::diagonals(base_noise_value);
-constexpr numeric_vector<3> x0;// {x, v, a}
+constexpr auto F  = make_numeric_matrix<3, 3>({{1, dt, hdts},
+                                               {0, 1, dt},
+                                               {0, 0, 1}});
+constexpr auto B  = make_numeric_matrix<3, 1>();
+constexpr auto H  = make_numeric_matrix<1, 3>({{1, 0, 0}});
+auto Q  = numeric_matrix<3, 3>::diagonals(0.1);
+auto R  = numeric_matrix<1, 1>::diagonals(0.1);
+constexpr auto x0 = make_numeric_vector<3>({0, 0, 0});  // {x, v, a}
 
-kalman_filter_t<3, 1, 1> kf(F, B, H, Q, R, x0);
+adaptive_kalman_filter_t<3, 1, 1> kf(F, B, H, Q, R, x0);
 
 int main() {
-    constexpr size_t SAMPLES                = 16;
-    numeric_vector<1> controls[SAMPLES]     = {};
-    numeric_vector<1> measurements[SAMPLES] = {};
+    std::vector<real_t> measurements = {10, -10, 10, -10, 10, -10, 10, -10,
+                                        10, -10, 10, -10, 10, -10, 10, -10,
+                                        10, -10, 10, -10, 10, -10, 10, -10};
 
-    real_t i_r = 0;
-    for (auto &x: measurements) x = {i_r++};
-
-    for (size_t i = 0; i < SAMPLES; ++i) {
-        kf.predict(controls[i]);
-        std::cout << "Predicted state: ";
-        for (auto &state: kf.state_vector) {
-            std::cout << state << " ";
-        }
-        std::cout << '\n';
-
-        kf.update(measurements[i]);
-        std::cout << i + 1 << " - Estimated state: ";
-        for (auto &state: kf.state_vector) {
-            std::cout << state << " ";
-        }
-        std::cout << '\n';
+    for (const auto &measurement: measurements) {
+        kf.predict();
+        kf.update(measurement);
+        const auto &state = kf.state_vector;
+        std::cout << "State: " << state[0] << ", " << state[1] << ", " << state[2] << std::endl;
     }
+
+    // std::vector py_0 = {
+    //         0.0, 15.993336109954187, 31.32028321532695, 45.98084131611829, 59.9750104123282, 73.30279050395669,
+    //         85.96418159100375, 97.95918367346941, 109.28779675135361, 119.9500208246564, 129.94585589337777,
+    //         139.27530195751768, 147.93835901707624, 155.93502707205334, 163.265306122449, 169.92919616826322,
+    //         175.92669720949607, 181.25780924614745, 185.9225322782174, 189.9208663057059, 193.2528113286131,
+    //         195.91836734693877, 197.91753436068305, 199.2503123698459, 199.9167013744273, 199.91670137442728,
+    //         199.25031236984591, 197.91753436068302, 195.91836734693882, 193.25281132861306, 189.92086630570597,
+    //         185.92253227821743, 181.25780924614747, 175.92669720949604, 169.92919616826327, 163.26530612244898,
+    //         155.93502707205323, 147.93835901707624, 139.2753019575176, 129.9458558933777, 119.95002082465645,
+    //         109.28779675135365, 97.95918367346931, 85.96418159100381, 73.30279050395667, 59.975010412328174,
+    //         45.98084131611824, 31.32028321532694, 15.993336109954104, 0.0};
+    //
+    // std::vector py = {
+    //         7.32929765027928, 40.00899704195822, 19.614499962807198, 57.24027538633473, 69.61580858784615,
+    //         69.74633011916363, 87.03641005880513, 94.15195216414666, 107.84156214764603, 124.31899431562388,
+    //         128.10971957472862, 139.0529441761977, 132.32268139424374, 126.7773640599633, 147.68717111477977,
+    //         187.95609349738515, 174.99420308312216, 173.9938835146209, 188.9040922692217, 170.15705650640058,
+    //         191.5200534526683, 190.65332466100958, 203.0328986086245, 200.75628463389623, 192.15680452291983,
+    //         211.35633777270795, 198.9799907183162, 208.27152397591027, 190.9959366158879, 188.37447698927897,
+    //         191.68153049684344, 195.77565671977325, 188.11315253355338, 171.19773398806518, 161.12166644003062,
+    //         160.54128789024182, 154.9213101588939, 163.47492831545978, 133.55320925527514, 120.63628172872161,
+    //         95.24562923696801, 100.14041576163555, 100.91190703791051, 80.02983770039927, 81.6406620483426,
+    //         55.993175394470086, 48.07533521291127, 20.076868581952922, 31.305934155479896, 6.0058786256346135};
+    //
+    // size_t i = 0;
+    // for (const auto &y: py) {
+    //     kf.predict().update(i % 2 ? 1. : -1.);
+    //     std::cout << static_cast<real_t>(i) * dt;
+    //     for (auto &state: kf.state_vector) {
+    //         printf(",%.4f", state);
+    //     }
+    //     std::cout << '\n';
+    //     ++i;
+    // }
 
     return 0;
 }

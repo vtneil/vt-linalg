@@ -1,9 +1,10 @@
 #include <iostream>
 #include <vt_linalg>
+#include <assert.h>
 
 using namespace vt;
 
-#define NEWLINE() std::cout<<'\n'
+#define NEWLINE() std::cout << '\n'
 
 void pass_msg(int a, int b) {
     std::cout << "Test Passed! " << a << ' ' << b;
@@ -15,10 +16,9 @@ void hello() {
 
 int main() {
     constexpr size_t N = 128;
-    auto M1 = vt::make_numeric_matrix(
+    auto M1            = vt::make_numeric_matrix(
             {{1, 2, 3},
-             {4, 5, 6}}
-    );
+                        {4, 5, 6}});
 
     std::cout << integral_coefficient<1>() << ' ' << integral_coefficient<2>() << '\n';
 
@@ -39,8 +39,8 @@ int main() {
     numeric_matrix<N> Y;
     numeric_matrix<N> Z1 = vt::move(X * Y);
     numeric_matrix<N> Z2 = vt::move(X.matmul_naive(Y));
-    auto v1 = vt::make_numeric_vector({1, 2, 3, 4});
-    auto M2 = vt::make_quad_matrix(A, A, A, A);
+    auto v1              = vt::make_numeric_vector({1, 2, 3, 4});
+    auto M2              = vt::make_quad_matrix(A, A, A, A);
 
     for (auto &row: M1) {
         for (auto &x: row) {
@@ -60,7 +60,7 @@ int main() {
     assert(v.equals(v));
     assert(numeric_vector<5>().equals({0, 0, 0, 0, 0}));
     assert(numeric_vector<5>(9).equals({9, 9, 9, 9, 9}));
-    assert(numeric_vector<v.size()>(v).equals({ 1, 1 }));
+    assert(numeric_vector<v.size()>(v).equals({1, 1}));
     assert(numeric_vector<4>({1, 2, 3, 4})[0] == 1);
     assert(numeric_vector<4>({1, 2, 3, 4})[1] == 2);
     assert(numeric_vector<4>({1, 2, 3, 4})[2] == 3);
@@ -95,10 +95,10 @@ int main() {
     assert(A(2, 3) == 0);
     assert(A.at(2, 3) == 0);
     assert(B + B == 2. * B);
-    assert((B + B).equals({{6,  8},
-                           {2,  -2},
+    assert((B + B).equals({{6, 8},
+                           {2, -2},
                            {12, 2},
-                           {8,  10}}));
+                           {8, 10}}));
     assert(!A.is_square());
     assert(C.is_square());
     assert((C ^ 9).equals(512. * numeric_matrix<3>({{1160, 2561, 2070},
@@ -119,8 +119,8 @@ int main() {
     assert(det(C) == -8.);
     assert(tr(C) == 8.);
     assert(inv(C) == 0.5 * numeric_matrix<3>({{-1, -1, 2},
-                                              {-1, 0,  1},
-                                              {2,  1,  -2}}));
+                                              {-1, 0, 1},
+                                              {2, 1, -2}}));
     assert(RRE(C) == numeric_matrix<3>::id());
     assert(B * v == numeric_vector<4>({7, 0, 7, 9}));
     assert(Z1.float_equals(Z2));
@@ -136,8 +136,8 @@ int main() {
     real_t a = 0, b = 0, c = 0, d = 0;
     numeric_vector<4> vx({4, 5, 8, 9});
 
-//    vx.assign_to(a, b, c, d);
-//    vx.assign_from(a, b, c, d);
+    //    vx.assign_to(a, b, c, d);
+    //    vx.assign_from(a, b, c, d);
     vx >> a >> b >> c >> d;
     vx << d << c << b << a;
 

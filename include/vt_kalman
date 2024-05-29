@@ -1,2 +1,8 @@
+#ifndef INCLUDE_VT_KALMAN
+
+#define INCLUDE_VT_KALMAN
+
 #include "kalman.h"
 #include "kalman_lut.h"
+
+#endif

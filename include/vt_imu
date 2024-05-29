@@ -1,1 +1,7 @@
+#ifndef INCLUDE_VT_IMU2
+
+#define INCLUDE_VT_IMU2
+
 #include "imu_tools.h"
+
+#endif
