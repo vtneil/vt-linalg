@@ -4,10 +4,10 @@
 #include "kalman.h"
 
 namespace vt {
-    class kf_basic_1d : public simple_kalman_filter_t<3, 1, 1> {
+    class kf_basic_1d : public kalman_filter_t<3, 1, 1> {
     public:
         kf_basic_1d(real_t dt, real_t base_noise_value)
-            : simple_kalman_filter_t<3, 1, 1>(
+            : kalman_filter_t<3, 1, 1>(
                       make_numeric_matrix<3, 3>({{1, dt, 0.5 * dt * dt},
                                                  {0, 1, dt},
                                                  {0, 0, 1}}),
@@ -18,10 +18,10 @@ namespace vt {
                       make_numeric_vector<3>()) {}
     };
 
-    class kf_basic_2d : public simple_kalman_filter_t<6, 2, 1> {
+    class kf_basic_2d : public kalman_filter_t<6, 2, 1> {
     public:
         kf_basic_2d(real_t dt, real_t base_noise_value)
-            : simple_kalman_filter_t<6, 2, 1>(
+            : kalman_filter_t<6, 2, 1>(
                       make_numeric_matrix<6, 6>({{1, 0, dt, 0, 0.5 * dt * dt, 0},
                                                  {0, 1, 0, dt, 0, 0.5 * dt * dt},
                                                  {0, 0, 1, 0, dt, 0},
@@ -36,10 +36,10 @@ namespace vt {
                       make_numeric_vector<6>()) {}
     };
 
-    class kf_basic_3d : public simple_kalman_filter_t<9, 3, 1> {
+    class kf_basic_3d : public kalman_filter_t<9, 3, 1> {
     public:
         kf_basic_3d(real_t dt, real_t base_noise_value)
-            : simple_kalman_filter_t<9, 3, 1>(
+            : kalman_filter_t<9, 3, 1>(
                       make_numeric_matrix<9, 9>({{1, 0, 0, dt, 0, 0, 0.5 * dt * dt, 0, 0},
                                                  {0, 1, 0, 0, dt, 0, 0, 0.5 * dt * dt, 0},
                                                  {0, 0, 1, 0, 0, dt, 0, 0, 0.5 * dt * dt},
