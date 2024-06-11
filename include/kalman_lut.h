@@ -87,6 +87,14 @@ namespace vt {
               R{numeric_matrix<1, 1>::diagonals(covariance)},
               kf{kf_type(F, B, H, Q, R, make_numeric_vector<Order>(), alpha, beta)} {}
 
+        kf_pos(const kf_pos &) = default;
+
+        kf_pos(kf_pos &&) noexcept = default;
+
+        kf_pos &operator=(const kf_pos &) = default;
+
+        kf_pos &operator=(kf_pos &&) noexcept = default;
+
         void update_dt(const real_t &new_dt) {
             vdt.update_dt(new_dt);
             F = vdt.generate_F();
@@ -119,6 +127,14 @@ namespace vt {
               R{numeric_matrix<1, 1>::diagonals(covariance)},
               kf{kf_type(F, B, H, Q, R, make_numeric_vector<Order>(), alpha, beta)} {}
 
+        kf_acc(const kf_acc &) = default;
+
+        kf_acc(kf_acc &&) noexcept = default;
+
+        kf_acc &operator=(const kf_acc &) = default;
+
+        kf_acc &operator=(kf_acc &&) noexcept = default;
+
         void update_dt(const real_t &new_dt) {
             vdt.update_dt(new_dt);
             F = vdt.generate_F();
@@ -150,6 +166,14 @@ namespace vt {
               Q{numeric_matrix<Order, Order>::diagonals(covariance)},
               R{numeric_matrix<2, 2>::diagonals(covariance)},
               kf{kf_type(F, B, H, Q, R, make_numeric_vector<Order>(), alpha, beta)} {}
+
+        kf_pos_acc(const kf_pos_acc &) = default;
+
+        kf_pos_acc(kf_pos_acc &&) noexcept = default;
+
+        kf_pos_acc &operator=(const kf_pos_acc &) = default;
+
+        kf_pos_acc &operator=(kf_pos_acc &&) noexcept = default;
 
         void update_dt(const real_t &new_dt) {
             vdt.update_dt(new_dt);
