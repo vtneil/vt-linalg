@@ -69,7 +69,7 @@ namespace vt {
         using vdt_type = vdt<Order - 1>;
         using kf_type  = adaptive_kalman_filter_t<Order, 1, 1>;
 
-        vdt_type vdt;
+        vdt_type ivdt;
         numeric_matrix<Order, Order> F;
         numeric_matrix<Order, 1> B;
         numeric_matrix<1, Order> H;
@@ -79,8 +79,8 @@ namespace vt {
 
         kf_pos(const real_t &dt, const real_t &covariance,
                const real_t &alpha, const real_t &beta)
-            : vdt{vdt_type(dt)},
-              F{vdt.generate_F()},
+            : ivdt{vdt_type(dt)},
+              F{ivdt.generate_F()},
               B{make_numeric_matrix<Order, 1>()},
               H{make_numeric_matrix<1, Order>({{1}})},
               Q{numeric_matrix<Order, Order>::diagonals(covariance)},
@@ -96,8 +96,8 @@ namespace vt {
         kf_pos &operator=(kf_pos &&) noexcept = default;
 
         void update_dt(const real_t &new_dt) {
-            vdt.update_dt(new_dt);
-            F = vdt.generate_F();
+            ivdt.update_dt(new_dt);
+            F = ivdt.generate_F();
         }
     };
 
@@ -109,7 +109,7 @@ namespace vt {
         using vdt_type = vdt<Order - 1>;
         using kf_type  = adaptive_kalman_filter_t<Order, 1, 1>;
 
-        vdt_type vdt;
+        vdt_type ivdt;
         numeric_matrix<Order, Order> F;
         numeric_matrix<Order, 1> B;
         numeric_matrix<1, Order> H;
@@ -119,8 +119,8 @@ namespace vt {
 
         kf_acc(const real_t &dt, const real_t &covariance,
                const real_t &alpha, const real_t &beta)
-            : vdt{vdt_type(dt)},
-              F{vdt.generate_F()},
+            : ivdt{vdt_type(dt)},
+              F{ivdt.generate_F()},
               B{make_numeric_matrix<Order, 1>()},
               H{make_numeric_matrix<1, Order>({{0, 0, 1}})},
               Q{numeric_matrix<Order, Order>::diagonals(covariance)},
@@ -136,8 +136,8 @@ namespace vt {
         kf_acc &operator=(kf_acc &&) noexcept = default;
 
         void update_dt(const real_t &new_dt) {
-            vdt.update_dt(new_dt);
-            F = vdt.generate_F();
+            ivdt.update_dt(new_dt);
+            F = ivdt.generate_F();
         }
     };
 
@@ -149,7 +149,7 @@ namespace vt {
         using vdt_type = vdt<3>;
         using kf_type  = adaptive_kalman_filter_t<4, 2, 1>;
 
-        vdt_type vdt;
+        vdt_type ivdt;
         numeric_matrix<Order, Order> F;
         numeric_matrix<Order, 1> B;
         numeric_matrix<2, Order> H;
@@ -159,8 +159,8 @@ namespace vt {
 
         kf_pos_acc(const real_t &dt, const real_t &covariance,
                    const real_t &alpha, const real_t &beta)
-            : vdt{vdt_type(dt)},
-              F{vdt.generate_F()},
+            : ivdt{vdt_type(dt)},
+              F{ivdt.generate_F()},
               B{make_numeric_matrix<Order, 1>()},
               H{make_numeric_matrix<2, Order>({{1, 0, 0}, {0, 0, 1}})},
               Q{numeric_matrix<Order, Order>::diagonals(covariance)},
@@ -176,8 +176,8 @@ namespace vt {
         kf_pos_acc &operator=(kf_pos_acc &&) noexcept = default;
 
         void update_dt(const real_t &new_dt) {
-            vdt.update_dt(new_dt);
-            F = vdt.generate_F();
+            ivdt.update_dt(new_dt);
+            F = ivdt.generate_F();
         }
     };
 }  // namespace vt
