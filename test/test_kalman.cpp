@@ -9,7 +9,7 @@ constexpr real_t dt               = 0.1;
 constexpr real_t hdts             = 0.5 * dt * dt;
 constexpr real_t base_noise_value = 0.1;
 
-constexpr auto F  = make_numeric_matrix<3, 3>({{1, dt, hdts},
+auto F  = make_numeric_matrix<3, 3>({{1, dt, hdts},
                                                {0, 1, dt},
                                                {0, 0, 1}});
 constexpr auto B  = make_numeric_matrix<3, 1>();

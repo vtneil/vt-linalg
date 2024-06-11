@@ -25,3 +25,4 @@ add_executable(test_tracking test/test_tracking.cpp)
 add_executable(test_creation test/test_creation.cpp)
 
 add_executable(test_kalman_ekf test/test_kalman_ekf.cpp)
+add_executable(test_kalman_wrapper test/test_kalman_wrapper.cpp)

@@ -4,42 +4,8 @@
 
 using namespace vt;
 
-real_t dt1              = 0.1;
-real_t dt2              = 0.5 * dt1 * dt1;
-real_t dt3              = dt2 * dt1 / 3.;
+real_t dt1 = 0.1;
 real_t base_noise_value = 0.1;
-
-numeric_vector<4> f(const numeric_vector<4> &x,
-                    const numeric_vector<1> &) {
-    return make_numeric_vector<4>({x[0] + dt1 * x[1] + dt2 * x[2] + dt3 * x[3],
-                                   x[1] + dt1 * x[2] + dt2 * x[3],
-                                   x[2] + dt1 * x[3],
-                                   x[3]});
-}
-
-numeric_matrix<4, 4> Fj(const numeric_vector<4> &,
-                        const numeric_vector<1> &) {
-    return make_numeric_matrix<4, 4>({{1, dt1, dt2, dt3},
-                                      {0, 1, dt1, dt2},
-                                      {0, 0, 1, dt1},
-                                      {0, 0, 0, 1}});
-}
-
-numeric_vector<2> h(const numeric_vector<4> &x) {
-    return make_numeric_vector<2>({x[0], x[2]});
-}
-
-numeric_matrix<2, 4> Hj(const numeric_vector<4> &) {
-    return make_numeric_matrix<2, 4>({{1, 0, 0, 0},
-                                      {0, 0, 1, 0}});
-}
-
-numeric_matrix<4, 4> Q = numeric_matrix<4, 4>::diagonals(base_noise_value);
-numeric_matrix<2, 2> R = numeric_matrix<2, 2>::diagonals(base_noise_value);
-numeric_vector<4> x0;  // {x, v, a, j}
-
-adaptive_extended_kalman_filter_t<4, 2, 1> kf(f, Fj, h, Hj, Q, R, x0, 0.001, 0.001);
-// extended_kalman_filter_t<4, 2, 1> kf(f, Fj, h, Hj, Q, R, x0);
 
 std::vector<double> get_t();
 
@@ -57,6 +23,8 @@ std::vector<double> ys(get_y());
 std::vector<double> a0s(get_a0());
 std::vector<double> as(get_a());
 
+kf_pos_acc<4> kf(dt1, base_noise_value, 0.001, 0.001);
+
 int main() {
     const size_t s = get_t().size();
 
@@ -66,19 +34,17 @@ int main() {
         const auto y  = ys[i];
         const auto a0 = a0s[i];
         const auto a  = as[i];
+        const auto new_dt = t - ts[i - 1];
 
-        dt1 = t - ts[i - 1];
-        dt2 = 0.5 * dt1 * dt1;
-        dt3 = dt2 * dt1 / 3.;
-
-        kf.predict().update(y, a);
+        kf.update_dt(new_dt);
+        kf.kf.predict().update(y, a);
 
         std::cout << t << ",";
         std::cout << y0 << ",";
         std::cout << y << ",";
-        std::cout << a0 << ",";
-        std::cout << a;
-        for (auto &state: kf.state_vector) {
+        // std::cout << a0 << ",";
+        // std::cout << a << ",";
+        for (auto &state: kf.kf.state_vector) {
             printf(",%.4f", state);
         }
         std::cout << '\n';

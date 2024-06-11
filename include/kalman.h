@@ -26,7 +26,7 @@ namespace vt {
         static constexpr size_t L_ = ControlVectorDimension;      // Alias
 
     protected:
-        const numeric_matrix<N_, N_> &F_;  // state-transition model
+        numeric_matrix<N_, N_> &F_;        // state-transition model
         const numeric_matrix<N_, L_> &B_;  // control-input model
         const numeric_matrix<M_, N_> &H_;  // measurement model
         const numeric_matrix<N_, N_> &Q_;  // covariance of the process noise
@@ -46,7 +46,7 @@ namespace vt {
          * @param x_0 initial state vector
          */
         constexpr kalman_filter_t(
-                const numeric_matrix<N_, N_> &F_matrix,
+                numeric_matrix<N_, N_> &F_matrix,
                 const numeric_matrix<N_, L_> &B_matrix,
                 const numeric_matrix<M_, N_> &H_matrix,
                 const numeric_matrix<N_, N_> &Q_matrix,
@@ -55,9 +55,13 @@ namespace vt {
             : F_{F_matrix}, B_{B_matrix}, H_{H_matrix},
               Q_{Q_matrix}, R_{R_matrix}, x_{x_0}, P_{Q_matrix} {}
 
-        constexpr kalman_filter_t(const kalman_filter_t &) = delete;
+        constexpr kalman_filter_t(const kalman_filter_t &) = default;
 
-        constexpr kalman_filter_t(kalman_filter_t &&) noexcept = delete;
+        constexpr kalman_filter_t(kalman_filter_t &&) noexcept = default;
+
+        kalman_filter_t &operator=(const kalman_filter_t &) = default;
+
+        kalman_filter_t &operator=(kalman_filter_t &&) noexcept = default;
 
         /**
          * Kalman filter prediction
@@ -108,7 +112,7 @@ namespace vt {
         static constexpr size_t L_ = ControlVectorDimension;      // Alias
 
     protected:
-        const numeric_matrix<N_, N_> &F_;  // state-transition model
+        numeric_matrix<N_, N_> &F_;        // state-transition model
         const numeric_matrix<N_, L_> &B_;  // control-input model
         const numeric_matrix<M_, N_> &H_;  // measurement model
         numeric_matrix<N_, N_> &Q_;        // covariance of the process noise
@@ -132,7 +136,7 @@ namespace vt {
          * @param beta EMA Smoothing factor for Q
          */
         constexpr adaptive_kalman_filter_t(
-                const numeric_matrix<N_, N_> &F_matrix,
+                numeric_matrix<N_, N_> &F_matrix,
                 const numeric_matrix<N_, L_> &B_matrix,
                 const numeric_matrix<M_, N_> &H_matrix,
                 numeric_matrix<N_, N_> &Q_matrix,
@@ -144,9 +148,13 @@ namespace vt {
               Q_{Q_matrix}, R_{R_matrix}, x_{x_0}, P_{Q_matrix},
               alpha_{alpha}, beta_{beta} {}
 
-        constexpr adaptive_kalman_filter_t(const adaptive_kalman_filter_t &) = delete;
+        constexpr adaptive_kalman_filter_t(const adaptive_kalman_filter_t &) = default;
 
-        constexpr adaptive_kalman_filter_t(adaptive_kalman_filter_t &&) noexcept = delete;
+        constexpr adaptive_kalman_filter_t(adaptive_kalman_filter_t &&) noexcept = default;
+
+        adaptive_kalman_filter_t &operator=(const adaptive_kalman_filter_t &) = default;
+
+        adaptive_kalman_filter_t &operator=(adaptive_kalman_filter_t &&) noexcept = default;
 
         /**
          * Kalman filter prediction
@@ -213,13 +221,10 @@ namespace vt {
         static constexpr size_t L_ = ControlVectorDimension;      // Alias
 
     public:
-        typedef numeric_vector<N_> (*state_func_t)(const numeric_vector<N_> &x, const numeric_vector<L_> &u);
-
-        typedef numeric_matrix<N_, N_> (*state_jacobian_t)(const numeric_vector<N_> &x, const numeric_vector<L_> &u);
-
-        typedef numeric_vector<M_> (*observation_func_t)(const numeric_vector<N_> &x);
-
-        typedef numeric_matrix<M_, N_> (*observation_jacobian_t)(const numeric_vector<N_> &x);
+        using state_func_t           = numeric_vector<N_> (*)(const numeric_vector<N_> &x, const numeric_vector<L_> &u);
+        using state_jacobian_t       = numeric_matrix<N_, N_> (*)(const numeric_vector<N_> &x, const numeric_vector<L_> &u);
+        using observation_func_t     = numeric_vector<M_> (*)(const numeric_vector<N_> &x);
+        using observation_jacobian_t = numeric_matrix<M_, N_> (*)(const numeric_vector<N_> &x);
 
     protected:
         const state_func_t f_;             // state-transition model
@@ -243,15 +248,13 @@ namespace vt {
             : f_(f_vec_func), Fj_{Fj_mat_func}, h_{h_vec_func}, Hj_{Hj_mat_func},
               Q_{Q_matrix}, R_{R_matrix}, x_{x_0}, P_{Q_matrix} {}
 
-        /**
-         * Disabled copy constructor
-         */
-        constexpr extended_kalman_filter_t(const extended_kalman_filter_t &) = delete;
+        constexpr extended_kalman_filter_t(const extended_kalman_filter_t &) = default;
 
-        /**
-         * Disabled move constructor
-         */
-        constexpr extended_kalman_filter_t(extended_kalman_filter_t &&) noexcept = delete;
+        constexpr extended_kalman_filter_t(extended_kalman_filter_t &&) noexcept = default;
+
+        extended_kalman_filter_t &operator=(const extended_kalman_filter_t &) = default;
+
+        extended_kalman_filter_t &operator=(extended_kalman_filter_t &&) noexcept = default;
 
         extended_kalman_filter_t &predict(const numeric_vector<L_> &u = {}) {
             x_                        = vt::move(f_(x_, u));
@@ -294,13 +297,10 @@ namespace vt {
         static constexpr size_t L_ = ControlVectorDimension;      // Alias
 
     public:
-        typedef numeric_vector<N_> (*state_func_t)(const numeric_vector<N_> &x, const numeric_vector<L_> &u);
-
-        typedef numeric_matrix<N_, N_> (*state_jacobian_t)(const numeric_vector<N_> &x, const numeric_vector<L_> &u);
-
-        typedef numeric_vector<M_> (*observation_func_t)(const numeric_vector<N_> &x);
-
-        typedef numeric_matrix<M_, N_> (*observation_jacobian_t)(const numeric_vector<N_> &x);
+        using state_func_t           = numeric_vector<N_> (*)(const numeric_vector<N_> &x, const numeric_vector<L_> &u);
+        using state_jacobian_t       = numeric_matrix<N_, N_> (*)(const numeric_vector<N_> &x, const numeric_vector<L_> &u);
+        using observation_func_t     = numeric_vector<M_> (*)(const numeric_vector<N_> &x);
+        using observation_jacobian_t = numeric_matrix<M_, N_> (*)(const numeric_vector<N_> &x);
 
     protected:
         const state_func_t f_;             // state-transition model
@@ -329,15 +329,13 @@ namespace vt {
               Q_{Q_matrix}, R_{R_matrix}, x_{x_0}, P_{Q_matrix},
               alpha_{alpha}, beta_{beta} {}
 
-        /**
-         * Disabled copy constructor
-         */
-        constexpr adaptive_extended_kalman_filter_t(const adaptive_extended_kalman_filter_t &) = delete;
+        constexpr adaptive_extended_kalman_filter_t(const adaptive_extended_kalman_filter_t &) = default;
 
-        /**
-         * Disabled move constructor
-         */
-        constexpr adaptive_extended_kalman_filter_t(adaptive_extended_kalman_filter_t &&) noexcept = delete;
+        constexpr adaptive_extended_kalman_filter_t(adaptive_extended_kalman_filter_t &&) noexcept = default;
+
+        adaptive_extended_kalman_filter_t &operator=(const adaptive_extended_kalman_filter_t &) = default;
+
+        adaptive_extended_kalman_filter_t &operator=(adaptive_extended_kalman_filter_t &&) noexcept = default;
 
         adaptive_extended_kalman_filter_t &predict(const numeric_vector<L_> &u = {}) {
             x_                        = vt::move(f_(x_, u));
@@ -483,7 +481,7 @@ namespace vt {
             static constexpr real_t initial_P     = 1.0;
             static constexpr real_t initial_noise = 0.1;
         };
-    }  // namespace simple
+    }  // namespace basic
 }  // namespace vt
 
 #endif  //VT_LINALG_KALMAN_H
