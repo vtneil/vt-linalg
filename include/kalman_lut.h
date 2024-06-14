@@ -4,6 +4,9 @@
 #include "kalman.h"
 
 namespace vt {
+    template<size_t M, size_t N, size_t P>
+    using vkf = kalman_filter_t<M, N, P>;
+
     /**
      * Variable dt wrapper for Kalman filter
      *
@@ -67,7 +70,7 @@ namespace vt {
         static_assert(Order > 0, "Order must be non-zero.");
 
         using vdt_type = vdt<Order - 1>;
-        using kf_type  = adaptive_kalman_filter_t<Order, 1, 1>;
+        using kf_type  = vkf<Order, 1, 1>;
 
         vdt_type ivdt;
         numeric_matrix<Order, Order> F;
@@ -107,7 +110,7 @@ namespace vt {
         static_assert(Order >= 3, "Order must be at least 3 to include acceleration.");
 
         using vdt_type = vdt<Order - 1>;
-        using kf_type  = adaptive_kalman_filter_t<Order, 1, 1>;
+        using kf_type  = vkf<Order, 1, 1>;
 
         vdt_type ivdt;
         numeric_matrix<Order, Order> F;
@@ -147,7 +150,7 @@ namespace vt {
         static_assert(Order >= 3, "Order must be at least 3 to include acceleration.");
 
         using vdt_type = vdt<3>;
-        using kf_type  = adaptive_kalman_filter_t<4, 2, 1>;
+        using kf_type  = vkf<4, 2, 1>;
 
         vdt_type ivdt;
         numeric_matrix<Order, Order> F;

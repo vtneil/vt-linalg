@@ -51,7 +51,9 @@ namespace vt {
                 const numeric_matrix<M_, N_> &H_matrix,
                 const numeric_matrix<N_, N_> &Q_matrix,
                 const numeric_matrix<M_, M_> &R_matrix,
-                const numeric_vector<N_> &x_0)
+                const numeric_vector<N_> &x_0,
+                const real_t & = 0.,
+                const real_t & = 0.)
             : F_{F_matrix}, B_{B_matrix}, H_{H_matrix},
               Q_{Q_matrix}, R_{R_matrix}, x_{x_0}, P_{Q_matrix} {}
 
